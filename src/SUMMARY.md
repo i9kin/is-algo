@@ -1,3 +1,6 @@
-# Summary
+# FAQ 
 
-- [Chapter 1](./chapter_1.md)
+- [FAQ](README.md)
+	- [Тестирующая система](./judje.md)
+	- [Как читать](./how-to-read.md)
+	- [Как придумывать](./how-to-solve.md)
