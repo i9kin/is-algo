@@ -152,6 +152,84 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="Циклы"><a class="header" href="#Циклы">Циклы</a></h1>
+<p>Часто бывает полезно выполнить блок кода более одного раза. Например, ввести массив.</p>
+<p>Для этого в <code>c++</code> предусмотрено несколько циклов, которые будут выполнять код внутри тела цикла до конца, а затем сразу же возвращаться в начало. Чтобы поэкспериментировать с циклами.</p>
+<p>В <code>c++</code> есть три вида циклов: <code>for</code>, <code>while</code> и <code>do</code>. Попробуем использовать каждый из них.</p>
+<h1 id="Цикл-while"><a class="header" href="#Цикл-while">Цикл <code>while</code></a></h1>
+<p>Синтаксис <code>while ( condition ) { loop-body }</code></p>
+<p>Ключевое слово <code>while</code> указывает на то, что пока условие истинно, цикл выполняется. Когда условие перестаёт быть истинным, программа вызывает <code>break</code>, останавливая цикл. Другое название цикла <code>while</code> — <code>цикл с условием</code></p>
+<p>Далее мы рассмотрим <code>break</code> подробнее, но в данном случае но завершает выполнение цикла.</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int t = 5;
+    while (t != 0) {
+        cout &lt;&lt; t &lt;&lt; endl;
+        t--;
+    }
+    cout &lt;&lt; t;
+}
+</code></pre>
+<p>Если запустить код вы получите :</p>
+<pre><code class="language-bash">5
+4
+3
+2
+1
+0
+</code></pre>
+<p>Цикл <code>while</code> повторился <code>4</code> раза. Сначала <code>t=5</code>, потом <code>t=4</code>, затем <code>t=3</code>, <code>t=2</code>, <code>t=1</code>. В случае <code>t=1</code> мы выведем <code>1</code>, а затем уменьшим <code>t</code> на один, итерация цикла закончится. В следующую итерацию, когда <code>while</code> решит проверить условие <code>t != 0</code>, получится <code>false</code>, а следовательно цикл закончится. После окончания цикла дальнейший код будет выполняться — <code>cout &lt;&lt; t;</code>.</p>
+<h1 id="Цикл-for"><a class="header" href="#Цикл-for">Цикл <code>for</code></a></h1>
+<p>Синтаксис  <code>for (init-statement; condition; iteration-expression) { loop-body }</code></p>
+<p>Выполняется <code>init-statement</code> всего один раз, затем выполняется тело цикла, если <code>condition</code> имеет положительный результат (<code>true</code>). После одной итерации выполняется <code>iteration-expression</code> и по дальше выполняется следующая итерация.</p>
+<p>Давайте напишем программу, которая выведет все чётные числа, которые находятся между <code>a</code> и <code>b</code>, которые вводятся.</p>
+<pre><code class="language-cpp">#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+int main() {
+    int a, b;
+    cin &gt;&gt; a &gt;&gt; b;
+    for (int x = a; x &lt;= b; x++) {
+        if (x % 2 == 0) {
+            cout &lt;&lt; x &lt;&lt; endl;
+        }
+    }
+}
+</code></pre>
+<p>При вводе <code>6 9</code> программа выведет :</p>
+<pre><code class="language-bash">6 
+8
+</code></pre>
+<h1 id="Цикл-do"><a class="header" href="#Цикл-do">Цикл <code>do</code></a></h1>
+<p>Синтаксис <code>do { loop-body } while (condition);</code></p>
+<p>Выполняет оператор многократно, пока значение выражения не станет ложным. Проверка происходит после каждой итерации, а в <code>while</code> до. </p>
+<p>Рассмотрим пример :</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int t = 5;
+    do {
+        cout &lt;&lt; t &lt;&lt; endl;
+        t--;
+    } while (t != 0 &amp;&amp; t != 5);
+    cout &lt;&lt; t;
+}
+</code></pre>
+<p>Если запустить код вы получите :</p>
+<pre><code class="language-bash">5
+4
+3
+2
+1
+0
+</code></pre>
+<p>Как видно часть условия <code>t != 5</code> не была нарушено, так как первый раз проверка производилась с <code>t=4</code>.</p>
+<blockquote>
+<p><code>do</code> удобен лишь для <a href="./how-to-testing.html">стрес-тестов</a>. С <code>do</code> надо использовать <a href="https://en.cppreference.com/w/cpp/algorithm/next_permutation">next_permutation</a> для перебора всех перестановок.</p>
+</blockquote>
+<p>Хорошенько потренируйтесь, попробуйте придумать свой пример с циклами. Когда поймёте, что поняли эту тему, можете смело приступать к следующему уроку.</p>
 
                     </main>
 
