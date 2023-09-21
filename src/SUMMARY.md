@@ -16,3 +16,4 @@
 	- [Циклы](./loops.md)
 	- [Массивы](./c-array.md)
 	- [Функции](./functions.md)
+- [Сделайте вклад](./CONTRIBUTING.md)
