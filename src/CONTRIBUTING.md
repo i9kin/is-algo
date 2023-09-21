@@ -18,7 +18,13 @@
 6. Создайте [PR](https://github.com/9kin/is-algo).
 7. Наша команда скорее всего примет ваши изменения.
 
-Задачи
-===
+Рекомендуется перед созданием PR пройтись спеллчекером (например, `hunspell`-ом или [`yaspeller`](https://github.com/hcodes/yaspeller)-ом).
 
-* написать [функции](./functions.md)
+Для `yaspeller`-а у нашего проекта есть дополнительный набор специальных терминов на 500 различных слов. И различные правила.
+
+1. Установка ```npm install yaspeller -g```.
+2. Запуск из корня проекта ```yaspeller [dir of file]```.
+
+Конфиг `yaspeller`-а лежит в корне проекта, добавляйте новые слова.
+
+[TODO](https://github.com/9kin/algorithmica/commit/4d66459b074afb3831cca0aa7e330c5a285cd064#diff-d8a94d4affe0f4f5d2bb269eeab83306c4db42b90d3b220e4636cc71590041b1)
