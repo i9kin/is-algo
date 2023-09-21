@@ -640,7 +640,6 @@ int main(){
 <blockquote>
 <p>Всегда помните о том, что вы не должны выходить за границы массива.</p>
 </blockquote>
-<p>Такой краткий экскурс у нас получился в статические одномерные массивы. Позже появится материал про многомерные и динамические массивы. </p>
 <h1 id="Указатель"><a class="header" href="#Указатель">Указатель</a></h1>
 <p>Переменная статического массива на самом деле это указатель на первый элемент массива.</p>
 <p>Следствия :</p>
@@ -705,6 +704,57 @@ delete[] foo;
 <p>При наличии <code>std::vector</code> смысла в <code>VLA</code> для С++ нет никакого. </p>
 </blockquote>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="stdvector"><a class="header" href="#stdvector">std::vector</a></h1>
+<p>Динамический массив настоящего альфы)))</p>
+<p>Синтаксис <code>vector&lt;T&gt; variable(n);</code>. Стоит подключить библиотеку <code>&lt;vector&gt;</code>.</p>
+<p>Под <code>капотом</code> находится <code>буфер</code>, который является динамическим массивом. 
+Это позволяет быстро выполнять операции, которые изменяют размер вектора, так как <code>буфер</code> может быть зарезервирован на большее количество элементов, чем фактически требуется. Размер буфера имеет размер меньшей степени двойки. Например, если делать <code>n</code> <code>push_back</code> произойдёт <code>log n</code> реалокаций памяти.</p>
+<blockquote>
+<p>Используйте и не думайте.</p>
+</blockquote>
+<p>Есть удобные <a href="https://en.cppreference.com/w/cpp/container/vector">методы</a>: </p>
+<p><code>push_back</code> — добавляет элемент в конец. Амортизировано за <code>o(1)</code>.</p>
+<p><code>pop_back</code> — удаляет элемент в конец. Амортизировано за <code>o(1)</code>.</p>
+<p><code>insert</code> — вставляет элемент в произвольное место. За <code>O(n)</code>.</p>
+<p><code>erase</code> — удаляет произвольный элемент. За <code>O(n)</code>.</p>
+<p><code>begin, end</code> — указатели на начало и конец. Например, нужно для сортировки <code>sort(a.begin(), a.end());</code></p>
+<p>Пример решения задачи из блока <a href="./examples.html">&quot;начало работы&quot;</a> :</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+void solve() {
+    int n;
+    cin &gt;&gt; n;
+    vector&lt;int&gt; a(n);
+    for (int i = 0; i &lt; n; i++) {
+        cin &gt;&gt; a[i];
+    }
+    sort(a.begin(), a.end());
+    for (int i = 0; i + 1 &lt; n; i++) {
+        if (a[i + 1] - a[i] &gt; 1) {
+            cout &lt;&lt; &quot;NO\n&quot;;
+            return ;
+        }
+    }
+    cout &lt;&lt; &quot;YES\n&quot;;
+}
+
+int main() {
+    int t;
+    cin &gt;&gt; t;
+    while (t--) {
+        solve();
+    }
+    return 0;
+}
+</code></pre>
+<h1 id="vector-vs-динамический-массив"><a class="header" href="#vector-vs-динамический-массив">vector vs динамический массив</a></h1>
+<p>Используйте <code>vector</code>, потому-что : </p>
+<ol>
+<li>не стоит задумывать о освобождение памяти</li>
+<li>работает сравнение и копирование (так как переменная не указатель)</li>
+<li>удобен во всех случаях, когда массив надо быстро изменить</li>
+</ol>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="Что-выбрать"><a class="header" href="#Что-выбрать">Что выбрать?</a></h1>
 <p>В данном случае, при решении задачи из блока <a href="./examples.html">&quot;начало работы&quot;</a>, я выбрал использование статического массива int a[50], так как максимальный размер был ограничен по условию. Однако, возможны и другие варианты, такие как динамические массивы, <code>VLA</code> или <code>std::vector</code>.</p>
 <p>Моя рекомендация - использовать либо статические массивы, либо <code>std::vector</code>. По скорости статический массив немного быстрее, так как это менее абстрактная структура данных, чем <code>std::vector</code>.</p>
