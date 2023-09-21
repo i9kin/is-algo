@@ -84,7 +84,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html"><strong aria-hidden="true">1.</strong> Введение</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="judje.html"><strong aria-hidden="true">1.1.</strong> Тестирующая система</a></li><li class="chapter-item expanded "><a href="how-to-read.html"><strong aria-hidden="true">1.2.</strong> Как читать</a></li><li class="chapter-item expanded "><a href="how-to-solve.html"><strong aria-hidden="true">1.3.</strong> Как придумывать</a></li><li class="chapter-item expanded "><a href="how-to-testing.html"><strong aria-hidden="true">1.4.</strong> Как тестировать</a></li></ol></li><li class="chapter-item expanded "><a href="getting-started.html"><strong aria-hidden="true">2.</strong> Начало работы</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="installation.html"><strong aria-hidden="true">2.1.</strong> Установка</a></li><li class="chapter-item expanded "><a href="code-editor.html"><strong aria-hidden="true">2.2.</strong> Редактор кода</a></li><li class="chapter-item expanded "><a href="examples.html"><strong aria-hidden="true">2.3.</strong> Решение задачи</a></li></ol></li><li class="chapter-item expanded "><a href="programming-concepts.html"><strong aria-hidden="true">3.</strong> Основные концепции программирования</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="data-types.html"><strong aria-hidden="true">3.1.</strong> Типы данных</a></li><li class="chapter-item expanded "><a href="io.html" class="active"><strong aria-hidden="true">3.2.</strong> Ввод и вывод</a></li><li class="chapter-item expanded "><a href="branching.html"><strong aria-hidden="true">3.3.</strong> Ветвление</a></li><li class="chapter-item expanded "><a href="loops.html"><strong aria-hidden="true">3.4.</strong> Циклы</a></li><li class="chapter-item expanded "><a href="c-array.html"><strong aria-hidden="true">3.5.</strong> Массивы</a></li><li class="chapter-item expanded "><a href="functions.html"><strong aria-hidden="true">3.6.</strong> Функции</a></li></ol></li></ol>            </div>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html"><strong aria-hidden="true">1.</strong> Введение</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="judje.html"><strong aria-hidden="true">1.1.</strong> Тестирующая система</a></li><li class="chapter-item expanded "><a href="how-to-read.html"><strong aria-hidden="true">1.2.</strong> Как читать</a></li><li class="chapter-item expanded "><a href="how-to-solve.html"><strong aria-hidden="true">1.3.</strong> Как придумывать</a></li><li class="chapter-item expanded "><a href="how-to-testing.html"><strong aria-hidden="true">1.4.</strong> Как тестировать</a></li></ol></li><li class="chapter-item expanded "><a href="getting-started.html"><strong aria-hidden="true">2.</strong> Начало работы</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="installation.html"><strong aria-hidden="true">2.1.</strong> Установка</a></li><li class="chapter-item expanded "><a href="code-editor.html"><strong aria-hidden="true">2.2.</strong> Редактор кода</a></li><li class="chapter-item expanded "><a href="examples.html"><strong aria-hidden="true">2.3.</strong> Решение задачи</a></li></ol></li><li class="chapter-item expanded "><a href="programming-concepts.html"><strong aria-hidden="true">3.</strong> Основные концепции программирования</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="data-types.html"><strong aria-hidden="true">3.1.</strong> Типы данных</a></li><li class="chapter-item expanded "><a href="io.html" class="active"><strong aria-hidden="true">3.2.</strong> Ввод и вывод</a></li><li class="chapter-item expanded "><a href="branching.html"><strong aria-hidden="true">3.3.</strong> Ветвление</a></li><li class="chapter-item expanded "><a href="loops.html"><strong aria-hidden="true">3.4.</strong> Циклы</a></li><li class="chapter-item expanded "><a href="c-array.html"><strong aria-hidden="true">3.5.</strong> Массивы</a></li><li class="chapter-item expanded "><a href="functions.html"><strong aria-hidden="true">3.6.</strong> Функции</a></li></ol></li><li class="chapter-item expanded "><a href="CONTRIBUTING.html"><strong aria-hidden="true">4.</strong> Сделайте вклад</a></li></ol>            </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
@@ -152,6 +152,32 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="Ввод-и-вывод"><a class="header" href="#Ввод-и-вывод">Ввод и вывод</a></h1>
+<p>Существует много способов для ввода и вывода данных. На наш взгляд, самым удобным является ввод и вывод через стандартные потоки <code>cin</code> на ввод и <code>cout</code> на вывод.</p>
+<p>Более подробная информация находится на cppreference (<a href="https://en.cppreference.com/w/cpp/io/cin">cin</a>, <a href="https://en.cppreference.com/w/cpp/io/cout">cout</a>).</p>
+<p>Буква <code>c</code> в названии означает &quot;символ&quot;, <code>cin</code> — ввод символов, <code>cout</code> — вывод символов.</p>
+<p>Первым делом стоит подключить библиотеку <code>iostream</code>, которая содержит реализацию этих потоков, и ещё прописать <code>using namespace std;</code>.</p>
+<h1 id="Ввод"><a class="header" href="#Ввод">Ввод</a></h1>
+<p>Для выполнения операций ввода переопределен оператор <code>&gt;&gt;</code>.</p>
+<blockquote>
+<p>При выполнение <code>cin &gt;&gt; x;</code> из входного потока читается последовательность символов до пробела, затем эта последовательность преобразуется к типу переменной <code>x</code>, и получаемое значение помещается в переменную <code>x</code>.</p>
+</blockquote>
+<p>Если <code>cin</code> не смог сконвертировать входные данные в ожидаемый формат, то он будет помечен как ошибка и программа может завершиться с ошибкой (RE).</p>
+<p>Можно вводить сазу много переменных и сразу разных типов — <code>cin &gt;&gt; x &gt;&gt; y &gt;&gt; c &gt;&gt; d;</code>.</p>
+<h1 id="Считывание-строки-не-типа"><a class="header" href="#Считывание-строки-не-типа">Считывание строки (не типа)</a></h1>
+<p>Для этого существует функция <code>getline</code> из той-же библиотеки.</p>
+<p>Прочтите, например, <a href="https://en.cppreference.com/w/cpp/string/basic_string/getline">тут</a>.</p>
+<h1 id="Вывод"><a class="header" href="#Вывод">Вывод</a></h1>
+<p>Всё аналогично вводу, только перегружен оператор <code>&lt;&lt;</code>.</p>
+<p>Команда <code>cout &lt;&lt; x &lt;&lt; ' ' &lt;&lt; y &lt;&lt; '\n';</code> — выполнится только в том случае, если переменная <code>x</code> и <code>y</code> будут иметь реализацию для вывода (все базовые типы умеют это делать, но при выводе массив будет адрес (далее поймём почему)).</p>
+<p><code>'\n'</code> — символ перевода каретки (переход на новую строки). <code>endl</code> (<code>std::endl</code>) — хуже. Он делает тоже самое, но дополнительно делает достаточно бесполезное действие с буфером. </p>
+<h1 id="Ускорение-ввода"><a class="header" href="#Ускорение-ввода">Ускорение ввода</a></h1>
+<p>Можно катастрофически ускорить чтение всего парами строками, размещённой в начале программы (в main сразу напишите): </p>
+<pre><code class="language-cpp">ios::sync_with_stdio(false);
+cin.tie(0); cout.tie(0);
+</code></pre>
+<p>Если интересно, то <a href="https://codeforces.com/blog/entry/90775">прочтите</a> почему это так.</p>
+<p>Вообще можно построить свой буферный ввод и вывод, но таким не стоит заниматься.</p>
+<p>Используйте <code>'\n'</code> вместо <code>std::endl</code>.</p>
 
                     </main>
 
