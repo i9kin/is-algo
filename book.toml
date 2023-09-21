@@ -8,3 +8,5 @@ title = "is-algo"
 
 [output.html]
 mathjax-support = true
+git-repository-url = "https://github.com/9kin/is-algo/tree/master/"
+edit-url-template = "https://github.com/9kin/is-algo/edit/master/{path}"
