@@ -932,11 +932,20 @@ https://codeforces.com/blog/entry/72527?locale=ru
 <h1 id="Решение-в-лоб"><a class="header" href="#Решение-в-лоб">Решение в лоб</a></h1>
 <p>Факториал числа \(n \) можно посчитать за \(O(n)\) простым циклом.</p>
 <p>В коде ниже используется модуль, как видите это не страшно</p>
+<blockquote>
+<p><code>1LL</code> это переменная <code>long long</code> равная <code>1</code>, <code>LL</code> <a href="https://en.cppreference.com/w/cpp/language/integer_literal">суффиксный литерал</a> типа. Если умножить два <code>int</code>'а между собой, то может произойти переполнение, поэтому надо считать в <code>long long</code>. При умножение <code>long long</code> на <code>int</code> получается <code>long long</code>.</p>
+</blockquote>
+<blockquote>
+<p>По уму люди делают функции <code>add(a, b)</code> и <code>mult(a, b)</code> которые уже внутри складывают и умножают по модулю соответственно.</p>
+</blockquote>
+<blockquote>
+<p>Очевидно, что число типа <code>long long</code> взятое по модулю <code>1e9 + 7</code> имеет диапазон \([0, 10^9 + 7)\) и влазит в <code>int</code>.</p>
+</blockquote>
 <pre><code class="language-cpp">int mod = 1e9 + 7;
 int factorial(int n) {
   int res = 1;
   for (int i = 1; i &lt;= n; i++) {
-    res = (res * i) % mod;
+    res = (1LL * res * i) % mod;
   }
   return res;
 }
@@ -961,7 +970,7 @@ cout &lt;&lt; sum;
   int n, mod = 1e9 + 7, fac = 1, sum = 0;
   cin &gt;&gt; n;
   for (int i = 1; i &lt;= n; i++) {
-    fac = (fac * i) % mod;
+    fac = (1LL * fac * i) % mod;
     sum = (sum + fac) % mod;
   }
   cout &lt;&lt; sum;
