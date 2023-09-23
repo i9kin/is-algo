@@ -8,7 +8,7 @@
 
 Давайте рассмотрим объявление и инициализацию массива:
 ```cpp
-int my_second_array[5] = {1,2,3,4,5,6,7};
+int my_second_array[5] = {1,2,3,4,5};
 int my_first_array[25];
 my_first_array[0] = 1;
 my_first_array[1] = 2;

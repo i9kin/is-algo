@@ -15,7 +15,7 @@
 	- [Ветвление](./branching.md)
 	- [Циклы](./loops.md)
 	- [Массивы](./array.md)
-		- [Статические массивы](./c-array.md)
+		- [Статические массивы](./static-array.md)
 		- [Динамические массивы](./dynamic-array.md)
 		- [VLA](./VLA.md)
 		- [std::vector](./vector.md)
