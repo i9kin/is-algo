@@ -24,12 +24,18 @@ https://codeforces.com/blog/entry/72527?locale=ru
 
 В коде ниже используется модуль, как видите это не страшно
 
+> `1LL` это переменная `long long` равная `1`, `LL` [суффиксный литерал](https://en.cppreference.com/w/cpp/language/integer_literal) типа. Если умножить два `int`'а между собой, то может произойти переполнение, поэтому надо считать в `long long`. При умножение `long long` на `int` получается `long long`.
+
+> По уму люди делают функции `add(a, b)` и `mult(a, b)` которые уже внутри складывают и умножают по модулю соответственно.
+
+> Очевидно, что число типа `long long` взятое по модулю `1e9 + 7` имеет диапазон \\([0, 10^9 + 7)\\) и влазит в `int`.
+
 ```cpp
 int mod = 1e9 + 7;
 int factorial(int n) {
   int res = 1;
   for (int i = 1; i <= n; i++) {
-    res = (res * i) % mod;
+    res = (1LL * res * i) % mod;
   }
   return res;
 }
@@ -69,9 +75,11 @@ void solve() {
   int n, mod = 1e9 + 7, fac = 1, sum = 0;
   cin >> n;
   for (int i = 1; i <= n; i++) {
-    fac = (fac * i) % mod;
+    fac = (1LL * fac * i) % mod;
     sum = (sum + fac) % mod;
   }
   cout << sum;
 }
 ```
+
+
