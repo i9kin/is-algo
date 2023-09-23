@@ -25,4 +25,5 @@
 - [Память](./memory.md)
 - [Решаем задачи](./tasks/README.MD)
 	- [Другая чётность](./tasks/different-odd.md)
+	- [Сумма факториалов](./tasks/sum-of-factorials.md)
 - [Сделайте вклад](./CONTRIBUTING.md)
