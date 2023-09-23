@@ -26,4 +26,5 @@
 - [Решаем задачи](./tasks/README.MD)
 	- [Другая чётность](./tasks/different-odd.md)
 	- [Сумма факториалов](./tasks/sum-of-factorials.md)
+	- [Наибольший отрезок](./tasks/longest-easy.md)
 - [Сделайте вклад](./CONTRIBUTING.md)
