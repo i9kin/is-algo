@@ -24,7 +24,7 @@
 * [Pavel_Mavrin](https://www.youtube.com/@pavelmavrin) - лекции по алгоритмам преподавателя КТ
 
 Книги:
-* [Cormen_Book](https://e-maxx.ru/bookz/files/cormen.pdf) - книга Томаса Кормена по алгоритмам
+* [Cormen_Book](https://vk.com/doc191450968_561608466?hash=1K1Cd8tP7N8rZcYeFS8pSJjr82ROC22zM2WlzBbBBzz&dl=RolI6VzGuZKU7zeJEYpjawEP7lZ0yWFsnsqwcJOzkIP) - книга Томаса Кормена по алгоритмам
 * [Lafore_Book](http://lib.jizpi.uz/pluginfile.php/7322/mod_resource/content/0/Объектно_ориентированное_программирование_в_С%2B%2B_Р_Лафоре.pdf) - книга по ООП на C++, которая помогает глубже вникнуть в язык, понять его особенности и возможности
 * [Laaksonen_Book](https://library.samdu.uz/files/e946919660708044a522983e0741690c_Лааксонен_А_Олимпиадное_программирование.pdf) - книга по спортивному программированию и алгоритмам.
 

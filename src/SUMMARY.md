@@ -22,6 +22,7 @@
 		- [Что выбрать?](./compare-arrays.md)
 	- [Функции](./functions.md)
 - [Память](./memory.md)
+- [Асимптотика](./asymptotics.md)
 - [Решаем задачи](./tasks/README.MD)
 	- [Другая чётность](./tasks/different-odd.md)
 	- [Сумма факториалов](./tasks/sum-of-factorials.md)
