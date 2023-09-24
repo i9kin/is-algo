@@ -8,8 +8,7 @@
 #include <iostream>
 using namespace std;
 
-int main()
-{
+int main() {
     double num;
 
     cout << "Введите произвольное число: ";
@@ -68,8 +67,7 @@ if (num < 10) {  // Если введенное число меньше 10.
 #include <iostream>
 using namespace std;
 
-int main()
-{
+int main() {
     double num;
 
     cout << "Введите произвольное число: ";
@@ -91,8 +89,7 @@ int main()
 #include <iostream>
 using namespace std;
 
-int main()
-{
+int main() {
     double num;
     int k;
 
