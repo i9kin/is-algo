@@ -21,6 +21,8 @@
 		- [std::vector](./vector.md)
 		- [Что выбрать?](./compare-arrays.md)
 	- [Функции](./functions.md)
+		- [Передача параметров в функцию](./params-to-func.md)
+	- [Ссылки и указатели](./links-and-pointers.md)
 - [Память](./memory.md)
 - [Асимптотика](./asymptotics.md)
 - [Решаем задачи](./tasks/README.MD)
