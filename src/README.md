@@ -1,11 +1,11 @@
 # Главная страница
 
-[Ссылка на тг канал](https://t.me/+uunjZQSTJ0hhNjFi) Нас уже 129!
+[Ссылка на тг канал](https://t.me/+uunjZQSTJ0hhNjFi) Нас уже 142!
 
 Пройдите важный [опрос](https://t.me/c/1718888756/13) и зайдите в чат канала.
 
 Я &mdash; [tg@i9kin](https://t.me/i9kin) по поводу замечаний и предложений.
-С фидбэком и предложениями также пишите [tg@chainbrain](https://t.me/chainbrain).
+С фидбэком и предложениями также пишите [tg@chainbrain](https://t.me/chainbrain), [tg@kiksnol](https://t.me/Kiksnol).
 
 Список полезных ресурсов
 ===
