@@ -41,6 +41,10 @@ int main( void ) {
     std::cin >> size;
 
     array = new int[size];
+    
+    for (int i = 0; i < size; i++) {
+        std::cin >> array[i];
+    }
 
     insertionSort(array, size);
 
