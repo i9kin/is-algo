@@ -193,6 +193,10 @@ int main( void ) {
     std::cin &gt;&gt; size;
 
     array = new int[size];
+    
+    for (int i = 0; i &lt; size; i++) {
+        std::cin &gt;&gt; array[i];
+    }
 
     insertionSort(array, size);
 
