@@ -119,7 +119,7 @@
                                                 <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                                                                        <a href="https://github.com/9kin/is-algo/" title="Git repository" aria-label="Git repository">
+                                                                        <a href="https://github.com/9kin/is-algo" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
                                                                         <a href="https://github.com/9kin/is-algo/edit/master/src/loops.md" title="Suggest an edit" aria-label="Suggest an edit">
@@ -163,12 +163,12 @@
 using namespace std;
 
 int main() {
-    int t = 5;
-    while (t != 0) {
-        cout &lt;&lt; t &lt;&lt; endl;
-        t--;
-    }
-    cout &lt;&lt; t;
+  int t = 5;
+  while (t != 0) {
+    cout &lt;&lt; t &lt;&lt; endl;
+    t--;
+  }
+  cout &lt;&lt; t;
 }
 </code></pre>
 <p>Если запустить код вы получите :</p>
@@ -188,13 +188,13 @@ int main() {
 using namespace std;
 
 int main() {
-    int a, b;
-    cin &gt;&gt; a &gt;&gt; b;
-    for (int x = a; x &lt;= b; x++) {
-        if (x % 2 == 0) {
-            cout &lt;&lt; x &lt;&lt; endl;
-        }
+  int a, b;
+  cin &gt;&gt; a &gt;&gt; b;
+  for (int x = a; x &lt;= b; x++) {
+    if (x % 2 == 0) {
+      cout &lt;&lt; x &lt;&lt; endl;
     }
+  }
 }
 </code></pre>
 <p>При вводе <code>6 9</code> программа выведет :</p>
@@ -208,27 +208,29 @@ int main() {
 </blockquote>
 <p>Допустим, что мы хотим посчитать сумму чисел от 1 до N включительно, но если сумма будет переваливать значение границы, которое ввел пользователь, то мы должны вывести максимальное значение суммы, не превышающее границу, и количество чисел, которые мы сложили в ходе решения.</p>
 <pre><code class="language-cpp">#include &lt;iostream&gt;
-  
+
 int main() {
-    int n;
-    std::cin &gt;&gt; n; //максимальное число которое можно будет прибавить к сумме
-    
-    int result = 0;//итоговая сумма
-    
-    int bound;//граница за которую нельзя перевалить
-    std::cin &gt;&gt; bound;
-    
-    int els_in_sum = 0;//сколько элементов учвствует в сумме
-    
-    for(int i = 1; i &lt; n + 1; i++) { //цикл от 1 до N включительно
-      
-        if(result + i &gt; bound) {
-            break;//если текущая сумма + i переваливает за границу, то выходим из цикла
-        }
-        els_in_sum += 1;//иначе увеличиваем количество элементов в сумме на 1
-        result += i ;//и сумму на 1
+  int n;
+  std::cin &gt;&gt; n;  // максимальное число которое можно будет прибавить к сумме
+
+  int result = 0;  // итоговая сумма
+
+  int bound;  // граница за которую нельзя перевалить
+  std::cin &gt;&gt; bound;
+
+  int els_in_sum = 0;  // сколько элементов учвствует в сумме
+
+  for (int i = 1; i &lt; n + 1; i++) {  // цикл от 1 до N включительно
+
+    if (result + i &gt; bound) {
+      break;  // если текущая сумма + i переваливает за границу, то выходим из
+              // цикла
     }
-    std::cout &lt;&lt; result &lt;&lt; &quot; &quot; &lt;&lt; els_in_sum;//выводим сумму и количество элементов в ней
+    els_in_sum += 1;  // иначе увеличиваем количество элементов в сумме на 1
+    result += i;      // и сумму на 1
+  }
+  std::cout &lt;&lt; result &lt;&lt; &quot; &quot;
+            &lt;&lt; els_in_sum;  // выводим сумму и количество элементов в ней
 }
 </code></pre>
 <p>Заметьте, что мы можем не пользоваться оператором <code>else</code> в данном случае, т.к цикл попросту завершится при выполнении условия в <code>if</code>. Формально увеличение суммы происходит только когда верхнее условие не соблюдается, но это можно не писать из-за оператора <code>break</code>, который остановит цикл, как только условие выполнится.</p>
@@ -239,20 +241,21 @@ int main() {
 <pre><code class="language-cpp">#include &lt;iostream&gt;
 
 int main() {
-    int N;
-    std::cin &gt;&gt; N;//считали с консоли N 
+  int N;
+  std::cin &gt;&gt; N;  // считали с консоли N
 
-    int sum = 0;//создали сумму со стартовым значением 0
+  int sum = 0;  // создали сумму со стартовым значением 0
 
-    for(int i = 0; i &lt; N + 1; ++i) { //цикл по всем числа в диапазоне
-        if (N % 2 == 0) {
-            continue;//если число делится на 2 без остатка, то есть является четным, 
-            //пропустить все инструкции и перейти к следующей итерации
-        }
-        sum += i;//прибавляем к текущей сумме число i 
+  for (int i = 0; i &lt; N + 1; ++i) {  // цикл по всем числа в диапазоне
+    if (N % 2 == 0) {
+      continue;  // если число делится на 2 без остатка, то есть является
+                 // четным,
+      // пропустить все инструкции и перейти к следующей итерации
     }
+    sum += i;  // прибавляем к текущей сумме число i
+  }
 
-    std::cout &lt;&lt; sum;//вывели ответ
+  std::cout &lt;&lt; sum;  // вывели ответ
 }
 </code></pre>
 <p>Так как инструкция суммирования идет после оператора <code>continue</code>, то для четных чисел она будет попросту пропущена, как и все инструкции, которые могли бы быть написаны после <code>continue</code>. Для нечетных чисел итерация пропускаться не будет, и они будут добавлены в сумму.</p>
@@ -264,12 +267,12 @@ int main() {
 using namespace std;
 
 int main() {
-    int t = 5;
-    do {
-        cout &lt;&lt; t &lt;&lt; endl;
-        t--;
-    } while (t != 0 &amp;&amp; t != 5);
-    cout &lt;&lt; t;
+  int t = 5;
+  do {
+    cout &lt;&lt; t &lt;&lt; endl;
+    t--;
+  } while (t != 0 &amp;&amp; t != 5);
+  cout &lt;&lt; t;
 }
 </code></pre>
 <p>Если запустить код вы получите :</p>
@@ -285,7 +288,7 @@ int main() {
 <p><code>do</code> удобен лишь для <a href="./how-to-testing.html">стрес-тестов</a>. С <code>do</code> надо использовать <a href="https://en.cppreference.com/w/cpp/algorithm/next_permutation">next_permutation</a> для перебора всех перестановок.</p>
 </blockquote>
 <p>Хорошенько потренируйтесь, попробуйте придумать свой пример с циклами. Когда поймёте, что поняли эту тему, можете смело приступать к следующему уроку.</p>
-<footer id="last-change">Last change: 2023-09-26, commit: <a href="https://github.com/9kin/is-algo//commit/edf56d5">edf56d5</a></footer>
+<footer id="last-change">Last change: 2023-09-26, commit: <a href="https://github.com/9kin/is-algo/commit/ad5b6cc">ad5b6cc</a></footer>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">

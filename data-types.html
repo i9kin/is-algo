@@ -119,7 +119,7 @@
                                                 <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                                                                        <a href="https://github.com/9kin/is-algo/" title="Git repository" aria-label="Git repository">
+                                                                        <a href="https://github.com/9kin/is-algo" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
                                                                         <a href="https://github.com/9kin/is-algo/edit/master/src/data-types.md" title="Suggest an edit" aria-label="Suggest an edit">
@@ -185,25 +185,24 @@
 </blockquote>
 <p>Мы знаем, что хотим для каждого студента хранить одни и те же параметры. Мы создадим структуру студента и в поля структуры запишем нужные параметры, а дальше просто будем создавать экземпляры студентов, которые будут иметь одинаковые параметры, которые еще и будут привязаны к каждому из студентов.</p>
 <pre><code class="language-cpp">#include &lt;iostream&gt;
- 
-struct student
-{
-    int age;
-    std::string name;//имя храним в строке, строки разберем немного позже
-    int average_points;
+
+struct student {
+  int age;
+  std::string name;  // имя храним в строке, строки разберем немного позже
+  int average_points;
 };
- 
-int main()
-{
-    person first_student;
-    first_student.name = &quot;Tom&quot;;
-    first_student.age = 34;
-    first_student.average_points = 25;
-    std::cout &lt;&lt; &quot;Name: &quot; &lt;&lt; first_student.name &lt;&lt; &quot;\tAge: &quot; &lt;&lt; first_student.age &lt;&lt; &quot;Average pts: &quot; &lt;&lt; first.student &lt;&lt; std::endl;
+
+int main() {
+  person first_student;
+  first_student.name = &quot;Tom&quot;;
+  first_student.age = 34;
+  first_student.average_points = 25;
+  std::cout &lt;&lt; &quot;Name: &quot; &lt;&lt; first_student.name &lt;&lt; &quot;\tAge: &quot; &lt;&lt; first_student.age
+            &lt;&lt; &quot;Average pts: &quot; &lt;&lt; first.student &lt;&lt; std::endl;
 }
 </code></pre>
 <p>Подробнее о структурах, классах и других пользовательских типах вы узнаете чуть позже, в отдельном разделе, посвященном этому!</p>
-<footer id="last-change">Last change: 2023-09-26, commit: <a href="https://github.com/9kin/is-algo//commit/edf56d5">edf56d5</a></footer>
+<footer id="last-change">Last change: 2023-09-26, commit: <a href="https://github.com/9kin/is-algo/commit/ad5b6cc">ad5b6cc</a></footer>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">

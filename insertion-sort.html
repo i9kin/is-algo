@@ -119,7 +119,7 @@
                                                 <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                                                                        <a href="https://github.com/9kin/is-algo/" title="Git repository" aria-label="Git repository">
+                                                                        <a href="https://github.com/9kin/is-algo" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
                                                                         <a href="https://github.com/9kin/is-algo/edit/master/src/insertion-sort.md" title="Suggest an edit" aria-label="Suggest an edit">
@@ -170,39 +170,39 @@
 <h2 id="Реализация-алгоритма"><a class="header" href="#Реализация-алгоритма">Реализация алгоритма</a></h2>
 <pre><code class="language-cpp">#include &lt;iostream&gt;
 
-void insertionSort( int *arr, int size ) {
-    int key;
+void insertionSort(int* arr, int size) {
+  int key;
 
-    for (int i = 1; i &lt; size; i++) {
-        int j = i - 1;
+  for (int i = 1; i &lt; size; i++) {
+    int j = i - 1;
 
-        key = arr[i];
- 
-        while (j &gt;= 0 &amp;&amp; arr[j] &gt; key) {
-            arr[j + 1] = arr[j];
-            j = j - 1;
-        }
+    key = arr[i];
 
-        arr[j + 1] = key;
+    while (j &gt;= 0 &amp;&amp; arr[j] &gt; key) {
+      arr[j + 1] = arr[j];
+      j = j - 1;
     }
+
+    arr[j + 1] = key;
+  }
 }
 
-int main( void ) {
-    int size, *array;
+int main(void) {
+  int size, *array;
 
-    std::cin &gt;&gt; size;
+  std::cin &gt;&gt; size;
 
-    array = new int[size];
-    
-    for (int i = 0; i &lt; size; i++) {
-        std::cin &gt;&gt; array[i];
-    }
+  array = new int[size];
 
-    insertionSort(array, size);
+  for (int i = 0; i &lt; size; i++) {
+    std::cin &gt;&gt; array[i];
+  }
 
-    for (int i = 0; i &lt; size; i++) {
-        std::cout &lt;&lt; array[i] &lt;&lt; &quot; &quot;;
-    }
+  insertionSort(array, size);
+
+  for (int i = 0; i &lt; size; i++) {
+    std::cout &lt;&lt; array[i] &lt;&lt; &quot; &quot;;
+  }
 }
 </code></pre>
 <h2 id="Ввод"><a class="header" href="#Ввод">Ввод</a></h2>
@@ -221,7 +221,7 @@ int main( void ) {
 <h2 id="Вывод"><a class="header" href="#Вывод">Вывод</a></h2>
 <pre><code class="language-bash">-68 1 2 4 4 5
 </code></pre>
-<footer id="last-change">Last change: 2023-09-26, commit: <a href="https://github.com/9kin/is-algo//commit/edf56d5">edf56d5</a></footer>
+<footer id="last-change">Last change: 2023-09-26, commit: <a href="https://github.com/9kin/is-algo/commit/ad5b6cc">ad5b6cc</a></footer>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">

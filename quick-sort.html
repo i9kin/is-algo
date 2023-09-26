@@ -119,7 +119,7 @@
                                                 <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                                                                        <a href="https://github.com/9kin/is-algo/" title="Git repository" aria-label="Git repository">
+                                                                        <a href="https://github.com/9kin/is-algo" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
                                                                         <a href="https://github.com/9kin/is-algo/edit/master/src/quick-sort.md" title="Suggest an edit" aria-label="Suggest an edit">
@@ -170,143 +170,141 @@
 </ol>
 <h2 id="Реализация-алгоритма-1-опорная-точка---1й-элемент"><a class="header" href="#Реализация-алгоритма-1-опорная-точка---1й-элемент">Реализация алгоритма №1 (опорная точка - 1й элемент)</a></h2>
 <pre><code class="language-cpp">#include &lt;iostream&gt;
- 
-// Функция Swap меняет значения переменных местами
-void swap( int *val1, int *val2 ) {
-    int tmp = *val1;
 
-    *val1 = *val2;
-    *val2 = tmp;
+// Функция Swap меняет значения переменных местами
+void swap(int* val1, int* val2) {
+  int tmp = *val1;
+
+  *val1 = *val2;
+  *val2 = tmp;
 }
 
 // Функция разделения массива
-int partition( int *arr, int start, int end ) {
-    int pivot = arr[start], count = 0;
+int partition(int* arr, int start, int end) {
+  int pivot = arr[start], count = 0;
 
-    // Находим смещение опорной точки относительно начала массива
-    for (int i = start + 1; i &lt;= end; i++) {
-        if (arr[i] &lt;= pivot)
-            count++;
+  // Находим смещение опорной точки относительно начала массива
+  for (int i = start + 1; i &lt;= end; i++) {
+    if (arr[i] &lt;= pivot) count++;
+  }
+
+  // Ставим опорную точку в правильную позицию
+  int pivotIndex = start + count;
+  swap(arr[pivotIndex], arr[start]);
+
+  // Сортируем левую и правую части массива относительно опорной точки
+  int i = start, j = end;
+  while (i &lt; pivotIndex &amp;&amp; j &gt; pivotIndex) {
+    // Проверяем, что элементы слева от опорной точки меньше
+    while (arr[i] &lt;= pivot) {
+      i++;
     }
- 
-    // Ставим опорную точку в правильную позицию 
-    int pivotIndex = start + count;
-    swap(arr[pivotIndex], arr[start]);
- 
-    // Сортируем левую и правую части массива относительно опорной точки
-    int i = start, j = end;
-    while (i &lt; pivotIndex &amp;&amp; j &gt; pivotIndex) {
-        // Проверяем, что элементы слева от опорной точки меньше
-        while (arr[i] &lt;= pivot) {
-            i++;
-        }
-        // Проверяем, что элементы справа больше
-        while (arr[j] &gt; pivot) {
-            j--;
-        }
- 
-        // При необходимости меняем элемены местами
-        if (i &lt; pivotIndex &amp;&amp; j &gt; pivotIndex) {
-            swap(arr[i++], arr[j--]);
-        }
+    // Проверяем, что элементы справа больше
+    while (arr[j] &gt; pivot) {
+      j--;
     }
- 
-    return pivotIndex;
+
+    // При необходимости меняем элемены местами
+    if (i &lt; pivotIndex &amp;&amp; j &gt; pivotIndex) {
+      swap(arr[i++], arr[j--]);
+    }
+  }
+
+  return pivotIndex;
 }
- 
+
 // Функция &quot;быстрой&quot; сортировки
-void quickSort( int *arr, int start, int end ) {
-    if (start &gt;= end)
-        return;
- 
-    // Разделение массива
-    int p = partition(arr, start, end);
- 
-    // Сортировка левой части
-    quickSort(arr, start, p - 1);
- 
-    // Сортировка правой части
-    quickSort(arr, p + 1, end);
+void quickSort(int* arr, int start, int end) {
+  if (start &gt;= end) return;
+
+  // Разделение массива
+  int p = partition(arr, start, end);
+
+  // Сортировка левой части
+  quickSort(arr, start, p - 1);
+
+  // Сортировка правой части
+  quickSort(arr, p + 1, end);
 }
- 
-int main( void ) {
-    int size, *arr;
 
-    std::cin &gt;&gt; size;
+int main(void) {
+  int size, *arr;
 
-    arr = new int[size];
+  std::cin &gt;&gt; size;
 
-    for (int i = 0; i &lt; size; i++) {
-        std::cin &gt;&gt; arr[i];
-    }   
- 
-    quickSort(arr, 0, n - 1);
- 
-    for (int i = 0; i &lt; size; i++) {
-        std::cout &lt;&lt; arr[i] &lt;&lt; ' ';
-    }
+  arr = new int[size];
+
+  for (int i = 0; i &lt; size; i++) {
+    std::cin &gt;&gt; arr[i];
+  }
+
+  quickSort(arr, 0, n - 1);
+
+  for (int i = 0; i &lt; size; i++) {
+    std::cout &lt;&lt; arr[i] &lt;&lt; ' ';
+  }
 }
 </code></pre>
 <h2 id="Реализация-алгоритма-2-опорная-точка---середина"><a class="header" href="#Реализация-алгоритма-2-опорная-точка---середина">Реализация алгоритма №2 (опорная точка - середина)</a></h2>
 <pre><code class="language-cpp">#include &lt;iostream&gt;
 
 // Функция Swap меняет значения переменных местами
-void swap( int *val1, int *val2 ) {
-    int tmp = *val1;
+void swap(int* val1, int* val2) {
+  int tmp = *val1;
 
-    *val1 = *val2;
-    *val2 = tmp;
+  *val1 = *val2;
+  *val2 = tmp;
 }
 
 // Функция &quot;быстрой&quot; сортировки
-void quickSort( int *a, int size ) {
-    int b = 0, e = size - 1; // b - begin, e - end
+void quickSort(int* a, int size) {
+  int b = 0, e = size - 1;  // b - begin, e - end
 
-    if (size &lt; 2)
-        return;
-  
-    int m = a[size / 2];
+  if (size &lt; 2) return;
 
-    while (b &lt;= e) {
-        // Проверка на то, что элементы слева - меньше, а элементы справа - больше
-        while (A[b] &lt; m) {
-            b++;
-        }
-        while (A[e] &gt; m) {
-            e--;
-        }
+  int m = a[size / 2];
 
-        // Если слева встретилось число большее, чем опорная точка, а справа - меньшее, меняем их местами
-        if (b &lt;= e) {
-            if (b != e) {
-                swap(&amp;A[b], &amp;A[e]);
-            }
-            b++;
-            e--;
-        }
+  while (b &lt;= e) {
+    // Проверка на то, что элементы слева - меньше, а элементы справа - больше
+    while (A[b] &lt; m) {
+      b++;
+    }
+    while (A[e] &gt; m) {
+      e--;
     }
 
-    // Рекурсивный вызов сортировки для левой и правой частей
-    quickSort(A, e + 1);
-    quickSort(A + b, size - b);
+    // Если слева встретилось число большее, чем опорная точка, а справа -
+    // меньшее, меняем их местами
+    if (b &lt;= e) {
+      if (b != e) {
+        swap(&amp;A[b], &amp;A[e]);
+      }
+      b++;
+      e--;
+    }
+  }
+
+  // Рекурсивный вызов сортировки для левой и правой частей
+  quickSort(A, e + 1);
+  quickSort(A + b, size - b);
 }
 
-int main( void ) {
-    int size, *arr;
+int main(void) {
+  int size, *arr;
 
-    std::cin &gt;&gt; size;
+  std::cin &gt;&gt; size;
 
-    arr = new int[size];
+  arr = new int[size];
 
-    for (int i = 0; i &lt; size; i++) {
-        std::cin &gt;&gt; arr[i];
-    }   
- 
-    quickSort(arr, 0, n - 1);
- 
-    for (int i = 0; i &lt; size; i++) {
-        std::cout &lt;&lt; arr[i] &lt;&lt; ' ';
-    }
+  for (int i = 0; i &lt; size; i++) {
+    std::cin &gt;&gt; arr[i];
+  }
+
+  quickSort(arr, 0, n - 1);
+
+  for (int i = 0; i &lt; size; i++) {
+    std::cout &lt;&lt; arr[i] &lt;&lt; ' ';
+  }
 }
 </code></pre>
 <h2 id="Ввод"><a class="header" href="#Ввод">Ввод</a></h2>
@@ -361,7 +359,7 @@ int main( void ) {
 <h2 id="Вывод"><a class="header" href="#Вывод">Вывод</a></h2>
 <pre><code class="language-bash">-354 0 9 74 87
 </code></pre>
-<footer id="last-change">Last change: 2023-09-26, commit: <a href="https://github.com/9kin/is-algo//commit/edf56d5">edf56d5</a></footer>
+<footer id="last-change">Last change: 2023-09-26, commit: <a href="https://github.com/9kin/is-algo/commit/ad5b6cc">ad5b6cc</a></footer>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">

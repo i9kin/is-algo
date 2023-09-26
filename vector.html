@@ -119,7 +119,7 @@
                                                 <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                                                                        <a href="https://github.com/9kin/is-algo/" title="Git repository" aria-label="Git repository">
+                                                                        <a href="https://github.com/9kin/is-algo" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
                                                                         <a href="https://github.com/9kin/is-algo/edit/master/src/vector.md" title="Suggest an edit" aria-label="Suggest an edit">
@@ -171,29 +171,29 @@
 using namespace std;
 
 void solve() {
-    int n;
-    cin &gt;&gt; n;
-    vector&lt;int&gt; a(n);
-    for (int i = 0; i &lt; n; i++) {
-        cin &gt;&gt; a[i];
+  int n;
+  cin &gt;&gt; n;
+  vector&lt;int&gt; a(n);
+  for (int i = 0; i &lt; n; i++) {
+    cin &gt;&gt; a[i];
+  }
+  sort(a.begin(), a.end());
+  for (int i = 0; i + 1 &lt; n; i++) {
+    if (a[i + 1] - a[i] &gt; 1) {
+      cout &lt;&lt; &quot;NO\n&quot;;
+      return;
     }
-    sort(a.begin(), a.end());
-    for (int i = 0; i + 1 &lt; n; i++) {
-        if (a[i + 1] - a[i] &gt; 1) {
-            cout &lt;&lt; &quot;NO\n&quot;;
-            return ;
-        }
-    }
-    cout &lt;&lt; &quot;YES\n&quot;;
+  }
+  cout &lt;&lt; &quot;YES\n&quot;;
 }
 
 int main() {
-    int t;
-    cin &gt;&gt; t;
-    while (t--) {
-        solve();
-    }
-    return 0;
+  int t;
+  cin &gt;&gt; t;
+  while (t--) {
+    solve();
+  }
+  return 0;
 }
 </code></pre>
 <h1 id="vector-vs-динамический-массив"><a class="header" href="#vector-vs-динамический-массив">vector vs динамический массив</a></h1>
@@ -203,7 +203,7 @@ int main() {
 <li>работает сравнение и копирование (так как переменная не указатель)</li>
 <li>удобен во всех случаях, когда массив надо быстро изменить</li>
 </ol>
-<footer id="last-change">Last change: 2023-09-26, commit: <a href="https://github.com/9kin/is-algo//commit/edf56d5">edf56d5</a></footer>
+<footer id="last-change">Last change: 2023-09-26, commit: <a href="https://github.com/9kin/is-algo/commit/ad5b6cc">ad5b6cc</a></footer>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">

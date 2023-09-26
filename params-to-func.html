@@ -119,7 +119,7 @@
                                                 <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                                                                        <a href="https://github.com/9kin/is-algo/" title="Git repository" aria-label="Git repository">
+                                                                        <a href="https://github.com/9kin/is-algo" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
                                                                         <a href="https://github.com/9kin/is-algo/edit/master/src/params-to-func.md" title="Suggest an edit" aria-label="Suggest an edit">
@@ -159,25 +159,25 @@
 <blockquote>
 <p>Фактически, при передаче параметров по значению, мы создаем копии каждого из переданных параметров внутри функции</p>
 </blockquote>
-<pre><code class="language-cpp">#include &lt;iostream&gt; 
+<pre><code class="language-cpp">#include &lt;iostream&gt;
 
-void repchar(char ch, int n){
-    for(int j = 0; j &lt; n; j++){ 
-        std::cout &lt;&lt; ch;
-        std::cout &lt;&lt; &quot;\n&quot;;
-    }
+void repchar(char ch, int n) {
+  for (int j = 0; j &lt; n; j++) {
+    std::cout &lt;&lt; ch;
+    std::cout &lt;&lt; &quot;\n&quot;;
+  }
 }
 
 int main() {
-    char chin; 
-    int nin;
+  char chin;
+  int nin;
 
-    std::cout &lt;&lt; &quot;Введите символ: &quot;; 
-    std::сin &gt;&gt; chin;
-    std::cout &lt;&lt; &quot;Введите число повторений символа: &quot;; 
-    std::cin &gt;&gt; nin; 
+  std::cout &lt;&lt; &quot;Введите символ: &quot;;
+  std::сin &gt;&gt; chin;
+  std::cout &lt;&lt; &quot;Введите число повторений символа: &quot;;
+  std::cin &gt;&gt; nin;
 
-    repchar(chin, nin); 
+  repchar(chin, nin);
 }
 </code></pre>
 <p>Как вы заметили, функция repchar имеет тип void, что указывает на то, что функция не возвращает никаких значений. В данном случае функция просто напечатает полученный символ n раз. Так как мы передаем параметры по значению <code>void repchar(char ch, int n){</code>, то внутри функции будут созданы копии введенных параметров - ch = chin и n = nin. Такой подход просто и понятен, но не очень рационален с точки зрения использования памяти.</p>
@@ -188,25 +188,26 @@ int main() {
 <blockquote>
 <p>Вместо того чтобы передавать функции значение переменной, ей передается ссылка на эту переменную (фактически в функцию передается адрес переменной-аргумента в памяти). Важной особенностью передачи аргументов по ссылке является то, что функция имеет прямой доступ к значениям аргументов. </p>
 </blockquote>
-<pre><code class="language-cpp"> #include &lt;iostream&gt;
+<pre><code class="language-cpp">#include &lt;iostream&gt;
 
 void intfrac(float n, float&amp; intp, float&amp; fracp) {
-    long temp = static_cast&lt;long&gt;(n); // преобразование к типу long,
-    intp = static_cast&lt;float&gt;(temp); // и обратно во float
-    fracp = n - intp; // вычитаем целую часть
+  long temp = static_cast&lt;long&gt;(n);  // преобразование к типу long,
+  intp = static_cast&lt;float&gt;(temp);  // и обратно во float
+  fracp = n - intp;                 // вычитаем целую часть
 }
 
 int main() {
-    float number, intpart, fracpart;
-    do{
-        std::cout &lt;&lt; &quot;\nВведите вещественное число&quot;;
-        std::cin &gt;&gt; number;
-        intfrac(number, intpart, fracpart);
-        std::cout &lt;&lt; &quot;целая часть равна &quot; &lt;&lt; intpart &lt;&lt; &quot; и дробная часть равна &quot; &lt;&lt; fracpart &lt;&lt; &quot;\n&quot;;
-    } while (number != 0.0);
-} 
+  float number, intpart, fracpart;
+  do {
+    std::cout &lt;&lt; &quot;\nВведите вещественное число&quot;;
+    std::cin &gt;&gt; number;
+    intfrac(number, intpart, fracpart);
+    std::cout &lt;&lt; &quot;целая часть равна &quot; &lt;&lt; intpart &lt;&lt; &quot; и дробная часть равна &quot;
+              &lt;&lt; fracpart &lt;&lt; &quot;\n&quot;;
+  } while (number != 0.0);
+}
 </code></pre>
-<p>В данном примере мы передали в функцию intfrac ссылки на переменные intpart и fracpart, тем самым позволив функции изменять значения, находящиехся по их адресам, а не создавать копии. Именно это позволяет функции записать ответ в созданные в main пемеренные и не думать о том, как передать сразу два объекта с помощью return.</p>
+<p>В данном примере мы передали в функцию intfrac ссылки на переменные intpart и fracpart, тем самым позволив функции изменять значения, находящиеся по их адресам, а не создавать копии. Именно это позволяет функции записать ответ в созданные в main переменные и не думать о том, как передать сразу два объекта с помощью return.</p>
 <p>На картинке проиллюстрированы отношения переменных и функции
 <img src="./images/link_to_func.png" alt="link to func" /></p>
 <h1 id="Передача-переменных-по-указателю"><a class="header" href="#Передача-переменных-по-указателю">Передача переменных по указателю</a></h1>
@@ -216,41 +217,45 @@ int main() {
 <p>Давайте рассмотрим пример передачи в функцию переменной по указателю</p>
 <pre><code class="language-cpp">#include &lt;iostream&gt;
 
-void centimize ( double* ptrd ){
-    *ptrd *= 2.54; // *ptrd — это то же самое, что и var
-    //потому что при операции разыменовывания ptrd мы получим доступ к данным переменной var
+void centimize(double* ptrd) {
+  *ptrd *= 2.54;  // *ptrd — это то же самое, что и var
+  // потому что при операции разыменовывания ptrd мы получим доступ к данным
+  // переменной var
 }
 
-int main (){
-    double var = 10.0; // значение переменной var равно 10 (дюймов)
-    std::cout &lt;&lt; &quot;var = &quot; &lt;&lt; var &lt;&lt; &quot;дюймов&quot; &lt;&lt; &quot;\n&quot;;
-    centimize ( &amp;var ); // передаем в функцию адрес перменной var
-    std::cout &lt;&lt; &quot;var= &quot; &lt;&lt; var &lt;&lt; &quot;сантиметров&quot; &lt;&lt; endl;
+int main() {
+  double var = 10.0;  // значение переменной var равно 10 (дюймов)
+  std::cout &lt;&lt; &quot;var = &quot; &lt;&lt; var &lt;&lt; &quot;дюймов&quot;
+            &lt;&lt; &quot;\n&quot;;
+  centimize(&amp;var);  // передаем в функцию адрес перменной var
+  std::cout &lt;&lt; &quot;var= &quot; &lt;&lt; var &lt;&lt; &quot;сантиметров&quot; &lt;&lt; endl;
 }
 </code></pre>
-<p>Так как мы передаем в функцию адрес переменной var, то функция cementize создает указатель ptrd на тип double и присваиевает ему переданный в функцию адрес переменной var. После чего мы разыменовываем указатель и, получив доступ к var, умножаем ее значение на 2.54</p>
+<p>Так как мы передаем в функцию адрес переменной var, то функция cementize создает указатель ptrd на тип double и присваивает ему переданный в функцию адрес переменной var. После чего мы разыменовываем указатель и, получив доступ к var, умножаем ее значение на 2.54</p>
 <p><img src="./images/ptr_var_to_func.png" alt="var to func w pointer" /></p>
 <h1 id="Передача-массивов-по-указателю"><a class="header" href="#Передача-массивов-по-указателю">Передача массивов по указателю</a></h1>
 <pre><code class="language-cpp">#include &lt;iostream&gt;
 
-const int MAX = 5; // количество элементов в массиве
+const int MAX = 5;  // количество элементов в массиве
 
-void centimize (double* ptrd)//передаем указатель на массив
+void centimize(double* ptrd)  // передаем указатель на массив
 {
-    for ( int j = 0; j &lt; MAX; j++ ){
-        *ptrd++ *= 2.54;//двигаем указатель на единицу, после разыменовываем и умножаем данные на 2.54
-    }
+  for (int j = 0; j &lt; MAX; j++) {
+    *ptrd++ *= 2.54;  // двигаем указатель на единицу, после разыменовываем и
+                      // умножаем данные на 2.54
+  }
 }
 
-int main ( )
-{
-    double varray [MAX] = { 10.0, 43.1, 95.9, 58.7, 87.3 };
-    
-    centimize(varray); // вызываем функцию, передав адрес первого элемента массива
-    
-    for (int j = 0; j &lt; MAX; j++){
-        std::cout &lt;&lt; &quot;varray [ &quot; &lt;&lt; j &lt;&lt; &quot; ] = &quot; &lt;&lt; varray [ j ] &lt;&lt; &quot; сантиметров&quot; &lt;&lt; endl; //выведем результат
-    }
+int main() {
+  double varray[MAX] = {10.0, 43.1, 95.9, 58.7, 87.3};
+
+  centimize(
+      varray);  // вызываем функцию, передав адрес первого элемента массива
+
+  for (int j = 0; j &lt; MAX; j++) {
+    std::cout &lt;&lt; &quot;varray [ &quot; &lt;&lt; j &lt;&lt; &quot; ] = &quot; &lt;&lt; varray[j] &lt;&lt; &quot; сантиметров&quot;
+              &lt;&lt; endl;  // выведем результат
+  }
 }
 </code></pre>
 <pre><code class="language-bash">varray [ 0 ] = 25.4 сантиметров
@@ -262,7 +267,7 @@ varray [ 4 ] = 221.742 сантиметров
 <p><img src="./images/ptr_array_to_func.png" alt="ptr array to func" /></p>
 <p>Теперь рассмотрим вопрос синтаксиса: как узнать, что в выражении *ptrd++ увеличивается указатель, а не его содержимое? Другими словами, как компилятор интерпретирует это выражение: как *(ptrd++), что нам и нужно, или как (*ptrd)++? Здесь * (при использовании в качестве операции разыменования) и ++ имеют одинаковый приоритет. Однако операции одинакового приоритета различаются еще и другим способом: ассоциативностью. </p>
 <p>Ассоциативность определяет, как компилятор начнет выполнять операции, справа или слева. В группе операций, имеющих правую ассоциативность, компилятор выполняет сначала операцию, стоящую справа. Унарные операции * и ++ имеют правую ассоциативность, поэтому наше выражение интерпретируется как *(ptrd++) и увеличивает указатель, а не то, на что он указывает. Таким образом, сначала увеличивается указатель, а затем к результату применяется операция разыменования.</p>
-<footer id="last-change">Last change: 2023-09-26, commit: <a href="https://github.com/9kin/is-algo//commit/edf56d5">edf56d5</a></footer>
+<footer id="last-change">Last change: 2023-09-26, commit: <a href="https://github.com/9kin/is-algo/commit/ad5b6cc">ad5b6cc</a></footer>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">

@@ -119,7 +119,7 @@
                                                 <a href="../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                                                                        <a href="https://github.com/9kin/is-algo/" title="Git repository" aria-label="Git repository">
+                                                                        <a href="https://github.com/9kin/is-algo" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
                                                                         <a href="https://github.com/9kin/is-algo/edit/master/src/tasks/sum-of-factorials.md" title="Suggest an edit" aria-label="Suggest an edit">
@@ -181,6 +181,7 @@ https://codeforces.com/blog/entry/72527?locale=ru
 <p>Очевидно, что число типа <code>long long</code> взятое по модулю <code>1e9 + 7</code> имеет диапазон \([0, 10^9 + 7)\) и влазит в <code>int</code>.</p>
 </blockquote>
 <pre><code class="language-cpp">int mod = 1e9 + 7;
+
 int factorial(int n) {
   int res = 1;
   for (int i = 1; i &lt;= n; i++) {
@@ -192,7 +193,7 @@ int factorial(int n) {
 <p>Тогда чтобы решить задачу, можно \(n\) раз запустить функцию <code>factorial</code> :</p>
 <pre><code class="language-cpp">int sum = 0;
 for (int i = 1; i &lt;= n; i++) {
-	sum = (sum + factorial(i)) % mod;
+  sum = (sum + factorial(i)) % mod;
 }
 cout &lt;&lt; sum;
 </code></pre>
@@ -216,7 +217,7 @@ cout &lt;&lt; sum;
 }
 </code></pre>
 <p>Асимптотика решения \(O(n)\).</p>
-<footer id="last-change">Last change: 2023-09-26, commit: <a href="https://github.com/9kin/is-algo//commit/edf56d5">edf56d5</a></footer>
+<footer id="last-change">Last change: 2023-09-26, commit: <a href="https://github.com/9kin/is-algo/commit/ad5b6cc">ad5b6cc</a></footer>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
