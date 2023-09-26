@@ -1,4 +1,8 @@
 # https://github.com/peaceiris/actions-mdbook
+# https://github.com/orgs/community/discussions/26403#discussioncomment-3251784
+# https://github.com/peaceiris/actions-mdbook/issues/95#issuecomment-586752043
+# https://github.com/cognitive-engineering-lab/rust-book/blob/main/.github/workflows/main.yml#L49
+
 name: github pages
 
 on:
@@ -19,6 +23,9 @@ jobs:
         uses: peaceiris/actions-mdbook@v1
         with:
           mdbook-version: '0.4.10'
+      - name: Install binaries
+        working-directory: ${{ github.workspace }}/.github/
+        run: bash ./script.sh     
       - run: mdbook build
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
