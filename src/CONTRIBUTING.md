@@ -11,20 +11,18 @@
 ===
 
 1. Клонируйте репозиторий
-2. Установите `mdbook` (сборка сайта по файлам). (заранее установите `Rust`)
+2. Установите `Rust`, запустите скрипт `bash .github/script.sh` для скачивания зависимостей.
 3. Запустите `mdbook serve` и сайт соберётся. 
 4. Сделайте изменения
-5. Запушьте изменения в свой репозиторий.
+5. Запуште изменения в свой репозиторий.
 6. Создайте [PR](https://github.com/9kin/is-algo).
 7. Наша команда скорее всего примет ваши изменения.
 
-Рекомендуется перед созданием PR пройтись спеллчекером (например, `hunspell`-ом или [`yaspeller`](https://github.com/hcodes/yaspeller)-ом).
+Рекомендуется перед созданием PR пройтись спеллчекером [`yaspeller`](https://github.com/hcodes/yaspeller). Для `yaspeller`-а у нашего проекта есть конфиг. Установка &mdash; `npm install yaspeller -g`.
 
-Для `yaspeller`-а у нашего проекта есть дополнительный набор специальных терминов на 500 различных слов. И различные правила.
+Запуск из корня проекта :
 
-1. Установка ```npm install yaspeller -g```.
-2. Запуск из корня проекта ```yaspeller [dir of file]```.
+* `yaspeller --config utils/.yaspeller.json .`.
+* `python3 utils/format.py` &mdash; реформат кода
 
-Конфиг `yaspeller`-а лежит в корне проекта, добавляйте новые слова.
-
-[TODO](https://github.com/9kin/algorithmica/commit/4d66459b074afb3831cca0aa7e330c5a285cd064#diff-d8a94d4affe0f4f5d2bb269eeab83306c4db42b90d3b220e4636cc71590041b1)
+Или всё вместе : TODO 

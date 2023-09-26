@@ -58,7 +58,7 @@ void solve() {
   for (int i = 0; i < n; i++) {
     cin >> a[i].first >> a[i].second;
   }
-  sort(a.begin(), a.end(), [&](auto &x, auto &y) {
+  sort(a.begin(), a.end(), [&](auto& x, auto& y) {
     return make_pair(x.second, -x.first) < make_pair(y.second, -y.first);
   });
   int ans = 0;

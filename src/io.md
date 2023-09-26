@@ -42,7 +42,8 @@
 
 ```cpp
 ios::sync_with_stdio(false);
-cin.tie(0); cout.tie(0);
+cin.tie(0);
+cout.tie(0);
 ```
 
 Если интересно, то [прочтите](https://codeforces.com/blog/entry/90775) почему это так.

@@ -37,28 +37,28 @@ using namespace std;
 int a[50];
 
 void solve() {
-    int n;
-    cin >> n;
-    for (int i = 0; i < n; i++) {
-        cin >> a[i];
+  int n;
+  cin >> n;
+  for (int i = 0; i < n; i++) {
+    cin >> a[i];
+  }
+  sort(a, a + n);
+  for (int i = 0; i + 1 < n; i++) {
+    if (a[i + 1] - a[i] > 1) {
+      cout << "NO\n";
+      return;
     }
-    sort(a, a + n);
-    for (int i = 0; i + 1 < n; i++) {
-        if (a[i + 1] - a[i] > 1) {
-            cout << "NO\n";
-            return ;
-        }
-    }
-    cout << "YES\n";
+  }
+  cout << "YES\n";
 }
 
 int main() {
-    int t;
-    cin >> t;
-    while (t--) {
-        solve();
-    }
-    return 0;
+  int t;
+  cin >> t;
+  while (t--) {
+    solve();
+  }
+  return 0;
 }
 ```
 

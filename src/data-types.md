@@ -42,21 +42,20 @@
 
 ```cpp
 #include <iostream>
- 
-struct student
-{
-    int age;
-    std::string name;//имя храним в строке, строки разберем немного позже
-    int average_points;
+
+struct student {
+  int age;
+  std::string name;  // имя храним в строке, строки разберем немного позже
+  int average_points;
 };
- 
-int main()
-{
-    person first_student;
-    first_student.name = "Tom";
-    first_student.age = 34;
-    first_student.average_points = 25;
-    std::cout << "Name: " << first_student.name << "\tAge: " << first_student.age << "Average pts: " << first.student << std::endl;
+
+int main() {
+  person first_student;
+  first_student.name = "Tom";
+  first_student.age = 34;
+  first_student.average_points = 25;
+  std::cout << "Name: " << first_student.name << "\tAge: " << first_student.age
+            << "Average pts: " << first.student << std::endl;
 }
 ```
 

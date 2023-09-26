@@ -18,39 +18,39 @@
 ```cpp
 #include <iostream>
 
-void insertionSort( int *arr, int size ) {
-    int key;
+void insertionSort(int* arr, int size) {
+  int key;
 
-    for (int i = 1; i < size; i++) {
-        int j = i - 1;
+  for (int i = 1; i < size; i++) {
+    int j = i - 1;
 
-        key = arr[i];
- 
-        while (j >= 0 && arr[j] > key) {
-            arr[j + 1] = arr[j];
-            j = j - 1;
-        }
+    key = arr[i];
 
-        arr[j + 1] = key;
+    while (j >= 0 && arr[j] > key) {
+      arr[j + 1] = arr[j];
+      j = j - 1;
     }
+
+    arr[j + 1] = key;
+  }
 }
 
-int main( void ) {
-    int size, *array;
+int main(void) {
+  int size, *array;
 
-    std::cin >> size;
+  std::cin >> size;
 
-    array = new int[size];
-    
-    for (int i = 0; i < size; i++) {
-        std::cin >> array[i];
-    }
+  array = new int[size];
 
-    insertionSort(array, size);
+  for (int i = 0; i < size; i++) {
+    std::cin >> array[i];
+  }
 
-    for (int i = 0; i < size; i++) {
-        std::cout << array[i] << " ";
-    }
+  insertionSort(array, size);
+
+  for (int i = 0; i < size; i++) {
+    std::cout << array[i] << " ";
+  }
 }
 ```
 

@@ -32,6 +32,7 @@ https://codeforces.com/blog/entry/72527?locale=ru
 
 ```cpp
 int mod = 1e9 + 7;
+
 int factorial(int n) {
   int res = 1;
   for (int i = 1; i <= n; i++) {
@@ -46,7 +47,7 @@ int factorial(int n) {
 ```cpp
 int sum = 0;
 for (int i = 1; i <= n; i++) {
-	sum = (sum + factorial(i)) % mod;
+  sum = (sum + factorial(i)) % mod;
 }
 cout << sum;
 ```

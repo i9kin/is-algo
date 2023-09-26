@@ -29,29 +29,29 @@
 using namespace std;
 
 void solve() {
-    int n;
-    cin >> n;
-    vector<int> a(n);
-    for (int i = 0; i < n; i++) {
-        cin >> a[i];
+  int n;
+  cin >> n;
+  vector<int> a(n);
+  for (int i = 0; i < n; i++) {
+    cin >> a[i];
+  }
+  sort(a.begin(), a.end());
+  for (int i = 0; i + 1 < n; i++) {
+    if (a[i + 1] - a[i] > 1) {
+      cout << "NO\n";
+      return;
     }
-    sort(a.begin(), a.end());
-    for (int i = 0; i + 1 < n; i++) {
-        if (a[i + 1] - a[i] > 1) {
-            cout << "NO\n";
-            return ;
-        }
-    }
-    cout << "YES\n";
+  }
+  cout << "YES\n";
 }
 
 int main() {
-    int t;
-    cin >> t;
-    while (t--) {
-        solve();
-    }
-    return 0;
+  int t;
+  cin >> t;
+  while (t--) {
+    solve();
+  }
+  return 0;
 }
 ```
 
