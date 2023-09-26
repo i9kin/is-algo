@@ -16,22 +16,20 @@
 ## Реализация алгоритма №1
 
 ```cpp
-#include <iostream>
-
-void merge(int array, int const left, int const mid, int const right) {
-  int const subArrayOne = mid - left + 1;
-  int const subArrayTwo = right - mid;
+void merge(int* a, int left, int mid, int right) {
+  int subArrayOne = mid - left + 1;
+  int subArrayTwo = right - mid;
 
   // Создание временных массивов
   int *leftArray = new int[subArrayOne], *rightArray = new int[subArrayTwo];
 
   // Копирование данных в подмассивы
   for (auto i = 0; i < subArrayOne; i++) {
-    leftArray[i] = array[left + i];
+    leftArray[i] = a[left + i];
   }
 
   for (auto j = 0; j < subArrayTwo; j++) {
-    rightArray[j] = array[mid + 1 + j];
+    rightArray[j] = a[mid + 1 + j];
   }
 
   int indexOfSubArrayOne = 0, indexOfSubArrayTwo = 0, indexOfMergedArray = left;
@@ -39,10 +37,10 @@ void merge(int array, int const left, int const mid, int const right) {
   // Соединение временных массивов в наш изначальный
   while (indexOfSubArrayOne < subArrayOne && indexOfSubArrayTwo < subArrayTwo) {
     if (leftArray[indexOfSubArrayOne] <= rightArray[indexOfSubArrayTwo]) {
-      array[indexOfMergedArray] = leftArray[indexOfSubArrayOne];
+      a[indexOfMergedArray] = leftArray[indexOfSubArrayOne];
       indexOfSubArrayOne++;
     } else {
-      array[indexOfMergedArray] = rightArray[indexOfSubArrayTwo];
+      a[indexOfMergedArray] = rightArray[indexOfSubArrayTwo];
       indexOfSubArrayTwo++;
     }
     indexOfMergedArray++;
@@ -50,14 +48,14 @@ void merge(int array, int const left, int const mid, int const right) {
 
   // Копирование оставшихся элементов левого ммассива, если они остались
   while (indexOfSubArrayOne < subArrayOne) {
-    array[indexOfMergedArray] = leftArray[indexOfSubArrayOne];
+    a[indexOfMergedArray] = leftArray[indexOfSubArrayOne];
     indexOfSubArrayOne++;
     indexOfMergedArray++;
   }
 
   // Копирование оставшихся элементов правого ммассива, если они остались
   while (indexOfSubArrayTwo < subArrayTwo) {
-    array[indexOfMergedArray] = rightArray[indexOfSubArrayTwo];
+    a[indexOfMergedArray] = rightArray[indexOfSubArrayTwo];
     indexOfSubArrayTwo++;
     indexOfMergedArray++;
   }
@@ -68,7 +66,7 @@ void merge(int array, int const left, int const mid, int const right) {
 }
 
 // begin отвечает за левый индекс, end - за правый
-void mergeSort(int* array, int const begin, int const end) {
+void mergeSort(int* array, int begin, int end) {
   if (begin >= end) return;
 
   int mid = begin + (end - begin) / 2;
@@ -78,35 +76,17 @@ void mergeSort(int* array, int const begin, int const end) {
   mergeSort(array, mid + 1, end);
   merge(array, begin, mid, end);
 }
-
-int main(void) {
-  int size, *arr;
-
-  std::cin >> size;
-
-  arr = new int[size];
-
-  for (int i = 0; i < size; i++) {
-    std::cin >> arr[i];
-  }
-
-  mergeSort(arr, 0, size - 1);
-
-  for (int i = 0; i < size; i++) {
-    std::cout << arr[i] << ' ';
-  }
-}
 ```
 
 ## Реализация алгоритма №2
 
-```cpp
-#include <iostream>
+Используем глобальный массив, вместо временных `leftArray` и `rightArray`.
 
+```cpp
 int* B;
 
 // Рекурсивная часть сортировки
-void mergeSortRec(int* A, int size) {
+void mergeSortRec(int* a, int size) {
   if (size < 2) {
     return;
   }
@@ -114,23 +94,23 @@ void mergeSortRec(int* A, int size) {
   int M = size / 2;
 
   // Вызов рекурсии
-  mergeSortRec(A, M);
-  mergeSortRec(A + M, size - M);
+  mergeSortRec(a, M);
+  mergeSortRec(a + M, size - M);
 
   // Копируем данный в левый и правый массивы
   for (int k = 0, i = 0, j = M; k < size; ++k) {
     // Записываем меньшее значение в k-й элемент массива B
-    if (j >= size || i < M && A[i] < A[j]) {
-      B[k] = A[i++];
+    if (j >= size || i < M && a[i] < a[j]) {
+      B[k] = a[i++];
     } else {
-      B[k] = A[j++];
+      B[k] = a[j++];
     }
   }  // Если один из массивов закончится, то просто запишется остаток другого
      // массива
 
   // Копируем данные в исходный массив
   for (int i = 0; i < size; i++) {
-    A[i] = B[i];
+    a[i] = B[i];
   }
 }
 
@@ -144,25 +124,9 @@ void mergeSort(int* a, int size) {
 
   delete[] B;
 }
-
-int main(void) {
-  int size, *arr;
-
-  std::cin >> size;
-
-  arr = new int[size];
-
-  for (int i = 0; i < size; i++) {
-    std::cin >> arr[i];
-  }
-
-  mergeSort(arr, size);
-
-  for (int i = 0; i < size; i++) {
-    std::cout << arr[i] << ' ';
-  }
-}
 ```
+
+> Запуск функции сортировки `mergeSort(arr, 0, size - 1);`
 
 ## Ввод
 

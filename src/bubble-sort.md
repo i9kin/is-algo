@@ -20,99 +20,39 @@
 ## Обычная версия алгоритма
 
 ```cpp
-#include <iostream>
-
-// Функция Swap меняет значения переменных местами
-void swap(int* val1, int* val2) {
-  int tmp = *val1;
-
-  *val1 = *val2;
-  *val2 = tmp;
-}
-
-// Функция "пузырьковой сортировки"
-void bubbleSort(int* arr, int size) {
+void bubbleSort(int* a, int size) {
   for (int i = 0; i < size; i++) {
     for (int j = 0; j < size - 1; j++) {
-      if (arr[j] > arr[j + 1]) {
-        swap(&arr[j], &arr[j + 1]);
+      if (a[j] > a[j + 1]) {
+        std::swap(a[j], a[j + 1]);
       }
     }
-  }
-}
-
-int main(void) {
-  int size, *Array;
-
-  std::cin >> size;
-
-  Array = new int[size];  // Выделение памяти под динамический целочисленный
-                          // массив размера size
-
-  for (int i = 0; i < size; i++) {  // Заполнение массива Array
-    std::cin >> Array[i];
-  }
-
-  bubbleSort(Array, size);  // Выполнение сортировки
-
-  for (int i = 0; i < size; i++) {  // Вывод отсортированного массива
-    std::cout << Array[i] << ' ';
   }
 }
 ```
 
 ## Ускоренная версия алгоритма
 
+Если во втором цикле ни один элемент не поменялся местами с соседом, значит, что массив уже отсортирован &mdash; можно выйти из функции сортировки.
+
 ```cpp
-#include <iostream>
-
-// Функция Swap меняет значения переменных местами
-void swap(int* val1, int* val2) {
-  int tmp = *val1;
-
-  *val1 = *val2;
-  *val2 = tmp;
-}
-
-// Функция "пузырьковой сортировки"
-void bubbleSort(int* arr, int size) {
+void bubbleSort(int* a, int size) {
   for (int i = 0; i < size; i++) {
     bool is_any_swapped = false;
-
     for (int j = 0; j < size - 1; j++) {
-      if (arr[j] > arr[j + 1]) {
-        swap(&arr[j], &arr[j + 1]);
+      if (a[j] > a[j + 1]) {
+        std::swap(a[j], a[j + 1]);
         is_any_swapped = true;
       }
     }
-
-    // Если ни один элемент не поменялся местами с соседом, значит, что массив
-    // уже отсортирован
     if (!is_any_swapped) {
       break;
     }
   }
 }
-
-int main(void) {
-  int size, *array;
-
-  std::cin >> size;
-
-  array = new int[size];  // Выделение памяти под динамический целочисленный
-                          // массив размера size
-
-  for (int i = 0; i < size; i++) {  // Заполнение массива Array
-    std::cin >> array[i];
-  }
-
-  bubbleSort(array, size);  // Выполнение сортировки
-
-  for (int i = 0; i < size; i++) {  // Вывод отсортированного массива
-    std::cout << array[i] << ' ';
-  }
-}
 ```
+
+> Запуск функции сортировки `bubbleSort(array, size);`
 
 ## Пример работы алгоритма
 

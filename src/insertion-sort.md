@@ -16,43 +16,21 @@
 ## Реализация алгоритма
 
 ```cpp
-#include <iostream>
-
-void insertionSort(int* arr, int size) {
-  int key;
-
+void insertionSort(int* a, int size) {
   for (int i = 1; i < size; i++) {
     int j = i - 1;
-
-    key = arr[i];
-
-    while (j >= 0 && arr[j] > key) {
-      arr[j + 1] = arr[j];
-      j = j - 1;
+    int key = a[i];
+    while (j >= 0 && a[j] > key) {
+      arr[j + 1] = a[j];
+      j--;
     }
-
-    arr[j + 1] = key;
-  }
-}
-
-int main(void) {
-  int size, *array;
-
-  std::cin >> size;
-
-  array = new int[size];
-
-  for (int i = 0; i < size; i++) {
-    std::cin >> array[i];
-  }
-
-  insertionSort(array, size);
-
-  for (int i = 0; i < size; i++) {
-    std::cout << array[i] << " ";
+    a[j + 1] = key;
   }
 }
 ```
+
+> Запуск функции сортировки `insertionSort(array, size);`
+
 
 ## Ввод
 

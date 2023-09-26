@@ -15,54 +15,35 @@
 ## Реализация алгоритма
 
 ```cpp
-
-#include <iostream>
-
-// Функция "выборочной" сортировки
-void selectionSort(int* arr, int n) {
+void selectionSort(int* a, int n) {
   int i, j, min_ind;
 
   // Рассматривание минимального элемента в неотсортированной части и заполнение
   // отсортировнного
   for (i = 0; i < n - 1; i++) {
     // Поиск минимального элемента(его индекса)
-    min_idx = i;
+    min_ind = i;
 
     for (j = i + 1; j < n; j++) {
-      if (arr[j] < arr[min_idx]) {
-        min_idx = j;
+      if (a[j] < a[min_ind]) {
+        min_ind = j;
       }
     }
 
     // Замена первого элемента неотсортированного массива на его минимальный
     // элемент
-    if (min_idx != i) {
-      swap(arr[min_idx], arr[i]);
+    if (min_ind != i) {
+      std::swap(a[min_ind], a[i]);
     }
 
     // В окончании цикла совершается операция i++, которая сдвигает указатель на
     // начало неотсортированной части массива
   }
 }
-
-int main(void) {
-  int size, *arr;
-
-  std::cin >> size;
-
-  arr = new int[size];
-
-  for (int i = 0; i < size; i++) {
-    std::cin >> arr[i];
-  }
-
-  selectionSort(arr, size);
-
-  for (int i = 0; i < size; i++) {
-    std::cout << arr[i] << ' ';
-  }
-}
 ```
+
+> Запуск функции сортировки `selectionSort(array, size);`
+
 
 ## Ввод:
 ```bash 
