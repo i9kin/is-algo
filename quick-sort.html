@@ -168,96 +168,9 @@
 <li>Не лучший выбор для массивов небольших размеров</li>
 <li>Нестабильная сортировка</li>
 </ol>
-<h2 id="Реализация-алгоритма-1-опорная-точка---1й-элемент"><a class="header" href="#Реализация-алгоритма-1-опорная-точка---1й-элемент">Реализация алгоритма №1 (опорная точка - 1й элемент)</a></h2>
-<pre><code class="language-cpp">#include &lt;iostream&gt;
-
-// Функция Swap меняет значения переменных местами
-void swap(int* val1, int* val2) {
-  int tmp = *val1;
-
-  *val1 = *val2;
-  *val2 = tmp;
-}
-
-// Функция разделения массива
-int partition(int* arr, int start, int end) {
-  int pivot = arr[start], count = 0;
-
-  // Находим смещение опорной точки относительно начала массива
-  for (int i = start + 1; i &lt;= end; i++) {
-    if (arr[i] &lt;= pivot) count++;
-  }
-
-  // Ставим опорную точку в правильную позицию
-  int pivotIndex = start + count;
-  swap(arr[pivotIndex], arr[start]);
-
-  // Сортируем левую и правую части массива относительно опорной точки
-  int i = start, j = end;
-  while (i &lt; pivotIndex &amp;&amp; j &gt; pivotIndex) {
-    // Проверяем, что элементы слева от опорной точки меньше
-    while (arr[i] &lt;= pivot) {
-      i++;
-    }
-    // Проверяем, что элементы справа больше
-    while (arr[j] &gt; pivot) {
-      j--;
-    }
-
-    // При необходимости меняем элемены местами
-    if (i &lt; pivotIndex &amp;&amp; j &gt; pivotIndex) {
-      swap(arr[i++], arr[j--]);
-    }
-  }
-
-  return pivotIndex;
-}
-
-// Функция &quot;быстрой&quot; сортировки
-void quickSort(int* arr, int start, int end) {
-  if (start &gt;= end) return;
-
-  // Разделение массива
-  int p = partition(arr, start, end);
-
-  // Сортировка левой части
-  quickSort(arr, start, p - 1);
-
-  // Сортировка правой части
-  quickSort(arr, p + 1, end);
-}
-
-int main(void) {
-  int size, *arr;
-
-  std::cin &gt;&gt; size;
-
-  arr = new int[size];
-
-  for (int i = 0; i &lt; size; i++) {
-    std::cin &gt;&gt; arr[i];
-  }
-
-  quickSort(arr, 0, n - 1);
-
-  for (int i = 0; i &lt; size; i++) {
-    std::cout &lt;&lt; arr[i] &lt;&lt; ' ';
-  }
-}
-</code></pre>
-<h2 id="Реализация-алгоритма-2-опорная-точка---середина"><a class="header" href="#Реализация-алгоритма-2-опорная-точка---середина">Реализация алгоритма №2 (опорная точка - середина)</a></h2>
-<pre><code class="language-cpp">#include &lt;iostream&gt;
-
-// Функция Swap меняет значения переменных местами
-void swap(int* val1, int* val2) {
-  int tmp = *val1;
-
-  *val1 = *val2;
-  *val2 = tmp;
-}
-
-// Функция &quot;быстрой&quot; сортировки
-void quickSort(int* a, int size) {
+<h2 id="Реализация-алгоритма"><a class="header" href="#Реализация-алгоритма">Реализация алгоритма.</a></h2>
+<p>Опорная точка - середина.</p>
+<pre><code class="language-cpp">void quickSort(int* a, int size) {
   int b = 0, e = size - 1;  // b - begin, e - end
 
   if (size &lt; 2) return;
@@ -266,10 +179,10 @@ void quickSort(int* a, int size) {
 
   while (b &lt;= e) {
     // Проверка на то, что элементы слева - меньше, а элементы справа - больше
-    while (A[b] &lt; m) {
+    while (a[b] &lt; m) {
       b++;
     }
-    while (A[e] &gt; m) {
+    while (a[e] &gt; m) {
       e--;
     }
 
@@ -277,7 +190,7 @@ void quickSort(int* a, int size) {
     // меньшее, меняем их местами
     if (b &lt;= e) {
       if (b != e) {
-        swap(&amp;A[b], &amp;A[e]);
+        std::swap(a[b], a[e]);
       }
       b++;
       e--;
@@ -285,56 +198,18 @@ void quickSort(int* a, int size) {
   }
 
   // Рекурсивный вызов сортировки для левой и правой частей
-  quickSort(A, e + 1);
-  quickSort(A + b, size - b);
-}
-
-int main(void) {
-  int size, *arr;
-
-  std::cin &gt;&gt; size;
-
-  arr = new int[size];
-
-  for (int i = 0; i &lt; size; i++) {
-    std::cin &gt;&gt; arr[i];
-  }
-
-  quickSort(arr, 0, n - 1);
-
-  for (int i = 0; i &lt; size; i++) {
-    std::cout &lt;&lt; arr[i] &lt;&lt; ' ';
-  }
+  quickSort(a, e + 1);
+  quickSort(a + b, size - b);
 }
 </code></pre>
+<blockquote>
+<p>Запуск функции сортировки <code>quickSort(array, size - 1);</code></p>
+</blockquote>
 <h2 id="Ввод"><a class="header" href="#Ввод">Ввод</a></h2>
 <pre><code class="language-bash">5
 9 74 -354 87 0
 </code></pre>
-<h2 id="Работа-алгоритма-1"><a class="header" href="#Работа-алгоритма-1">Работа алгоритма №1</a></h2>
-<ol>
-<li>Выбрали 9 как опорную точку, посчитали, что её индекс в итоговом массиве равен 2 - { . . 9 . . }</li>
-<li>Поменяли местами 9 и -354 -- исходный массив: { -354 74 9 87 0 }</li>
-<li>Разбили массив на два подмассива { -354 74 } и { 87 0 } -- исходный массив: { -354 74 9 87 0 }</li>
-<li>Меняем местами элементы, не удовлетворяющие условию (слева меньше, справа больше) : { -354 0 } и { 87 74 } -- исходный массив: { -354 0 9 87 74 }</li>
-<li>В каждом из подмассивов выбрали опорную точку как первый элемент (-354 и 87 соответственно)</li>
-<li>Сортируем первый подмассив:
-<ol>
-<li>Разбили его на еще два подмассива: { } и { 0 }</li>
-<li>Больше нечего разбивать :(</li>
-<li>Делаем слева меньше, справа больше: { } и { 0 } -- тут не пришлось ничего менять местами -- исходный массив: { -354 0 9 87 74 }</li>
-</ol>
-</li>
-<li>Сортируем второй подмассив:
-<ol>
-<li>Разбиваем его на два подмассива: { } и { 74 }</li>
-<li>Больше нечего разбивать :( </li>
-<li>Делаем слева меньше, справа больше: { 74 } и { } -- 74 меньше 87, поэтому поменяли местами -- исходный массив: { -354 0 9 74 87}</li>
-</ol>
-</li>
-<li>Исходный массив отсортирован: УРААААА ПОБЕДА</li>
-</ol>
-<h2 id="Работа-алгоритма-2"><a class="header" href="#Работа-алгоритма-2">Работа алгоритма №2</a></h2>
+<h2 id="Работа-алгоритма"><a class="header" href="#Работа-алгоритма">Работа алгоритма</a></h2>
 <ol>
 <li>Выбрали -354 как опорную точку, посчитали, ее индекс в итоговом массиве равен 0 - { -354 . . . . }</li>
 <li>Поменяли местами 9 и -354 -- исходный массив: { -354 74 9 87 0 }</li>
@@ -359,7 +234,9 @@ int main(void) {
 <h2 id="Вывод"><a class="header" href="#Вывод">Вывод</a></h2>
 <pre><code class="language-bash">-354 0 9 74 87
 </code></pre>
-<footer id="last-change">Last change: 2023-09-26, commit: <a href="https://github.com/9kin/is-algo/commit/ad5b6cc">ad5b6cc</a></footer>
+<h1 id="На-практике"><a class="header" href="#На-практике">На практике</a></h1>
+<p>В качестве опорного элемента следует выбирать случайный элемент массива, чтобы получить гарантированное время сортировки \( \Theta (n\log n)\) в среднем.</p>
+<footer id="last-change">Last change: 2023-09-26, commit: <a href="https://github.com/9kin/is-algo/commit/4977ebc">4977ebc</a></footer>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">

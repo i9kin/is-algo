@@ -168,22 +168,20 @@
 <li>Не всегда оптимален для маленьких массивов</li>
 </ol>
 <h2 id="Реализация-алгоритма-1"><a class="header" href="#Реализация-алгоритма-1">Реализация алгоритма №1</a></h2>
-<pre><code class="language-cpp">#include &lt;iostream&gt;
-
-void merge(int array, int const left, int const mid, int const right) {
-  int const subArrayOne = mid - left + 1;
-  int const subArrayTwo = right - mid;
+<pre><code class="language-cpp">void merge(int* a, int left, int mid, int right) {
+  int subArrayOne = mid - left + 1;
+  int subArrayTwo = right - mid;
 
   // Создание временных массивов
   int *leftArray = new int[subArrayOne], *rightArray = new int[subArrayTwo];
 
   // Копирование данных в подмассивы
   for (auto i = 0; i &lt; subArrayOne; i++) {
-    leftArray[i] = array[left + i];
+    leftArray[i] = a[left + i];
   }
 
   for (auto j = 0; j &lt; subArrayTwo; j++) {
-    rightArray[j] = array[mid + 1 + j];
+    rightArray[j] = a[mid + 1 + j];
   }
 
   int indexOfSubArrayOne = 0, indexOfSubArrayTwo = 0, indexOfMergedArray = left;
@@ -191,10 +189,10 @@ void merge(int array, int const left, int const mid, int const right) {
   // Соединение временных массивов в наш изначальный
   while (indexOfSubArrayOne &lt; subArrayOne &amp;&amp; indexOfSubArrayTwo &lt; subArrayTwo) {
     if (leftArray[indexOfSubArrayOne] &lt;= rightArray[indexOfSubArrayTwo]) {
-      array[indexOfMergedArray] = leftArray[indexOfSubArrayOne];
+      a[indexOfMergedArray] = leftArray[indexOfSubArrayOne];
       indexOfSubArrayOne++;
     } else {
-      array[indexOfMergedArray] = rightArray[indexOfSubArrayTwo];
+      a[indexOfMergedArray] = rightArray[indexOfSubArrayTwo];
       indexOfSubArrayTwo++;
     }
     indexOfMergedArray++;
@@ -202,14 +200,14 @@ void merge(int array, int const left, int const mid, int const right) {
 
   // Копирование оставшихся элементов левого ммассива, если они остались
   while (indexOfSubArrayOne &lt; subArrayOne) {
-    array[indexOfMergedArray] = leftArray[indexOfSubArrayOne];
+    a[indexOfMergedArray] = leftArray[indexOfSubArrayOne];
     indexOfSubArrayOne++;
     indexOfMergedArray++;
   }
 
   // Копирование оставшихся элементов правого ммассива, если они остались
   while (indexOfSubArrayTwo &lt; subArrayTwo) {
-    array[indexOfMergedArray] = rightArray[indexOfSubArrayTwo];
+    a[indexOfMergedArray] = rightArray[indexOfSubArrayTwo];
     indexOfSubArrayTwo++;
     indexOfMergedArray++;
   }
@@ -220,7 +218,7 @@ void merge(int array, int const left, int const mid, int const right) {
 }
 
 // begin отвечает за левый индекс, end - за правый
-void mergeSort(int* array, int const begin, int const end) {
+void mergeSort(int* array, int begin, int end) {
   if (begin &gt;= end) return;
 
   int mid = begin + (end - begin) / 2;
@@ -230,32 +228,13 @@ void mergeSort(int* array, int const begin, int const end) {
   mergeSort(array, mid + 1, end);
   merge(array, begin, mid, end);
 }
-
-int main(void) {
-  int size, *arr;
-
-  std::cin &gt;&gt; size;
-
-  arr = new int[size];
-
-  for (int i = 0; i &lt; size; i++) {
-    std::cin &gt;&gt; arr[i];
-  }
-
-  mergeSort(arr, 0, size - 1);
-
-  for (int i = 0; i &lt; size; i++) {
-    std::cout &lt;&lt; arr[i] &lt;&lt; ' ';
-  }
-}
 </code></pre>
 <h2 id="Реализация-алгоритма-2"><a class="header" href="#Реализация-алгоритма-2">Реализация алгоритма №2</a></h2>
-<pre><code class="language-cpp">#include &lt;iostream&gt;
-
-int* B;
+<p>Используем глобальный массив, вместо временных <code>leftArray</code> и <code>rightArray</code>.</p>
+<pre><code class="language-cpp">int* B;
 
 // Рекурсивная часть сортировки
-void mergeSortRec(int* A, int size) {
+void mergeSortRec(int* a, int size) {
   if (size &lt; 2) {
     return;
   }
@@ -263,23 +242,23 @@ void mergeSortRec(int* A, int size) {
   int M = size / 2;
 
   // Вызов рекурсии
-  mergeSortRec(A, M);
-  mergeSortRec(A + M, size - M);
+  mergeSortRec(a, M);
+  mergeSortRec(a + M, size - M);
 
   // Копируем данный в левый и правый массивы
   for (int k = 0, i = 0, j = M; k &lt; size; ++k) {
     // Записываем меньшее значение в k-й элемент массива B
-    if (j &gt;= size || i &lt; M &amp;&amp; A[i] &lt; A[j]) {
-      B[k] = A[i++];
+    if (j &gt;= size || i &lt; M &amp;&amp; a[i] &lt; a[j]) {
+      B[k] = a[i++];
     } else {
-      B[k] = A[j++];
+      B[k] = a[j++];
     }
   }  // Если один из массивов закончится, то просто запишется остаток другого
      // массива
 
   // Копируем данные в исходный массив
   for (int i = 0; i &lt; size; i++) {
-    A[i] = B[i];
+    a[i] = B[i];
   }
 }
 
@@ -293,25 +272,10 @@ void mergeSort(int* a, int size) {
 
   delete[] B;
 }
-
-int main(void) {
-  int size, *arr;
-
-  std::cin &gt;&gt; size;
-
-  arr = new int[size];
-
-  for (int i = 0; i &lt; size; i++) {
-    std::cin &gt;&gt; arr[i];
-  }
-
-  mergeSort(arr, size);
-
-  for (int i = 0; i &lt; size; i++) {
-    std::cout &lt;&lt; arr[i] &lt;&lt; ' ';
-  }
-}
 </code></pre>
+<blockquote>
+<p>Запуск функции сортировки <code>mergeSort(arr, 0, size - 1);</code></p>
+</blockquote>
 <h2 id="Ввод"><a class="header" href="#Ввод">Ввод</a></h2>
 <pre><code class="language-bash">4
 49 12 -3 15
@@ -326,7 +290,7 @@ int main(void) {
 <h2 id="Вывод"><a class="header" href="#Вывод">Вывод</a></h2>
 <pre><code class="language-bash">-3 12 15 49
 </code></pre>
-<footer id="last-change">Last change: 2023-09-26, commit: <a href="https://github.com/9kin/is-algo/commit/ad5b6cc">ad5b6cc</a></footer>
+<footer id="last-change">Last change: 2023-09-26, commit: <a href="https://github.com/9kin/is-algo/commit/4977ebc">4977ebc</a></footer>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">

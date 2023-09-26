@@ -167,54 +167,35 @@
 <li>Нестабильный алгоритм</li>
 </ol>
 <h2 id="Реализация-алгоритма"><a class="header" href="#Реализация-алгоритма">Реализация алгоритма</a></h2>
-<pre><code class="language-cpp">
-#include &lt;iostream&gt;
-
-// Функция &quot;выборочной&quot; сортировки
-void selectionSort(int* arr, int n) {
+<pre><code class="language-cpp">void selectionSort(int* a, int n) {
   int i, j, min_ind;
 
   // Рассматривание минимального элемента в неотсортированной части и заполнение
   // отсортировнного
   for (i = 0; i &lt; n - 1; i++) {
     // Поиск минимального элемента(его индекса)
-    min_idx = i;
+    min_ind = i;
 
     for (j = i + 1; j &lt; n; j++) {
-      if (arr[j] &lt; arr[min_idx]) {
-        min_idx = j;
+      if (a[j] &lt; a[min_ind]) {
+        min_ind = j;
       }
     }
 
     // Замена первого элемента неотсортированного массива на его минимальный
     // элемент
-    if (min_idx != i) {
-      swap(arr[min_idx], arr[i]);
+    if (min_ind != i) {
+      std::swap(a[min_ind], a[i]);
     }
 
     // В окончании цикла совершается операция i++, которая сдвигает указатель на
     // начало неотсортированной части массива
   }
 }
-
-int main(void) {
-  int size, *arr;
-
-  std::cin &gt;&gt; size;
-
-  arr = new int[size];
-
-  for (int i = 0; i &lt; size; i++) {
-    std::cin &gt;&gt; arr[i];
-  }
-
-  selectionSort(arr, size);
-
-  for (int i = 0; i &lt; size; i++) {
-    std::cout &lt;&lt; arr[i] &lt;&lt; ' ';
-  }
-}
 </code></pre>
+<blockquote>
+<p>Запуск функции сортировки <code>selectionSort(array, size);</code></p>
+</blockquote>
 <h2 id="Ввод"><a class="header" href="#Ввод">Ввод:</a></h2>
 <pre><code class="language-bash">5
 12 865 -1233 47 2
@@ -232,7 +213,7 @@ int main(void) {
 <h2 id="Вывод"><a class="header" href="#Вывод">Вывод:</a></h2>
 <pre><code class="language-bash">-1233 2 12 47 865
 </code></pre>
-<footer id="last-change">Last change: 2023-09-26, commit: <a href="https://github.com/9kin/is-algo/commit/ad5b6cc">ad5b6cc</a></footer>
+<footer id="last-change">Last change: 2023-09-26, commit: <a href="https://github.com/9kin/is-algo/commit/4977ebc">4977ebc</a></footer>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">

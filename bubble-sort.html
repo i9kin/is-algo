@@ -171,96 +171,36 @@
 <li>Ну типо тут и так понятно, что бабл сорт - самый крутой алгоритм, и ему нет равных</li>
 </ol>
 <h2 id="Обычная-версия-алгоритма"><a class="header" href="#Обычная-версия-алгоритма">Обычная версия алгоритма</a></h2>
-<pre><code class="language-cpp">#include &lt;iostream&gt;
-
-// Функция Swap меняет значения переменных местами
-void swap(int* val1, int* val2) {
-  int tmp = *val1;
-
-  *val1 = *val2;
-  *val2 = tmp;
-}
-
-// Функция &quot;пузырьковой сортировки&quot;
-void bubbleSort(int* arr, int size) {
+<pre><code class="language-cpp">void bubbleSort(int* a, int size) {
   for (int i = 0; i &lt; size; i++) {
     for (int j = 0; j &lt; size - 1; j++) {
-      if (arr[j] &gt; arr[j + 1]) {
-        swap(&amp;arr[j], &amp;arr[j + 1]);
+      if (a[j] &gt; a[j + 1]) {
+        std::swap(a[j], a[j + 1]);
       }
     }
-  }
-}
-
-int main(void) {
-  int size, *Array;
-
-  std::cin &gt;&gt; size;
-
-  Array = new int[size];  // Выделение памяти под динамический целочисленный
-                          // массив размера size
-
-  for (int i = 0; i &lt; size; i++) {  // Заполнение массива Array
-    std::cin &gt;&gt; Array[i];
-  }
-
-  bubbleSort(Array, size);  // Выполнение сортировки
-
-  for (int i = 0; i &lt; size; i++) {  // Вывод отсортированного массива
-    std::cout &lt;&lt; Array[i] &lt;&lt; ' ';
   }
 }
 </code></pre>
 <h2 id="Ускоренная-версия-алгоритма"><a class="header" href="#Ускоренная-версия-алгоритма">Ускоренная версия алгоритма</a></h2>
-<pre><code class="language-cpp">#include &lt;iostream&gt;
-
-// Функция Swap меняет значения переменных местами
-void swap(int* val1, int* val2) {
-  int tmp = *val1;
-
-  *val1 = *val2;
-  *val2 = tmp;
-}
-
-// Функция &quot;пузырьковой сортировки&quot;
-void bubbleSort(int* arr, int size) {
+<p>Если во втором цикле ни один элемент не поменялся местами с соседом, значит, что массив уже отсортирован — можно выйти из функции сортировки.</p>
+<pre><code class="language-cpp">void bubbleSort(int* a, int size) {
   for (int i = 0; i &lt; size; i++) {
     bool is_any_swapped = false;
-
     for (int j = 0; j &lt; size - 1; j++) {
-      if (arr[j] &gt; arr[j + 1]) {
-        swap(&amp;arr[j], &amp;arr[j + 1]);
+      if (a[j] &gt; a[j + 1]) {
+        std::swap(a[j], a[j + 1]);
         is_any_swapped = true;
       }
     }
-
-    // Если ни один элемент не поменялся местами с соседом, значит, что массив
-    // уже отсортирован
     if (!is_any_swapped) {
       break;
     }
   }
 }
-
-int main(void) {
-  int size, *array;
-
-  std::cin &gt;&gt; size;
-
-  array = new int[size];  // Выделение памяти под динамический целочисленный
-                          // массив размера size
-
-  for (int i = 0; i &lt; size; i++) {  // Заполнение массива Array
-    std::cin &gt;&gt; array[i];
-  }
-
-  bubbleSort(array, size);  // Выполнение сортировки
-
-  for (int i = 0; i &lt; size; i++) {  // Вывод отсортированного массива
-    std::cout &lt;&lt; array[i] &lt;&lt; ' ';
-  }
-}
 </code></pre>
+<blockquote>
+<p>Запуск функции сортировки <code>bubbleSort(array, size);</code></p>
+</blockquote>
 <h2 id="Пример-работы-алгоритма"><a class="header" href="#Пример-работы-алгоритма">Пример работы алгоритма</a></h2>
 <p>Ввод:</p>
 <pre><code class="language-bash">5
@@ -271,7 +211,7 @@ int main(void) {
 <p>Вывод:</p>
 <pre><code class="language-bash">-2 1 7 9 45
 </code></pre>
-<footer id="last-change">Last change: 2023-09-26, commit: <a href="https://github.com/9kin/is-algo/commit/ad5b6cc">ad5b6cc</a></footer>
+<footer id="last-change">Last change: 2023-09-26, commit: <a href="https://github.com/9kin/is-algo/commit/4977ebc">4977ebc</a></footer>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
