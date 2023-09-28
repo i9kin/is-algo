@@ -18,8 +18,10 @@ jobs:
       group: ${{ github.workflow }}-${{ github.ref }}
     steps:
       - uses: actions/checkout@v2
+      - name: Install cargo-binstall
+        uses: cargo-bins/cargo-binstall@v1.4.1
       - name: Install dependencies
-        run: cargo install mdbook-quiz@0.3.3 mdbook-tera@0.5.1 mdbook-last-changed@0.1.3 mdbook@0.4.10     
+        run: cargo binstall -y mdbook-quiz@0.3.3 mdbook-tera@0.5.1 mdbook-last-changed@0.1.3 mdbook@0.4.10 
       - run: mdbook build
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
