@@ -18,14 +18,12 @@ jobs:
       group: ${{ github.workflow }}-${{ github.ref }}
     steps:
       - uses: actions/checkout@v2
-
-      - name: Setup mdBook
-        uses: peaceiris/actions-mdbook@v1
-        with:
-          mdbook-version: '0.4.10'
-      - name: Install binaries
-        working-directory: ${{ github.workspace }}/.github/
-        run: bash ./script.sh     
+      - name : Install Rust
+        run : |
+          curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf -y | sh
+          rustup update
+      - name: Install dependencies
+        run: cargo install mdbook-quiz@0.3.3 mdbook-tera@0.5.1 mdbook-last-changed@0.1.3     
       - run: mdbook build
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
