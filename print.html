@@ -4,47 +4,45 @@
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>is-algo</title>
-                <meta name="robots" content="noindex" />
-                
+        <meta name="robots" content="noindex" />
+
 
         <!-- Custom HTML head -->
         
-
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-                <link rel="icon" href="favicon.svg">
-                        <link rel="shortcut icon" href="favicon.png">
-                <link rel="stylesheet" href="css/variables.css">
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
         <link rel="stylesheet" href="css/general.css">
         <link rel="stylesheet" href="css/chrome.css">
-                <link rel="stylesheet" href="css/print.css" media="print">
-        
+        <link rel="stylesheet" href="css/print.css" media="print">
+
         <!-- Fonts -->
         <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
-                <link rel="stylesheet" href="fonts/fonts.css">
-        
+        <link rel="stylesheet" href="fonts/fonts.css">
+
         <!-- Highlight.js Stylesheets -->
         <link rel="stylesheet" href="highlight.css">
         <link rel="stylesheet" href="tomorrow-night.css">
         <link rel="stylesheet" href="ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
-        
-                <!-- MathJax -->
-        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-            </head>
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
     <body>
         <!-- Provide site root to javascript -->
-        <script type="text/javascript">
+        <script>
             var path_to_root = "";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
         </script>
 
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
-        <script type="text/javascript">
+        <script>
             try {
                 var theme = localStorage.getItem('mdbook-theme');
                 var sidebar = localStorage.getItem('mdbook-sidebar');
@@ -60,7 +58,7 @@
         </script>
 
         <!-- Set the theme before any content is loaded, prevents flash -->
-        <script type="text/javascript">
+        <script>
             var theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
@@ -72,7 +70,7 @@
         </script>
 
         <!-- Hide / unhide sidebar before it is displayed -->
-        <script type="text/javascript">
+        <script>
             var html = document.querySelector('html');
             var sidebar = 'hidden';
             if (document.body.clientWidth >= 1080) {
@@ -85,15 +83,15 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html"><strong aria-hidden="true">1.</strong> Введение</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="how-to-smth/judje.html"><strong aria-hidden="true">1.1.</strong> Тестирующая система</a></li><li class="chapter-item expanded "><a href="how-to-smth/how-to-read.html"><strong aria-hidden="true">1.2.</strong> Как читать</a></li><li class="chapter-item expanded "><a href="how-to-smth/how-to-solve.html"><strong aria-hidden="true">1.3.</strong> Как придумывать</a></li><li class="chapter-item expanded "><a href="how-to-smth/how-to-testing.html"><strong aria-hidden="true">1.4.</strong> Как тестировать</a></li></ol></li><li class="chapter-item expanded "><a href="getting-started/getting-started.html"><strong aria-hidden="true">2.</strong> Начало работы</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="getting-started/installation.html"><strong aria-hidden="true">2.1.</strong> Установка</a></li><li class="chapter-item expanded "><a href="getting-started/code-editor.html"><strong aria-hidden="true">2.2.</strong> Редактор кода</a></li><li class="chapter-item expanded "><a href="getting-started/examples.html"><strong aria-hidden="true">2.3.</strong> Решение задачи</a></li></ol></li><li class="chapter-item expanded "><a href="programming/cpp_base.html"><strong aria-hidden="true">3.</strong> Основы языка C++</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="programming/data-types.html"><strong aria-hidden="true">3.1.</strong> Типы данных</a></li><li class="chapter-item expanded "><a href="programming/io.html"><strong aria-hidden="true">3.2.</strong> Ввод и вывод</a></li><li class="chapter-item expanded "><a href="programming/branching.html"><strong aria-hidden="true">3.3.</strong> Ветвление</a></li><li class="chapter-item expanded "><a href="programming/loops.html"><strong aria-hidden="true">3.4.</strong> Циклы</a></li><li class="chapter-item expanded "><a href="programming/array_types/array.html"><strong aria-hidden="true">3.5.</strong> Массивы</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="programming/array_types/static-array.html"><strong aria-hidden="true">3.5.1.</strong> Статические массивы</a></li><li class="chapter-item expanded "><a href="programming/array_types/dynamic-array.html"><strong aria-hidden="true">3.5.2.</strong> Динамические массивы</a></li><li class="chapter-item expanded "><a href="programming/array_types/VLA.html"><strong aria-hidden="true">3.5.3.</strong> VLA</a></li><li class="chapter-item expanded "><a href="programming/array_types/vector.html"><strong aria-hidden="true">3.5.4.</strong> std::vector</a></li><li class="chapter-item expanded "><a href="programming/array_types/compare-arrays.html"><strong aria-hidden="true">3.5.5.</strong> Что выбрать?</a></li></ol></li><li class="chapter-item expanded "><a href="programming/functions.html"><strong aria-hidden="true">3.6.</strong> Функции</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="programming/params-to-func.html"><strong aria-hidden="true">3.6.1.</strong> Передача параметров в функцию</a></li></ol></li><li class="chapter-item expanded "><a href="programming/links-and-pointers.html"><strong aria-hidden="true">3.7.</strong> Ссылки и указатели</a></li></ol></li><li class="chapter-item expanded "><a href="programming/mem.html"><strong aria-hidden="true">4.</strong> Память</a></li><li class="chapter-item expanded "><a href="algorithms/greedy/index.html"><strong aria-hidden="true">5.</strong> Жадные алгоритмы</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="algorithms/greedy/intro.html"><strong aria-hidden="true">5.1.</strong> Введение</a></li></ol></li><li class="chapter-item expanded "><a href="algorithms/asymptotics.html"><strong aria-hidden="true">6.</strong> Асимптотика</a></li><li class="chapter-item expanded "><a href="algorithms/sorts/sorts.html"><strong aria-hidden="true">7.</strong> Сортировки</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="algorithms/sorts/bubble-sort.html"><strong aria-hidden="true">7.1.</strong> &quot;Пузырьковая&quot; сортировка</a></li><li class="chapter-item expanded "><a href="algorithms/sorts/insertion-sort.html"><strong aria-hidden="true">7.2.</strong> Сортировка вставкой</a></li><li class="chapter-item expanded "><a href="algorithms/sorts/selection-sort.html"><strong aria-hidden="true">7.3.</strong> &quot;Выборочная&quot; сортировка</a></li><li class="chapter-item expanded "><a href="algorithms/sorts/merge-sort.html"><strong aria-hidden="true">7.4.</strong> Сортировка слиянием</a></li><li class="chapter-item expanded "><a href="algorithms/sorts/quick-sort.html"><strong aria-hidden="true">7.5.</strong> Быстрая сортировка</a></li></ol></li><li class="chapter-item expanded "><a href="tasks/index.html"><strong aria-hidden="true">8.</strong> Решаем задачи</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="tasks/different-odd.html"><strong aria-hidden="true">8.1.</strong> Другая чётность</a></li><li class="chapter-item expanded "><a href="tasks/sum-of-factorials.html"><strong aria-hidden="true">8.2.</strong> Сумма факториалов</a></li><li class="chapter-item expanded "><a href="tasks/longest-easy.html"><strong aria-hidden="true">8.3.</strong> Наибольший отрезок</a></li></ol></li><li class="chapter-item expanded "><a href="CONTRIBUTING.html"><strong aria-hidden="true">9.</strong> Сделайте вклад</a></li></ol>            </div>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html"><strong aria-hidden="true">1.</strong> Введение</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="how-to-smth/judje.html"><strong aria-hidden="true">1.1.</strong> Тестирующая система</a></li><li class="chapter-item expanded "><a href="how-to-smth/how-to-read.html"><strong aria-hidden="true">1.2.</strong> Как читать</a></li><li class="chapter-item expanded "><a href="how-to-smth/how-to-solve.html"><strong aria-hidden="true">1.3.</strong> Как придумывать</a></li><li class="chapter-item expanded "><a href="how-to-smth/how-to-testing.html"><strong aria-hidden="true">1.4.</strong> Как тестировать</a></li></ol></li><li class="chapter-item expanded "><a href="getting-started/getting-started.html"><strong aria-hidden="true">2.</strong> Начало работы</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="getting-started/installation.html"><strong aria-hidden="true">2.1.</strong> Установка</a></li><li class="chapter-item expanded "><a href="getting-started/code-editor.html"><strong aria-hidden="true">2.2.</strong> Редактор кода</a></li><li class="chapter-item expanded "><a href="getting-started/examples.html"><strong aria-hidden="true">2.3.</strong> Решение задачи</a></li></ol></li><li class="chapter-item expanded "><a href="programming/cpp_base.html"><strong aria-hidden="true">3.</strong> Основы языка C++</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="programming/data-types.html"><strong aria-hidden="true">3.1.</strong> Типы данных</a></li><li class="chapter-item expanded "><a href="programming/io.html"><strong aria-hidden="true">3.2.</strong> Ввод и вывод</a></li><li class="chapter-item expanded "><a href="programming/branching.html"><strong aria-hidden="true">3.3.</strong> Ветвление</a></li><li class="chapter-item expanded "><a href="programming/loops.html"><strong aria-hidden="true">3.4.</strong> Циклы</a></li><li class="chapter-item expanded "><a href="programming/array_types/array.html"><strong aria-hidden="true">3.5.</strong> Массивы</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="programming/array_types/static-array.html"><strong aria-hidden="true">3.5.1.</strong> Статические массивы</a></li><li class="chapter-item expanded "><a href="programming/array_types/dynamic-array.html"><strong aria-hidden="true">3.5.2.</strong> Динамические массивы</a></li><li class="chapter-item expanded "><a href="programming/array_types/VLA.html"><strong aria-hidden="true">3.5.3.</strong> VLA</a></li><li class="chapter-item expanded "><a href="programming/array_types/vector.html"><strong aria-hidden="true">3.5.4.</strong> std::vector</a></li><li class="chapter-item expanded "><a href="programming/array_types/compare-arrays.html"><strong aria-hidden="true">3.5.5.</strong> Что выбрать?</a></li></ol></li><li class="chapter-item expanded "><a href="programming/functions.html"><strong aria-hidden="true">3.6.</strong> Функции</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="programming/params-to-func.html"><strong aria-hidden="true">3.6.1.</strong> Передача параметров в функцию</a></li></ol></li><li class="chapter-item expanded "><a href="programming/links-and-pointers.html"><strong aria-hidden="true">3.7.</strong> Ссылки и указатели</a></li></ol></li><li class="chapter-item expanded "><a href="programming/mem.html"><strong aria-hidden="true">4.</strong> Память</a></li><li class="chapter-item expanded "><a href="algorithms/greedy/index.html"><strong aria-hidden="true">5.</strong> Жадные алгоритмы</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="algorithms/greedy/intro.html"><strong aria-hidden="true">5.1.</strong> Введение</a></li></ol></li><li class="chapter-item expanded "><a href="algorithms/asymptotics.html"><strong aria-hidden="true">6.</strong> Асимптотика</a></li><li class="chapter-item expanded "><a href="algorithms/sorts/sorts.html"><strong aria-hidden="true">7.</strong> Сортировки</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="algorithms/sorts/bubble-sort.html"><strong aria-hidden="true">7.1.</strong> "Пузырьковая" сортировка</a></li><li class="chapter-item expanded "><a href="algorithms/sorts/insertion-sort.html"><strong aria-hidden="true">7.2.</strong> Сортировка вставкой</a></li><li class="chapter-item expanded "><a href="algorithms/sorts/selection-sort.html"><strong aria-hidden="true">7.3.</strong> "Выборочная" сортировка</a></li><li class="chapter-item expanded "><a href="algorithms/sorts/merge-sort.html"><strong aria-hidden="true">7.4.</strong> Сортировка слиянием</a></li><li class="chapter-item expanded "><a href="algorithms/sorts/quick-sort.html"><strong aria-hidden="true">7.5.</strong> Быстрая сортировка</a></li></ol></li><li class="chapter-item expanded "><a href="tasks/index.html"><strong aria-hidden="true">8.</strong> Решаем задачи</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="tasks/different-odd.html"><strong aria-hidden="true">8.1.</strong> Другая чётность</a></li><li class="chapter-item expanded "><a href="tasks/sum-of-factorials.html"><strong aria-hidden="true">8.2.</strong> Сумма факториалов</a></li><li class="chapter-item expanded "><a href="tasks/longest-easy.html"><strong aria-hidden="true">8.3.</strong> Наибольший отрезок</a></li></ol></li><li class="chapter-item expanded "><a href="CONTRIBUTING.html"><strong aria-hidden="true">9.</strong> Сделайте вклад</a></li></ol>
+            </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                
-                <div id="menu-bar-hover-placeholder"></div>
+                                <div id="menu-bar-hover-placeholder"></div>
                 <div id="menu-bar" class="menu-bar sticky bordered">
                     <div class="left-buttons">
                         <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
@@ -103,31 +101,31 @@
                             <i class="fa fa-paint-brush"></i>
                         </button>
                         <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                                                <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
                             <i class="fa fa-search"></i>
                         </button>
-                                            </div>
+                    </div>
 
                     <h1 class="menu-title">is-algo</h1>
 
                     <div class="right-buttons">
-                                                <a href="print.html" title="Print this book" aria-label="Print this book">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                                                                        <a href="https://github.com/9kin/is-algo" title="Git repository" aria-label="Git repository">
+                        <a href="https://github.com/9kin/is-algo" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
-                                                
+
                     </div>
                 </div>
 
-                                <div id="search-wrapper" class="hidden">
+                <div id="search-wrapper" class="hidden">
                     <form id="searchbar-outer" class="searchbar-outer">
                         <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
                     </form>
@@ -137,9 +135,9 @@
                         </ul>
                     </div>
                 </div>
-                
+
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
-                <script type="text/javascript">
+                <script>
                     document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
                     document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
                     Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
@@ -1312,43 +1310,77 @@ proof https://www.cs.cornell.edu/courses/cs482/2007su/exchange.pdf (step3)
 <li>Разные операции процессор может делать с разной эффективностью. Например, операция <code>%</code> взятие по модулю работает не так быстро, как обычное деление. Так, как \(x = y % z\) для процессора эквивалентно \(x = x - y \cdot (x/y)\), а это уже три операции. Так-же компилятор может оптимизировать ваш код (и не только улучишь его асимптотику, но и ухудшить).</li>
 </ol>
 <p>Таблица для обычных ограничений :</p>
-<table><thead><tr><th>асимптотика</th><th>максимальное n для 1-ой секунды</th></tr></thead><tbody>
+<div class="table-wrapper"><table><thead><tr><th>асимптотика</th><th>максимальное n для 1-ой секунды</th></tr></thead><tbody>
 <tr><td>\(O(n)\)</td><td>\(10^8\)</td></tr>
 <tr><td>\(O(n \log n)\)</td><td>\(10^6\)</td></tr>
 <tr><td>\(O(n^2)\)</td><td>5000</td></tr>
 <tr><td>\(O(n^3)\)</td><td>1000<sup class="footnote-reference"><a href="#1">1</a></sup></td></tr>
 </tbody></table>
+</div>
 <div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
 <p>Для \(O(n^3)\) я написал 1000, так как скорее всего алгоритм использует три вложенных цикла, и компилятор <a href="https://ru.algorithmica.org/cs/arithmetic/simd/">векторизовал</a> их.</p>
 </div>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="Сортировки"><a class="header" href="#Сортировки">Сортировки</a></h1>
-<p>Как вы уже знаете - сортировка - это процесс упорядочивания множества по определенном признаку. В страницах этого раздела представлены различные алгоритмы сортировок, имеющие свои преимущества и недостатки. Каждая сортировка детально разобрана, включая асимптотику, принцип работы, сильные/слабые стороны. </p>
+<p>Сортировка - это процесс упорядочивания множества по определённом признаку. В страницах этого раздела представлены различные алгоритмы сортировок, имеющие свои преимущества и недостатки. Каждая сортировка детально разобрана, включая асимптотику, принцип работы, сильные/слабые стороны. </p>
+<blockquote>
+<p>Сортировка является одной из фундаментальных проблем проектирования алгоритмов. Многие эффективные алгоритмы используют сортировку в качестве подпрограммы, поскольку зачастую легче обрабатывать данные, если они расположены в отсортированном порядке.</p>
+</blockquote>
 <blockquote>
 <p>Обращение к ленивым/плохо понимающим сортировки людям! Просьба не копипастить код с сортировок в лабораторные, потому что тогда вы все получите бан за списывание. Вам нужно понять принцип работы и писать свой код, не подглядывая, а не просто перепечатывать код с сайта в лабу!</p>
 </blockquote>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="Пузырьковая-сортировка-bubble-sort"><a class="header" href="#Пузырьковая-сортировка-bubble-sort">&quot;Пузырьковая сортировка&quot; (Bubble sort)</a></h1>
-<p>Самая простая из предложенных сортировок, представляющая собой перебор элементов массива и сравнение каждого с каждым</p>
-<p>Сложность: <em><strong>O(n^2)</strong></em></p>
 <blockquote>
-<p>Данной сортировкой пользуются крайне редко из-за скорости её работы, поскольку при обработке массива с большим количеством элементов время может стремиться к бесконечности
-Более предпочтительными будут сортировки, представленные в других разделах этой темы</p>
+<p>Любой алгоритм сортировки, который использует только сравнения элементов массива, не может быть быстрее, чем \(O(n \log n)\). Это доказательство было представлено в 1964 году Клаусом Янсеном (Klaus Janson) и Микелем Патерсоном (Michael Paterson). Однако, есть некоторые алгоритмы сортировки, которые не используют сравнения элементов массива и могут работать быстрее \(O(n \log n)\), например, поразрядная сортировка (radix sort) и сортировка подсчетом (counting sort). </p>
+</blockquote>
+<!-- TODO доказать. https://cses.fi/book/book.pdf страница 28 -->
+<h2 id="Устойчивость-сортировки"><a class="header" href="#Устойчивость-сортировки">Устойчивость сортировки</a></h2>
+<!-- souce: https://stackoverflow.com/questions/1517793/what-is-stability-in-sorting-algorithms-and-why-is-it-important/1517824#1517824-->
+<p>Алгоритм сортировки считается устойчивым, если два объекта с одинаковыми ключами располагаются в сортируемом выходном массиве в том же порядке, в каком они располагаются во входном массиве, подлежащем сортировке. Другими словами,  &quot;стабильный&quot; алгоритм сортировки сохраняет порядок элементов с одинаковым ключом сортировки.</p>
+<p>Пример : </p>
+<p>Сортировка в алфавитном порядке по первой букве слова.</p>
+<pre><code class="language-bash">peach
+straw
+apple
+spork
+</code></pre>
+<p>Результат стабильной сортировки :</p>
+<pre><code>apple
+peach
+straw
+spork
+</code></pre>
+<p>В алгоритме неустойчивой сортировки <code>straw</code> и <code>spork</code> могут меняться местами, а в устойчивом алгоритме они остаются в тех же относительных позициях (т.е. поскольку в исходном массиве <code>straw</code> оказывается раньше <code>spork</code>, то и на выходе она оказывается раньше <code>spork</code>).</p>
+<p>! Нестабильная сортировка может дать такой-же ответ как и стабильная сортировка.</p>
+<h3 id="Зачем-это"><a class="header" href="#Зачем-это">Зачем это???</a></h3>
+<p>Иногда стоит выбрать нужную сортировку, чтобы сохранить порядок.</p>
+<blockquote>
+<p>На самом деле мы можем сортировать пары со значением и индексом. Например, в примере выше, если мы представим слова, как <code>(p, 0), (s, 1), (a, 2), (s, 3)</code>.</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="Пузырьковая-сортировка-bubble-sort"><a class="header" href="#Пузырьковая-сортировка-bubble-sort">&quot;Пузырьковая сортировка&quot; (Bubble sort)</a></h1>
+<div class="table-wrapper"><table><thead><tr><th>характеристики</th><th>значения</th></tr></thead><tbody>
+<tr><td>временная сложность</td><td>\(O(n^2)\)</td></tr>
+<tr><td>дополнительная память</td><td>\(O(1)\)</td></tr>
+<tr><td>стабильная ли?</td><td>✅</td></tr>
+</tbody></table>
+</div>
+<h2 id="Алгоритм-1"><a class="header" href="#Алгоритм-1">Алгоритм</a></h2>
+<p>Пузырьковая сортировка состоит из \(n\) раундов. На каждом раунде алгоритм выполняет итерацию по элементам массива. При обнаружении двух последовательных элементов которые расположены не в правильном порядке, алгоритм меняет их местами. Алгоритм можно реализовать следующим образом реализовать следующим образом</p>
+<blockquote>
+<p>Данной сортировкой пользуются крайне редко из-за скорости её работы, поскольку при обработке массива с большим количеством элементов время может стремиться к бесконечности. Более предпочтительными будут сортировки, представленные в других разделах этой темы</p>
 </blockquote>
 <h2 id="Преимущества-алгоритма"><a class="header" href="#Преимущества-алгоритма">Преимущества алгоритма</a></h2>
 <ol>
-<li>ну типо даже не знаю, что и сказать</li>
-<li>Его знает каждый</li>
-<li>Не требователен к памяти</li>
-<li>Стабильный алгоритм</li>
+<li>Не используется дополнительная память.</li>
+<li>Для маленьких массивов предпочтительнее, чем другие алгоритмы. Я помню, что я находил статью в третьем классе на стакоферфлоу, там делали сети сортировок. TODO</li>
+<li>Относительная простота в написание кода.</li>
 </ol>
 <h2 id="Недостатки-алгоритма"><a class="header" href="#Недостатки-алгоритма">Недостатки алгоритма</a></h2>
-<ol>
-<li>Сложность - O(n^2)</li>
-<li>Ну типо тут и так понятно, что бабл сорт - самый крутой алгоритм, и ему нет равных</li>
-</ol>
+<p>Сложность - \(O(n^2)\).</p>
+<h2 id="Почему-такое-название-алгоритма"><a class="header" href="#Почему-такое-название-алгоритма">Почему такое название алгоритма?</a></h2>
+<p>Пузырьковая сортировка получила своё название потому, что элементы стремятся подняться в правильном порядке, как пузырьки, поднимающиеся на поверхность.</p>
 <h2 id="Обычная-версия-алгоритма"><a class="header" href="#Обычная-версия-алгоритма">Обычная версия алгоритма</a></h2>
-<pre><code class="language-cpp">void bubbleSort(int* a, int size) {
-  for (int i = 0; i &lt; size; i++) {
-    for (int j = 0; j &lt; size - 1; j++) {
+<pre><code class="language-cpp">void bubbleSort(int* a, int n) {
+  for (int i = 0; i &lt; n; i++) {
+    for (int j = 0; j &lt; n - 1; j++) {
       if (a[j] &gt; a[j + 1]) {
         std::swap(a[j], a[j + 1]);
       }
@@ -1358,10 +1390,10 @@ proof https://www.cs.cornell.edu/courses/cs482/2007su/exchange.pdf (step3)
 </code></pre>
 <h2 id="Ускоренная-версия-алгоритма"><a class="header" href="#Ускоренная-версия-алгоритма">Ускоренная версия алгоритма</a></h2>
 <p>Если во втором цикле ни один элемент не поменялся местами с соседом, значит, что массив уже отсортирован — можно выйти из функции сортировки.</p>
-<pre><code class="language-cpp">void bubbleSort(int* a, int size) {
-  for (int i = 0; i &lt; size; i++) {
+<pre><code class="language-cpp">void bubbleSort(int* a, int n) {
+  for (int i = 0; i &lt; n; i++) {
     bool is_any_swapped = false;
-    for (int j = 0; j &lt; size - 1; j++) {
+    for (int j = 0; j &lt; n - 1; j++) {
       if (a[j] &gt; a[j + 1]) {
         std::swap(a[j], a[j + 1]);
         is_any_swapped = true;
@@ -1376,32 +1408,44 @@ proof https://www.cs.cornell.edu/courses/cs482/2007su/exchange.pdf (step3)
 <blockquote>
 <p>Запуск функции сортировки <code>bubbleSort(array, size);</code></p>
 </blockquote>
+<h2 id="Доказательство-сложности-алгоритма"><a class="header" href="#Доказательство-сложности-алгоритма">Доказательство сложности алгоритма</a></h2>
+<p>Временная сложность такого алгоритма всегда не менее \(O(n^2)\), так как в худшем случае для сортировки массива требуется \(O(n^2)\) перестановок, а точнее количество инверсий. Я сделаю блок, про инверсии и как решать забавные задачи на инверсии но чуть попозже. TODO</p>
+<p>Массив полностью отсортирован, если в нем нет инверсий. С другой стороны, если элементы массива расположены в обратном порядке, то количество инверсий будет максимально возможным.</p>
+<p>\[ 1 + 2 + \dots + (n-1) = \dfrac{n(n - 1)}{2} = O(n^2)\]</p>
+<blockquote>
+<p>Вообще можно всегда пользоваться такой мудростью &quot;если в коде есть два цикла, то это похоже на \(O(n^2)\)&quot;.</p>
+</blockquote>
 <h2 id="Пример-работы-алгоритма"><a class="header" href="#Пример-работы-алгоритма">Пример работы алгоритма</a></h2>
 <p>Ввод:</p>
-<pre><code class="language-bash">5
-1 9 45 7 -2
+<pre><code class="language-bash">1 9 45 7 -2
 </code></pre>
 <p>Работа алгоритма:
-Алгоритм попарно сравнивает 1 с 9, 9 с 45, 45 с 7(меняет их местами), 45 с -2(меняет их местами), а потом идёт с самого начала, но уже с обновлённым массивом</p>
+Алгоритм попарно сравнивает <code>1</code> с <code>9</code>, <code>9</code> с <code>45</code>, <code>45</code> с <code>7</code> (меняет их местами), <code>45</code> с <code>-2</code> (меняет их местами), а потом идёт с самого начала, но уже с обновлённым массивом</p>
 <p>Вывод:</p>
 <pre><code class="language-bash">-2 1 7 9 45
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="Сортировка-вставкой"><a class="header" href="#Сортировка-вставкой">Сортировка вставкой</a></h1>
+<div class="table-wrapper"><table><thead><tr><th>характеристики</th><th>значения</th></tr></thead><tbody>
+<tr><td>временная сложность</td><td>\(O(n^2)\)</td></tr>
+<tr><td>дополнительная память</td><td>\(O(1)\)</td></tr>
+<tr><td>стабильная ли?</td><td>✅</td></tr>
+</tbody></table>
+</div>
+<h2 id="Алгоритм-2"><a class="header" href="#Алгоритм-2">Алгоритм</a></h2>
 <blockquote>
-<p>Сортировка вставкой чем-то похожа игру в карты, мы добавляем элемент к чему-то уже отсортированному.
-Имеющийся массив надо условно разбить на отсортированную часть и неотсортированную, а потом добавлять по одному элементу к отсортированной части, <strong>вставляя</strong> его в нужное место</p>
+<p>Сортировка вставкой чем-то похожа игру в карты, мы добавляем элемент к чему-то уже отсортированному.</p>
 </blockquote>
-<p>Сложность: <em><strong>O(n^2)</strong></em></p>
+<blockquote>
+<p>Имеющийся массив надо условно разбить на отсортированную часть и неотсортированную, а потом добавлять по одному элементу к отсортированной части, <strong>вставляя</strong> его в нужное место</p>
+</blockquote>
 <h2 id="Преимущества-алгоритма-1"><a class="header" href="#Преимущества-алгоритма-1">Преимущества алгоритма</a></h2>
 <ol>
-<li>Легкий для понимания и воспроизведения алгоритм</li>
-<li>Эффективен для маленьких массивов</li>
+<li>Не используется дополнительная память.</li>
+<li>Лёгкий для понимания и воспроизведения алгоритм.</li>
+<li>Эффективен для маленьких массивов.</li>
 </ol>
 <h2 id="Недостатки-алгоритма-1"><a class="header" href="#Недостатки-алгоритма-1">Недостатки алгоритма</a></h2>
-<ol>
-<li>Сложность в среднем и худшем случаях - O(n^2)</li>
-<li>Медленно работает на больших массивах</li>
-</ol>
+<p>Сложность в среднем и худшем случаях — \(O(n^2)\)</p>
 <h2 id="Реализация-алгоритма"><a class="header" href="#Реализация-алгоритма">Реализация алгоритма</a></h2>
 <pre><code class="language-cpp">void insertionSort(int* a, int size) {
   for (int i = 1; i &lt; size; i++) {
@@ -1419,12 +1463,11 @@ proof https://www.cs.cornell.edu/courses/cs482/2007su/exchange.pdf (step3)
 <p>Запуск функции сортировки <code>insertionSort(array, size);</code></p>
 </blockquote>
 <h2 id="Ввод-1"><a class="header" href="#Ввод-1">Ввод</a></h2>
-<pre><code class="language-bash">6
-4 1 2 5 4 -68
+<pre><code class="language-bash">4 1 2 5 4 -68
 </code></pre>
 <h2 id="Работа-алгоритма"><a class="header" href="#Работа-алгоритма">Работа алгоритма</a></h2>
 <ol>
-<li>Берем 4 как элемент уже отсортированного массива: { 4 }</li>
+<li>Берём 4 как элемент уже отсортированного массива: { 4 }</li>
 <li>Добавляем к нему 1: 1 &lt; 4, значит, ставим его до 4: { 1 4 }</li>
 <li>Аналогично добавляем 2: { 1 2 4 }</li>
 <li>Добавляем 5: 5 &gt; 1, 5 &gt; 2, 5 &gt; 4, значит, ставим его после 4: { 1 2 4 5 }</li>
@@ -1435,18 +1478,22 @@ proof https://www.cs.cornell.edu/courses/cs482/2007su/exchange.pdf (step3)
 <pre><code class="language-bash">-68 1 2 4 4 5
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="Выборочная-сортировка"><a class="header" href="#Выборочная-сортировка">&quot;Выборочная&quot; сортировка</a></h1>
-<blockquote>
-<p>Selection sort - простая и эффективная сортировка, которая как и Insertion sort условно делит массив на две части (отсортированную и неотсортированную), только изначально кол-во элементов в отсортированной части - 0. Далее алгоритм ищет минимальный элемент в неотсортированной части и добавляет его в отсортированную. Данный процесс повторяется, пока все элементы не перейдут в отсортированный массив</p>
-</blockquote>
-<p>Сложность: <em><strong>O(n^2)</strong></em></p>
-<h2 id="Преимущества-алгоритма-2"><a class="header" href="#Преимущества-алгоритма-2">Преимущества алгоритма</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>характеристики</th><th>значения</th></tr></thead><tbody>
+<tr><td>временная сложность</td><td>\(O(n^2)\)</td></tr>
+<tr><td>дополнительная память</td><td>\(O(1)\)</td></tr>
+<tr><td>стабильная ли?</td><td>⛔️</td></tr>
+</tbody></table>
+</div>
+<h2 id="Алгоритм-3"><a class="header" href="#Алгоритм-3">Алгоритм</a></h2>
+<p>Selection sort — простая и эффективная сортировка, которая как и Insertion sort условно делит массив на две части (отсортированную и неотсортированную), только изначально кол-во элементов в отсортированной части - 0. Далее алгоритм ищет минимальный элемент в неотсортированной части и добавляет его в отсортированную. Данный процесс повторяется, пока все элементы не перейдут в отсортированный массив</p>
 <ol>
-<li>Легкий для понимания и воспроизведения</li>
-<li>Хорош для маленьких массивов</li>
+<li>Не используется дополнительная память.</li>
+<li>Лёгкий для понимания и воспроизведения алгоритм.</li>
+<li>Эффективен для маленьких массивов.</li>
 </ol>
 <h2 id="Недостатки-алгоритма-2"><a class="header" href="#Недостатки-алгоритма-2">Недостатки алгоритма</a></h2>
 <ol>
-<li>Сложность O(n^2) в худшем и среднем случаях, из-за чего для больших массивов скорость работы может стремиться к бесконечности</li>
+<li>Сложность \O(n^2)\) в худшем и среднем случаях</li>
 <li>Нестабильный алгоритм</li>
 </ol>
 <h2 id="Реализация-алгоритма-1"><a class="header" href="#Реализация-алгоритма-1">Реализация алгоритма</a></h2>
@@ -1476,12 +1523,13 @@ proof https://www.cs.cornell.edu/courses/cs482/2007su/exchange.pdf (step3)
   }
 }
 </code></pre>
+<h2 id="Почему-не-стабильная"><a class="header" href="#Почему-не-стабильная">Почему не стабильная?</a></h2>
+<p>Selection Sort не является устойчивым алгоритмом сортировки, поскольку меняет местами несмежные элементы. Например, при задании <code>[2, 2, 1]</code> значения <code>2</code> не сохранят свой первоначальный порядок в в выходном отсортированном массиве.</p>
 <blockquote>
 <p>Запуск функции сортировки <code>selectionSort(array, size);</code></p>
 </blockquote>
 <h2 id="Ввод-2"><a class="header" href="#Ввод-2">Ввод:</a></h2>
-<pre><code class="language-bash">5
-12 865 -1233 47 2
+<pre><code class="language-bash">12 865 -1233 47 2
 </code></pre>
 <h2 id="Работа-алгоритма-1"><a class="header" href="#Работа-алгоритма-1">Работа алгоритма</a></h2>
 <p>Знак | отделяет отсортированную часть от неотсортированной
@@ -1497,133 +1545,66 @@ proof https://www.cs.cornell.edu/courses/cs482/2007su/exchange.pdf (step3)
 <pre><code class="language-bash">-1233 2 12 47 865
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="Сортировка-слиянием"><a class="header" href="#Сортировка-слиянием">Сортировка слиянием</a></h1>
-<blockquote>
-<p>Merge sort - рекурсивный алгоритм сортировки, разбивающий основной массив на подмассивы, сортирующий их и собирающий всё обратно в отсортированном виде</p>
-</blockquote>
-<p>Сложность: <em><strong>O(n log(n))</strong></em></p>
-<h2 id="Преимущества-алгоритма-3"><a class="header" href="#Преимущества-алгоритма-3">Преимущества алгоритма</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>характеристики</th><th>значения</th></tr></thead><tbody>
+<tr><td>временная сложность</td><td>\(O(n \log n)\)</td></tr>
+<tr><td>дополнительная память</td><td>\(O(n)\) или \(O(1)\) <sup class="footnote-reference"><a href="#1">1</a></sup></td></tr>
+<tr><td>стабильная ли?</td><td>✅</td></tr>
+</tbody></table>
+</div>
+<p>Merge sort - рекурсивный алгоритм сортировки, разбивающий основной массив на подмассивы, сортирующий их и собирающий всё обратно в отсортированном виде. Такие алгоритмы называются &quot;разделяй и властвуй&quot;, но о таких алгоритмах попозже. (в курсе такого не будет=) )</p>
+<h2 id="Алгоритм-4"><a class="header" href="#Алгоритм-4">Алгоритм</a></h2>
+<p>Алгоритм <code>Merge sort</code> на подмасиве \(array[l \dots r]\) выглядит следующем образом:</p>
+<ol>
+<li>Если <code>l = r</code>, ничего не делать, так как массив отсортирован.</li>
+<li>Вычислить середину отрезка: \(m = (l + r)/2\) с округлением вниз.</li>
+<li>Рекурсивно отсортировать \(array[l \dots m]\).</li>
+<li>Рекурсивно отсортировать \(array[m + 1 \dots r]\).</li>
+<li>Объединить (<code>merge</code>) два уже <strong>отсортированных</strong> массива \(array[l \dots m]\) и \(array[m + 1 \dots r]\) в один общий отсортированный массив \(array[l \dots r]\)</li>
+</ol>
+<h3 id="Объединение-отсортированных-массивов"><a class="header" href="#Объединение-отсортированных-массивов">Объединение отсортированных массивов</a></h3>
+<p>Пункт (5) является очень простым. Используя метод двух указателей, можно двигать границы \(i\) и \(j\) добавляя в итоговый массив \(array[l \dots r]\) самый маленький из \(array[i]\) и \(array[j]\).</p>
+<h2 id="Преимущества-алгоритма-2"><a class="header" href="#Преимущества-алгоритма-2">Преимущества алгоритма</a></h2>
 <ol>
 <li>Стабильный алгоритм</li>
-<li>Сложность алгоритма в худшем случае - O(n log(n)), следовательно, он хорош для больших массивов</li>
-<li>Алгоритм параллелен - его можно спокойно ускорить, разбив действия на разные потоки процессора</li>
+<li>Сложность алгоритма в худшем случае — \(O(n \log n)\) , следовательно, он идеален для больших массивов.</li>
+<li>Алгоритм параллелен — его можно спокойно ускорить, разбив действия на разные потоки процессора. </li>
 </ol>
 <h2 id="Недостатки-алгоритма-3"><a class="header" href="#Недостатки-алгоритма-3">Недостатки алгоритма</a></h2>
 <ol>
-<li>Требователен к памяти</li>
-<li>Не всегда оптимален для маленьких массивов</li>
+<li>Требователен к памяти.</li>
+<li>Не всегда оптимален для маленьких массивов.</li>
 </ol>
-<h2 id="Реализация-алгоритма-1"><a class="header" href="#Реализация-алгоритма-1">Реализация алгоритма №1</a></h2>
-<pre><code class="language-cpp">void merge(int* a, int left, int mid, int right) {
-  int subArrayOne = mid - left + 1;
-  int subArrayTwo = right - mid;
-
-  // Создание временных массивов
-  int *leftArray = new int[subArrayOne], *rightArray = new int[subArrayTwo];
-
-  // Копирование данных в подмассивы
-  for (auto i = 0; i &lt; subArrayOne; i++) {
-    leftArray[i] = a[left + i];
+<h2 id="Реализация-алгоритма-2"><a class="header" href="#Реализация-алгоритма-2">Реализация алгоритма</a></h2>
+<p>Я специально оставлю реализацию на подумать (я проверил на задаче, она работает). (реализация взята <a href="https://acm.khpnets.info/wiki/%D0%A1%D0%BE%D1%80%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%BA%D0%B0_%D1%81%D0%BB%D0%B8%D1%8F%D0%BD%D0%B8%D0%B5%D0%BC">отсюда</a>)</p>
+<pre><code class="language-cpp">void mergeSort(int* a, int* tmp, int l, int r) {
+  if (l == r) return;       // (1)
+  int m = l + (r - l) / 2;  // (2)
+  mergeSort(a, tmp, l, m);  // (3) рекурсивный запуск для левой части
+  mergeSort(a, tmp, m + 1, r);  // (4) рекурсивный запуск для правой части
+  for (int i = l; i &lt;= r; i++)
+    tmp[i] = a[i];  // массив tmp равен а (соответствующие подотрезки)
+  // (5) два указателя, очень красивые
+  int ai = l, bi = m + 1;
+  for (int i = l; i &lt;= r; i++) {
+    if (bi &gt; r || ai &lt;= m &amp;&amp; tmp[ai] &lt;= tmp[bi])
+      a[i] = tmp[ai++];
+    else
+      a[i] = tmp[bi++];
   }
-
-  for (auto j = 0; j &lt; subArrayTwo; j++) {
-    rightArray[j] = a[mid + 1 + j];
-  }
-
-  int indexOfSubArrayOne = 0, indexOfSubArrayTwo = 0, indexOfMergedArray = left;
-
-  // Соединение временных массивов в наш изначальный
-  while (indexOfSubArrayOne &lt; subArrayOne &amp;&amp; indexOfSubArrayTwo &lt; subArrayTwo) {
-    if (leftArray[indexOfSubArrayOne] &lt;= rightArray[indexOfSubArrayTwo]) {
-      a[indexOfMergedArray] = leftArray[indexOfSubArrayOne];
-      indexOfSubArrayOne++;
-    } else {
-      a[indexOfMergedArray] = rightArray[indexOfSubArrayTwo];
-      indexOfSubArrayTwo++;
-    }
-    indexOfMergedArray++;
-  }
-
-  // Копирование оставшихся элементов левого ммассива, если они остались
-  while (indexOfSubArrayOne &lt; subArrayOne) {
-    a[indexOfMergedArray] = leftArray[indexOfSubArrayOne];
-    indexOfSubArrayOne++;
-    indexOfMergedArray++;
-  }
-
-  // Копирование оставшихся элементов правого ммассива, если они остались
-  while (indexOfSubArrayTwo &lt; subArrayTwo) {
-    a[indexOfMergedArray] = rightArray[indexOfSubArrayTwo];
-    indexOfSubArrayTwo++;
-    indexOfMergedArray++;
-  }
-
-  // Удалить массивы и очистить память
-  delete[] leftArray;
-  delete[] rightArray;
-}
-
-// begin отвечает за левый индекс, end - за правый
-void mergeSort(int* array, int begin, int end) {
-  if (begin &gt;= end) return;
-
-  int mid = begin + (end - begin) / 2;
-
-  // Сортировка и соединение массива
-  mergeSort(array, begin, mid);
-  mergeSort(array, mid + 1, end);
-  merge(array, begin, mid, end);
-}
-</code></pre>
-<h2 id="Реализация-алгоритма-2"><a class="header" href="#Реализация-алгоритма-2">Реализация алгоритма №2</a></h2>
-<p>Используем глобальный массив, вместо временных <code>leftArray</code> и <code>rightArray</code>.</p>
-<pre><code class="language-cpp">int* B;
-
-// Рекурсивная часть сортировки
-void mergeSortRec(int* a, int size) {
-  if (size &lt; 2) {
-    return;
-  }
-
-  int M = size / 2;
-
-  // Вызов рекурсии
-  mergeSortRec(a, M);
-  mergeSortRec(a + M, size - M);
-
-  // Копируем данный в левый и правый массивы
-  for (int k = 0, i = 0, j = M; k &lt; size; ++k) {
-    // Записываем меньшее значение в k-й элемент массива B
-    if (j &gt;= size || i &lt; M &amp;&amp; a[i] &lt; a[j]) {
-      B[k] = a[i++];
-    } else {
-      B[k] = a[j++];
-    }
-  }  // Если один из массивов закончится, то просто запишется остаток другого
-     // массива
-
-  // Копируем данные в исходный массив
-  for (int i = 0; i &lt; size; i++) {
-    a[i] = B[i];
-  }
-}
-
-// Функция, вызывающая сортировку
-void mergeSort(int* a, int size) {
-  B = new int[size];
-
-  if (B == nullptr) return;
-
-  mergeSortRec(a, size);
-
-  delete[] B;
 }
 </code></pre>
 <blockquote>
-<p>Запуск функции сортировки <code>mergeSort(arr, 0, size - 1);</code></p>
+<p>Запуск функции сортировки <code>int *tmp = new int[size]; mergeSort(arr, tmp, 0, size-1);</code>. </p>
+</blockquote>
+<p>Можно написать без использование глобального массива <code>tmp</code>.</p>
+<h2 id="Доказательство-сложности-алгоритма-1"><a class="header" href="#Доказательство-сложности-алгоритма-1">Доказательство сложности алгоритма</a></h2>
+<p>Чтобы оценить время работы этого алгоритма, составим рекуррентное соотношение. Это на любом сайте написано. Думайте.</p>
+<p>Давайте объясню на пальцах :</p>
+<blockquote>
+<p>Во время разбиения массива на две части, каждый элемент массива обрабатывается один раз. Всего уровней рекурсии будет \(\log n\), так как каждый раз массив делится пополам. При слиянии двух частей массива для всего уровня выполняется \(O(n)\) операций.</p>
 </blockquote>
 <h2 id="Ввод-3"><a class="header" href="#Ввод-3">Ввод</a></h2>
-<pre><code class="language-bash">4
-49 12 -3 15
+<pre><code class="language-bash">49 12 -3 15
 </code></pre>
 <h2 id="Работа-алгоритма-2"><a class="header" href="#Работа-алгоритма-2">Работа алгоритма</a></h2>
 <ol>
@@ -1635,59 +1616,61 @@ void mergeSort(int* a, int size) {
 <h2 id="Вывод-3"><a class="header" href="#Вывод-3">Вывод</a></h2>
 <pre><code class="language-bash">-3 12 15 49
 </code></pre>
+<p>Можно решить задачу о количестве инверсий в массиве. TODO?</p>
+<p><sup class="footnote-reference"><a href="#1">1</a></sup> : можно реализовать, но это слишком <a href="https://www.google.com/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=&amp;ved=2ahUKEwjy7OyMldCBAxWyIxAIHTLPBJsQFnoECAgQAQ&amp;url=https%3A%2F%2Fneerc.ifmo.ru%2Fwiki%2Findex.php%3Ftitle%3DC%25D0%25BE%25D1%2580%25D1%2582%25D0%25B8%25D1%2580%25D0%25BE%25D0%25B2%25D0%25BA%25D0%25B0_%25D1%2581%25D0%25BB%25D0%25B8%25D1%258F%25D0%25BD%25D0%25B8%25D0%25B5%25D0%25BC_%25D1%2581_%25D0%25B8%25D1%2581%25D0%25BF%25D0%25BE%25D0%25BB%25D1%258C%25D0%25B7%25D0%25BE%25D0%25B2%25D0%25B0%25D0%25BD%25D0%25B8%25D0%25B5%25D0%25BC_O(1)_%25D0%25B4%25D0%25BE%25D0%25BF%25D0%25BE%25D0%25BB%25D0%25BD%25D0%25B8%25D1%2582%25D0%25B5%25D0%25BB%25D1%258C%25D0%25BD%25D0%25BE%25D0%25B9_%25D0%25BF%25D0%25B0%25D0%25BC%25D1%258F%25D1%2582%25D0%25B8&amp;usg=AOvVaw235f3zvb_T5TBa_xWEB_9g&amp;opi=89978449">сложно</a>.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="Быстрая-сортировка"><a class="header" href="#Быстрая-сортировка">&quot;Быстрая&quot; сортировка</a></h1>
-<blockquote>
-<p>Quick sort - рекурсивный алгоритм, основанный на принципе &quot;Divide and Conquer&quot; (&quot;Разделяй и властвуй&quot;). Выбирается какая-то опорная точка (pivot point), относительно которой массив разбивается на подмассивы, после чего эта точка ставится на нужное место в массив.</p>
-</blockquote>
-<p>Сложность: <em><strong>O(n log(n)) - лучший/средний, O(n^2) - худший</strong></em></p>
-<h2 id="Преимущества-алгоритма-4"><a class="header" href="#Преимущества-алгоритма-4">Преимущества алгоритма</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>характеристики</th><th>значения</th></tr></thead><tbody>
+<tr><td>временная сложность</td><td>\(O(n \log n)\) или \(O(n^2)\)<sup class="footnote-reference"><a href="#1">1</a></sup></td></tr>
+<tr><td>дополнительная память</td><td>\(O(1)\)</td></tr>
+<tr><td>стабильная ли?</td><td>⛔️</td></tr>
+</tbody></table>
+</div>
+<h2 id="Алгоритм-5"><a class="header" href="#Алгоритм-5">Алгоритм</a></h2>
+<p>Quick sort - рекурсивный алгоритм, основанный на принципе &quot;&quot;разделяй и властвуй&quot;. Выбирается какая-то опорная точка (pivot point), относительно которой массив разбивается на подмассивы, после чего эта точка ставится на нужное место в массив.</p>
+<p>Алгоритм состоит из трёх шагов:</p>
 <ol>
-<li>Алгоритм &quot;Разделяй и властвуй&quot; позволяющий легче решать задачу</li>
+<li>Выбрать элемент из массива. Назовём его опорным.</li>
+<li>Разбиение: перераспределение элементов в массиве таким образом, что элементы, меньшие опорного, помещаются перед ним, а большие или равные - после.</li>
+<li>Рекурсивно применить первые два шага к двум подмассивам слева и справа от опорного элемента. Рекурсия не применяется к массиву, в котором только один элемент или отсутствуют элементы.</li>
+</ol>
+<p>Существует два базовых разбиения — Ломуто и Хоара. Подробнее можете прочитать на википедии.</p>
+<h2 id="Преимущества-алгоритма-3"><a class="header" href="#Преимущества-алгоритма-3">Преимущества алгоритма</a></h2>
+<ol>
 <li>Эффективен для массивов больших размеров</li>
 <li>Занимает не много памяти</li>
 </ol>
 <h2 id="Недостатки"><a class="header" href="#Недостатки">Недостатки</a></h2>
 <ol>
-<li>Худшая сложность по времени - O(n^2)</li>
-<li>Не лучший выбор для массивов небольших размеров</li>
-<li>Нестабильная сортировка</li>
+<li><sup class="footnote-reference"><a href="#1">1</a></sup> : Худшая сложность по времени — \(O(n^2)\). Попробуйте придумать такой тест. </li>
+<li>Не лучший выбор для массивов небольших размеров.</li>
+<li>Нестабильная сортировка.</li>
 </ol>
-<h2 id="Реализация-алгоритма-2"><a class="header" href="#Реализация-алгоритма-2">Реализация алгоритма.</a></h2>
-<p>Опорная точка - середина.</p>
-<pre><code class="language-cpp">void quickSort(int* a, int size) {
-  int b = 0, e = size - 1;  // b - begin, e - end
-
-  if (size &lt; 2) return;
-
-  int m = a[size / 2];
-
-  while (b &lt;= e) {
-    // Проверка на то, что элементы слева - меньше, а элементы справа - больше
-    while (a[b] &lt; m) {
-      b++;
+<h2 id="Реализация-алгоритма-3"><a class="header" href="#Реализация-алгоритма-3">Реализация алгоритма.</a></h2>
+<p>Опорная точка — середина. Разбиение Хоара.</p>
+<pre><code class="language-cpp">void qsort(int* a, int b, int e) {
+  int l = b, r = e;
+  int piv = a[(l + r) / 2];
+  while (l &lt;= r) {
+    while (a[l] &lt; piv) {
+      l++;
     }
-    while (a[e] &gt; m) {
-      e--;
+    while (a[r] &gt; piv) {
+      r--;
     }
-
-    // Если слева встретилось число большее, чем опорная точка, а справа -
-    // меньшее, меняем их местами
-    if (b &lt;= e) {
-      if (b != e) {
-        std::swap(a[b], a[e]);
-      }
-      b++;
-      e--;
+    if (l &lt;= r) {
+      swap(a[l++], a[r--]);
     }
   }
-
-  // Рекурсивный вызов сортировки для левой и правой частей
-  quickSort(a, e + 1);
-  quickSort(a + b, size - b);
+  if (b &lt; r) {
+    qsort(a, b, r);
+  }
+  if (e &gt; l) {
+    qsort(a, l, e);
+  }
 }
 </code></pre>
 <blockquote>
-<p>Запуск функции сортировки <code>quickSort(array, size - 1);</code></p>
+<p>Запуск функции сортировки <code>quickSort(array, 0, size - 1);</code></p>
 </blockquote>
 <h2 id="Ввод-4"><a class="header" href="#Ввод-4">Ввод</a></h2>
 <pre><code class="language-bash">5
@@ -1719,7 +1702,7 @@ void mergeSort(int* a, int size) {
 <pre><code class="language-bash">-354 0 9 74 87
 </code></pre>
 <h1 id="На-практике"><a class="header" href="#На-практике">На практике</a></h1>
-<p>В качестве опорного элемента следует выбирать случайный элемент массива, чтобы получить гарантированное время сортировки \( \Theta (n\log n)\) в среднем.</p>
+<p>В качестве опорного элемента следует выбирать случайный элемент массива (<code>int piv = a[rand() % (r - l + 1) + l];</code>), чтобы получить гарантированное время сортировки \( \Theta (n\log n)\) в среднем.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="Решаем-задачи"><a class="header" href="#Решаем-задачи">Решаем задачи</a></h1>
 <p>Закрепим полученные знания на задачах.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="Другая-чётность"><a class="header" href="#Другая-чётность">Другая чётность</a></h1>
@@ -1911,44 +1894,44 @@ cout &lt;&lt; ans;
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                        
-                        
+
+
                         <div style="clear: both"></div>
                     </nav>
                 </div>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                
-                            </nav>
+
+            </nav>
 
         </div>
 
-        
-        
-        
-                <script type="text/javascript">
+
+
+
+        <script>
             window.playground_copyable = true;
         </script>
-        
-        
-                <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
-        
-        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
-        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
 
         <!-- Custom JS scripts -->
-        
-                        <script type="text/javascript">
+
+        <script>
         window.addEventListener('load', function() {
             MathJax.Hub.Register.StartupHook('End', function() {
                 window.setTimeout(window.print, 100);
             });
         });
         </script>
-                
+
     </body>
 </html>

@@ -4,46 +4,44 @@
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>Сортировка слиянием - is-algo</title>
-                
+
 
         <!-- Custom HTML head -->
         
-
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-                <link rel="icon" href="../../favicon.svg">
-                        <link rel="shortcut icon" href="../../favicon.png">
-                <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
         <link rel="stylesheet" href="../../css/general.css">
         <link rel="stylesheet" href="../../css/chrome.css">
-                <link rel="stylesheet" href="../../css/print.css" media="print">
-        
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
         <!-- Fonts -->
         <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
-                <link rel="stylesheet" href="../../fonts/fonts.css">
-        
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
         <!-- Highlight.js Stylesheets -->
         <link rel="stylesheet" href="../../highlight.css">
         <link rel="stylesheet" href="../../tomorrow-night.css">
         <link rel="stylesheet" href="../../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
-        
-                <!-- MathJax -->
-        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-            </head>
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
     <body>
         <!-- Provide site root to javascript -->
-        <script type="text/javascript">
+        <script>
             var path_to_root = "../../";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
         </script>
 
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
-        <script type="text/javascript">
+        <script>
             try {
                 var theme = localStorage.getItem('mdbook-theme');
                 var sidebar = localStorage.getItem('mdbook-sidebar');
@@ -59,7 +57,7 @@
         </script>
 
         <!-- Set the theme before any content is loaded, prevents flash -->
-        <script type="text/javascript">
+        <script>
             var theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
@@ -71,7 +69,7 @@
         </script>
 
         <!-- Hide / unhide sidebar before it is displayed -->
-        <script type="text/javascript">
+        <script>
             var html = document.querySelector('html');
             var sidebar = 'hidden';
             if (document.body.clientWidth >= 1080) {
@@ -84,15 +82,15 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../../index.html"><strong aria-hidden="true">1.</strong> Введение</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../how-to-smth/judje.html"><strong aria-hidden="true">1.1.</strong> Тестирующая система</a></li><li class="chapter-item expanded "><a href="../../how-to-smth/how-to-read.html"><strong aria-hidden="true">1.2.</strong> Как читать</a></li><li class="chapter-item expanded "><a href="../../how-to-smth/how-to-solve.html"><strong aria-hidden="true">1.3.</strong> Как придумывать</a></li><li class="chapter-item expanded "><a href="../../how-to-smth/how-to-testing.html"><strong aria-hidden="true">1.4.</strong> Как тестировать</a></li></ol></li><li class="chapter-item expanded "><a href="../../getting-started/getting-started.html"><strong aria-hidden="true">2.</strong> Начало работы</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../getting-started/installation.html"><strong aria-hidden="true">2.1.</strong> Установка</a></li><li class="chapter-item expanded "><a href="../../getting-started/code-editor.html"><strong aria-hidden="true">2.2.</strong> Редактор кода</a></li><li class="chapter-item expanded "><a href="../../getting-started/examples.html"><strong aria-hidden="true">2.3.</strong> Решение задачи</a></li></ol></li><li class="chapter-item expanded "><a href="../../programming/cpp_base.html"><strong aria-hidden="true">3.</strong> Основы языка C++</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../programming/data-types.html"><strong aria-hidden="true">3.1.</strong> Типы данных</a></li><li class="chapter-item expanded "><a href="../../programming/io.html"><strong aria-hidden="true">3.2.</strong> Ввод и вывод</a></li><li class="chapter-item expanded "><a href="../../programming/branching.html"><strong aria-hidden="true">3.3.</strong> Ветвление</a></li><li class="chapter-item expanded "><a href="../../programming/loops.html"><strong aria-hidden="true">3.4.</strong> Циклы</a></li><li class="chapter-item expanded "><a href="../../programming/array_types/array.html"><strong aria-hidden="true">3.5.</strong> Массивы</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../programming/array_types/static-array.html"><strong aria-hidden="true">3.5.1.</strong> Статические массивы</a></li><li class="chapter-item expanded "><a href="../../programming/array_types/dynamic-array.html"><strong aria-hidden="true">3.5.2.</strong> Динамические массивы</a></li><li class="chapter-item expanded "><a href="../../programming/array_types/VLA.html"><strong aria-hidden="true">3.5.3.</strong> VLA</a></li><li class="chapter-item expanded "><a href="../../programming/array_types/vector.html"><strong aria-hidden="true">3.5.4.</strong> std::vector</a></li><li class="chapter-item expanded "><a href="../../programming/array_types/compare-arrays.html"><strong aria-hidden="true">3.5.5.</strong> Что выбрать?</a></li></ol></li><li class="chapter-item expanded "><a href="../../programming/functions.html"><strong aria-hidden="true">3.6.</strong> Функции</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../programming/params-to-func.html"><strong aria-hidden="true">3.6.1.</strong> Передача параметров в функцию</a></li></ol></li><li class="chapter-item expanded "><a href="../../programming/links-and-pointers.html"><strong aria-hidden="true">3.7.</strong> Ссылки и указатели</a></li></ol></li><li class="chapter-item expanded "><a href="../../programming/mem.html"><strong aria-hidden="true">4.</strong> Память</a></li><li class="chapter-item expanded "><a href="../../algorithms/greedy/index.html"><strong aria-hidden="true">5.</strong> Жадные алгоритмы</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../algorithms/greedy/intro.html"><strong aria-hidden="true">5.1.</strong> Введение</a></li></ol></li><li class="chapter-item expanded "><a href="../../algorithms/asymptotics.html"><strong aria-hidden="true">6.</strong> Асимптотика</a></li><li class="chapter-item expanded "><a href="../../algorithms/sorts/sorts.html"><strong aria-hidden="true">7.</strong> Сортировки</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../algorithms/sorts/bubble-sort.html"><strong aria-hidden="true">7.1.</strong> &quot;Пузырьковая&quot; сортировка</a></li><li class="chapter-item expanded "><a href="../../algorithms/sorts/insertion-sort.html"><strong aria-hidden="true">7.2.</strong> Сортировка вставкой</a></li><li class="chapter-item expanded "><a href="../../algorithms/sorts/selection-sort.html"><strong aria-hidden="true">7.3.</strong> &quot;Выборочная&quot; сортировка</a></li><li class="chapter-item expanded "><a href="../../algorithms/sorts/merge-sort.html" class="active"><strong aria-hidden="true">7.4.</strong> Сортировка слиянием</a></li><li class="chapter-item expanded "><a href="../../algorithms/sorts/quick-sort.html"><strong aria-hidden="true">7.5.</strong> Быстрая сортировка</a></li></ol></li><li class="chapter-item expanded "><a href="../../tasks/index.html"><strong aria-hidden="true">8.</strong> Решаем задачи</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../tasks/different-odd.html"><strong aria-hidden="true">8.1.</strong> Другая чётность</a></li><li class="chapter-item expanded "><a href="../../tasks/sum-of-factorials.html"><strong aria-hidden="true">8.2.</strong> Сумма факториалов</a></li><li class="chapter-item expanded "><a href="../../tasks/longest-easy.html"><strong aria-hidden="true">8.3.</strong> Наибольший отрезок</a></li></ol></li><li class="chapter-item expanded "><a href="../../CONTRIBUTING.html"><strong aria-hidden="true">9.</strong> Сделайте вклад</a></li></ol>            </div>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../index.html"><strong aria-hidden="true">1.</strong> Введение</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../how-to-smth/judje.html"><strong aria-hidden="true">1.1.</strong> Тестирующая система</a></li><li class="chapter-item expanded "><a href="../../how-to-smth/how-to-read.html"><strong aria-hidden="true">1.2.</strong> Как читать</a></li><li class="chapter-item expanded "><a href="../../how-to-smth/how-to-solve.html"><strong aria-hidden="true">1.3.</strong> Как придумывать</a></li><li class="chapter-item expanded "><a href="../../how-to-smth/how-to-testing.html"><strong aria-hidden="true">1.4.</strong> Как тестировать</a></li></ol></li><li class="chapter-item expanded "><a href="../../getting-started/getting-started.html"><strong aria-hidden="true">2.</strong> Начало работы</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../getting-started/installation.html"><strong aria-hidden="true">2.1.</strong> Установка</a></li><li class="chapter-item expanded "><a href="../../getting-started/code-editor.html"><strong aria-hidden="true">2.2.</strong> Редактор кода</a></li><li class="chapter-item expanded "><a href="../../getting-started/examples.html"><strong aria-hidden="true">2.3.</strong> Решение задачи</a></li></ol></li><li class="chapter-item expanded "><a href="../../programming/cpp_base.html"><strong aria-hidden="true">3.</strong> Основы языка C++</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../programming/data-types.html"><strong aria-hidden="true">3.1.</strong> Типы данных</a></li><li class="chapter-item expanded "><a href="../../programming/io.html"><strong aria-hidden="true">3.2.</strong> Ввод и вывод</a></li><li class="chapter-item expanded "><a href="../../programming/branching.html"><strong aria-hidden="true">3.3.</strong> Ветвление</a></li><li class="chapter-item expanded "><a href="../../programming/loops.html"><strong aria-hidden="true">3.4.</strong> Циклы</a></li><li class="chapter-item expanded "><a href="../../programming/array_types/array.html"><strong aria-hidden="true">3.5.</strong> Массивы</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../programming/array_types/static-array.html"><strong aria-hidden="true">3.5.1.</strong> Статические массивы</a></li><li class="chapter-item expanded "><a href="../../programming/array_types/dynamic-array.html"><strong aria-hidden="true">3.5.2.</strong> Динамические массивы</a></li><li class="chapter-item expanded "><a href="../../programming/array_types/VLA.html"><strong aria-hidden="true">3.5.3.</strong> VLA</a></li><li class="chapter-item expanded "><a href="../../programming/array_types/vector.html"><strong aria-hidden="true">3.5.4.</strong> std::vector</a></li><li class="chapter-item expanded "><a href="../../programming/array_types/compare-arrays.html"><strong aria-hidden="true">3.5.5.</strong> Что выбрать?</a></li></ol></li><li class="chapter-item expanded "><a href="../../programming/functions.html"><strong aria-hidden="true">3.6.</strong> Функции</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../programming/params-to-func.html"><strong aria-hidden="true">3.6.1.</strong> Передача параметров в функцию</a></li></ol></li><li class="chapter-item expanded "><a href="../../programming/links-and-pointers.html"><strong aria-hidden="true">3.7.</strong> Ссылки и указатели</a></li></ol></li><li class="chapter-item expanded "><a href="../../programming/mem.html"><strong aria-hidden="true">4.</strong> Память</a></li><li class="chapter-item expanded "><a href="../../algorithms/greedy/index.html"><strong aria-hidden="true">5.</strong> Жадные алгоритмы</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../algorithms/greedy/intro.html"><strong aria-hidden="true">5.1.</strong> Введение</a></li></ol></li><li class="chapter-item expanded "><a href="../../algorithms/asymptotics.html"><strong aria-hidden="true">6.</strong> Асимптотика</a></li><li class="chapter-item expanded "><a href="../../algorithms/sorts/sorts.html"><strong aria-hidden="true">7.</strong> Сортировки</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../algorithms/sorts/bubble-sort.html"><strong aria-hidden="true">7.1.</strong> "Пузырьковая" сортировка</a></li><li class="chapter-item expanded "><a href="../../algorithms/sorts/insertion-sort.html"><strong aria-hidden="true">7.2.</strong> Сортировка вставкой</a></li><li class="chapter-item expanded "><a href="../../algorithms/sorts/selection-sort.html"><strong aria-hidden="true">7.3.</strong> "Выборочная" сортировка</a></li><li class="chapter-item expanded "><a href="../../algorithms/sorts/merge-sort.html" class="active"><strong aria-hidden="true">7.4.</strong> Сортировка слиянием</a></li><li class="chapter-item expanded "><a href="../../algorithms/sorts/quick-sort.html"><strong aria-hidden="true">7.5.</strong> Быстрая сортировка</a></li></ol></li><li class="chapter-item expanded "><a href="../../tasks/index.html"><strong aria-hidden="true">8.</strong> Решаем задачи</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../tasks/different-odd.html"><strong aria-hidden="true">8.1.</strong> Другая чётность</a></li><li class="chapter-item expanded "><a href="../../tasks/sum-of-factorials.html"><strong aria-hidden="true">8.2.</strong> Сумма факториалов</a></li><li class="chapter-item expanded "><a href="../../tasks/longest-easy.html"><strong aria-hidden="true">8.3.</strong> Наибольший отрезок</a></li></ol></li><li class="chapter-item expanded "><a href="../../CONTRIBUTING.html"><strong aria-hidden="true">9.</strong> Сделайте вклад</a></li></ol>
+            </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                
-                <div id="menu-bar-hover-placeholder"></div>
+                                <div id="menu-bar-hover-placeholder"></div>
                 <div id="menu-bar" class="menu-bar sticky bordered">
                     <div class="left-buttons">
                         <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
@@ -102,34 +100,34 @@
                             <i class="fa fa-paint-brush"></i>
                         </button>
                         <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                                                <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
                             <i class="fa fa-search"></i>
                         </button>
-                                            </div>
+                    </div>
 
                     <h1 class="menu-title">is-algo</h1>
 
                     <div class="right-buttons">
-                                                <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                                                                        <a href="https://github.com/9kin/is-algo" title="Git repository" aria-label="Git repository">
+                        <a href="https://github.com/9kin/is-algo" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
-                                                                        <a href="https://github.com/9kin/is-algo/edit/master/src/algorithms/sorts/merge-sort.md" title="Suggest an edit" aria-label="Suggest an edit">
+                        <a href="https://github.com/9kin/is-algo/edit/master/src/algorithms/sorts/merge-sort.md" title="Suggest an edit" aria-label="Suggest an edit">
                             <i id="git-edit-button" class="fa fa-edit"></i>
                         </a>
-                        
+
                     </div>
                 </div>
 
-                                <div id="search-wrapper" class="hidden">
+                <div id="search-wrapper" class="hidden">
                     <form id="searchbar-outer" class="searchbar-outer">
                         <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
                     </form>
@@ -139,9 +137,9 @@
                         </ul>
                     </div>
                 </div>
-                
+
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
-                <script type="text/javascript">
+                <script>
                     document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
                     document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
                     Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
@@ -152,133 +150,66 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="Сортировка-слиянием"><a class="header" href="#Сортировка-слиянием">Сортировка слиянием</a></h1>
-<blockquote>
-<p>Merge sort - рекурсивный алгоритм сортировки, разбивающий основной массив на подмассивы, сортирующий их и собирающий всё обратно в отсортированном виде</p>
-</blockquote>
-<p>Сложность: <em><strong>O(n log(n))</strong></em></p>
+<div class="table-wrapper"><table><thead><tr><th>характеристики</th><th>значения</th></tr></thead><tbody>
+<tr><td>временная сложность</td><td>\(O(n \log n)\)</td></tr>
+<tr><td>дополнительная память</td><td>\(O(n)\) или \(O(1)\) <sup class="footnote-reference"><a href="#1">1</a></sup></td></tr>
+<tr><td>стабильная ли?</td><td>✅</td></tr>
+</tbody></table>
+</div>
+<p>Merge sort - рекурсивный алгоритм сортировки, разбивающий основной массив на подмассивы, сортирующий их и собирающий всё обратно в отсортированном виде. Такие алгоритмы называются &quot;разделяй и властвуй&quot;, но о таких алгоритмах попозже. (в курсе такого не будет=) )</p>
+<h2 id="Алгоритм"><a class="header" href="#Алгоритм">Алгоритм</a></h2>
+<p>Алгоритм <code>Merge sort</code> на подмасиве \(array[l \dots r]\) выглядит следующем образом:</p>
+<ol>
+<li>Если <code>l = r</code>, ничего не делать, так как массив отсортирован.</li>
+<li>Вычислить середину отрезка: \(m = (l + r)/2\) с округлением вниз.</li>
+<li>Рекурсивно отсортировать \(array[l \dots m]\).</li>
+<li>Рекурсивно отсортировать \(array[m + 1 \dots r]\).</li>
+<li>Объединить (<code>merge</code>) два уже <strong>отсортированных</strong> массива \(array[l \dots m]\) и \(array[m + 1 \dots r]\) в один общий отсортированный массив \(array[l \dots r]\)</li>
+</ol>
+<h3 id="Объединение-отсортированных-массивов"><a class="header" href="#Объединение-отсортированных-массивов">Объединение отсортированных массивов</a></h3>
+<p>Пункт (5) является очень простым. Используя метод двух указателей, можно двигать границы \(i\) и \(j\) добавляя в итоговый массив \(array[l \dots r]\) самый маленький из \(array[i]\) и \(array[j]\).</p>
 <h2 id="Преимущества-алгоритма"><a class="header" href="#Преимущества-алгоритма">Преимущества алгоритма</a></h2>
 <ol>
 <li>Стабильный алгоритм</li>
-<li>Сложность алгоритма в худшем случае - O(n log(n)), следовательно, он хорош для больших массивов</li>
-<li>Алгоритм параллелен - его можно спокойно ускорить, разбив действия на разные потоки процессора</li>
+<li>Сложность алгоритма в худшем случае — \(O(n \log n)\) , следовательно, он идеален для больших массивов.</li>
+<li>Алгоритм параллелен — его можно спокойно ускорить, разбив действия на разные потоки процессора. </li>
 </ol>
 <h2 id="Недостатки-алгоритма"><a class="header" href="#Недостатки-алгоритма">Недостатки алгоритма</a></h2>
 <ol>
-<li>Требователен к памяти</li>
-<li>Не всегда оптимален для маленьких массивов</li>
+<li>Требователен к памяти.</li>
+<li>Не всегда оптимален для маленьких массивов.</li>
 </ol>
-<h2 id="Реализация-алгоритма-1"><a class="header" href="#Реализация-алгоритма-1">Реализация алгоритма №1</a></h2>
-<pre><code class="language-cpp">void merge(int* a, int left, int mid, int right) {
-  int subArrayOne = mid - left + 1;
-  int subArrayTwo = right - mid;
-
-  // Создание временных массивов
-  int *leftArray = new int[subArrayOne], *rightArray = new int[subArrayTwo];
-
-  // Копирование данных в подмассивы
-  for (auto i = 0; i &lt; subArrayOne; i++) {
-    leftArray[i] = a[left + i];
+<h2 id="Реализация-алгоритма"><a class="header" href="#Реализация-алгоритма">Реализация алгоритма</a></h2>
+<p>Я специально оставлю реализацию на подумать (я проверил на задаче, она работает). (реализация взята <a href="https://acm.khpnets.info/wiki/%D0%A1%D0%BE%D1%80%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%BA%D0%B0_%D1%81%D0%BB%D0%B8%D1%8F%D0%BD%D0%B8%D0%B5%D0%BC">отсюда</a>)</p>
+<pre><code class="language-cpp">void mergeSort(int* a, int* tmp, int l, int r) {
+  if (l == r) return;       // (1)
+  int m = l + (r - l) / 2;  // (2)
+  mergeSort(a, tmp, l, m);  // (3) рекурсивный запуск для левой части
+  mergeSort(a, tmp, m + 1, r);  // (4) рекурсивный запуск для правой части
+  for (int i = l; i &lt;= r; i++)
+    tmp[i] = a[i];  // массив tmp равен а (соответствующие подотрезки)
+  // (5) два указателя, очень красивые
+  int ai = l, bi = m + 1;
+  for (int i = l; i &lt;= r; i++) {
+    if (bi &gt; r || ai &lt;= m &amp;&amp; tmp[ai] &lt;= tmp[bi])
+      a[i] = tmp[ai++];
+    else
+      a[i] = tmp[bi++];
   }
-
-  for (auto j = 0; j &lt; subArrayTwo; j++) {
-    rightArray[j] = a[mid + 1 + j];
-  }
-
-  int indexOfSubArrayOne = 0, indexOfSubArrayTwo = 0, indexOfMergedArray = left;
-
-  // Соединение временных массивов в наш изначальный
-  while (indexOfSubArrayOne &lt; subArrayOne &amp;&amp; indexOfSubArrayTwo &lt; subArrayTwo) {
-    if (leftArray[indexOfSubArrayOne] &lt;= rightArray[indexOfSubArrayTwo]) {
-      a[indexOfMergedArray] = leftArray[indexOfSubArrayOne];
-      indexOfSubArrayOne++;
-    } else {
-      a[indexOfMergedArray] = rightArray[indexOfSubArrayTwo];
-      indexOfSubArrayTwo++;
-    }
-    indexOfMergedArray++;
-  }
-
-  // Копирование оставшихся элементов левого ммассива, если они остались
-  while (indexOfSubArrayOne &lt; subArrayOne) {
-    a[indexOfMergedArray] = leftArray[indexOfSubArrayOne];
-    indexOfSubArrayOne++;
-    indexOfMergedArray++;
-  }
-
-  // Копирование оставшихся элементов правого ммассива, если они остались
-  while (indexOfSubArrayTwo &lt; subArrayTwo) {
-    a[indexOfMergedArray] = rightArray[indexOfSubArrayTwo];
-    indexOfSubArrayTwo++;
-    indexOfMergedArray++;
-  }
-
-  // Удалить массивы и очистить память
-  delete[] leftArray;
-  delete[] rightArray;
-}
-
-// begin отвечает за левый индекс, end - за правый
-void mergeSort(int* array, int begin, int end) {
-  if (begin &gt;= end) return;
-
-  int mid = begin + (end - begin) / 2;
-
-  // Сортировка и соединение массива
-  mergeSort(array, begin, mid);
-  mergeSort(array, mid + 1, end);
-  merge(array, begin, mid, end);
-}
-</code></pre>
-<h2 id="Реализация-алгоритма-2"><a class="header" href="#Реализация-алгоритма-2">Реализация алгоритма №2</a></h2>
-<p>Используем глобальный массив, вместо временных <code>leftArray</code> и <code>rightArray</code>.</p>
-<pre><code class="language-cpp">int* B;
-
-// Рекурсивная часть сортировки
-void mergeSortRec(int* a, int size) {
-  if (size &lt; 2) {
-    return;
-  }
-
-  int M = size / 2;
-
-  // Вызов рекурсии
-  mergeSortRec(a, M);
-  mergeSortRec(a + M, size - M);
-
-  // Копируем данный в левый и правый массивы
-  for (int k = 0, i = 0, j = M; k &lt; size; ++k) {
-    // Записываем меньшее значение в k-й элемент массива B
-    if (j &gt;= size || i &lt; M &amp;&amp; a[i] &lt; a[j]) {
-      B[k] = a[i++];
-    } else {
-      B[k] = a[j++];
-    }
-  }  // Если один из массивов закончится, то просто запишется остаток другого
-     // массива
-
-  // Копируем данные в исходный массив
-  for (int i = 0; i &lt; size; i++) {
-    a[i] = B[i];
-  }
-}
-
-// Функция, вызывающая сортировку
-void mergeSort(int* a, int size) {
-  B = new int[size];
-
-  if (B == nullptr) return;
-
-  mergeSortRec(a, size);
-
-  delete[] B;
 }
 </code></pre>
 <blockquote>
-<p>Запуск функции сортировки <code>mergeSort(arr, 0, size - 1);</code></p>
+<p>Запуск функции сортировки <code>int *tmp = new int[size]; mergeSort(arr, tmp, 0, size-1);</code>. </p>
+</blockquote>
+<p>Можно написать без использование глобального массива <code>tmp</code>.</p>
+<h2 id="Доказательство-сложности-алгоритма"><a class="header" href="#Доказательство-сложности-алгоритма">Доказательство сложности алгоритма</a></h2>
+<p>Чтобы оценить время работы этого алгоритма, составим рекуррентное соотношение. Это на любом сайте написано. Думайте.</p>
+<p>Давайте объясню на пальцах :</p>
+<blockquote>
+<p>Во время разбиения массива на две части, каждый элемент массива обрабатывается один раз. Всего уровней рекурсии будет \(\log n\), так как каждый раз массив делится пополам. При слиянии двух частей массива для всего уровня выполняется \(O(n)\) операций.</p>
 </blockquote>
 <h2 id="Ввод"><a class="header" href="#Ввод">Ввод</a></h2>
-<pre><code class="language-bash">4
-49 12 -3 15
+<pre><code class="language-bash">49 12 -3 15
 </code></pre>
 <h2 id="Работа-алгоритма"><a class="header" href="#Работа-алгоритма">Работа алгоритма</a></h2>
 <ol>
@@ -290,54 +221,56 @@ void mergeSort(int* a, int size) {
 <h2 id="Вывод"><a class="header" href="#Вывод">Вывод</a></h2>
 <pre><code class="language-bash">-3 12 15 49
 </code></pre>
+<p>Можно решить задачу о количестве инверсий в массиве. TODO?</p>
+<p><sup class="footnote-reference"><a href="#1">1</a></sup> : можно реализовать, но это слишком <a href="https://www.google.com/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=&amp;ved=2ahUKEwjy7OyMldCBAxWyIxAIHTLPBJsQFnoECAgQAQ&amp;url=https%3A%2F%2Fneerc.ifmo.ru%2Fwiki%2Findex.php%3Ftitle%3DC%25D0%25BE%25D1%2580%25D1%2582%25D0%25B8%25D1%2580%25D0%25BE%25D0%25B2%25D0%25BA%25D0%25B0_%25D1%2581%25D0%25BB%25D0%25B8%25D1%258F%25D0%25BD%25D0%25B8%25D0%25B5%25D0%25BC_%25D1%2581_%25D0%25B8%25D1%2581%25D0%25BF%25D0%25BE%25D0%25BB%25D1%258C%25D0%25B7%25D0%25BE%25D0%25B2%25D0%25B0%25D0%25BD%25D0%25B8%25D0%25B5%25D0%25BC_O(1)_%25D0%25B4%25D0%25BE%25D0%25BF%25D0%25BE%25D0%25BB%25D0%25BD%25D0%25B8%25D1%2582%25D0%25B5%25D0%25BB%25D1%258C%25D0%25BD%25D0%25BE%25D0%25B9_%25D0%25BF%25D0%25B0%25D0%25BC%25D1%258F%25D1%2582%25D0%25B8&amp;usg=AOvVaw235f3zvb_T5TBa_xWEB_9g&amp;opi=89978449">сложно</a>.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                                                    <a rel="prev" href="../../algorithms/sorts/selection-sort.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../../algorithms/sorts/selection-sort.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
-                        
-                                                    <a rel="next" href="../../algorithms/sorts/quick-sort.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+
+                            <a rel="next" href="../../algorithms/sorts/quick-sort.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
-                        
+
                         <div style="clear: both"></div>
                     </nav>
                 </div>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                                    <a rel="prev" href="../../algorithms/sorts/selection-sort.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../../algorithms/sorts/selection-sort.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
-                
-                                    <a rel="next" href="../../algorithms/sorts/quick-sort.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+
+                    <a rel="next" href="../../algorithms/sorts/quick-sort.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
-                            </nav>
+            </nav>
 
         </div>
 
-        
-        
-        
-                <script type="text/javascript">
+
+
+
+        <script>
             window.playground_copyable = true;
         </script>
-        
-        
-                <script src="../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../../mark.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../../searcher.js" type="text/javascript" charset="utf-8"></script>
-        
-        <script src="../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../../highlight.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
+
+
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
+
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
 
         <!-- Custom JS scripts -->
-        
-        
+
+
     </body>
 </html>
