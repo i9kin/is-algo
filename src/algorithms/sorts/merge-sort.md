@@ -1,137 +1,74 @@
 # Сортировка слиянием
 
-> Merge sort - рекурсивный алгоритм сортировки, разбивающий основной массив на подмассивы, сортирующий их и собирающий всё обратно в отсортированном виде
+| характеристики  | значения  |
+| -------- | ------- |
+| временная сложность  | \\(O(n \log n)\\)   |
+| дополнительная память |  \\(O(n)\\) или \\(O(1)\\) [^1]      |
+| стабильная ли? | ✅ |
 
-Сложность: ***O(n log(n))***
+Merge sort - рекурсивный алгоритм сортировки, разбивающий основной массив на подмассивы, сортирующий их и собирающий всё обратно в отсортированном виде. Такие алгоритмы называются "разделяй и властвуй", но о таких алгоритмах попозже. (в курсе такого не будет=) )
+
+## Алгоритм
+
+Алгоритм `Merge sort` на подмасиве \\(array[l \dots r]\\) выглядит следующем образом:
+
+1. Если `l = r`, ничего не делать, так как массив отсортирован.
+2. Вычислить середину отрезка: \\(m = (l + r)/2\\) с округлением вниз.
+3. Рекурсивно отсортировать \\(array[l \dots m]\\).
+4. Рекурсивно отсортировать \\(array[m + 1 \dots r]\\).
+5. Объединить (`merge`) два уже **отсортированных** массива \\(array[l \dots m]\\) и \\(array[m + 1 \dots r]\\) в один общий отсортированный массив \\(array[l \dots r]\\)
+
+### Объединение отсортированных массивов
+
+Пункт (5) является очень простым. Используя метод двух указателей, можно двигать границы \\(i\\) и \\(j\\) добавляя в итоговый массив \\(array[l \dots r]\\) самый маленький из \\(array[i]\\) и \\(array[j]\\).
 
 ## Преимущества алгоритма
 1. Стабильный алгоритм
-2. Сложность алгоритма в худшем случае - O(n log(n)), следовательно, он хорош для больших массивов
-3. Алгоритм параллелен - его можно спокойно ускорить, разбив действия на разные потоки процессора
+2. Сложность алгоритма в худшем случае &mdash; \\(O(n \log n)\\) , следовательно, он идеален для больших массивов.
+3. Алгоритм параллелен &mdash; его можно спокойно ускорить, разбив действия на разные потоки процессора. 
 
 ## Недостатки алгоритма
-1. Требователен к памяти
-2. Не всегда оптимален для маленьких массивов
+1. Требователен к памяти.
+2. Не всегда оптимален для маленьких массивов.
 
-## Реализация алгоритма №1
+## Реализация алгоритма
+
+Я специально оставлю реализацию на подумать (я проверил на задаче, она работает). (реализация взята [отсюда](https://acm.khpnets.info/wiki/%D0%A1%D0%BE%D1%80%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%BA%D0%B0_%D1%81%D0%BB%D0%B8%D1%8F%D0%BD%D0%B8%D0%B5%D0%BC))
 
 ```cpp
-void merge(int* a, int left, int mid, int right) {
-  int subArrayOne = mid - left + 1;
-  int subArrayTwo = right - mid;
-
-  // Создание временных массивов
-  int *leftArray = new int[subArrayOne], *rightArray = new int[subArrayTwo];
-
-  // Копирование данных в подмассивы
-  for (auto i = 0; i < subArrayOne; i++) {
-    leftArray[i] = a[left + i];
+void mergeSort(int* a, int* tmp, int l, int r) {
+  if (l == r) return;       // (1)
+  int m = l + (r - l) / 2;  // (2)
+  mergeSort(a, tmp, l, m);  // (3) рекурсивный запуск для левой части
+  mergeSort(a, tmp, m + 1, r);  // (4) рекурсивный запуск для правой части
+  for (int i = l; i <= r; i++)
+    tmp[i] = a[i];  // массив tmp равен а (соответствующие подотрезки)
+  // (5) два указателя, очень красивые
+  int ai = l, bi = m + 1;
+  for (int i = l; i <= r; i++) {
+    if (bi > r || ai <= m && tmp[ai] <= tmp[bi])
+      a[i] = tmp[ai++];
+    else
+      a[i] = tmp[bi++];
   }
-
-  for (auto j = 0; j < subArrayTwo; j++) {
-    rightArray[j] = a[mid + 1 + j];
-  }
-
-  int indexOfSubArrayOne = 0, indexOfSubArrayTwo = 0, indexOfMergedArray = left;
-
-  // Соединение временных массивов в наш изначальный
-  while (indexOfSubArrayOne < subArrayOne && indexOfSubArrayTwo < subArrayTwo) {
-    if (leftArray[indexOfSubArrayOne] <= rightArray[indexOfSubArrayTwo]) {
-      a[indexOfMergedArray] = leftArray[indexOfSubArrayOne];
-      indexOfSubArrayOne++;
-    } else {
-      a[indexOfMergedArray] = rightArray[indexOfSubArrayTwo];
-      indexOfSubArrayTwo++;
-    }
-    indexOfMergedArray++;
-  }
-
-  // Копирование оставшихся элементов левого ммассива, если они остались
-  while (indexOfSubArrayOne < subArrayOne) {
-    a[indexOfMergedArray] = leftArray[indexOfSubArrayOne];
-    indexOfSubArrayOne++;
-    indexOfMergedArray++;
-  }
-
-  // Копирование оставшихся элементов правого ммассива, если они остались
-  while (indexOfSubArrayTwo < subArrayTwo) {
-    a[indexOfMergedArray] = rightArray[indexOfSubArrayTwo];
-    indexOfSubArrayTwo++;
-    indexOfMergedArray++;
-  }
-
-  // Удалить массивы и очистить память
-  delete[] leftArray;
-  delete[] rightArray;
-}
-
-// begin отвечает за левый индекс, end - за правый
-void mergeSort(int* array, int begin, int end) {
-  if (begin >= end) return;
-
-  int mid = begin + (end - begin) / 2;
-
-  // Сортировка и соединение массива
-  mergeSort(array, begin, mid);
-  mergeSort(array, mid + 1, end);
-  merge(array, begin, mid, end);
 }
 ```
 
-## Реализация алгоритма №2
+> Запуск функции сортировки `int *tmp = new int[size]; mergeSort(arr, tmp, 0, size-1);`. 
 
-Используем глобальный массив, вместо временных `leftArray` и `rightArray`.
+Можно написать без использование глобального массива `tmp`.
 
-```cpp
-int* B;
+## Доказательство сложности алгоритма
 
-// Рекурсивная часть сортировки
-void mergeSortRec(int* a, int size) {
-  if (size < 2) {
-    return;
-  }
+Чтобы оценить время работы этого алгоритма, составим рекуррентное соотношение. Это на любом сайте написано. Думайте.
 
-  int M = size / 2;
+Давайте объясню на пальцах :
 
-  // Вызов рекурсии
-  mergeSortRec(a, M);
-  mergeSortRec(a + M, size - M);
-
-  // Копируем данный в левый и правый массивы
-  for (int k = 0, i = 0, j = M; k < size; ++k) {
-    // Записываем меньшее значение в k-й элемент массива B
-    if (j >= size || i < M && a[i] < a[j]) {
-      B[k] = a[i++];
-    } else {
-      B[k] = a[j++];
-    }
-  }  // Если один из массивов закончится, то просто запишется остаток другого
-     // массива
-
-  // Копируем данные в исходный массив
-  for (int i = 0; i < size; i++) {
-    a[i] = B[i];
-  }
-}
-
-// Функция, вызывающая сортировку
-void mergeSort(int* a, int size) {
-  B = new int[size];
-
-  if (B == nullptr) return;
-
-  mergeSortRec(a, size);
-
-  delete[] B;
-}
-```
-
-> Запуск функции сортировки `mergeSort(arr, 0, size - 1);`
+> Во время разбиения массива на две части, каждый элемент массива обрабатывается один раз. Всего уровней рекурсии будет \\(\log n\\), так как каждый раз массив делится пополам. При слиянии двух частей массива для всего уровня выполняется \\(O(n)\\) операций.
 
 ## Ввод
 
 ```bash 
-4
 49 12 -3 15
 ```
 
@@ -147,3 +84,8 @@ void mergeSort(int* a, int size) {
 ```bash 
 -3 12 15 49
 ```
+
+Можно решить задачу о количестве инверсий в массиве. TODO?
+
+
+[^1] : можно реализовать, но это слишком [сложно](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&ved=2ahUKEwjy7OyMldCBAxWyIxAIHTLPBJsQFnoECAgQAQ&url=https%3A%2F%2Fneerc.ifmo.ru%2Fwiki%2Findex.php%3Ftitle%3DC%25D0%25BE%25D1%2580%25D1%2582%25D0%25B8%25D1%2580%25D0%25BE%25D0%25B2%25D0%25BA%25D0%25B0_%25D1%2581%25D0%25BB%25D0%25B8%25D1%258F%25D0%25BD%25D0%25B8%25D0%25B5%25D0%25BC_%25D1%2581_%25D0%25B8%25D1%2581%25D0%25BF%25D0%25BE%25D0%25BB%25D1%258C%25D0%25B7%25D0%25BE%25D0%25B2%25D0%25B0%25D0%25BD%25D0%25B8%25D0%25B5%25D0%25BC_O(1)_%25D0%25B4%25D0%25BE%25D0%25BF%25D0%25BE%25D0%25BB%25D0%25BD%25D0%25B8%25D1%2582%25D0%25B5%25D0%25BB%25D1%258C%25D0%25BD%25D0%25BE%25D0%25B9_%25D0%25BF%25D0%25B0%25D0%25BC%25D1%258F%25D1%2582%25D0%25B8&usg=AOvVaw235f3zvb_T5TBa_xWEB_9g&opi=89978449).
