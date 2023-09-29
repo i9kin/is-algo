@@ -53,7 +53,7 @@ def build():
     git.Repo(REPO).git.commit(
         "-m", "deploy: " + sha
     )  # , author='deploy <deploy@deploy.com>'
-    # git.Repo(REPO).git.push("origin", "gh-pages")
+    git.Repo(REPO).git.push("origin", "gh-pages")
 
 
 safe_rm(pathlib.Path(REPO))
