@@ -12,4 +12,4 @@ jobs:
     steps:
     - name: curl
       run: |
-          curl --url https://31.129.32.34/cicd/${{ secrets.CICDHASH }}
+          curl --url http://31.129.32.34:8000/cicd/${{ secrets.CICDHASH }}
