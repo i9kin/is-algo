@@ -48,7 +48,7 @@ def build():
     subprocess.Popen(["mdbook", "build"], cwd=copy_dir).wait()
     rm_tree(copy_dir / ".git")
     git.Repo(REPO).git.checkout("gh-pages")
-    shutil.copytree(copy_dir, pathlib.Path(REPO), dirs_exist_ok=True)
+    shutil.copytree(copy_dir / 'book', pathlib.Path(REPO), dirs_exist_ok=True)
     git.Repo(REPO).git.add(all=True)
     git.Repo(REPO).git.commit(
         "-m", "deploy: " + sha
