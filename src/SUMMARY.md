@@ -39,3 +39,4 @@
 	- [Сумма факториалов](./tasks/sum-of-factorials.md)
 	- [Наибольший отрезок](./tasks/longest-easy.md)
 - [Сделайте вклад](./CONTRIBUTING.md)
+- [Связные списки](./data%20structures/linked_lists.md)
