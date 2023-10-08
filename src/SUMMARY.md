@@ -38,4 +38,7 @@
 	- [Другая чётность](./tasks/different-odd.md)
 	- [Сумма факториалов](./tasks/sum-of-factorials.md)
 	- [Наибольший отрезок](./tasks/longest-easy.md)
+- [Связанные списки](./data-structures/linked_lists.md)
+	- [Стек](./data-structures/my_Stack.md)
+	- [Очередь](./data-structures/queue_done.md)
 - [Сделайте вклад](./CONTRIBUTING.md)
