@@ -3,7 +3,7 @@
 [Ссылка на тг канал](https://t.me/+uunjZQSTJ0hhNjFi) Нас 160! Зайдите в чат канала.
 
 Я &mdash; [tg@i9kin](https://t.me/i9kin) по поводу замечаний и предложений.
-С фидбэком и предложениями также пишите [tg@chainbrain](https://t.me/chainbrain), [tg@kiksnol](https://t.me/Kiksnol).
+С фидбэком и предложениями также пишите [tg@chainbrain](https://t.me/chainbrain), [tg@kiksnol](https://t.me/Kiksnol), [tg@shvedova_ali](https://t.me/shvedova_ali).
 
 > Просьба не копипастить код в лабораторные, потому что тогда вы все получите бан за списывание. Вам нужно понять принцип работы и писать свой код, не подглядывая, а не просто перепечатывать код с сайта в лабу!
 
