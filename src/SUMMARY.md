@@ -48,5 +48,7 @@
 	- [Другая чётность](./tasks/different-odd.md)
 	- [Сумма факториалов](./tasks/sum-of-factorials.md)
 	- [Наибольший отрезок](./tasks/longest-easy.md)
+	- [Опасные группы отрезков](./tasks/cnt-segments-segments.md)
+- [Задачи про отрезки](./tasks/task-about-segments.md)
 - [stl](./stl/stl.md)
 - [Сделайте вклад](./CONTRIBUTING.md)
