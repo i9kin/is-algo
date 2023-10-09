@@ -29,23 +29,26 @@
 
 ```cpp
 struct Node {
-    int data;
-    Node* next;
+  int data;
+  Node* next;
 
-    Node(int data) : data(data), next(nullptr) {}
+  Node(int data) : data(data), next(nullptr) {}
 };
 ```
 Теперь создадим функцию `enqueue`, которая будет добавлять новый элемент в конец очереди.
 
 ```cpp
 void enqueue(int data) {
-    Node* newNode = new Node(data);  // Создание нового узла с переданным значением data
-    if (isEmpty()) {  // Проверка, пуста ли очередь
-        head = tail = newNode;  // Если очередь пуста, устанавливаем голову и хвост на новый узел
-    } else {
-        tail->next = newNode;  // Устанавливаем указатель next текущего хвоста на новый узел
-        tail = newNode;  // Обновляем хвост очереди на новый узел
-    }
+  Node* newNode =
+      new Node(data);  // Создание нового узла с переданным значением data
+  if (isEmpty()) {     // Проверка, пуста ли очередь
+    head = tail = newNode;  // Если очередь пуста, устанавливаем голову и хвост
+                            // на новый узел
+  } else {
+    tail->next =
+        newNode;  // Устанавливаем указатель next текущего хвоста на новый узел
+    tail = newNode;  // Обновляем хвост очереди на новый узел
+  }
 }
 ```
 Далее создадим функцию dequeue, которая будет удалять элемент из начала очереди.
@@ -53,114 +56,124 @@ void enqueue(int data) {
 
 ```cpp
 void dequeue() {
-    if (isEmpty()) { // проверяем, пуста ли очередь
-        std::cout << "Очередь пуста." << "\n"; // если очередь пуста, то выводим сообщение об ошибке и вовзвращаемся из функции
-        return;
-    }
-    Node* temp = head;  // Создаем временный указатель и устанавливаем его на голову очереди
-    head = head->next;  // Сдвигаем голову на следующий элемент
-    delete temp;  // Удаляем предыдущий первый элемент
-    if (head == nullptr) {
-        tail = nullptr;  // Если после удаления головы очередь пуста, обнуляем и хвост
-    }
+  if (isEmpty()) {  // проверяем, пуста ли очередь
+    std::cout << "Очередь пуста."
+              << "\n";  // если очередь пуста, то выводим сообщение об ошибке и
+                        // вовзвращаемся из функции
+    return;
+  }
+  Node* temp = head;  // Создаем временный указатель и устанавливаем его на
+                      // голову очереди
+  head = head->next;  // Сдвигаем голову на следующий элемент
+  delete temp;  // Удаляем предыдущий первый элемент
+  if (head == nullptr) {
+    tail =
+        nullptr;  // Если после удаления головы очередь пуста, обнуляем и хвост
+  }
 }
 ```
 Теперь создадим функцию front, которая будет возвращать значение элемента в начале очереди без его удаления, если очередь пуста, то выведется сообщение "очередь пуста".
 
 ```cpp
 int front() {
-        if (isEmpty()) {
-            std::cout << "Queue is empty." << "\n";
-            return -1;
-        }
-        return head->data; // возвращаем значение данных в головном узле
-    }
+  if (isEmpty()) {
+    std::cout << "Queue is empty."
+              << "\n";
+    return -1;
+  }
+  return head->data;  // возвращаем значение данных в головном узле
+}
 
-    bool isEmpty() {
-        return head == nullptr; // возвращаем true, если голова равна nullptr, иначе falsе
-    }
+bool isEmpty() {
+  return head ==
+         nullptr;  // возвращаем true, если голова равна nullptr, иначе falsе
+}
 ```
 ### Код полностью
 
 ```cpp
 #include <iostream>
 
-
 class Queue {
-private:
-    struct Node {
-        int data;
-        Node* next;
-        Node(int data) : data(data), next(nullptr) {}
-    };
+ private:
+  struct Node {
+    int data;
+    Node* next;
 
-    Node* head; // указатель на голову очереди
-    Node* tail; // указатель на хвост очереди
+    Node(int data) : data(data), next(nullptr) {}
+  };
 
-public:
-    Queue() : head(nullptr), tail(nullptr) {} // Конструктор  Queue()  инициализирует указатели  head  и  tail  значением  nullptr , чтобы указать, что очередь пустая
+  Node* head;  // указатель на голову очереди
+  Node* tail;  // указатель на хвост очереди
 
-    ~Queue() {  
-        while (!isEmpty()) {
-            dequeue(); //Деструктор  ~Queue()  освобождает память, выделенную для каждого узла в очереди, путем последовательного вызова функции  dequeue()  до тех пор, пока очередь не станет пустой
-        }
+ public:
+  Queue()
+      : head(nullptr),
+        tail(nullptr) {
+  }  // Конструктор  Queue()  инициализирует указатели  head  и  tail  значением
+     // nullptr , чтобы указать, что очередь пустая
+
+  ~Queue() {
+    while (!isEmpty()) {
+      dequeue();  // Деструктор  ~Queue()  освобождает память, выделенную для
+                  // каждого узла в очереди, путем последовательного вызова
+                  // функции  dequeue()  до тех пор, пока очередь не станет
+                  // пустой
     }
+  }
 
-    void enqueue(int data) {
-        Node* newNode = new Node(data);
-        if (isEmpty()) {
-            head = tail = newNode;
-        } else {
-            tail->next = newNode;
-            tail = newNode;
-        }
+  void enqueue(int data) {
+    Node* newNode = new Node(data);
+    if (isEmpty()) {
+      head = tail = newNode;
+    } else {
+      tail->next = newNode;
+      tail = newNode;
     }
+  }
 
-    void dequeue() {
-        if (isEmpty()) {
-            std::cout << "Queue is empty." << std::endl;
-            return;
-        }
-        Node* temp = head;
-        head = head->next;
-        delete temp;
-        if (head == nullptr) {
-            tail = nullptr;
-        }
+  void dequeue() {
+    if (isEmpty()) {
+      std::cout << "Queue is empty." << std::endl;
+      return;
     }
+    Node* temp = head;
+    head = head->next;
+    delete temp;
+    if (head == nullptr) {
+      tail = nullptr;
+    }
+  }
 
-    int front() {
-        if (isEmpty()) {
-            std::cout << "Queue is empty." << std::endl;
-            return -1;
-        }
-        return head->data;
+  int front() {
+    if (isEmpty()) {
+      std::cout << "Queue is empty." << std::endl;
+      return -1;
     }
+    return head->data;
+  }
 
-    bool isEmpty() {
-        return head == nullptr;
-    }
+  bool isEmpty() { return head == nullptr; }
 };
 
 int main() {
-    Queue queue;
-    for (int i = 0; i < 3; i++){
-        queue.enqueue(i); // добавляем числа от 0 до 2
-    }
+  Queue queue;
+  for (int i = 0; i < 3; i++) {
+    queue.enqueue(i);  // добавляем числа от 0 до 2
+  }
 
+  std::cout << "Первый элемеент:  " << queue.front() << "\n";
 
-    std::cout << "Первый элемеент:  " << queue.front() << "\n";
+  queue.dequeue();  // извлекаем элемент из очереди
 
-    queue.dequeue(); // извлекаем элемент из очереди
+  std::cout << "Первый элемент: " << queue.front() << "\n";
 
-    std::cout << "Первый элемент: " << queue.front() << "\n";
+  queue.dequeue();  // извлекаем элемент из очереди
+  queue.dequeue();  // извлекаем элемент из очереди
 
-    queue.dequeue(); // извлекаем элемент из очереди
-    queue.dequeue(); // извлекаем элемент из очереди
-
-    if (queue.isEmpty()) { // проверяем, пуста ли очередь
-        std::cout << "Очередь пуста.";
-    }    
+  if (queue.isEmpty()) {  // проверяем, пуста ли очередь
+    std::cout << "Очередь пуста.";
+  }
 }
 ```
 

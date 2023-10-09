@@ -17,10 +17,10 @@
 Функция `binarySearch` ищет \\(x\\) в массиве \\(a\\) длины \\(n\\), возвращает индекс, по которому лежит \\(x\\), или \\(-1\\), если \\(x\\) в массиве нет.
 
 ```cpp
-int binarySearch(int *a, int n, int x) {
+int binarySearch(int* a, int n, int x) {
   int l = 0, r = n - 1;
   while (l <= r) {
-    int mid = (l + r) / 2; // индекс элемента в центре отрезка [l, r]
+    int mid = (l + r) / 2;  // индекс элемента в центре отрезка [l, r]
     if (a[mid] == x) {
       return mid;
     } else if (a[mid] < x) {
