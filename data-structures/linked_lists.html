@@ -1,0 +1,383 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Связанные списки - is-algo</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../index.html"><strong aria-hidden="true">1.</strong> Введение</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../how-to-smth/judje.html"><strong aria-hidden="true">1.1.</strong> Тестирующая система</a></li><li class="chapter-item expanded "><a href="../how-to-smth/how-to-read.html"><strong aria-hidden="true">1.2.</strong> Как читать</a></li><li class="chapter-item expanded "><a href="../how-to-smth/how-to-solve.html"><strong aria-hidden="true">1.3.</strong> Как придумывать</a></li><li class="chapter-item expanded "><a href="../how-to-smth/how-to-testing.html"><strong aria-hidden="true">1.4.</strong> Как тестировать</a></li></ol></li><li class="chapter-item expanded "><a href="../getting-started/getting-started.html"><strong aria-hidden="true">2.</strong> Начало работы</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../getting-started/installation.html"><strong aria-hidden="true">2.1.</strong> Установка</a></li><li class="chapter-item expanded "><a href="../getting-started/code-editor.html"><strong aria-hidden="true">2.2.</strong> Редактор кода</a></li><li class="chapter-item expanded "><a href="../getting-started/examples.html"><strong aria-hidden="true">2.3.</strong> Решение задачи</a></li></ol></li><li class="chapter-item expanded "><a href="../programming/cpp_base.html"><strong aria-hidden="true">3.</strong> Основы языка C++</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../programming/data-types.html"><strong aria-hidden="true">3.1.</strong> Типы данных</a></li><li class="chapter-item expanded "><a href="../programming/io.html"><strong aria-hidden="true">3.2.</strong> Ввод и вывод</a></li><li class="chapter-item expanded "><a href="../programming/branching.html"><strong aria-hidden="true">3.3.</strong> Ветвление</a></li><li class="chapter-item expanded "><a href="../programming/loops.html"><strong aria-hidden="true">3.4.</strong> Циклы</a></li><li class="chapter-item expanded "><a href="../programming/array_types/array.html"><strong aria-hidden="true">3.5.</strong> Массивы</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../programming/array_types/static-array.html"><strong aria-hidden="true">3.5.1.</strong> Статические массивы</a></li><li class="chapter-item expanded "><a href="../programming/array_types/dynamic-array.html"><strong aria-hidden="true">3.5.2.</strong> Динамические массивы</a></li><li class="chapter-item expanded "><a href="../programming/array_types/VLA.html"><strong aria-hidden="true">3.5.3.</strong> VLA</a></li><li class="chapter-item expanded "><a href="../programming/array_types/vector.html"><strong aria-hidden="true">3.5.4.</strong> std::vector</a></li><li class="chapter-item expanded "><a href="../programming/array_types/compare-arrays.html"><strong aria-hidden="true">3.5.5.</strong> Что выбрать?</a></li></ol></li><li class="chapter-item expanded "><a href="../programming/functions.html"><strong aria-hidden="true">3.6.</strong> Функции</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../programming/params-to-func.html"><strong aria-hidden="true">3.6.1.</strong> Передача параметров в функцию</a></li></ol></li><li class="chapter-item expanded "><a href="../programming/links-and-pointers.html"><strong aria-hidden="true">3.7.</strong> Ссылки и указатели</a></li></ol></li><li class="chapter-item expanded "><a href="../programming/mem.html"><strong aria-hidden="true">4.</strong> Память</a></li><li class="chapter-item expanded "><a href="../algorithms/greedy/index.html"><strong aria-hidden="true">5.</strong> Жадные алгоритмы</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../algorithms/greedy/intro.html"><strong aria-hidden="true">5.1.</strong> Введение</a></li></ol></li><li class="chapter-item expanded "><a href="../algorithms/asymptotics.html"><strong aria-hidden="true">6.</strong> Асимптотика</a></li><li class="chapter-item expanded "><a href="../algorithms/sorts/sorts.html"><strong aria-hidden="true">7.</strong> Сортировки</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../algorithms/sorts/bubble-sort.html"><strong aria-hidden="true">7.1.</strong> "Пузырьковая" сортировка</a></li><li class="chapter-item expanded "><a href="../algorithms/sorts/insertion-sort.html"><strong aria-hidden="true">7.2.</strong> Сортировка вставкой</a></li><li class="chapter-item expanded "><a href="../algorithms/sorts/selection-sort.html"><strong aria-hidden="true">7.3.</strong> "Выборочная" сортировка</a></li><li class="chapter-item expanded "><a href="../algorithms/sorts/merge-sort.html"><strong aria-hidden="true">7.4.</strong> Сортировка слиянием</a></li><li class="chapter-item expanded "><a href="../algorithms/sorts/quick-sort.html"><strong aria-hidden="true">7.5.</strong> Быстрая сортировка</a></li><li class="chapter-item expanded "><a href="../algorithms/sorts/counting-sort.html"><strong aria-hidden="true">7.6.</strong> Сортировка подсчётом</a></li></ol></li><li class="chapter-item expanded "><a href="../data-structures/linked_lists.html" class="active"><strong aria-hidden="true">8.</strong> Связанные списки</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../data-structures/my_Stack.html"><strong aria-hidden="true">8.1.</strong> Стек</a></li><li class="chapter-item expanded "><a href="../data-structures/queue_done.html"><strong aria-hidden="true">8.2.</strong> Очередь</a></li></ol></li><li class="chapter-item expanded "><a href="../algorithms/binary-search/index.html"><strong aria-hidden="true">9.</strong> Двоичный поиск</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../algorithms/binary-search/main.html"><strong aria-hidden="true">9.1.</strong> Целочисленный двоичный поиск</a></li><li class="chapter-item expanded "><a href="../algorithms/binary-search/real.html"><strong aria-hidden="true">9.2.</strong> Вещественный поиск</a></li><li class="chapter-item expanded "><a href="../algorithms/binary-search/answer.html"><strong aria-hidden="true">9.3.</strong> Двоичный поиск по ответу</a></li><li class="chapter-item expanded "><a href="../algorithms/binary-search/minimax.html"><strong aria-hidden="true">9.4.</strong> Минимакс</a></li><li class="chapter-item expanded "><a href="../algorithms/binary-search/best_practices.html"><strong aria-hidden="true">9.5.</strong> best practices</a></li><li class="chapter-item expanded "><a href="../algorithms/binary-search/tasks.html"><strong aria-hidden="true">9.6.</strong> Примеры задач</a></li></ol></li><li class="chapter-item expanded "><a href="../tasks/index.html"><strong aria-hidden="true">10.</strong> Решаем задачи</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../tasks/different-odd.html"><strong aria-hidden="true">10.1.</strong> Другая чётность</a></li><li class="chapter-item expanded "><a href="../tasks/sum-of-factorials.html"><strong aria-hidden="true">10.2.</strong> Сумма факториалов</a></li><li class="chapter-item expanded "><a href="../tasks/longest-easy.html"><strong aria-hidden="true">10.3.</strong> Наибольший отрезок</a></li></ol></li><li class="chapter-item expanded "><a href="../stl/stl.html"><strong aria-hidden="true">11.</strong> stl</a></li><li class="chapter-item expanded "><a href="../CONTRIBUTING.html"><strong aria-hidden="true">12.</strong> Сделайте вклад</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">is-algo</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/9kin/is-algo" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/9kin/is-algo/edit/master/src/data-structures/linked_lists.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="Связные-списки"><a class="header" href="#Связные-списки">Связные списки</a></h1>
+<blockquote>
+<p>Связанный список - это базовая динамическая структура данных, состоящая из узлов, каждый из которых содержит значение и ссылку на следующий(а может еще и на предыдущий)узел. Первый элемент списка - Head, последний - Tail, он ссылается на NULL. В связанном списке элементы линейно упорядочены, но порядок определяется не номерами, а указателями, входящими в состав элементов списка.</p>
+</blockquote>
+<p>Преимуществом связанных списков перед массивами является более гибкое расположение в памяти, потому что массив требует выделенного подряд отрезка памяти, в то время как элементы связанного списка могут быть раскиданы по всей памяти, но все равно потеряются, благодаря указателям, которые их связывают. </p>
+<p>Также связанные списки удобны при вводе неопределенного количества данных, потому что мы будем просто увеличивать нашу цепочку указателей за одно действие, в то время как в динамическом массиве нам периодически пришлось бы искать место для реаллокации всего массива, что занимает несколько больше времени, чем добавление одного узла в цепочку. </p>
+<p>Связанные списки бывают нескольких видов:</p>
+<ul>
+<li>Односторонне связанные. Узел помимо значения хранит указатель на следующий в цепочке узел</li>
+<li>Двусторонне связанные. Узел помимо значения хранит указатели на следующий и предыдущий узлы</li>
+<li>Кольцевые. Последний узел в списке хранит указатели на самый первый узел в списке</li>
+<li>Упорядоченные. Все узлы списка расположены по возрастанию ключей</li>
+</ul>
+<h2 id="Преимущества-связных-списков"><a class="header" href="#Преимущества-связных-списков">Преимущества связных списков:</a></h2>
+<ol>
+<li>Динамическое выделение памяти: Связные списки позволяют динамически выделять память для каждого элемента списка. Это означает, что связные списки могут расти и сжиматься по мере необходимости, без необходимости заранее определенного размера.</li>
+<li>Простота вставки и удаления элементов: Вставка и удаление элементов в связном списке происходят за константное время \(O(1)\), если известно место вставки или удаления. Это делает связные списки эффективными структурами данных для операций вставки и удаления элементов в начале, конце и середине списка.</li>
+<li>Гибкость: Связные списки могут содержать элементы различных типов и могут быть легко изменены и модифицированы. Это позволяет легко вставлять, удалять и перемещать элементы в списке.</li>
+</ol>
+<h2 id="Недостатки-связных-списков"><a class="header" href="#Недостатки-связных-списков">Недостатки связных списков:</a></h2>
+<ol>
+<li>Неэффективный доступ по индексу: Доступ к элементу по индексу в связном списке требует просмотра списка от начала до нужного элемента. Это делает операцию доступа по индексу неэффективной и занимает время \(O(n)\), где 
+\(n\) — количество элементов в списке.</li>
+<li>Дополнительное использование памяти: Каждый элемент связного списка требует дополнительной памяти для хранения указателя на следующий элемент. Это может привести к дополнительному использованию памяти по сравнению с другими структурами данных, такими как массивы. Размер указателя в <code>c++</code> на всех новых системах (64-битная машина) имеет размер 8 байт (<code>2</code> <code>int</code>'а). (это вызвано тем, что надо занумеровать всю память)</li>
+<li>Сложность обхода в обратном направлении: Обход связного списка в обратном направлении (от конца к началу) требует наличия указателя на предыдущий элемент в каждом узле. Если такой указатель отсутствует, обход в обратном направлении становится сложным или невозможным.</li>
+</ol>
+<h2 id="Односторонний-связный-список"><a class="header" href="#Односторонний-связный-список">Односторонний связный список</a></h2>
+<p>Давайте разберем реализацию одностороннего связанного списка.</p>
+<p>Сперва нам понадобится создать структуру узла. Она будет иметь поля <code>data</code> типа <code>int</code> для хранения ключа и указатель <code>next</code> на тип <code>Node</code>. Подробнее про указатели <a href="./programming/links-and-pointers.html">тут</a></p>
+<pre><code class="language-cpp">struct Node{
+    int data;
+    Node* next;
+}
+</code></pre>
+<p>Следующим этапом будет добавление новых элементов в наш список.</p>
+<pre><code class="language-cpp"> void insert(int data) {
+    Node* newNode = new Node(data); //Создание нового узла с переданным значением data
+    if (head == nullptr) {
+        head = newNode; // Если список пустой, устанавливаем голову списка на новый узел
+    } else {
+        Node* temp = head;  // Создание временного указателя, устанавливаем его на голову списка
+        while (temp-&gt;next != nullptr) {
+            temp = temp-&gt;next;  // Проходим по списку до последнего узла
+        }
+        temp-&gt;next = newNode; // Устанавливаем указатель next последнего узла на новый узел, добавляя его в конец списка
+    }
+}    
+
+</code></pre>
+<p>Следующим этапом будет поиск элементов в связном списке.</p>
+<pre><code class="language-cpp">Node* search(Node* head, int key) {
+    Node* current = head;  // Устанавливаем указатель current на голову списка
+    while (current != nullptr) {  // Пока не достигнут конец списка
+        if (current-&gt;data == key) {  // Если значение текущего узла равно ключу
+            return current;  // Возвращаем указатель на текущий узел, так как элемент найден
+        }
+        current = current-&gt;next;  // Переходим к следующему узлу
+    }
+    return nullptr;  // Если элемент не найден, возвращаем nullptr
+}
+</code></pre>
+<p>Теперь удалим элемент из связного списка.
+В этом примере мы используем функцию <code>deleteNode</code>, которая принимает указатель на голову списка  <code>head</code>  и ключ <code>key</code>, соответствующий элементу, который мы хотим удалить из списка. </p>
+<p>Внутри функции, мы ищем узел с заданным ключом. Если голова списка содержит искомый элемент, мы обновляем голову списка и освобождаем память, затем возвращаемся из функции.</p>
+<p>Если элемент находится в середине или конце списка, мы используем два указателя <code>temp</code>  и <code>prev</code>, чтобы пройти по списку и найти узел с заданным ключом. После нахождения узла, мы обновляем указатель <code>next</code>  предыдущего узла, чтобы пропустить удаляемый узел, и освобождаем память.</p>
+<pre><code class="language-cpp">void deleteNode(Node** head, int key) {
+    Node* temp = *head;  // Устанавливаем указатель temp на голову списка
+    Node* prev = nullptr;  // Инициализируем указатель prev как nullptr
+
+    // Если голова списка содержит искомый элемент
+    if (temp != nullptr &amp;&amp; temp-&gt;data == key) {
+        *head = temp-&gt;next;  // Обновляем голову списка на следующий узел
+        delete temp;  // Освобождаем память, где хранился искомый элемент
+        return;  // Возвращаемся из функции
+    }
+
+    // Поиск узла с заданным ключом
+    while (temp != nullptr &amp;&amp; temp-&gt;data != key) {
+        prev = temp;  // Сохраняем текущий узел в prev
+        temp = temp-&gt;next;  // Переходим к следующему узлу
+    }
+
+    // Если элемент не найден
+    if (temp == nullptr) {
+        return;  // Возвращаемся из функции
+    }
+
+    // Удаление узла
+    prev-&gt;next = temp-&gt;next;  // Обновляем указатель next предыдущего узла, чтобы пропустить удаляемый узел
+    delete temp;  // Освобождаем память, где хранился искомый элемент
+}
+</code></pre>
+<p>Теперь напишем функцию по выводу списка.</p>
+<pre><code class="language-cpp">void printList(Node* head) {
+    Node* temp = head;  // Устанавливаем указатель temp на голову списка
+    while (temp != nullptr) {  // Пока не достигнут конец списка
+        std::cout &lt;&lt; temp-&gt;data &lt;&lt; &quot; &quot;;  // Выводим значение текущего узла
+        temp = temp-&gt;next;  // Переходим к следующему узлу
+    }
+    std::cout &lt;&lt;  &quot;\n&quot;;  // Печатаем перевод строки
+}
+</code></pre>
+<p>Теперь мы реализуем работу списка.</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+struct Node{
+    int data;
+    Node *next;
+    Node(int data) : data(data), next(nullptr) {} 
+};
+
+struct my_linked_list{
+    private:
+        Node *head;
+    public:
+        my_linked_list() : head(nullptr) {}
+        void push(int data) {
+            Node* newNode = new Node(data);
+            if(head == nullptr) {
+                head = newNode;
+            }
+            else{
+                Node* temp = head;
+                while(temp-&gt;next != nullptr){
+                    temp = temp-&gt;next;
+                }
+                temp-&gt;next = newNode;
+            }
+        }
+        Node* search(int key){
+            Node* current = head;
+            while(current != nullptr){
+               if(current-&gt;data == key) {
+                    return current;
+                }
+                current = current-&gt;next;
+            }
+            return nullptr;
+        } 
+        void deleteNode(int key){
+            Node* current = head;
+            Node* prev = nullptr;
+
+            if(current!=nullptr &amp;&amp; current-&gt;data == key){
+                head = current-&gt;next;
+                delete current;
+                return;
+            }
+            while (current != nullptr &amp;&amp; current-&gt;data != key){
+                prev = current;
+                current = current-&gt;next;
+            }
+            if(current-&gt;next == nullptr) {
+                return;
+            }
+            prev-&gt;next = current-&gt;next;
+            delete current;
+        }
+        void printList(){
+            Node* current = head;
+            while (current != nullptr){
+                std::cout &lt;&lt; current-&gt;data &lt;&lt; &quot; &quot;;
+                current = current-&gt;next;
+            }
+            std::cout &lt;&lt; &quot;\n&quot;;
+        }
+
+};
+
+int main(){
+    my_linked_list my_list; // создаем экземпляр структуры
+    for(int i = 0; i &lt; 10; i++){
+        my_list.push(i);    // добавляем числа от 0 до 9
+    }
+    my_list.push(10); // добавим цифру 10
+    my_list.printList(); // выведем список
+    my_list.deleteNode(5); // удалим 5
+    my_list.printList(); // выведем список
+}
+
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../algorithms/sorts/counting-sort.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../data-structures/my_Stack.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../algorithms/sorts/counting-sort.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../data-structures/my_Stack.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>
