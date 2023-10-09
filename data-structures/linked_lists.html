@@ -178,36 +178,41 @@
 <h2 id="Односторонний-связный-список"><a class="header" href="#Односторонний-связный-список">Односторонний связный список</a></h2>
 <p>Давайте разберем реализацию одностороннего связанного списка.</p>
 <p>Сперва нам понадобится создать структуру узла. Она будет иметь поля <code>data</code> типа <code>int</code> для хранения ключа и указатель <code>next</code> на тип <code>Node</code>. Подробнее про указатели <a href="./programming/links-and-pointers.html">тут</a></p>
-<pre><code class="language-cpp">struct Node{
-    int data;
-    Node* next;
+<pre><code class="language-cpp">struct Node {
+  int data;
+  Node* next;
 }
 </code></pre>
 <p>Следующим этапом будет добавление новых элементов в наш список.</p>
-<pre><code class="language-cpp"> void insert(int data) {
-    Node* newNode = new Node(data); //Создание нового узла с переданным значением data
-    if (head == nullptr) {
-        head = newNode; // Если список пустой, устанавливаем голову списка на новый узел
-    } else {
-        Node* temp = head;  // Создание временного указателя, устанавливаем его на голову списка
-        while (temp-&gt;next != nullptr) {
-            temp = temp-&gt;next;  // Проходим по списку до последнего узла
-        }
-        temp-&gt;next = newNode; // Устанавливаем указатель next последнего узла на новый узел, добавляя его в конец списка
+<pre><code class="language-cpp">void insert(int data) {
+  Node* newNode =
+      new Node(data);  // Создание нового узла с переданным значением data
+  if (head == nullptr) {
+    head = newNode;  // Если список пустой, устанавливаем голову списка на новый
+                     // узел
+  } else {
+    Node* temp = head;  // Создание временного указателя, устанавливаем его на
+                        // голову списка
+    while (temp-&gt;next != nullptr) {
+      temp = temp-&gt;next;  // Проходим по списку до последнего узла
     }
-}    
+    temp-&gt;next = newNode;  // Устанавливаем указатель next последнего узла на
+                           // новый узел, добавляя его в конец списка
+  }
+}
 
 </code></pre>
 <p>Следующим этапом будет поиск элементов в связном списке.</p>
 <pre><code class="language-cpp">Node* search(Node* head, int key) {
-    Node* current = head;  // Устанавливаем указатель current на голову списка
-    while (current != nullptr) {  // Пока не достигнут конец списка
-        if (current-&gt;data == key) {  // Если значение текущего узла равно ключу
-            return current;  // Возвращаем указатель на текущий узел, так как элемент найден
-        }
-        current = current-&gt;next;  // Переходим к следующему узлу
+  Node* current = head;  // Устанавливаем указатель current на голову списка
+  while (current != nullptr) {  // Пока не достигнут конец списка
+    if (current-&gt;data == key) {  // Если значение текущего узла равно ключу
+      return current;  // Возвращаем указатель на текущий узел, так как элемент
+                       // найден
     }
-    return nullptr;  // Если элемент не найден, возвращаем nullptr
+    current = current-&gt;next;  // Переходим к следующему узлу
+  }
+  return nullptr;  // Если элемент не найден, возвращаем nullptr
 }
 </code></pre>
 <p>Теперь удалим элемент из связного списка.
@@ -215,118 +220,123 @@
 <p>Внутри функции, мы ищем узел с заданным ключом. Если голова списка содержит искомый элемент, мы обновляем голову списка и освобождаем память, затем возвращаемся из функции.</p>
 <p>Если элемент находится в середине или конце списка, мы используем два указателя <code>temp</code>  и <code>prev</code>, чтобы пройти по списку и найти узел с заданным ключом. После нахождения узла, мы обновляем указатель <code>next</code>  предыдущего узла, чтобы пропустить удаляемый узел, и освобождаем память.</p>
 <pre><code class="language-cpp">void deleteNode(Node** head, int key) {
-    Node* temp = *head;  // Устанавливаем указатель temp на голову списка
-    Node* prev = nullptr;  // Инициализируем указатель prev как nullptr
+  Node* temp = *head;  // Устанавливаем указатель temp на голову списка
+  Node* prev = nullptr;  // Инициализируем указатель prev как nullptr
 
-    // Если голова списка содержит искомый элемент
-    if (temp != nullptr &amp;&amp; temp-&gt;data == key) {
-        *head = temp-&gt;next;  // Обновляем голову списка на следующий узел
-        delete temp;  // Освобождаем память, где хранился искомый элемент
-        return;  // Возвращаемся из функции
-    }
-
-    // Поиск узла с заданным ключом
-    while (temp != nullptr &amp;&amp; temp-&gt;data != key) {
-        prev = temp;  // Сохраняем текущий узел в prev
-        temp = temp-&gt;next;  // Переходим к следующему узлу
-    }
-
-    // Если элемент не найден
-    if (temp == nullptr) {
-        return;  // Возвращаемся из функции
-    }
-
-    // Удаление узла
-    prev-&gt;next = temp-&gt;next;  // Обновляем указатель next предыдущего узла, чтобы пропустить удаляемый узел
+  // Если голова списка содержит искомый элемент
+  if (temp != nullptr &amp;&amp; temp-&gt;data == key) {
+    *head = temp-&gt;next;  // Обновляем голову списка на следующий узел
     delete temp;  // Освобождаем память, где хранился искомый элемент
+    return;       // Возвращаемся из функции
+  }
+
+  // Поиск узла с заданным ключом
+  while (temp != nullptr &amp;&amp; temp-&gt;data != key) {
+    prev = temp;        // Сохраняем текущий узел в prev
+    temp = temp-&gt;next;  // Переходим к следующему узлу
+  }
+
+  // Если элемент не найден
+  if (temp == nullptr) {
+    return;  // Возвращаемся из функции
+  }
+
+  // Удаление узла
+  prev-&gt;next = temp-&gt;next;  // Обновляем указатель next предыдущего узла, чтобы
+                            // пропустить удаляемый узел
+  delete temp;  // Освобождаем память, где хранился искомый элемент
 }
 </code></pre>
 <p>Теперь напишем функцию по выводу списка.</p>
 <pre><code class="language-cpp">void printList(Node* head) {
-    Node* temp = head;  // Устанавливаем указатель temp на голову списка
-    while (temp != nullptr) {  // Пока не достигнут конец списка
-        std::cout &lt;&lt; temp-&gt;data &lt;&lt; &quot; &quot;;  // Выводим значение текущего узла
-        temp = temp-&gt;next;  // Переходим к следующему узлу
-    }
-    std::cout &lt;&lt;  &quot;\n&quot;;  // Печатаем перевод строки
+  Node* temp = head;  // Устанавливаем указатель temp на голову списка
+  while (temp != nullptr) {  // Пока не достигнут конец списка
+    std::cout &lt;&lt; temp-&gt;data &lt;&lt; &quot; &quot;;  // Выводим значение текущего узла
+    temp = temp-&gt;next;  // Переходим к следующему узлу
+  }
+  std::cout &lt;&lt; &quot;\n&quot;;  // Печатаем перевод строки
 }
 </code></pre>
 <p>Теперь мы реализуем работу списка.</p>
 <pre><code class="language-cpp">#include &lt;iostream&gt;
 
-struct Node{
-    int data;
-    Node *next;
-    Node(int data) : data(data), next(nullptr) {} 
+struct Node {
+  int data;
+  Node* next;
+
+  Node(int data) : data(data), next(nullptr) {}
 };
 
-struct my_linked_list{
-    private:
-        Node *head;
-    public:
-        my_linked_list() : head(nullptr) {}
-        void push(int data) {
-            Node* newNode = new Node(data);
-            if(head == nullptr) {
-                head = newNode;
-            }
-            else{
-                Node* temp = head;
-                while(temp-&gt;next != nullptr){
-                    temp = temp-&gt;next;
-                }
-                temp-&gt;next = newNode;
-            }
-        }
-        Node* search(int key){
-            Node* current = head;
-            while(current != nullptr){
-               if(current-&gt;data == key) {
-                    return current;
-                }
-                current = current-&gt;next;
-            }
-            return nullptr;
-        } 
-        void deleteNode(int key){
-            Node* current = head;
-            Node* prev = nullptr;
+struct my_linked_list {
+ private:
+  Node* head;
 
-            if(current!=nullptr &amp;&amp; current-&gt;data == key){
-                head = current-&gt;next;
-                delete current;
-                return;
-            }
-            while (current != nullptr &amp;&amp; current-&gt;data != key){
-                prev = current;
-                current = current-&gt;next;
-            }
-            if(current-&gt;next == nullptr) {
-                return;
-            }
-            prev-&gt;next = current-&gt;next;
-            delete current;
-        }
-        void printList(){
-            Node* current = head;
-            while (current != nullptr){
-                std::cout &lt;&lt; current-&gt;data &lt;&lt; &quot; &quot;;
-                current = current-&gt;next;
-            }
-            std::cout &lt;&lt; &quot;\n&quot;;
-        }
+ public:
+  my_linked_list() : head(nullptr) {}
 
-};
-
-int main(){
-    my_linked_list my_list; // создаем экземпляр структуры
-    for(int i = 0; i &lt; 10; i++){
-        my_list.push(i);    // добавляем числа от 0 до 9
+  void push(int data) {
+    Node* newNode = new Node(data);
+    if (head == nullptr) {
+      head = newNode;
+    } else {
+      Node* temp = head;
+      while (temp-&gt;next != nullptr) {
+        temp = temp-&gt;next;
+      }
+      temp-&gt;next = newNode;
     }
-    my_list.push(10); // добавим цифру 10
-    my_list.printList(); // выведем список
-    my_list.deleteNode(5); // удалим 5
-    my_list.printList(); // выведем список
+  }
+
+  Node* search(int key) {
+    Node* current = head;
+    while (current != nullptr) {
+      if (current-&gt;data == key) {
+        return current;
+      }
+      current = current-&gt;next;
+    }
+    return nullptr;
+  }
+
+  void deleteNode(int key) {
+    Node* current = head;
+    Node* prev = nullptr;
+
+    if (current != nullptr &amp;&amp; current-&gt;data == key) {
+      head = current-&gt;next;
+      delete current;
+      return;
+    }
+    while (current != nullptr &amp;&amp; current-&gt;data != key) {
+      prev = current;
+      current = current-&gt;next;
+    }
+    if (current-&gt;next == nullptr) {
+      return;
+    }
+    prev-&gt;next = current-&gt;next;
+    delete current;
+  }
+
+  void printList() {
+    Node* current = head;
+    while (current != nullptr) {
+      std::cout &lt;&lt; current-&gt;data &lt;&lt; &quot; &quot;;
+      current = current-&gt;next;
+    }
+    std::cout &lt;&lt; &quot;\n&quot;;
+  }
+};
+
+int main() {
+  my_linked_list my_list;  // создаем экземпляр структуры
+  for (int i = 0; i &lt; 10; i++) {
+    my_list.push(i);  // добавляем числа от 0 до 9
+  }
+  my_list.push(10);       // добавим цифру 10
+  my_list.printList();    // выведем список
+  my_list.deleteNode(5);  // удалим 5
+  my_list.printList();    // выведем список
 }
 
 </code></pre>

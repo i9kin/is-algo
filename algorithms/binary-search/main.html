@@ -160,10 +160,10 @@
 <p>Поскольку на каждом шаге длина отрезка уменьшается вдвое, это произойдёт через \(O(\log_2 n)\) шагов.</p>
 <p>Примерная реализация алгоритма двоичного поиска:</p>
 <p>Функция <code>binarySearch</code> ищет \(x\) в массиве \(a\) длины \(n\), возвращает индекс, по которому лежит \(x\), или \(-1\), если \(x\) в массиве нет.</p>
-<pre><code class="language-cpp">int binarySearch(int *a, int n, int x) {
+<pre><code class="language-cpp">int binarySearch(int* a, int n, int x) {
   int l = 0, r = n - 1;
   while (l &lt;= r) {
-    int mid = (l + r) / 2; // индекс элемента в центре отрезка [l, r]
+    int mid = (l + r) / 2;  // индекс элемента в центре отрезка [l, r]
     if (a[mid] == x) {
       return mid;
     } else if (a[mid] &lt; x) {

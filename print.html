@@ -790,7 +790,7 @@ int main() {
 <ol>
 <li>
 <p>Массивы нельзя присваивать. Так как просто указатель присвоить непонятно, что
-делать с &quot;потерявшейся памятью&quot;. Ещё есть вариант когда можно перекопировать все переменные, но это работает за <code>O(n)</code>, решили такое не делать, хотя в векторе такое есть. Это пришло из <code>C</code> исторически.</p>
+делать с &quot;потерявшейся памятью&quot;. Ещё есть вариант когда можно перекопировать все переменные, но это работает за \(O(n)\), решили такое не делать, хотя в векторе такое есть. Это пришло из <code>C</code> исторически.</p>
 </li>
 <li>
 <p><code>sizeof(a)</code> гораздо больше чем `sizeof(pointer)``</p>
@@ -835,10 +835,10 @@ int main() {
 <p>Используйте и не думайте.</p>
 </blockquote>
 <p>Есть удобные <a href="https://en.cppreference.com/w/cpp/container/vector">методы</a>: </p>
-<p><code>push_back</code> — добавляет элемент в конец. Амортизировано за <code>o(1)</code>.</p>
-<p><code>pop_back</code> — удаляет элемент в конец. Амортизировано за <code>o(1)</code>.</p>
-<p><code>insert</code> — вставляет элемент в произвольное место. За <code>O(n)</code>.</p>
-<p><code>erase</code> — удаляет произвольный элемент. За <code>O(n)</code>.</p>
+<p><code>push_back</code> — добавляет элемент в конец. Амортизировано за \(O(1)\).</p>
+<p><code>pop_back</code> — удаляет элемент в конец. Амортизировано за \(O(1)\).</p>
+<p><code>insert</code> — вставляет элемент в произвольное место. За \(O(n)\).</p>
+<p><code>erase</code> — удаляет произвольный элемент. За \(O(n)\).</p>
 <p><code>begin, end</code> — указатели на начало и конец. Например, нужно для сортировки <code>sort(a.begin(), a.end());</code></p>
 <p>Пример решения задачи из блока <a href="programming/array_types/./examples.html">&quot;начало работы&quot;</a> :</p>
 <pre><code class="language-cpp">#include &lt;iostream&gt;
@@ -995,7 +995,7 @@ int main() {
 <pre><code class="language-cpp">#include &lt;iostream&gt;
 
 void centimize(double* ptrd) {
-  *ptrd *= 2.54;  // *ptrd — это то же самое, что и var
+  *ptrd *= 2.54;  // *ptrd &amp;mdash; это то же самое, что и var
   // потому что при операции разыменовывания ptrd мы получим доступ к данным
   // переменной var
 }
@@ -1792,36 +1792,41 @@ for (int i = 0; i &lt; n; i++) {
 <h2 id="Односторонний-связный-список"><a class="header" href="#Односторонний-связный-список">Односторонний связный список</a></h2>
 <p>Давайте разберем реализацию одностороннего связанного списка.</p>
 <p>Сперва нам понадобится создать структуру узла. Она будет иметь поля <code>data</code> типа <code>int</code> для хранения ключа и указатель <code>next</code> на тип <code>Node</code>. Подробнее про указатели <a href="data-structures/./programming/links-and-pointers.html">тут</a></p>
-<pre><code class="language-cpp">struct Node{
-    int data;
-    Node* next;
+<pre><code class="language-cpp">struct Node {
+  int data;
+  Node* next;
 }
 </code></pre>
 <p>Следующим этапом будет добавление новых элементов в наш список.</p>
-<pre><code class="language-cpp"> void insert(int data) {
-    Node* newNode = new Node(data); //Создание нового узла с переданным значением data
-    if (head == nullptr) {
-        head = newNode; // Если список пустой, устанавливаем голову списка на новый узел
-    } else {
-        Node* temp = head;  // Создание временного указателя, устанавливаем его на голову списка
-        while (temp-&gt;next != nullptr) {
-            temp = temp-&gt;next;  // Проходим по списку до последнего узла
-        }
-        temp-&gt;next = newNode; // Устанавливаем указатель next последнего узла на новый узел, добавляя его в конец списка
+<pre><code class="language-cpp">void insert(int data) {
+  Node* newNode =
+      new Node(data);  // Создание нового узла с переданным значением data
+  if (head == nullptr) {
+    head = newNode;  // Если список пустой, устанавливаем голову списка на новый
+                     // узел
+  } else {
+    Node* temp = head;  // Создание временного указателя, устанавливаем его на
+                        // голову списка
+    while (temp-&gt;next != nullptr) {
+      temp = temp-&gt;next;  // Проходим по списку до последнего узла
     }
-}    
+    temp-&gt;next = newNode;  // Устанавливаем указатель next последнего узла на
+                           // новый узел, добавляя его в конец списка
+  }
+}
 
 </code></pre>
 <p>Следующим этапом будет поиск элементов в связном списке.</p>
 <pre><code class="language-cpp">Node* search(Node* head, int key) {
-    Node* current = head;  // Устанавливаем указатель current на голову списка
-    while (current != nullptr) {  // Пока не достигнут конец списка
-        if (current-&gt;data == key) {  // Если значение текущего узла равно ключу
-            return current;  // Возвращаем указатель на текущий узел, так как элемент найден
-        }
-        current = current-&gt;next;  // Переходим к следующему узлу
+  Node* current = head;  // Устанавливаем указатель current на голову списка
+  while (current != nullptr) {  // Пока не достигнут конец списка
+    if (current-&gt;data == key) {  // Если значение текущего узла равно ключу
+      return current;  // Возвращаем указатель на текущий узел, так как элемент
+                       // найден
     }
-    return nullptr;  // Если элемент не найден, возвращаем nullptr
+    current = current-&gt;next;  // Переходим к следующему узлу
+  }
+  return nullptr;  // Если элемент не найден, возвращаем nullptr
 }
 </code></pre>
 <p>Теперь удалим элемент из связного списка.
@@ -1829,118 +1834,123 @@ for (int i = 0; i &lt; n; i++) {
 <p>Внутри функции, мы ищем узел с заданным ключом. Если голова списка содержит искомый элемент, мы обновляем голову списка и освобождаем память, затем возвращаемся из функции.</p>
 <p>Если элемент находится в середине или конце списка, мы используем два указателя <code>temp</code>  и <code>prev</code>, чтобы пройти по списку и найти узел с заданным ключом. После нахождения узла, мы обновляем указатель <code>next</code>  предыдущего узла, чтобы пропустить удаляемый узел, и освобождаем память.</p>
 <pre><code class="language-cpp">void deleteNode(Node** head, int key) {
-    Node* temp = *head;  // Устанавливаем указатель temp на голову списка
-    Node* prev = nullptr;  // Инициализируем указатель prev как nullptr
+  Node* temp = *head;  // Устанавливаем указатель temp на голову списка
+  Node* prev = nullptr;  // Инициализируем указатель prev как nullptr
 
-    // Если голова списка содержит искомый элемент
-    if (temp != nullptr &amp;&amp; temp-&gt;data == key) {
-        *head = temp-&gt;next;  // Обновляем голову списка на следующий узел
-        delete temp;  // Освобождаем память, где хранился искомый элемент
-        return;  // Возвращаемся из функции
-    }
-
-    // Поиск узла с заданным ключом
-    while (temp != nullptr &amp;&amp; temp-&gt;data != key) {
-        prev = temp;  // Сохраняем текущий узел в prev
-        temp = temp-&gt;next;  // Переходим к следующему узлу
-    }
-
-    // Если элемент не найден
-    if (temp == nullptr) {
-        return;  // Возвращаемся из функции
-    }
-
-    // Удаление узла
-    prev-&gt;next = temp-&gt;next;  // Обновляем указатель next предыдущего узла, чтобы пропустить удаляемый узел
+  // Если голова списка содержит искомый элемент
+  if (temp != nullptr &amp;&amp; temp-&gt;data == key) {
+    *head = temp-&gt;next;  // Обновляем голову списка на следующий узел
     delete temp;  // Освобождаем память, где хранился искомый элемент
+    return;       // Возвращаемся из функции
+  }
+
+  // Поиск узла с заданным ключом
+  while (temp != nullptr &amp;&amp; temp-&gt;data != key) {
+    prev = temp;        // Сохраняем текущий узел в prev
+    temp = temp-&gt;next;  // Переходим к следующему узлу
+  }
+
+  // Если элемент не найден
+  if (temp == nullptr) {
+    return;  // Возвращаемся из функции
+  }
+
+  // Удаление узла
+  prev-&gt;next = temp-&gt;next;  // Обновляем указатель next предыдущего узла, чтобы
+                            // пропустить удаляемый узел
+  delete temp;  // Освобождаем память, где хранился искомый элемент
 }
 </code></pre>
 <p>Теперь напишем функцию по выводу списка.</p>
 <pre><code class="language-cpp">void printList(Node* head) {
-    Node* temp = head;  // Устанавливаем указатель temp на голову списка
-    while (temp != nullptr) {  // Пока не достигнут конец списка
-        std::cout &lt;&lt; temp-&gt;data &lt;&lt; &quot; &quot;;  // Выводим значение текущего узла
-        temp = temp-&gt;next;  // Переходим к следующему узлу
-    }
-    std::cout &lt;&lt;  &quot;\n&quot;;  // Печатаем перевод строки
+  Node* temp = head;  // Устанавливаем указатель temp на голову списка
+  while (temp != nullptr) {  // Пока не достигнут конец списка
+    std::cout &lt;&lt; temp-&gt;data &lt;&lt; &quot; &quot;;  // Выводим значение текущего узла
+    temp = temp-&gt;next;  // Переходим к следующему узлу
+  }
+  std::cout &lt;&lt; &quot;\n&quot;;  // Печатаем перевод строки
 }
 </code></pre>
 <p>Теперь мы реализуем работу списка.</p>
 <pre><code class="language-cpp">#include &lt;iostream&gt;
 
-struct Node{
-    int data;
-    Node *next;
-    Node(int data) : data(data), next(nullptr) {} 
+struct Node {
+  int data;
+  Node* next;
+
+  Node(int data) : data(data), next(nullptr) {}
 };
 
-struct my_linked_list{
-    private:
-        Node *head;
-    public:
-        my_linked_list() : head(nullptr) {}
-        void push(int data) {
-            Node* newNode = new Node(data);
-            if(head == nullptr) {
-                head = newNode;
-            }
-            else{
-                Node* temp = head;
-                while(temp-&gt;next != nullptr){
-                    temp = temp-&gt;next;
-                }
-                temp-&gt;next = newNode;
-            }
-        }
-        Node* search(int key){
-            Node* current = head;
-            while(current != nullptr){
-               if(current-&gt;data == key) {
-                    return current;
-                }
-                current = current-&gt;next;
-            }
-            return nullptr;
-        } 
-        void deleteNode(int key){
-            Node* current = head;
-            Node* prev = nullptr;
+struct my_linked_list {
+ private:
+  Node* head;
 
-            if(current!=nullptr &amp;&amp; current-&gt;data == key){
-                head = current-&gt;next;
-                delete current;
-                return;
-            }
-            while (current != nullptr &amp;&amp; current-&gt;data != key){
-                prev = current;
-                current = current-&gt;next;
-            }
-            if(current-&gt;next == nullptr) {
-                return;
-            }
-            prev-&gt;next = current-&gt;next;
-            delete current;
-        }
-        void printList(){
-            Node* current = head;
-            while (current != nullptr){
-                std::cout &lt;&lt; current-&gt;data &lt;&lt; &quot; &quot;;
-                current = current-&gt;next;
-            }
-            std::cout &lt;&lt; &quot;\n&quot;;
-        }
+ public:
+  my_linked_list() : head(nullptr) {}
 
-};
-
-int main(){
-    my_linked_list my_list; // создаем экземпляр структуры
-    for(int i = 0; i &lt; 10; i++){
-        my_list.push(i);    // добавляем числа от 0 до 9
+  void push(int data) {
+    Node* newNode = new Node(data);
+    if (head == nullptr) {
+      head = newNode;
+    } else {
+      Node* temp = head;
+      while (temp-&gt;next != nullptr) {
+        temp = temp-&gt;next;
+      }
+      temp-&gt;next = newNode;
     }
-    my_list.push(10); // добавим цифру 10
-    my_list.printList(); // выведем список
-    my_list.deleteNode(5); // удалим 5
-    my_list.printList(); // выведем список
+  }
+
+  Node* search(int key) {
+    Node* current = head;
+    while (current != nullptr) {
+      if (current-&gt;data == key) {
+        return current;
+      }
+      current = current-&gt;next;
+    }
+    return nullptr;
+  }
+
+  void deleteNode(int key) {
+    Node* current = head;
+    Node* prev = nullptr;
+
+    if (current != nullptr &amp;&amp; current-&gt;data == key) {
+      head = current-&gt;next;
+      delete current;
+      return;
+    }
+    while (current != nullptr &amp;&amp; current-&gt;data != key) {
+      prev = current;
+      current = current-&gt;next;
+    }
+    if (current-&gt;next == nullptr) {
+      return;
+    }
+    prev-&gt;next = current-&gt;next;
+    delete current;
+  }
+
+  void printList() {
+    Node* current = head;
+    while (current != nullptr) {
+      std::cout &lt;&lt; current-&gt;data &lt;&lt; &quot; &quot;;
+      current = current-&gt;next;
+    }
+    std::cout &lt;&lt; &quot;\n&quot;;
+  }
+};
+
+int main() {
+  my_linked_list my_list;  // создаем экземпляр структуры
+  for (int i = 0; i &lt; 10; i++) {
+    my_list.push(i);  // добавляем числа от 0 до 9
+  }
+  my_list.push(10);       // добавим цифру 10
+  my_list.printList();    // выведем список
+  my_list.deleteNode(5);  // удалим 5
+  my_list.printList();    // выведем список
 }
 
 </code></pre>
@@ -1956,7 +1966,7 @@ int main(){
 <h2 id="Преимущества-стека"><a class="header" href="#Преимущества-стека">Преимущества стека:</a></h2>
 <ol>
 <li>Гибкость размера: Стек на связанном списке позволяет динамически изменять размер стека, так как список может быть динамически расширен или сокращен при добавлении или удалении элементов. </li>
-<li>Эффективность операций вставки и удаления: Вставка и удаление элементов в стеке на связанном списке выполняются за константное время O(1), так как операции происходят только на одном конце стека. </li>
+<li>Эффективность операций вставки и удаления: Вставка и удаление элементов в стеке на связанном списке выполняются за константное время \(O(1)\), так как операции происходят только на одном конце стека. </li>
 <li>Нет ограничения размера: Стек на связанном списке не имеет ограничения на количество элементов, которые он может содержать, поэтому он может быть очень гибким для работы с большими объемами данных. </li>
 </ol>
 <h2 id="Недостатки-1"><a class="header" href="#Недостатки-1">Недостатки:</a></h2>
@@ -1967,115 +1977,129 @@ int main(){
 <h2 id="Реализация-стека"><a class="header" href="#Реализация-стека">Реализация стека</a></h2>
 <p>Сперва нам необходимо создать структуру <code>Node</code>, которая представляет узел стека. Она будет иметь поля: <code>data</code> типа <code>int</code> для хранения данных (ключа) и указатель <code>next</code> на тип <code>Node</code>.</p>
 <pre><code class="language-cpp">struct Node {
-    int data;
-    Node* next;
+  int data;
+  Node* next;
 
-    Node(int data) : data(data), next(nullptr) {} //Конструктор  Node  принимает значение  data  и инициализирует поле  data  с переданным значением, а поле  next  устанавливается в  nullptr 
+  Node(int data)
+      : data(data),
+        next(nullptr) {
+  }  // Конструктор  Node  принимает значение  data  и инициализирует поле  data
+     // с переданным значением, а поле  next  устанавливается в  nullptr
 };
 </code></pre>
 <p>Следующим шагом создадим функцию <code>push</code>, которая будет добавлять новый узел в вершину стека</p>
 <pre><code class="language-cpp">void push(int data) {
-    Node* newNode = new Node(data);  // Создаем новый узел с переданным значением data
-    newNode-&gt;next = top;  // Устанавливаем указатель next нового узла на текущую вершину стека
-    top = newNode;  // Обновляем вершину стека, чтобы она указывала на новый узел
+  Node* newNode =
+      new Node(data);  // Создаем новый узел с переданным значением data
+  newNode-&gt;next =
+      top;  // Устанавливаем указатель next нового узла на текущую вершину стека
+  top = newNode;  // Обновляем вершину стека, чтобы она указывала на новый узел
 }
 </code></pre>
 <p>Теперь создадим функцию <code>pop</code>, которая будет удалять элемент из вершины стека.</p>
 <pre><code class="language-cpp">void pop() {
-    if (isEmpty()) { // проверям, пустой ли стек, если да, то выводим сообщение &quot;Стек пуст&quot;
-        std::cout &lt;&lt; &quot;Стек пуст.&quot; &lt;&lt; &quot;\n&quot;;
-        return;
-    }
-    Node* temp = top;  // Создаем временный указатель и устанавливаем его на вершину стека
-    top = top-&gt;next;  // Обновляем вершину стека, чтобы она указывала на следующий элемент
-    delete temp;  // Удаляем временный указатель, освобождая память, где хранился предыдущий верхний элемент
+  if (isEmpty()) {  // проверям, пустой ли стек, если да, то выводим сообщение
+                    // &quot;Стек пуст&quot;
+    std::cout &lt;&lt; &quot;Стек пуст.&quot;
+              &lt;&lt; &quot;\n&quot;;
+    return;
+  }
+  Node* temp =
+      top;  // Создаем временный указатель и устанавливаем его на вершину стека
+  top = top-&gt;next;  // Обновляем вершину стека, чтобы она указывала на следующий
+                    // элемент
+  delete temp;  // Удаляем временный указатель, освобождая память, где хранился
+                // предыдущий верхний элемент
 }
 </code></pre>
 <p>Далее создадим функцию <code>peek</code> и <code>isEmpty</code>. <code>peek</code> будет возвращать значение вершины стека без удаления, а функция <code>isEmpty</code> проверяет, пуст ли стек, и возвращает соответствующее значение.</p>
 <pre><code class="language-cpp">int peek() {
-    if (isEmpty()) { // проверям, пустой ли стек, если да, то выводим сообщение &quot;Стек пуст&quot;
-        std::cout &lt;&lt; &quot;Стек пуст.&quot; &lt;&lt; &quot;\n&quot;;
-        return -1;
-    }
-    return top-&gt;data;  // Возвращаем значение данных вершины стека
+  if (isEmpty()) {  // проверям, пустой ли стек, если да, то выводим сообщение
+                    // &quot;Стек пуст&quot;
+    std::cout &lt;&lt; &quot;Стек пуст.&quot;
+              &lt;&lt; &quot;\n&quot;;
+    return -1;
+  }
+  return top-&gt;data;  // Возвращаем значение данных вершины стека
 }
 
 bool isEmpty() {
-    return top == nullptr;  // Возвращаем true, если вершина стека равна nullptr, иначе возвращаем false
+  return top == nullptr;  // Возвращаем true, если вершина стека равна nullptr,
+                          // иначе возвращаем false
 }
 </code></pre>
 <h3 id="Код-полностью"><a class="header" href="#Код-полностью">Код полностью</a></h3>
 <pre><code class="language-cpp">
 #include &lt;iostream&gt;
 
-class Stack { //создаем класс стек, который реализует стек
-private:
-    struct Node {
-        int data;
-        Node* next;
-        Node(int data) : data(data), next(nullptr) {}
-    };
+class Stack {  // создаем класс стек, который реализует стек
+ private:
+  struct Node {
+    int data;
+    Node* next;
 
-    Node* top; // Указатель на верхний элемент стека
+    Node(int data) : data(data), next(nullptr) {}
+  };
 
+  Node* top;  // Указатель на верхний элемент стека
 
-public:
-    Stack() : top(nullptr) {} // Конструктор класса Stack, инициализирует указатель top как nullptr
+ public:
+  Stack()
+      : top(nullptr) {
+  }  // Конструктор класса Stack, инициализирует указатель top как nullptr
 
-    ~Stack() { 
-        
-        while (!isEmpty()) {
-            pop(); // Деструктор класса Stack, освобождает память, удаляя все элементы стека
-        }
+  ~Stack() {
+    while (!isEmpty()) {
+      pop();  // Деструктор класса Stack, освобождает память, удаляя все
+              // элементы стека
     }
+  }
 
-    void push(int data) {
-        Node* newNode = new Node(data);
-        newNode-&gt;next = top;
-        top = newNode;
-    }
+  void push(int data) {
+    Node* newNode = new Node(data);
+    newNode-&gt;next = top;
+    top = newNode;
+  }
 
-    void pop() {
-        if (isEmpty()) {
-            std::cout &lt;&lt; &quot;Stack is empty.&quot; &lt;&lt; std::endl;
-            return;
-        }
-        Node* temp = top;
-        top = top-&gt;next;
-        delete temp;
+  void pop() {
+    if (isEmpty()) {
+      std::cout &lt;&lt; &quot;Stack is empty.&quot; &lt;&lt; std::endl;
+      return;
     }
+    Node* temp = top;
+    top = top-&gt;next;
+    delete temp;
+  }
 
-    int peek() {
-        if (isEmpty()) {
-            std::cout &lt;&lt; &quot;Stack is empty.&quot; &lt;&lt; std::endl;
-            return -1;
-        }
-        return top-&gt;data;
+  int peek() {
+    if (isEmpty()) {
+      std::cout &lt;&lt; &quot;Stack is empty.&quot; &lt;&lt; std::endl;
+      return -1;
     }
+    return top-&gt;data;
+  }
 
-    bool isEmpty() {
-        return top == nullptr;
-    }
+  bool isEmpty() { return top == nullptr; }
 };
 
 int main() {
-    Stack stack; // создаем экземпляр структуры
-    for (int i = 0; i &lt; 3; i++){
-        stack.push(i); // добавляем в стек числа от 0 до 2
-    }
+  Stack stack;  // создаем экземпляр структуры
+  for (int i = 0; i &lt; 3; i++) {
+    stack.push(i);  // добавляем в стек числа от 0 до 2
+  }
 
-    std::cout &lt;&lt; &quot;Верхний элемент: &quot; &lt;&lt; stack.peek() &lt;&lt; &quot;\n&quot;;
+  std::cout &lt;&lt; &quot;Верхний элемент: &quot; &lt;&lt; stack.peek() &lt;&lt; &quot;\n&quot;;
 
-    stack.pop(); // извлекаем элемент
-    stack.pop(); // извлекаем элемент
+  stack.pop();  // извлекаем элемент
+  stack.pop();  // извлекаем элемент
 
-    std::cout &lt;&lt; &quot;Top element: &quot; &lt;&lt; stack.peek() &lt;&lt; &quot;\n&quot;;
+  std::cout &lt;&lt; &quot;Top element: &quot; &lt;&lt; stack.peek() &lt;&lt; &quot;\n&quot;;
 
-    stack.pop(); // извлекаем элемент
+  stack.pop();  // извлекаем элемент
 
-    if (stack.isEmpty()) { // проверяем пуст ли стек
-        std::cout &lt;&lt; &quot;Stack is empty.&quot;;
-    }
+  if (stack.isEmpty()) {  // проверяем пуст ли стек
+    std::cout &lt;&lt; &quot;Stack is empty.&quot;;
+  }
 }
 
 </code></pre>
@@ -2130,129 +2154,142 @@ int main() {
 <h2 id="Реализация-стека-1"><a class="header" href="#Реализация-стека-1">Реализация стека</a></h2>
 <p>Сперва нам необходимо создать структуру <code>Node</code>, которая представляет узел очереди. Она будет иметь поля: <code>data</code> типа <code>int</code> для хранения данных (ключа) и указатель <code>next</code> на тип <code>Node</code>.</p>
 <pre><code class="language-cpp">struct Node {
-    int data;
-    Node* next;
+  int data;
+  Node* next;
 
-    Node(int data) : data(data), next(nullptr) {}
+  Node(int data) : data(data), next(nullptr) {}
 };
 </code></pre>
 <p>Теперь создадим функцию <code>enqueue</code>, которая будет добавлять новый элемент в конец очереди.</p>
 <pre><code class="language-cpp">void enqueue(int data) {
-    Node* newNode = new Node(data);  // Создание нового узла с переданным значением data
-    if (isEmpty()) {  // Проверка, пуста ли очередь
-        head = tail = newNode;  // Если очередь пуста, устанавливаем голову и хвост на новый узел
-    } else {
-        tail-&gt;next = newNode;  // Устанавливаем указатель next текущего хвоста на новый узел
-        tail = newNode;  // Обновляем хвост очереди на новый узел
-    }
+  Node* newNode =
+      new Node(data);  // Создание нового узла с переданным значением data
+  if (isEmpty()) {     // Проверка, пуста ли очередь
+    head = tail = newNode;  // Если очередь пуста, устанавливаем голову и хвост
+                            // на новый узел
+  } else {
+    tail-&gt;next =
+        newNode;  // Устанавливаем указатель next текущего хвоста на новый узел
+    tail = newNode;  // Обновляем хвост очереди на новый узел
+  }
 }
 </code></pre>
 <p>Далее создадим функцию dequeue, которая будет удалять элемент из начала очереди.</p>
 <pre><code class="language-cpp">void dequeue() {
-    if (isEmpty()) { // проверяем, пуста ли очередь
-        std::cout &lt;&lt; &quot;Очередь пуста.&quot; &lt;&lt; &quot;\n&quot;; // если очередь пуста, то выводим сообщение об ошибке и вовзвращаемся из функции
-        return;
-    }
-    Node* temp = head;  // Создаем временный указатель и устанавливаем его на голову очереди
-    head = head-&gt;next;  // Сдвигаем голову на следующий элемент
-    delete temp;  // Удаляем предыдущий первый элемент
-    if (head == nullptr) {
-        tail = nullptr;  // Если после удаления головы очередь пуста, обнуляем и хвост
-    }
+  if (isEmpty()) {  // проверяем, пуста ли очередь
+    std::cout &lt;&lt; &quot;Очередь пуста.&quot;
+              &lt;&lt; &quot;\n&quot;;  // если очередь пуста, то выводим сообщение об ошибке и
+                        // вовзвращаемся из функции
+    return;
+  }
+  Node* temp = head;  // Создаем временный указатель и устанавливаем его на
+                      // голову очереди
+  head = head-&gt;next;  // Сдвигаем голову на следующий элемент
+  delete temp;  // Удаляем предыдущий первый элемент
+  if (head == nullptr) {
+    tail =
+        nullptr;  // Если после удаления головы очередь пуста, обнуляем и хвост
+  }
 }
 </code></pre>
 <p>Теперь создадим функцию front, которая будет возвращать значение элемента в начале очереди без его удаления, если очередь пуста, то выведется сообщение &quot;очередь пуста&quot;.</p>
 <pre><code class="language-cpp">int front() {
-        if (isEmpty()) {
-            std::cout &lt;&lt; &quot;Queue is empty.&quot; &lt;&lt; &quot;\n&quot;;
-            return -1;
-        }
-        return head-&gt;data; // возвращаем значение данных в головном узле
-    }
+  if (isEmpty()) {
+    std::cout &lt;&lt; &quot;Queue is empty.&quot;
+              &lt;&lt; &quot;\n&quot;;
+    return -1;
+  }
+  return head-&gt;data;  // возвращаем значение данных в головном узле
+}
 
-    bool isEmpty() {
-        return head == nullptr; // возвращаем true, если голова равна nullptr, иначе falsе
-    }
+bool isEmpty() {
+  return head ==
+         nullptr;  // возвращаем true, если голова равна nullptr, иначе falsе
+}
 </code></pre>
 <h3 id="Код-полностью-1"><a class="header" href="#Код-полностью-1">Код полностью</a></h3>
 <pre><code class="language-cpp">#include &lt;iostream&gt;
 
-
 class Queue {
-private:
-    struct Node {
-        int data;
-        Node* next;
-        Node(int data) : data(data), next(nullptr) {}
-    };
+ private:
+  struct Node {
+    int data;
+    Node* next;
 
-    Node* head; // указатель на голову очереди
-    Node* tail; // указатель на хвост очереди
+    Node(int data) : data(data), next(nullptr) {}
+  };
 
-public:
-    Queue() : head(nullptr), tail(nullptr) {} // Конструктор  Queue()  инициализирует указатели  head  и  tail  значением  nullptr , чтобы указать, что очередь пустая
+  Node* head;  // указатель на голову очереди
+  Node* tail;  // указатель на хвост очереди
 
-    ~Queue() {  
-        while (!isEmpty()) {
-            dequeue(); //Деструктор  ~Queue()  освобождает память, выделенную для каждого узла в очереди, путем последовательного вызова функции  dequeue()  до тех пор, пока очередь не станет пустой
-        }
+ public:
+  Queue()
+      : head(nullptr),
+        tail(nullptr) {
+  }  // Конструктор  Queue()  инициализирует указатели  head  и  tail  значением
+     // nullptr , чтобы указать, что очередь пустая
+
+  ~Queue() {
+    while (!isEmpty()) {
+      dequeue();  // Деструктор  ~Queue()  освобождает память, выделенную для
+                  // каждого узла в очереди, путем последовательного вызова
+                  // функции  dequeue()  до тех пор, пока очередь не станет
+                  // пустой
     }
+  }
 
-    void enqueue(int data) {
-        Node* newNode = new Node(data);
-        if (isEmpty()) {
-            head = tail = newNode;
-        } else {
-            tail-&gt;next = newNode;
-            tail = newNode;
-        }
+  void enqueue(int data) {
+    Node* newNode = new Node(data);
+    if (isEmpty()) {
+      head = tail = newNode;
+    } else {
+      tail-&gt;next = newNode;
+      tail = newNode;
     }
+  }
 
-    void dequeue() {
-        if (isEmpty()) {
-            std::cout &lt;&lt; &quot;Queue is empty.&quot; &lt;&lt; std::endl;
-            return;
-        }
-        Node* temp = head;
-        head = head-&gt;next;
-        delete temp;
-        if (head == nullptr) {
-            tail = nullptr;
-        }
+  void dequeue() {
+    if (isEmpty()) {
+      std::cout &lt;&lt; &quot;Queue is empty.&quot; &lt;&lt; std::endl;
+      return;
     }
+    Node* temp = head;
+    head = head-&gt;next;
+    delete temp;
+    if (head == nullptr) {
+      tail = nullptr;
+    }
+  }
 
-    int front() {
-        if (isEmpty()) {
-            std::cout &lt;&lt; &quot;Queue is empty.&quot; &lt;&lt; std::endl;
-            return -1;
-        }
-        return head-&gt;data;
+  int front() {
+    if (isEmpty()) {
+      std::cout &lt;&lt; &quot;Queue is empty.&quot; &lt;&lt; std::endl;
+      return -1;
     }
+    return head-&gt;data;
+  }
 
-    bool isEmpty() {
-        return head == nullptr;
-    }
+  bool isEmpty() { return head == nullptr; }
 };
 
 int main() {
-    Queue queue;
-    for (int i = 0; i &lt; 3; i++){
-        queue.enqueue(i); // добавляем числа от 0 до 2
-    }
+  Queue queue;
+  for (int i = 0; i &lt; 3; i++) {
+    queue.enqueue(i);  // добавляем числа от 0 до 2
+  }
 
+  std::cout &lt;&lt; &quot;Первый элемеент:  &quot; &lt;&lt; queue.front() &lt;&lt; &quot;\n&quot;;
 
-    std::cout &lt;&lt; &quot;Первый элемеент:  &quot; &lt;&lt; queue.front() &lt;&lt; &quot;\n&quot;;
+  queue.dequeue();  // извлекаем элемент из очереди
 
-    queue.dequeue(); // извлекаем элемент из очереди
+  std::cout &lt;&lt; &quot;Первый элемент: &quot; &lt;&lt; queue.front() &lt;&lt; &quot;\n&quot;;
 
-    std::cout &lt;&lt; &quot;Первый элемент: &quot; &lt;&lt; queue.front() &lt;&lt; &quot;\n&quot;;
+  queue.dequeue();  // извлекаем элемент из очереди
+  queue.dequeue();  // извлекаем элемент из очереди
 
-    queue.dequeue(); // извлекаем элемент из очереди
-    queue.dequeue(); // извлекаем элемент из очереди
-
-    if (queue.isEmpty()) { // проверяем, пуста ли очередь
-        std::cout &lt;&lt; &quot;Очередь пуста.&quot;;
-    }    
+  if (queue.isEmpty()) {  // проверяем, пуста ли очередь
+    std::cout &lt;&lt; &quot;Очередь пуста.&quot;;
+  }
 }
 </code></pre>
 <h2 id="Примеры-применения-очереди-1"><a class="header" href="#Примеры-применения-очереди-1">Примеры применения очереди:</a></h2>
@@ -2295,10 +2332,10 @@ int main() {
 <p>Поскольку на каждом шаге длина отрезка уменьшается вдвое, это произойдёт через \(O(\log_2 n)\) шагов.</p>
 <p>Примерная реализация алгоритма двоичного поиска:</p>
 <p>Функция <code>binarySearch</code> ищет \(x\) в массиве \(a\) длины \(n\), возвращает индекс, по которому лежит \(x\), или \(-1\), если \(x\) в массиве нет.</p>
-<pre><code class="language-cpp">int binarySearch(int *a, int n, int x) {
+<pre><code class="language-cpp">int binarySearch(int* a, int n, int x) {
   int l = 0, r = n - 1;
   while (l &lt;= r) {
-    int mid = (l + r) / 2; // индекс элемента в центре отрезка [l, r]
+    int mid = (l + r) / 2;  // индекс элемента в центре отрезка [l, r]
     if (a[mid] == x) {
       return mid;
     } else if (a[mid] &lt; x) {
@@ -2341,7 +2378,7 @@ int main() {
 <p>Разовьём идею дальше, можно искать не только целочисленные точки, но и дробные!!! Увы, всерхточности добиться невозможно. Проблема заключается в том, что действительные числа хранятся в компьютере неточно(. Например, если ответ это число \(\pi\). Для границ стоит использовать тип с самой большой точностью, в <code>c++</code> это тип <code>double</code>.</p>
 <p>Тем не менее, мы можем найти такое \(x\) с погрешностью \(\epsilon\):
 найдём такое \(x\), что существует \(x'\) такое, что \(f(x') = 0, |x − x'| &lt; \epsilon\). Единственное отличие от обычного бинпоиска : мы завершаем алгоритм в тот момент, когда \(r − l &lt; \epsilon\).</p>
-<p>Время работы алгоритма (при условии, что значение \(f\) вычисляется за \(O(1))\) — \(O\left( \log_2 \left( \dfrac{R−L}{\epsilon} \right)\right)\).</p>
+<p>Время работы алгоритма (при условии, что значение \(f\) вычисляется за \(O(1)\) — \(O\left( \log_2 \left( \dfrac{R−L}{\epsilon} \right)\right)\).</p>
 <p>Любой алгоритм целочисленного поиска, является подмножеством вещественного, в котором функция бинарна. Например, для проверки есть ли число в массиве, надо было лишь заменить <code>if (a[mid] &lt; x)</code> на \(f(mid, x) = a[mid] &lt; x\).</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="Двоичный-поиск-по-ответу"><a class="header" href="#Двоичный-поиск-по-ответу">Двоичный поиск по ответу</a></h1>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="Минимакс"><a class="header" href="#Минимакс">Минимакс</a></h1>

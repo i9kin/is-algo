@@ -161,7 +161,7 @@
 <h2 id="Преимущества-стека"><a class="header" href="#Преимущества-стека">Преимущества стека:</a></h2>
 <ol>
 <li>Гибкость размера: Стек на связанном списке позволяет динамически изменять размер стека, так как список может быть динамически расширен или сокращен при добавлении или удалении элементов. </li>
-<li>Эффективность операций вставки и удаления: Вставка и удаление элементов в стеке на связанном списке выполняются за константное время O(1), так как операции происходят только на одном конце стека. </li>
+<li>Эффективность операций вставки и удаления: Вставка и удаление элементов в стеке на связанном списке выполняются за константное время \(O(1)\), так как операции происходят только на одном конце стека. </li>
 <li>Нет ограничения размера: Стек на связанном списке не имеет ограничения на количество элементов, которые он может содержать, поэтому он может быть очень гибким для работы с большими объемами данных. </li>
 </ol>
 <h2 id="Недостатки"><a class="header" href="#Недостатки">Недостатки:</a></h2>
@@ -172,115 +172,129 @@
 <h2 id="Реализация-стека"><a class="header" href="#Реализация-стека">Реализация стека</a></h2>
 <p>Сперва нам необходимо создать структуру <code>Node</code>, которая представляет узел стека. Она будет иметь поля: <code>data</code> типа <code>int</code> для хранения данных (ключа) и указатель <code>next</code> на тип <code>Node</code>.</p>
 <pre><code class="language-cpp">struct Node {
-    int data;
-    Node* next;
+  int data;
+  Node* next;
 
-    Node(int data) : data(data), next(nullptr) {} //Конструктор  Node  принимает значение  data  и инициализирует поле  data  с переданным значением, а поле  next  устанавливается в  nullptr 
+  Node(int data)
+      : data(data),
+        next(nullptr) {
+  }  // Конструктор  Node  принимает значение  data  и инициализирует поле  data
+     // с переданным значением, а поле  next  устанавливается в  nullptr
 };
 </code></pre>
 <p>Следующим шагом создадим функцию <code>push</code>, которая будет добавлять новый узел в вершину стека</p>
 <pre><code class="language-cpp">void push(int data) {
-    Node* newNode = new Node(data);  // Создаем новый узел с переданным значением data
-    newNode-&gt;next = top;  // Устанавливаем указатель next нового узла на текущую вершину стека
-    top = newNode;  // Обновляем вершину стека, чтобы она указывала на новый узел
+  Node* newNode =
+      new Node(data);  // Создаем новый узел с переданным значением data
+  newNode-&gt;next =
+      top;  // Устанавливаем указатель next нового узла на текущую вершину стека
+  top = newNode;  // Обновляем вершину стека, чтобы она указывала на новый узел
 }
 </code></pre>
 <p>Теперь создадим функцию <code>pop</code>, которая будет удалять элемент из вершины стека.</p>
 <pre><code class="language-cpp">void pop() {
-    if (isEmpty()) { // проверям, пустой ли стек, если да, то выводим сообщение &quot;Стек пуст&quot;
-        std::cout &lt;&lt; &quot;Стек пуст.&quot; &lt;&lt; &quot;\n&quot;;
-        return;
-    }
-    Node* temp = top;  // Создаем временный указатель и устанавливаем его на вершину стека
-    top = top-&gt;next;  // Обновляем вершину стека, чтобы она указывала на следующий элемент
-    delete temp;  // Удаляем временный указатель, освобождая память, где хранился предыдущий верхний элемент
+  if (isEmpty()) {  // проверям, пустой ли стек, если да, то выводим сообщение
+                    // &quot;Стек пуст&quot;
+    std::cout &lt;&lt; &quot;Стек пуст.&quot;
+              &lt;&lt; &quot;\n&quot;;
+    return;
+  }
+  Node* temp =
+      top;  // Создаем временный указатель и устанавливаем его на вершину стека
+  top = top-&gt;next;  // Обновляем вершину стека, чтобы она указывала на следующий
+                    // элемент
+  delete temp;  // Удаляем временный указатель, освобождая память, где хранился
+                // предыдущий верхний элемент
 }
 </code></pre>
 <p>Далее создадим функцию <code>peek</code> и <code>isEmpty</code>. <code>peek</code> будет возвращать значение вершины стека без удаления, а функция <code>isEmpty</code> проверяет, пуст ли стек, и возвращает соответствующее значение.</p>
 <pre><code class="language-cpp">int peek() {
-    if (isEmpty()) { // проверям, пустой ли стек, если да, то выводим сообщение &quot;Стек пуст&quot;
-        std::cout &lt;&lt; &quot;Стек пуст.&quot; &lt;&lt; &quot;\n&quot;;
-        return -1;
-    }
-    return top-&gt;data;  // Возвращаем значение данных вершины стека
+  if (isEmpty()) {  // проверям, пустой ли стек, если да, то выводим сообщение
+                    // &quot;Стек пуст&quot;
+    std::cout &lt;&lt; &quot;Стек пуст.&quot;
+              &lt;&lt; &quot;\n&quot;;
+    return -1;
+  }
+  return top-&gt;data;  // Возвращаем значение данных вершины стека
 }
 
 bool isEmpty() {
-    return top == nullptr;  // Возвращаем true, если вершина стека равна nullptr, иначе возвращаем false
+  return top == nullptr;  // Возвращаем true, если вершина стека равна nullptr,
+                          // иначе возвращаем false
 }
 </code></pre>
 <h3 id="Код-полностью"><a class="header" href="#Код-полностью">Код полностью</a></h3>
 <pre><code class="language-cpp">
 #include &lt;iostream&gt;
 
-class Stack { //создаем класс стек, который реализует стек
-private:
-    struct Node {
-        int data;
-        Node* next;
-        Node(int data) : data(data), next(nullptr) {}
-    };
+class Stack {  // создаем класс стек, который реализует стек
+ private:
+  struct Node {
+    int data;
+    Node* next;
 
-    Node* top; // Указатель на верхний элемент стека
+    Node(int data) : data(data), next(nullptr) {}
+  };
 
+  Node* top;  // Указатель на верхний элемент стека
 
-public:
-    Stack() : top(nullptr) {} // Конструктор класса Stack, инициализирует указатель top как nullptr
+ public:
+  Stack()
+      : top(nullptr) {
+  }  // Конструктор класса Stack, инициализирует указатель top как nullptr
 
-    ~Stack() { 
-        
-        while (!isEmpty()) {
-            pop(); // Деструктор класса Stack, освобождает память, удаляя все элементы стека
-        }
+  ~Stack() {
+    while (!isEmpty()) {
+      pop();  // Деструктор класса Stack, освобождает память, удаляя все
+              // элементы стека
     }
+  }
 
-    void push(int data) {
-        Node* newNode = new Node(data);
-        newNode-&gt;next = top;
-        top = newNode;
-    }
+  void push(int data) {
+    Node* newNode = new Node(data);
+    newNode-&gt;next = top;
+    top = newNode;
+  }
 
-    void pop() {
-        if (isEmpty()) {
-            std::cout &lt;&lt; &quot;Stack is empty.&quot; &lt;&lt; std::endl;
-            return;
-        }
-        Node* temp = top;
-        top = top-&gt;next;
-        delete temp;
+  void pop() {
+    if (isEmpty()) {
+      std::cout &lt;&lt; &quot;Stack is empty.&quot; &lt;&lt; std::endl;
+      return;
     }
+    Node* temp = top;
+    top = top-&gt;next;
+    delete temp;
+  }
 
-    int peek() {
-        if (isEmpty()) {
-            std::cout &lt;&lt; &quot;Stack is empty.&quot; &lt;&lt; std::endl;
-            return -1;
-        }
-        return top-&gt;data;
+  int peek() {
+    if (isEmpty()) {
+      std::cout &lt;&lt; &quot;Stack is empty.&quot; &lt;&lt; std::endl;
+      return -1;
     }
+    return top-&gt;data;
+  }
 
-    bool isEmpty() {
-        return top == nullptr;
-    }
+  bool isEmpty() { return top == nullptr; }
 };
 
 int main() {
-    Stack stack; // создаем экземпляр структуры
-    for (int i = 0; i &lt; 3; i++){
-        stack.push(i); // добавляем в стек числа от 0 до 2
-    }
+  Stack stack;  // создаем экземпляр структуры
+  for (int i = 0; i &lt; 3; i++) {
+    stack.push(i);  // добавляем в стек числа от 0 до 2
+  }
 
-    std::cout &lt;&lt; &quot;Верхний элемент: &quot; &lt;&lt; stack.peek() &lt;&lt; &quot;\n&quot;;
+  std::cout &lt;&lt; &quot;Верхний элемент: &quot; &lt;&lt; stack.peek() &lt;&lt; &quot;\n&quot;;
 
-    stack.pop(); // извлекаем элемент
-    stack.pop(); // извлекаем элемент
+  stack.pop();  // извлекаем элемент
+  stack.pop();  // извлекаем элемент
 
-    std::cout &lt;&lt; &quot;Top element: &quot; &lt;&lt; stack.peek() &lt;&lt; &quot;\n&quot;;
+  std::cout &lt;&lt; &quot;Top element: &quot; &lt;&lt; stack.peek() &lt;&lt; &quot;\n&quot;;
 
-    stack.pop(); // извлекаем элемент
+  stack.pop();  // извлекаем элемент
 
-    if (stack.isEmpty()) { // проверяем пуст ли стек
-        std::cout &lt;&lt; &quot;Stack is empty.&quot;;
-    }
+  if (stack.isEmpty()) {  // проверяем пуст ли стек
+    std::cout &lt;&lt; &quot;Stack is empty.&quot;;
+  }
 }
 
 </code></pre>
