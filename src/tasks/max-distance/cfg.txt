@@ -1,0 +1,4 @@
+[info]
+name = максимальное расстояние
+source = https://atcoder.jp/contests/abc215/tasks/abc215_f
+rating = 1700

@@ -53,6 +53,7 @@
 	- [Наибольший отрезок](./tasks/longest-easy.md)
 	- [Монитор](./tasks/monitor.md)
 	- [Максимальная медиана](./tasks/maximize-median.md)
+	- [Максимальное расстояние](./tasks/max-distance.md)
 	- [Игра на строке](./tasks/string-game.md)
 	- [Опасные группы отрезков](./tasks/cnt-segments-segments.md)
 - [Задачи про отрезки](./tasks/task-about-segments.md)
