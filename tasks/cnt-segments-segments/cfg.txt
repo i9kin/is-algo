@@ -1,0 +1,5 @@
+[info]
+name = опасные группы отрезков
+source = https://neerc.ifmo.ru/school/io/archive/20220129/problems-20220129-individual.pdf
+source_alpha = C
+rating = 2000

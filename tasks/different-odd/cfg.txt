@@ -1,0 +1,3 @@
+[info]
+name = другая чётность
+source = https://codeforces.com/problemset/problem/25/A

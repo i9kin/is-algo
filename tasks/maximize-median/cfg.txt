@@ -1,0 +1,3 @@
+[info]
+name = максимальная медиана
+source = https://codeforces.com/contest/1201/problem/C
