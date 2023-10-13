@@ -45,6 +45,7 @@ def build():
     sha = git.Repo(REPO).head.object.hexsha
     safe_rm(copy_dir)
     shutil.copytree(pathlib.Path(REPO), copy_dir, dirs_exist_ok=True)
+    subprocess.Popen(["python3", "tasks-manager.py"], cwd=copy_dir / 'utils').wait()
     subprocess.Popen(["mdbook", "build"], cwd=copy_dir).wait()
     rm_tree(copy_dir / ".git")
     git.Repo(REPO).git.checkout("gh-pages")

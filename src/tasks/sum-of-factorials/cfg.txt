@@ -1,0 +1,4 @@
+[info]
+name = сумма факториалов
+source = с сика TODO
+rating = 800

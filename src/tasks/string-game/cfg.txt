@@ -1,0 +1,3 @@
+[info]
+name = игра на строке
+source = https://codeforces.com/contest/778/problem/A
