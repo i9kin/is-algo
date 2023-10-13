@@ -149,7 +149,59 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="Максимальное-расстояние"><a class="header" href="#Максимальное-расстояние">Максимальное расстояние</a></h1>
+                        <h1 id="максимальное-расстояние"><a class="header" href="#максимальное-расстояние">максимальное расстояние</a></h1>
+<h2 id="Условие"><a class="header" href="#Условие">Условие</a></h2>
+<p>Даны \(n\) точек \((x_i, y_i)\). Пусть расстояние между двумя точками \(i\) и \(j\) равно \(min(|x_i - x_j|, |y_i - y_j|)\).</p>
+<p>Найдите максимальное расстояние, между двумя различными точками.</p>
+<h2 id="Решение"><a class="header" href="#Решение">Решение</a></h2>
+<p>Отсортируем точки по возрастанию \(x\).</p>
+<p>Сделаем бинпоиск по ответу (\(k\)).
+\(min(|x_i - x_j|, |y_i - y_j|) \ge k \rightarrow |x_i - x_j| \ge k \text{ and } |y_i - y_j| \ge k\)</p>
+<ul>
+<li>Попробуем сделать проверку за \(O(n)\).</li>
+</ul>
+<p>Пусть \(i\) текущий индекс в массиве. Пусть \(j &lt; i \rightarrow x_j \le x_i\).</p>
+<p>Значит раскрывая модуль получаем \(x_j \le x_i - k \text{ and } |y_i - y_j| \ge k\).
+С помощью двух указателей будем передвигать \(j\), чтобы у всех точек до \(j\)-ой как минимум первое условие выполнялось.</p>
+<p>Тогда условие стало ещё проще \(|y_i - y_{0 \dots j}| \ge k = max(|y_i - y_{0 \dots j}|) \ge k\)
+Просто раскрыв модуль, получаем, что надо просто хранить самую верхнюю точку по \(y\) и самую нижнюю по \(y\).</p>
+<pre><code class="language-cpp">const int INF = INT_MAX;
+int n;
+vector&lt;pair&lt;int, int&gt;&gt; xy;
+
+bool check(int k) {
+    int j = 0;
+    int mxy = -INF;
+    int mny = INF;
+    for (int i = 0; i &lt; n; i++) {
+        while (j &lt; n &amp;&amp; xy[j].first &lt;= xy[i].first - k) {
+            mxy = max(mxy, xy[j].second);
+            mny = min(mny, xy[j].second);
+            j++;
+        }
+        if (mny != INF &amp;&amp; xy[i].second - mny &gt;= k) return true;
+        if (mxy != -INF &amp;&amp; mxy - xy[i].second &gt;= k) return true;
+    }
+    return false;
+}
+
+void solve() {
+    cin &gt;&gt; n;
+    xy.assign(n, {0, 0});
+    for (int i = 0; i &lt; n; i++) cin &gt;&gt; xy[i].first &gt;&gt; xy[i].second;
+    sort(xy.begin(), xy.end());
+    int l = 0, r = 2e9 + 7;
+    while (r - l &gt; 1) {
+        int mid = (l + r) &gt;&gt; 1;
+        if (check(mid)) {
+            l = mid;
+        } else {
+            r = mid;
+        }
+    }
+    cout &lt;&lt; l;
+}
+</code></pre>
 
                     </main>
 
