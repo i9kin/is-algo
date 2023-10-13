@@ -29,7 +29,7 @@ def get_cfg(task: pathlib.Path):
     return cfg
 
 
-def get_examples(task: pathlib.Path) -> list[int]:
+def get_examples(task: pathlib.Path):
     files = list(task.glob('example*.in'))
     res = []
     for file in files:
