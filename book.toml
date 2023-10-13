@@ -1,6 +1,6 @@
 [book]
 authors = ["9kin"]
-language = "en"
+language = "ru"
 multilingual = false
 src = "src"
 title = "is-algo"
