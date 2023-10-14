@@ -36,20 +36,22 @@ def rm_tree(pth: pathlib.Path):
             rm_tree(child)
     pth.rmdir()
 
+
 def safe_rm(path):
     if path.exists():
         rm_tree(path)
+
 
 def build():
     copy_dir = pathlib.Path(REPO + "_copy")
     sha = git.Repo(REPO).head.object.hexsha
     safe_rm(copy_dir)
     shutil.copytree(pathlib.Path(REPO), copy_dir, dirs_exist_ok=True)
-    subprocess.Popen(["python3", "task-manager.py"], cwd=copy_dir / 'utils').wait()
+    subprocess.Popen(["python3", "task-manager.py"], cwd=copy_dir / "utils").wait()
     subprocess.Popen(["mdbook", "build"], cwd=copy_dir).wait()
     rm_tree(copy_dir / ".git")
     git.Repo(REPO).git.checkout("gh-pages")
-    shutil.copytree(copy_dir / 'book', pathlib.Path(REPO), dirs_exist_ok=True)
+    shutil.copytree(copy_dir / "book", pathlib.Path(REPO), dirs_exist_ok=True)
     git.Repo(REPO).git.add(all=True)
     git.Repo(REPO).git.commit(
         "-m", "deploy: " + sha

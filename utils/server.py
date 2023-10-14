@@ -12,7 +12,7 @@ try:
         USER = config_json["USER"]
         REPO = config_json["REPO"]
         GH_PASSWORD = config_json["GH_PASSWORD"]
-        CICD_HASH =  config_json["CICDHASH"]
+        CICD_HASH = config_json["CICDHASH"]
 except:
     print("error while reading secrets.json")
     exit(0)

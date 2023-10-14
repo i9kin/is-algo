@@ -19,35 +19,35 @@ int n;
 vector<pair<int, int>> xy;
 
 bool check(int k) {
-    int j = 0;
-    int mxy = -INF;
-    int mny = INF;
-    for (int i = 0; i < n; i++) {
-        while (j < n && xy[j].first <= xy[i].first - k) {
-            mxy = max(mxy, xy[j].second);
-            mny = min(mny, xy[j].second);
-            j++;
-        }
-        if (mny != INF && xy[i].second - mny >= k) return true;
-        if (mxy != -INF && mxy - xy[i].second >= k) return true;
+  int j = 0;
+  int mxy = -INF;
+  int mny = INF;
+  for (int i = 0; i < n; i++) {
+    while (j < n && xy[j].first <= xy[i].first - k) {
+      mxy = max(mxy, xy[j].second);
+      mny = min(mny, xy[j].second);
+      j++;
     }
-    return false;
+    if (mny != INF && xy[i].second - mny >= k) return true;
+    if (mxy != -INF && mxy - xy[i].second >= k) return true;
+  }
+  return false;
 }
 
 void solve() {
-    cin >> n;
-    xy.assign(n, {0, 0});
-    for (int i = 0; i < n; i++) cin >> xy[i].first >> xy[i].second;
-    sort(xy.begin(), xy.end());
-    int l = 0, r = 2e9 + 7;
-    while (r - l > 1) {
-        int mid = (l + r) >> 1;
-        if (check(mid)) {
-            l = mid;
-        } else {
-            r = mid;
-        }
+  cin >> n;
+  xy.assign(n, {0, 0});
+  for (int i = 0; i < n; i++) cin >> xy[i].first >> xy[i].second;
+  sort(xy.begin(), xy.end());
+  int l = 0, r = 2e9 + 7;
+  while (r - l > 1) {
+    int mid = (l + r) >> 1;
+    if (check(mid)) {
+      l = mid;
+    } else {
+      r = mid;
     }
-    cout << l;
+  }
+  cout << l;
 }
 ```
