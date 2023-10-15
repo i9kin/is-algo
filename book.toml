@@ -10,6 +10,8 @@ title = "is-algo"
 mathjax-support = true
 git-repository-url = "https://github.com/9kin/is-algo"
 edit-url-template = "https://github.com/9kin/is-algo/edit/master/{path}"
+additional-css = ["theme/style.css"]
+additional-js = ["theme/sidebar.js"]
 
 [preprocessor.tera]
 command = "mdbook-tera --json ./src/context.json"
@@ -19,3 +21,4 @@ command = "mdbook-tera --json ./src/context.json"
 [preprocessor.last-changed]
 command = "mdbook-last-changed"
 renderer = ["html"]
+

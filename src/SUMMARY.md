@@ -8,6 +8,7 @@
 - [Сделайте вклад](./CONTRIBUTING.md)
 - [История разработки проекта](./history/history.md)
 	- [Структурирование задач](./history/tasks-management.md)
+	- [Оглавление страницы](./history/toc-plugin.md)
 - [Начало работы](./getting-started/getting-started.md)
 	- [Установка](./getting-started/installation.md)
 	- [Редактор кода](./getting-started/code-editor.md)
