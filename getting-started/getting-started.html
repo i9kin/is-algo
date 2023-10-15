@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="ru" class="sidebar-visible no-js light">
+<html lang="ru" class="light" dir="">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
@@ -10,7 +10,7 @@
         
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#ffffff">
 
         <link rel="icon" href="../favicon.svg">
         <link rel="shortcut icon" href="../favicon.png">
@@ -29,11 +29,13 @@
         <link rel="stylesheet" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../theme/style.css">
 
         <!-- MathJax -->
         <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </head>
-    <body>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
         <!-- Provide site root to javascript -->
         <script>
             var path_to_root = "../";
@@ -62,40 +64,69 @@
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             var html = document.querySelector('html');
-            html.classList.remove('no-js')
             html.classList.remove('light')
             html.classList.add(theme);
-            html.classList.add('js');
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
         </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
-            var html = document.querySelector('html');
-            var sidebar = 'hidden';
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
             }
-            html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../index.html"><strong aria-hidden="true">1.</strong> Введение</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../how-to-smth/judje.html"><strong aria-hidden="true">1.1.</strong> Тестирующая система</a></li><li class="chapter-item expanded "><a href="../how-to-smth/how-to-read.html"><strong aria-hidden="true">1.2.</strong> Как читать</a></li><li class="chapter-item expanded "><a href="../how-to-smth/how-to-solve.html"><strong aria-hidden="true">1.3.</strong> Как придумывать</a></li><li class="chapter-item expanded "><a href="../how-to-smth/how-to-testing.html"><strong aria-hidden="true">1.4.</strong> Как тестировать</a></li></ol></li><li class="chapter-item expanded "><a href="../CONTRIBUTING.html"><strong aria-hidden="true">2.</strong> Сделайте вклад</a></li><li class="chapter-item expanded "><a href="../history/history.html"><strong aria-hidden="true">3.</strong> История разработки проекта</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../history/tasks-management.html"><strong aria-hidden="true">3.1.</strong> Структурирование задач</a></li></ol></li><li class="chapter-item expanded "><a href="../getting-started/getting-started.html" class="active"><strong aria-hidden="true">4.</strong> Начало работы</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../getting-started/installation.html"><strong aria-hidden="true">4.1.</strong> Установка</a></li><li class="chapter-item expanded "><a href="../getting-started/code-editor.html"><strong aria-hidden="true">4.2.</strong> Редактор кода</a></li><li class="chapter-item expanded "><a href="../getting-started/examples.html"><strong aria-hidden="true">4.3.</strong> Решение задачи</a></li></ol></li><li class="chapter-item expanded "><a href="../programming/cpp_base.html"><strong aria-hidden="true">5.</strong> Основы языка C++</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../programming/data-types.html"><strong aria-hidden="true">5.1.</strong> Типы данных</a></li><li class="chapter-item expanded "><a href="../programming/io.html"><strong aria-hidden="true">5.2.</strong> Ввод и вывод</a></li><li class="chapter-item expanded "><a href="../programming/branching.html"><strong aria-hidden="true">5.3.</strong> Ветвление</a></li><li class="chapter-item expanded "><a href="../programming/loops.html"><strong aria-hidden="true">5.4.</strong> Циклы</a></li><li class="chapter-item expanded "><a href="../programming/array_types/array.html"><strong aria-hidden="true">5.5.</strong> Массивы</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../programming/array_types/static-array.html"><strong aria-hidden="true">5.5.1.</strong> Статические массивы</a></li><li class="chapter-item expanded "><a href="../programming/array_types/dynamic-array.html"><strong aria-hidden="true">5.5.2.</strong> Динамические массивы</a></li><li class="chapter-item expanded "><a href="../programming/array_types/VLA.html"><strong aria-hidden="true">5.5.3.</strong> VLA</a></li><li class="chapter-item expanded "><a href="../programming/array_types/vector.html"><strong aria-hidden="true">5.5.4.</strong> std::vector</a></li><li class="chapter-item expanded "><a href="../programming/array_types/compare-arrays.html"><strong aria-hidden="true">5.5.5.</strong> Что выбрать?</a></li></ol></li><li class="chapter-item expanded "><a href="../programming/functions.html"><strong aria-hidden="true">5.6.</strong> Функции</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../programming/params-to-func.html"><strong aria-hidden="true">5.6.1.</strong> Передача параметров в функцию</a></li></ol></li><li class="chapter-item expanded "><a href="../programming/links-and-pointers.html"><strong aria-hidden="true">5.7.</strong> Ссылки и указатели</a></li></ol></li><li class="chapter-item expanded "><a href="../programming/mem.html"><strong aria-hidden="true">6.</strong> Память</a></li><li class="chapter-item expanded "><a href="../algorithms/greedy/index.html"><strong aria-hidden="true">7.</strong> Жадные алгоритмы</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../algorithms/greedy/intro.html"><strong aria-hidden="true">7.1.</strong> Введение</a></li></ol></li><li class="chapter-item expanded "><a href="../algorithms/asymptotics.html"><strong aria-hidden="true">8.</strong> Асимптотика</a></li><li class="chapter-item expanded "><a href="../algorithms/sorts/sorts.html"><strong aria-hidden="true">9.</strong> Сортировки</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../algorithms/sorts/bubble-sort.html"><strong aria-hidden="true">9.1.</strong> "Пузырьковая" сортировка</a></li><li class="chapter-item expanded "><a href="../algorithms/sorts/insertion-sort.html"><strong aria-hidden="true">9.2.</strong> Сортировка вставкой</a></li><li class="chapter-item expanded "><a href="../algorithms/sorts/selection-sort.html"><strong aria-hidden="true">9.3.</strong> "Выборочная" сортировка</a></li><li class="chapter-item expanded "><a href="../algorithms/sorts/merge-sort.html"><strong aria-hidden="true">9.4.</strong> Сортировка слиянием</a></li><li class="chapter-item expanded "><a href="../algorithms/sorts/quick-sort.html"><strong aria-hidden="true">9.5.</strong> Быстрая сортировка</a></li><li class="chapter-item expanded "><a href="../algorithms/sorts/counting-sort.html"><strong aria-hidden="true">9.6.</strong> Сортировка подсчётом</a></li></ol></li><li class="chapter-item expanded "><a href="../data-structures/linked_lists.html"><strong aria-hidden="true">10.</strong> Связанные списки</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../data-structures/my_Stack.html"><strong aria-hidden="true">10.1.</strong> Стек</a></li><li class="chapter-item expanded "><a href="../data-structures/queue_done.html"><strong aria-hidden="true">10.2.</strong> Очередь</a></li></ol></li><li class="chapter-item expanded "><a href="../algorithms/binary-search/index.html"><strong aria-hidden="true">11.</strong> Двоичный поиск</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../algorithms/binary-search/main.html"><strong aria-hidden="true">11.1.</strong> Целочисленный двоичный поиск</a></li><li class="chapter-item expanded "><a href="../algorithms/binary-search/real.html"><strong aria-hidden="true">11.2.</strong> Вещественный поиск</a></li><li class="chapter-item expanded "><a href="../algorithms/binary-search/answer.html"><strong aria-hidden="true">11.3.</strong> Двоичный поиск по ответу</a></li><li class="chapter-item expanded "><a href="../algorithms/binary-search/minimax.html"><strong aria-hidden="true">11.4.</strong> Минимакс</a></li><li class="chapter-item expanded "><a href="../algorithms/binary-search/best_practices.html"><strong aria-hidden="true">11.5.</strong> best practices</a></li><li class="chapter-item expanded "><a href="../algorithms/binary-search/tasks.html"><strong aria-hidden="true">11.6.</strong> Примеры задач</a></li></ol></li><li class="chapter-item expanded "><a href="../tasks/index.html"><strong aria-hidden="true">12.</strong> Решаем задачи</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../tasks/different-odd.html"><strong aria-hidden="true">12.1.</strong> Другая чётность</a></li><li class="chapter-item expanded "><a href="../tasks/sum-of-factorials.html"><strong aria-hidden="true">12.2.</strong> Сумма факториалов</a></li><li class="chapter-item expanded "><a href="../tasks/longest-easy.html"><strong aria-hidden="true">12.3.</strong> Наибольший отрезок</a></li><li class="chapter-item expanded "><a href="../tasks/monitor.html"><strong aria-hidden="true">12.4.</strong> Монитор</a></li><li class="chapter-item expanded "><a href="../tasks/maximize-median.html"><strong aria-hidden="true">12.5.</strong> Максимальная медиана</a></li><li class="chapter-item expanded "><a href="../tasks/equal-in-range.html"><strong aria-hidden="true">12.6.</strong> Равный на отрезке</a></li><li class="chapter-item expanded "><a href="../tasks/max-distance.html"><strong aria-hidden="true">12.7.</strong> Максимальное расстояние</a></li><li class="chapter-item expanded "><a href="../tasks/string-game.html"><strong aria-hidden="true">12.8.</strong> Игра на строке</a></li><li class="chapter-item expanded "><a href="../tasks/cnt-segments-segments.html"><strong aria-hidden="true">12.9.</strong> Опасные группы отрезков</a></li></ol></li><li class="chapter-item expanded "><a href="../tasks/task-about-segments.html"><strong aria-hidden="true">13.</strong> Задачи про отрезки</a></li><li class="chapter-item expanded "><a href="../stl/stl.html"><strong aria-hidden="true">14.</strong> stl</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../index.html"><strong aria-hidden="true">1.</strong> Введение</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../how-to-smth/judje.html"><strong aria-hidden="true">1.1.</strong> Тестирующая система</a></li><li class="chapter-item expanded "><a href="../how-to-smth/how-to-read.html"><strong aria-hidden="true">1.2.</strong> Как читать</a></li><li class="chapter-item expanded "><a href="../how-to-smth/how-to-solve.html"><strong aria-hidden="true">1.3.</strong> Как придумывать</a></li><li class="chapter-item expanded "><a href="../how-to-smth/how-to-testing.html"><strong aria-hidden="true">1.4.</strong> Как тестировать</a></li></ol></li><li class="chapter-item expanded "><a href="../CONTRIBUTING.html"><strong aria-hidden="true">2.</strong> Сделайте вклад</a></li><li class="chapter-item expanded "><a href="../history/history.html"><strong aria-hidden="true">3.</strong> История разработки проекта</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../history/tasks-management.html"><strong aria-hidden="true">3.1.</strong> Структурирование задач</a></li><li class="chapter-item expanded "><a href="../history/toc-plugin.html"><strong aria-hidden="true">3.2.</strong> Оглавление страницы</a></li></ol></li><li class="chapter-item expanded "><a href="../getting-started/getting-started.html" class="active"><strong aria-hidden="true">4.</strong> Начало работы</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../getting-started/installation.html"><strong aria-hidden="true">4.1.</strong> Установка</a></li><li class="chapter-item expanded "><a href="../getting-started/code-editor.html"><strong aria-hidden="true">4.2.</strong> Редактор кода</a></li><li class="chapter-item expanded "><a href="../getting-started/examples.html"><strong aria-hidden="true">4.3.</strong> Решение задачи</a></li></ol></li><li class="chapter-item expanded "><a href="../programming/cpp_base.html"><strong aria-hidden="true">5.</strong> Основы языка C++</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../programming/data-types.html"><strong aria-hidden="true">5.1.</strong> Типы данных</a></li><li class="chapter-item expanded "><a href="../programming/io.html"><strong aria-hidden="true">5.2.</strong> Ввод и вывод</a></li><li class="chapter-item expanded "><a href="../programming/branching.html"><strong aria-hidden="true">5.3.</strong> Ветвление</a></li><li class="chapter-item expanded "><a href="../programming/loops.html"><strong aria-hidden="true">5.4.</strong> Циклы</a></li><li class="chapter-item expanded "><a href="../programming/array_types/array.html"><strong aria-hidden="true">5.5.</strong> Массивы</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../programming/array_types/static-array.html"><strong aria-hidden="true">5.5.1.</strong> Статические массивы</a></li><li class="chapter-item expanded "><a href="../programming/array_types/dynamic-array.html"><strong aria-hidden="true">5.5.2.</strong> Динамические массивы</a></li><li class="chapter-item expanded "><a href="../programming/array_types/VLA.html"><strong aria-hidden="true">5.5.3.</strong> VLA</a></li><li class="chapter-item expanded "><a href="../programming/array_types/vector.html"><strong aria-hidden="true">5.5.4.</strong> std::vector</a></li><li class="chapter-item expanded "><a href="../programming/array_types/compare-arrays.html"><strong aria-hidden="true">5.5.5.</strong> Что выбрать?</a></li></ol></li><li class="chapter-item expanded "><a href="../programming/functions.html"><strong aria-hidden="true">5.6.</strong> Функции</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../programming/params-to-func.html"><strong aria-hidden="true">5.6.1.</strong> Передача параметров в функцию</a></li></ol></li><li class="chapter-item expanded "><a href="../programming/links-and-pointers.html"><strong aria-hidden="true">5.7.</strong> Ссылки и указатели</a></li></ol></li><li class="chapter-item expanded "><a href="../programming/mem.html"><strong aria-hidden="true">6.</strong> Память</a></li><li class="chapter-item expanded "><a href="../algorithms/greedy/index.html"><strong aria-hidden="true">7.</strong> Жадные алгоритмы</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../algorithms/greedy/intro.html"><strong aria-hidden="true">7.1.</strong> Введение</a></li></ol></li><li class="chapter-item expanded "><a href="../algorithms/asymptotics.html"><strong aria-hidden="true">8.</strong> Асимптотика</a></li><li class="chapter-item expanded "><a href="../algorithms/sorts/sorts.html"><strong aria-hidden="true">9.</strong> Сортировки</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../algorithms/sorts/bubble-sort.html"><strong aria-hidden="true">9.1.</strong> "Пузырьковая" сортировка</a></li><li class="chapter-item expanded "><a href="../algorithms/sorts/insertion-sort.html"><strong aria-hidden="true">9.2.</strong> Сортировка вставкой</a></li><li class="chapter-item expanded "><a href="../algorithms/sorts/selection-sort.html"><strong aria-hidden="true">9.3.</strong> "Выборочная" сортировка</a></li><li class="chapter-item expanded "><a href="../algorithms/sorts/merge-sort.html"><strong aria-hidden="true">9.4.</strong> Сортировка слиянием</a></li><li class="chapter-item expanded "><a href="../algorithms/sorts/quick-sort.html"><strong aria-hidden="true">9.5.</strong> Быстрая сортировка</a></li><li class="chapter-item expanded "><a href="../algorithms/sorts/counting-sort.html"><strong aria-hidden="true">9.6.</strong> Сортировка подсчётом</a></li></ol></li><li class="chapter-item expanded "><a href="../data-structures/linked_lists.html"><strong aria-hidden="true">10.</strong> Связанные списки</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../data-structures/my_Stack.html"><strong aria-hidden="true">10.1.</strong> Стек</a></li><li class="chapter-item expanded "><a href="../data-structures/queue_done.html"><strong aria-hidden="true">10.2.</strong> Очередь</a></li></ol></li><li class="chapter-item expanded "><a href="../algorithms/binary-search/index.html"><strong aria-hidden="true">11.</strong> Двоичный поиск</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../algorithms/binary-search/main.html"><strong aria-hidden="true">11.1.</strong> Целочисленный двоичный поиск</a></li><li class="chapter-item expanded "><a href="../algorithms/binary-search/real.html"><strong aria-hidden="true">11.2.</strong> Вещественный поиск</a></li><li class="chapter-item expanded "><a href="../algorithms/binary-search/answer.html"><strong aria-hidden="true">11.3.</strong> Двоичный поиск по ответу</a></li><li class="chapter-item expanded "><a href="../algorithms/binary-search/minimax.html"><strong aria-hidden="true">11.4.</strong> Минимакс</a></li><li class="chapter-item expanded "><a href="../algorithms/binary-search/best_practices.html"><strong aria-hidden="true">11.5.</strong> best practices</a></li><li class="chapter-item expanded "><a href="../algorithms/binary-search/tasks.html"><strong aria-hidden="true">11.6.</strong> Примеры задач</a></li></ol></li><li class="chapter-item expanded "><a href="../tasks/index.html"><strong aria-hidden="true">12.</strong> Решаем задачи</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../tasks/different-odd.html"><strong aria-hidden="true">12.1.</strong> Другая чётность</a></li><li class="chapter-item expanded "><a href="../tasks/sum-of-factorials.html"><strong aria-hidden="true">12.2.</strong> Сумма факториалов</a></li><li class="chapter-item expanded "><a href="../tasks/longest-easy.html"><strong aria-hidden="true">12.3.</strong> Наибольший отрезок</a></li><li class="chapter-item expanded "><a href="../tasks/monitor.html"><strong aria-hidden="true">12.4.</strong> Монитор</a></li><li class="chapter-item expanded "><a href="../tasks/maximize-median.html"><strong aria-hidden="true">12.5.</strong> Максимальная медиана</a></li><li class="chapter-item expanded "><a href="../tasks/equal-in-range.html"><strong aria-hidden="true">12.6.</strong> Равный на отрезке</a></li><li class="chapter-item expanded "><a href="../tasks/max-distance.html"><strong aria-hidden="true">12.7.</strong> Максимальное расстояние</a></li><li class="chapter-item expanded "><a href="../tasks/string-game.html"><strong aria-hidden="true">12.8.</strong> Игра на строке</a></li><li class="chapter-item expanded "><a href="../tasks/cnt-segments-segments.html"><strong aria-hidden="true">12.9.</strong> Опасные группы отрезков</a></li></ol></li><li class="chapter-item expanded "><a href="../tasks/task-about-segments.html"><strong aria-hidden="true">13.</strong> Задачи про отрезки</a></li><li class="chapter-item expanded "><a href="../stl/stl.html"><strong aria-hidden="true">14.</strong> stl</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
 
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
                                 <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky bordered">
+                <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
                             <i class="fa fa-bars"></i>
-                        </button>
+                        </label>
                         <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
                             <i class="fa fa-paint-brush"></i>
                         </button>
@@ -149,6 +180,8 @@
 
                 <div id="content" class="content">
                     <main>
+                        <!-- Page table of contents -->
+                        <div class="sidetoc"><nav class="pagetoc"></nav></div>
                         <h1 id="Начало-работы"><a class="header" href="#Начало-работы">Начало работы</a></h1>
 <p>Нам предстоит многому научиться, но любое путешествие начинается с чего-то. В этой главе мы обсудим:</p>
 <ul>
@@ -161,11 +194,11 @@
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../history/tasks-management.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../history/toc-plugin.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="../getting-started/installation.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../getting-started/installation.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -175,11 +208,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../history/tasks-management.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../history/toc-plugin.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="../getting-started/installation.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../getting-started/installation.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
@@ -203,7 +236,9 @@
         <script src="../book.js"></script>
 
         <!-- Custom JS scripts -->
+        <script src="../theme/sidebar.js"></script>
 
 
+    </div>
     </body>
 </html>

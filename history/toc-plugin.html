@@ -1,0 +1,252 @@
+<!DOCTYPE HTML>
+<html lang="ru" class="light" dir="">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Оглавление страницы - is-algo</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../theme/style.css">
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../index.html"><strong aria-hidden="true">1.</strong> Введение</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../how-to-smth/judje.html"><strong aria-hidden="true">1.1.</strong> Тестирующая система</a></li><li class="chapter-item expanded "><a href="../how-to-smth/how-to-read.html"><strong aria-hidden="true">1.2.</strong> Как читать</a></li><li class="chapter-item expanded "><a href="../how-to-smth/how-to-solve.html"><strong aria-hidden="true">1.3.</strong> Как придумывать</a></li><li class="chapter-item expanded "><a href="../how-to-smth/how-to-testing.html"><strong aria-hidden="true">1.4.</strong> Как тестировать</a></li></ol></li><li class="chapter-item expanded "><a href="../CONTRIBUTING.html"><strong aria-hidden="true">2.</strong> Сделайте вклад</a></li><li class="chapter-item expanded "><a href="../history/history.html"><strong aria-hidden="true">3.</strong> История разработки проекта</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../history/tasks-management.html"><strong aria-hidden="true">3.1.</strong> Структурирование задач</a></li><li class="chapter-item expanded "><a href="../history/toc-plugin.html" class="active"><strong aria-hidden="true">3.2.</strong> Оглавление страницы</a></li></ol></li><li class="chapter-item expanded "><a href="../getting-started/getting-started.html"><strong aria-hidden="true">4.</strong> Начало работы</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../getting-started/installation.html"><strong aria-hidden="true">4.1.</strong> Установка</a></li><li class="chapter-item expanded "><a href="../getting-started/code-editor.html"><strong aria-hidden="true">4.2.</strong> Редактор кода</a></li><li class="chapter-item expanded "><a href="../getting-started/examples.html"><strong aria-hidden="true">4.3.</strong> Решение задачи</a></li></ol></li><li class="chapter-item expanded "><a href="../programming/cpp_base.html"><strong aria-hidden="true">5.</strong> Основы языка C++</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../programming/data-types.html"><strong aria-hidden="true">5.1.</strong> Типы данных</a></li><li class="chapter-item expanded "><a href="../programming/io.html"><strong aria-hidden="true">5.2.</strong> Ввод и вывод</a></li><li class="chapter-item expanded "><a href="../programming/branching.html"><strong aria-hidden="true">5.3.</strong> Ветвление</a></li><li class="chapter-item expanded "><a href="../programming/loops.html"><strong aria-hidden="true">5.4.</strong> Циклы</a></li><li class="chapter-item expanded "><a href="../programming/array_types/array.html"><strong aria-hidden="true">5.5.</strong> Массивы</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../programming/array_types/static-array.html"><strong aria-hidden="true">5.5.1.</strong> Статические массивы</a></li><li class="chapter-item expanded "><a href="../programming/array_types/dynamic-array.html"><strong aria-hidden="true">5.5.2.</strong> Динамические массивы</a></li><li class="chapter-item expanded "><a href="../programming/array_types/VLA.html"><strong aria-hidden="true">5.5.3.</strong> VLA</a></li><li class="chapter-item expanded "><a href="../programming/array_types/vector.html"><strong aria-hidden="true">5.5.4.</strong> std::vector</a></li><li class="chapter-item expanded "><a href="../programming/array_types/compare-arrays.html"><strong aria-hidden="true">5.5.5.</strong> Что выбрать?</a></li></ol></li><li class="chapter-item expanded "><a href="../programming/functions.html"><strong aria-hidden="true">5.6.</strong> Функции</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../programming/params-to-func.html"><strong aria-hidden="true">5.6.1.</strong> Передача параметров в функцию</a></li></ol></li><li class="chapter-item expanded "><a href="../programming/links-and-pointers.html"><strong aria-hidden="true">5.7.</strong> Ссылки и указатели</a></li></ol></li><li class="chapter-item expanded "><a href="../programming/mem.html"><strong aria-hidden="true">6.</strong> Память</a></li><li class="chapter-item expanded "><a href="../algorithms/greedy/index.html"><strong aria-hidden="true">7.</strong> Жадные алгоритмы</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../algorithms/greedy/intro.html"><strong aria-hidden="true">7.1.</strong> Введение</a></li></ol></li><li class="chapter-item expanded "><a href="../algorithms/asymptotics.html"><strong aria-hidden="true">8.</strong> Асимптотика</a></li><li class="chapter-item expanded "><a href="../algorithms/sorts/sorts.html"><strong aria-hidden="true">9.</strong> Сортировки</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../algorithms/sorts/bubble-sort.html"><strong aria-hidden="true">9.1.</strong> "Пузырьковая" сортировка</a></li><li class="chapter-item expanded "><a href="../algorithms/sorts/insertion-sort.html"><strong aria-hidden="true">9.2.</strong> Сортировка вставкой</a></li><li class="chapter-item expanded "><a href="../algorithms/sorts/selection-sort.html"><strong aria-hidden="true">9.3.</strong> "Выборочная" сортировка</a></li><li class="chapter-item expanded "><a href="../algorithms/sorts/merge-sort.html"><strong aria-hidden="true">9.4.</strong> Сортировка слиянием</a></li><li class="chapter-item expanded "><a href="../algorithms/sorts/quick-sort.html"><strong aria-hidden="true">9.5.</strong> Быстрая сортировка</a></li><li class="chapter-item expanded "><a href="../algorithms/sorts/counting-sort.html"><strong aria-hidden="true">9.6.</strong> Сортировка подсчётом</a></li></ol></li><li class="chapter-item expanded "><a href="../data-structures/linked_lists.html"><strong aria-hidden="true">10.</strong> Связанные списки</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../data-structures/my_Stack.html"><strong aria-hidden="true">10.1.</strong> Стек</a></li><li class="chapter-item expanded "><a href="../data-structures/queue_done.html"><strong aria-hidden="true">10.2.</strong> Очередь</a></li></ol></li><li class="chapter-item expanded "><a href="../algorithms/binary-search/index.html"><strong aria-hidden="true">11.</strong> Двоичный поиск</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../algorithms/binary-search/main.html"><strong aria-hidden="true">11.1.</strong> Целочисленный двоичный поиск</a></li><li class="chapter-item expanded "><a href="../algorithms/binary-search/real.html"><strong aria-hidden="true">11.2.</strong> Вещественный поиск</a></li><li class="chapter-item expanded "><a href="../algorithms/binary-search/answer.html"><strong aria-hidden="true">11.3.</strong> Двоичный поиск по ответу</a></li><li class="chapter-item expanded "><a href="../algorithms/binary-search/minimax.html"><strong aria-hidden="true">11.4.</strong> Минимакс</a></li><li class="chapter-item expanded "><a href="../algorithms/binary-search/best_practices.html"><strong aria-hidden="true">11.5.</strong> best practices</a></li><li class="chapter-item expanded "><a href="../algorithms/binary-search/tasks.html"><strong aria-hidden="true">11.6.</strong> Примеры задач</a></li></ol></li><li class="chapter-item expanded "><a href="../tasks/index.html"><strong aria-hidden="true">12.</strong> Решаем задачи</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../tasks/different-odd.html"><strong aria-hidden="true">12.1.</strong> Другая чётность</a></li><li class="chapter-item expanded "><a href="../tasks/sum-of-factorials.html"><strong aria-hidden="true">12.2.</strong> Сумма факториалов</a></li><li class="chapter-item expanded "><a href="../tasks/longest-easy.html"><strong aria-hidden="true">12.3.</strong> Наибольший отрезок</a></li><li class="chapter-item expanded "><a href="../tasks/monitor.html"><strong aria-hidden="true">12.4.</strong> Монитор</a></li><li class="chapter-item expanded "><a href="../tasks/maximize-median.html"><strong aria-hidden="true">12.5.</strong> Максимальная медиана</a></li><li class="chapter-item expanded "><a href="../tasks/equal-in-range.html"><strong aria-hidden="true">12.6.</strong> Равный на отрезке</a></li><li class="chapter-item expanded "><a href="../tasks/max-distance.html"><strong aria-hidden="true">12.7.</strong> Максимальное расстояние</a></li><li class="chapter-item expanded "><a href="../tasks/string-game.html"><strong aria-hidden="true">12.8.</strong> Игра на строке</a></li><li class="chapter-item expanded "><a href="../tasks/cnt-segments-segments.html"><strong aria-hidden="true">12.9.</strong> Опасные группы отрезков</a></li></ol></li><li class="chapter-item expanded "><a href="../tasks/task-about-segments.html"><strong aria-hidden="true">13.</strong> Задачи про отрезки</a></li><li class="chapter-item expanded "><a href="../stl/stl.html"><strong aria-hidden="true">14.</strong> stl</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">is-algo</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/9kin/is-algo" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/9kin/is-algo/edit/master/src/history/toc-plugin.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <!-- Page table of contents -->
+                        <div class="sidetoc"><nav class="pagetoc"></nav></div>
+                        <h1 id="Оглавление-страницы"><a class="header" href="#Оглавление-страницы">Оглавление страницы</a></h1>
+<h1 id="Плагины"><a class="header" href="#Плагины">Плагины</a></h1>
+<p><code>mdbook</code> имеет много плагинов, которые расширяют возможности сайта. Список некоторых плагинов есть на их <a href="https://github.com/rust-lang/mdBook/wiki/Third-party-plugins#preprocessors">вики</a>.</p>
+<p>Вообще всё это называется <code>preprocessor</code>. По сути программа, которая будет запущена до сборки проекта. Я не особо знаю в какой момент это происходит, но кажется это не особо важно. Мне кажется, скрипты запускаются до сборки, тупо в директории проекта. Подробнее про работу и написание своего препроцессора можно почитать в их <a href="https://rust-lang.github.io/mdBook/for_developers/preprocessors.html">доке</a>.</p>
+<h1 id="pagetoc"><a class="header" href="#pagetoc">pagetoc</a></h1>
+<p>Давайте вернёмся к теме статьи. Подробное оглавление статьи является очень полезным, особенно в больших статьях, хотя мы и пытаемся писать всё кратко в одном файле. Самые известные проекты с оглавлением это книги или википедия.</p>
+<p>На вике проета есть проект <a href="https://github.com/JorelAli/mdBook-pagetoc">mdBook-pagetoc</a>. Посмотрите примеры на тестовом <a href="https://jorel.dev/mdBook-pagetoc">сайте</a>. Действительно красиво, там даже issues в <code>mdbook</code> сделан. В общем автор просто написал скрипт на js, который настолько простой, что можно его было и самому написать. Но если работает, не трожь, поэтому попробуем запустить проект.</p>
+<h1 id="Интеграция-в-проект"><a class="header" href="#Интеграция-в-проект">Интеграция в проект</a></h1>
+<p>Добавим в <code>book.toml</code> строки для новых js и css. Создадим папку <code>theme</code> и сделаем некоторый файл <code>index.hbs</code>, который поход на <code>html</code>.</p>
+<p>Вообще <a href="https://handlebarsjs.com/">Handlebars</a> (bhs) это очень старинный (я просто не разбираюсь в истории проктов) шаблонизатор на <code>js</code>.</p>
+<p>Потом я ввёл в гугл что-то по типу <code>mdbook index.hbs</code> и даже нашёл сделал поиск по названию файла в репозитории, и в действительности это до сих пор используется. Чтобы использовать последнюю версию <code>index.hbs</code> я просто сдедал сравнение между последней <a href="https://raw.githubusercontent.com/rust-lang/mdBook/master/src/theme/index.hbs">версией</a> <code>index.hbs</code> и версией в <a href="https://raw.githubusercontent.com/JorelAli/mdBook-pagetoc/master/theme/index.hbs">плагине </a>. Единственное существенное отличие заключается только в блоке кода который начинается на <code>&lt;div id=&quot;content&quot; class=&quot;content&quot;&gt;</code>, в нём стоит добавить </p>
+<pre><code class="language-html">&lt;!-- Page table of contents --&gt;
+&lt;div class=&quot;sidetoc&quot;&gt;&lt;nav class=&quot;pagetoc&quot;&gt;&lt;/nav&gt;&lt;/div&gt;
+</code></pre>
+<p>Осталось запустить проект и получить желанное оглавление с последней версией!!</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../history/tasks-management.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../getting-started/getting-started.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../history/tasks-management.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../getting-started/getting-started.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../theme/sidebar.js"></script>
+
+
+    </div>
+    </body>
+</html>
