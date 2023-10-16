@@ -32,6 +32,8 @@ def modify_dash(text: str) -> str:
         .replace(r"\\)", "$")
         .replace(r"\\[", "$$")
         .replace(r"\\]", "$$")
+        .replace(r"\\{", r"\{")
+        .replace(r"\\}", r"\}")
     )
 
 
