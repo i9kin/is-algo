@@ -31,8 +31,6 @@
         <!-- Custom theme stylesheets -->
         <link rel="stylesheet" href="../../theme/style.css">
 
-        <!-- MathJax -->
-        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </head>
     <body class="sidebar-visible no-js">
     <div id="body-container">
@@ -184,16 +182,16 @@
                         <div class="sidetoc"><nav class="pagetoc"></nav></div>
                         <h1 id="Быстрая-сортировка"><a class="header" href="#Быстрая-сортировка">&quot;Быстрая&quot; сортировка</a></h1>
 <div class="table-wrapper"><table><thead><tr><th>характеристики</th><th>значения</th></tr></thead><tbody>
-<tr><td>сложность в лучшем</td><td>\(O(n \log n)\)</td></tr>
-<tr><td>сложность в среднем</td><td>\(O(n \log n)\)</td></tr>
-<tr><td>сложность в худшем</td><td>\(O(n^2)\) <sup class="footnote-reference"><a href="#worst">1</a></sup></td></tr>
-<tr><td>временная сложность</td><td>\(O(n \log n)\) или \(O(n^2)\)<sup class="footnote-reference"><a href="#worst">1</a></sup></td></tr>
-<tr><td>дополнительная память</td><td>\(O(\log n)\) или \(O(n)\) <sup class="footnote-reference"><a href="#rec">2</a></sup></td></tr>
+<tr><td>сложность в лучшем</td><td>$O(n \log n)$</td></tr>
+<tr><td>сложность в среднем</td><td>$O(n \log n)$</td></tr>
+<tr><td>сложность в худшем</td><td>$O(n^2)$ <sup class="footnote-reference"><a href="#worst">1</a></sup></td></tr>
+<tr><td>временная сложность</td><td>$O(n \log n)$ или $O(n^2)$<sup class="footnote-reference"><a href="#worst">1</a></sup></td></tr>
+<tr><td>дополнительная память</td><td>$O(\log n)$ или $O(n)$ <sup class="footnote-reference"><a href="#rec">2</a></sup></td></tr>
 <tr><td>стабильная ли?</td><td>⛔️</td></tr>
 </tbody></table>
 </div>
-<p><sup class="footnote-reference"><a href="#worst">1</a></sup> : При использовании детерминированного (не случайный выбор) опорного элемента можно легко построить массив, на котором быстрая сортировка будет работать за \(O(n^2)\).</p>
-<p><sup class="footnote-reference"><a href="#rec">2</a></sup> : В обычном случае тратится память на сохранения стека рекурсии. Значит обычно будет \(\log n\) но в случае когда сортировка обрабатывает <code>плохой массив</code>.</p>
+<p><sup class="footnote-reference"><a href="#worst">1</a></sup> : При использовании детерминированного (не случайный выбор) опорного элемента можно легко построить массив, на котором быстрая сортировка будет работать за $O(n^2)$.</p>
+<p><sup class="footnote-reference"><a href="#rec">2</a></sup> : В обычном случае тратится память на сохранения стека рекурсии. Значит обычно будет $\log n$ но в случае когда сортировка обрабатывает <code>плохой массив</code>.</p>
 <h2 id="Алгоритм"><a class="header" href="#Алгоритм">Алгоритм</a></h2>
 <p>Quick sort - рекурсивный алгоритм, основанный на принципе &quot;&quot;разделяй и властвуй&quot;. Выбирается какая-то опорная точка (pivot point), относительно которой массив разбивается на подмассивы, после чего эта точка ставится на нужное место в массив.</p>
 <p>Алгоритм состоит из трёх шагов:</p>
@@ -210,7 +208,7 @@
 </ol>
 <h2 id="Недостатки"><a class="header" href="#Недостатки">Недостатки</a></h2>
 <ol>
-<li>Худшая сложность по времени — \(O(n^2)\). Попробуйте придумать такой тест. </li>
+<li>Худшая сложность по времени — $O(n^2)$. Попробуйте придумать такой тест. </li>
 <li>Не лучший выбор для массивов небольших размеров.</li>
 <li>Нестабильная сортировка.</li>
 </ol>
@@ -271,7 +269,7 @@
 <pre><code class="language-bash">-354 0 9 74 87
 </code></pre>
 <h1 id="На-практике"><a class="header" href="#На-практике">На практике</a></h1>
-<p>В качестве опорного элемента следует выбирать случайный элемент массива (<code>int piv = a[rand() % (r - l + 1) + l];</code>), чтобы получить гарантированное время сортировки \( \Theta (n\log n)\) в среднем.</p>
+<p>В качестве опорного элемента следует выбирать случайный элемент массива (<code>int piv = a[rand() % (r - l + 1) + l];</code>), чтобы получить гарантированное время сортировки $ \Theta (n\log n)$ в среднем.</p>
 
                     </main>
 

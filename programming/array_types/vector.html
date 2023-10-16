@@ -31,8 +31,6 @@
         <!-- Custom theme stylesheets -->
         <link rel="stylesheet" href="../../theme/style.css">
 
-        <!-- MathJax -->
-        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </head>
     <body class="sidebar-visible no-js">
     <div id="body-container">
@@ -191,10 +189,10 @@
 <p>Используйте и не думайте.</p>
 </blockquote>
 <p>Есть удобные <a href="https://en.cppreference.com/w/cpp/container/vector">методы</a>: </p>
-<p><code>push_back</code> — добавляет элемент в конец. Амортизировано за \(O(1)\).</p>
-<p><code>pop_back</code> — удаляет элемент в конец. Амортизировано за \(O(1)\).</p>
-<p><code>insert</code> — вставляет элемент в произвольное место. За \(O(n)\).</p>
-<p><code>erase</code> — удаляет произвольный элемент. За \(O(n)\).</p>
+<p><code>push_back</code> — добавляет элемент в конец. Амортизировано за $O(1)$.</p>
+<p><code>pop_back</code> — удаляет элемент в конец. Амортизировано за $O(1)$.</p>
+<p><code>insert</code> — вставляет элемент в произвольное место. За $O(n)$.</p>
+<p><code>erase</code> — удаляет произвольный элемент. За $O(n)$.</p>
 <p><code>begin, end</code> — указатели на начало и конец. Например, нужно для сортировки <code>sort(a.begin(), a.end());</code></p>
 <p>Пример решения задачи из блока <a href="./examples.html">&quot;начало работы&quot;</a> :</p>
 <pre><code class="language-cpp">#include &lt;iostream&gt;

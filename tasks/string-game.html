@@ -31,8 +31,6 @@
         <!-- Custom theme stylesheets -->
         <link rel="stylesheet" href="../theme/style.css">
 
-        <!-- MathJax -->
-        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </head>
     <body class="sidebar-visible no-js">
     <div id="body-container">
@@ -188,7 +186,7 @@
 <p>Даны две строки <code>t</code> (длины <code>n</code>) и <code>p</code>. А также перестановка <code>a</code> длины <code>n</code> индексов по которой будут удалять символы строки <code>t</code>. Сначала удалят <code>t[a[0]]</code>, затем <code>t[a[1]]</code> и тд. Надо найти максимальное число удалений (которые описаны выше), после которых из <code>t</code> можно получить <code>p</code> удалением (уже произвольным способом) некоторых символов из <code>t</code>.</p>
 <h2 id="Решение"><a class="header" href="#Решение">Решение</a></h2>
 <p>Сделаем бинпоиск по ответу. Для фиксированного числа удалений, получим строку <code>t</code>. Далее проверим двумя указателями что из текущей строки можно получить <code>p</code>. </p>
-<p>Асимптотика \(O(n \log n)\).</p>
+<p>Асимптотика $O(n \log n)$.</p>
 <!-- AC like https://codeforces.com/contest/779/submission/56385229 -->
                     </main>
 
