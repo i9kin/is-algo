@@ -180,13 +180,14 @@
                     <main>
                         <!-- Page table of contents -->
                         <div class="sidetoc"><nav class="pagetoc"></nav></div>
-                        <h1 id="наибольший-отрезок"><a class="header" href="#наибольший-отрезок">наибольший отрезок</a></h1>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<h1 id="наибольший-отрезок"><a class="header" href="#наибольший-отрезок">наибольший отрезок</a></h1>
 <p>[Условие задачи](в сике взял что-то (TODO))</p>
 <h2 id="Условие"><a class="header" href="#Условие">Условие</a></h2>
-<p>Вам дан массив длины до $10^6$ из элементов из диапазона $ [-10^9, 10^9]$ . Найдите максимального длину отрезка массива все элементы которого не меньше $0$.</p>
+<p>Вам дан массив длины до <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">6</span></span></span></span></span></span></span></span></span></span></span> из элементов из диапазона <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">−</span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">9</span></span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">9</span></span></span></span></span></span></span></span><span class="mclose">]</span></span></span></span> . Найдите максимального длину отрезка массива все элементы которого не меньше <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span>.</p>
 <h2 id="Решение"><a class="header" href="#Решение">Решение</a></h2>
 <h3 id="Решение-в-лоб"><a class="header" href="#Решение-в-лоб">Решение в лоб</a></h3>
-<p>Можно написать два цикла для перебора границы отрезка, а затем проверить третьим циклом все элементы в отрезке, но это будет $O(n^3)$.</p>
+<p>Можно написать два цикла для перебора границы отрезка, а затем проверить третьим циклом все элементы в отрезке, но это будет <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>.</p>
 <pre><code class="language-cpp">int ans = 0;
 for (int l = 0; l &lt; n; l++) {
   for (int r = l; r &lt; n; r++) {
@@ -204,7 +205,7 @@ for (int l = 0; l &lt; n; l++) {
 }
 </code></pre>
 <p>Можно чуть проще и быстрее, проверку отрезка делать параллельно.</p>
-<p>Для этого достаточно понять, что в коде выше во втором цикле когда мы увеличиваем правую границу, то можно сразу проверить отрезок за $O(1)$.</p>
+<p>Для этого достаточно понять, что в коде выше во втором цикле когда мы увеличиваем правую границу, то можно сразу проверить отрезок за <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span>.</p>
 <p>Напишем такой код :</p>
 <pre><code class="language-cpp">int ans = 0;
 for (int l = 0; l &lt; n; l++) {
@@ -215,7 +216,7 @@ for (int l = 0; l &lt; n; l++) {
 }
 cout &lt;&lt; ans;
 </code></pre>
-<p>Подумайте немного, что можно сказать про отрезок $[l, r]$, если мы уже знаем ответ для $[l, r - 1]$. Аналогично предыдущей задачи про <a href="./sum-of-factorials.html">сумму факториалов</a>.</p>
+<p>Подумайте немного, что можно сказать про отрезок <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mclose">]</span></span></span></span>, если мы уже знаем ответ для <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">]</span></span></span></span>. Аналогично предыдущей задачи про <a href="./sum-of-factorials.html">сумму факториалов</a>.</p>
 <p>Достаточно посмотреть на <code>a[r]</code> и если он не подходит, никакие отрезки с нашей левой границей и правой границей правей нашей не будет подходить.</p>
 <pre><code class="language-cpp">int ans = 0;
 for (int l = 0; l &lt; n; l++) {
@@ -231,7 +232,7 @@ for (int l = 0; l &lt; n; l++) {
 }
 cout &lt;&lt; ans;
 </code></pre>
-<p>Асимптотика решения $O(n^2)$.</p>
+<p>Асимптотика решения <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>.</p>
 <h3 id="Быстрое-решение"><a class="header" href="#Быстрое-решение">Быстрое решение</a></h3>
 <p>Продолжим идею решения выше. Когда <code>a[r] &lt; 0</code>, можно сделать <code>break</code>, так-же можно заметить, что если <code>a[r] &lt; 0</code>, то все отрезки с левой границей меньше <code>r</code> можно не рассматривать, так как они тоже закончатся в <code>r</code>.</p>
 <blockquote>
@@ -253,7 +254,7 @@ for (int l = 0; l &lt; n; l++) {
 }
 cout &lt;&lt; ans;
 </code></pre>
-<p>Асимптотика решения $O(n)$.</p>
+<p>Асимптотика решения <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></p>
 
                     </main>
 

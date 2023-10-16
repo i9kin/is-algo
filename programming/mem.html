@@ -180,7 +180,8 @@
                     <main>
                         <!-- Page table of contents -->
                         <div class="sidetoc"><nav class="pagetoc"></nav></div>
-                        <h1 id="Память"><a class="header" href="#Память">Память</a></h1>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<h1 id="Память"><a class="header" href="#Память">Память</a></h1>
 <blockquote>
 <p>new int[100] создаст в куче массив <code>int</code>'ов размера 100, и вернёт указатель на самый первый (нулевой) элемент.
 Чтобы не было утечки памяти стоит после того, как мы закончили работать с указателем, удалить его память — сделать delete pointer. Сугубо говоря, delete вызывает free с нужными параметрами, а ОС освобождает память и отдаёт её в свободный пул памяти</p>

@@ -180,7 +180,8 @@
                     <main>
                         <!-- Page table of contents -->
                         <div class="sidetoc"><nav class="pagetoc"></nav></div>
-                        <h1 id="stdvector"><a class="header" href="#stdvector">std::vector</a></h1>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<h1 id="stdvector"><a class="header" href="#stdvector">std::vector</a></h1>
 <p>Динамический массив настоящего альфы)))</p>
 <p>Синтаксис <code>vector&lt;T&gt; variable(n);</code>. Стоит подключить библиотеку <code>&lt;vector&gt;</code>.</p>
 <p>Под <code>капотом</code> находится <code>буфер</code>, который является динамическим массивом. 
@@ -189,10 +190,10 @@
 <p>Используйте и не думайте.</p>
 </blockquote>
 <p>Есть удобные <a href="https://en.cppreference.com/w/cpp/container/vector">методы</a>: </p>
-<p><code>push_back</code> — добавляет элемент в конец. Амортизировано за $O(1)$.</p>
-<p><code>pop_back</code> — удаляет элемент в конец. Амортизировано за $O(1)$.</p>
-<p><code>insert</code> — вставляет элемент в произвольное место. За $O(n)$.</p>
-<p><code>erase</code> — удаляет произвольный элемент. За $O(n)$.</p>
+<p><code>push_back</code> — добавляет элемент в конец. Амортизировано за <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span>.</p>
+<p><code>pop_back</code> — удаляет элемент в конец. Амортизировано за <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span>.</p>
+<p><code>insert</code> — вставляет элемент в произвольное место. За <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span>.</p>
+<p><code>erase</code> — удаляет произвольный элемент. За <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span>.</p>
 <p><code>begin, end</code> — указатели на начало и конец. Например, нужно для сортировки <code>sort(a.begin(), a.end());</code></p>
 <p>Пример решения задачи из блока <a href="./examples.html">&quot;начало работы&quot;</a> :</p>
 <pre><code class="language-cpp">#include &lt;iostream&gt;

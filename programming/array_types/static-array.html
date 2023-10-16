@@ -180,7 +180,8 @@
                     <main>
                         <!-- Page table of contents -->
                         <div class="sidetoc"><nav class="pagetoc"></nav></div>
-                        <h1 id="Статические-массивы"><a class="header" href="#Статические-массивы">Статические массивы</a></h1>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<h1 id="Статические-массивы"><a class="header" href="#Статические-массивы">Статические массивы</a></h1>
 <p>Массивы бывают двух типов: <a href="./c-array.html">статические</a> и <a href="dynamic-array.html">динамические</a>. Давайте, рассмотрим статические.</p>
 <h1 id="Особенности-статических-массивов"><a class="header" href="#Особенности-статических-массивов">Особенности статических массивов</a></h1>
 <blockquote>
@@ -260,7 +261,7 @@ int main() {
 <ol>
 <li>
 <p>Массивы нельзя присваивать. Так как просто указатель присвоить непонятно, что
-делать с &quot;потерявшейся памятью&quot;. Ещё есть вариант когда можно перекопировать все переменные, но это работает за $O(n)$, решили такое не делать, хотя в векторе такое есть. Это пришло из <code>C</code> исторически.</p>
+делать с &quot;потерявшейся памятью&quot;. Ещё есть вариант когда можно перекопировать все переменные, но это работает за <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span>, решили такое не делать, хотя в векторе такое есть. Это пришло из <code>C</code> исторически.</p>
 </li>
 <li>
 <p><code>sizeof(a)</code> гораздо больше чем `sizeof(pointer)``</p>

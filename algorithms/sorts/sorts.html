@@ -180,7 +180,8 @@
                     <main>
                         <!-- Page table of contents -->
                         <div class="sidetoc"><nav class="pagetoc"></nav></div>
-                        <h1 id="Сортировки"><a class="header" href="#Сортировки">Сортировки</a></h1>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<h1 id="Сортировки"><a class="header" href="#Сортировки">Сортировки</a></h1>
 <p>Сортировка - это процесс упорядочивания множества по определённом признаку. В страницах этого раздела представлены различные алгоритмы сортировок, имеющие свои преимущества и недостатки. Каждая сортировка детально разобрана, включая асимптотику, принцип работы, сильные/слабые стороны. </p>
 <blockquote>
 <p>Сортировка является одной из фундаментальных проблем (задач) проектирования алгоритмов. Многие эффективные алгоритмы используют сортировку в качестве подпрограммы, поскольку зачастую легче обрабатывать данные, если они расположены в отсортированном порядке.</p>
@@ -189,7 +190,7 @@
 <p>Обращение к ленивым/плохо понимающим сортировки людям! Просьба не копипастить код с сортировок в лабораторные, потому что тогда вы все получите бан за списывание. Вам нужно понять принцип работы и писать свой код, не подглядывая, а не просто перепечатывать код с сайта в лабу!</p>
 </blockquote>
 <blockquote>
-<p>Любой алгоритм сортировки, который использует только сравнения элементов массива, не может быть быстрее, чем $O(n \log n)$. Это доказательство было представлено в 1964 году Клаусом Янсеном (Klaus Janson) и Микелем Патерсоном (Michael Paterson). Однако, есть некоторые алгоритмы сортировки, которые не используют сравнения элементов массива и могут работать быстрее $O(n \log n)$, например, поразрядная сортировка (radix sort) и сортировка подсчетом (counting sort). </p>
+<p>Любой алгоритм сортировки, который использует только сравнения элементов массива, не может быть быстрее, чем <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span>. Это доказательство было представлено в 1964 году Клаусом Янсеном (Klaus Janson) и Микелем Патерсоном (Michael Paterson). Однако, есть некоторые алгоритмы сортировки, которые не используют сравнения элементов массива и могут работать быстрее <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span>, например, поразрядная сортировка (radix sort) и сортировка подсчетом (counting sort). </p>
 </blockquote>
 <!-- TODO доказать. https://cses.fi/book/book.pdf страница 28 -->
 <h2 id="Устойчивость-сортировки"><a class="header" href="#Устойчивость-сортировки">Устойчивость сортировки</a></h2>

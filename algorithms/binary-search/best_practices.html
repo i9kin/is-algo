@@ -180,7 +180,8 @@
                     <main>
                         <!-- Page table of contents -->
                         <div class="sidetoc"><nav class="pagetoc"></nav></div>
-                        <h1 id="best-practices"><a class="header" href="#best-practices">best practices</a></h1>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<h1 id="best-practices"><a class="header" href="#best-practices">best practices</a></h1>
 <ol>
 <li>Не писать его вовсе. Проще всего воспользоваться нужными функциями из стандартной библиотеки, например <code>std::set</code> тоже умеет в поиск.</li>
 <li><code>while(r - l &gt; eps)</code>, где <code>eps</code> точность. В целочисленном <code>eps=1</code>, а в вещественном всё зависит от точности вычислений.</li>
@@ -188,7 +189,7 @@
 <li>Не в целочисленном бинпоиске правую границу можно сделать гораздо больше. Например, <code>r = 1e9 + 228</code>.</li>
 </ol>
 <ul>
-<li>Пункт <code>2</code> можно сделать проще для дебага, запустив итерации бинпоиска в обычном цикле $\log_2 n + 2$ раз :). В таком случае количество итераций бинпоиска не зависит от <code>l</code> и <code>r</code>.</li>
+<li>Пункт <code>2</code> можно сделать проще для дебага, запустив итерации бинпоиска в обычном цикле <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9386em;vertical-align:-0.2441em;"></span><span class="mop"><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.207em;"><span style="top:-2.4559em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2441em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span></span></span></span> раз :). В таком случае количество итераций бинпоиска не зависит от <code>l</code> и <code>r</code>.</li>
 </ul>
 
                     </main>

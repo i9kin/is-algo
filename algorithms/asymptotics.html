@@ -180,7 +180,8 @@
                     <main>
                         <!-- Page table of contents -->
                         <div class="sidetoc"><nav class="pagetoc"></nav></div>
-                        <h1 id="Оценка-асимптотики-алгоритмов"><a class="header" href="#Оценка-асимптотики-алгоритмов">Оценка асимптотики алгоритмов</a></h1>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<h1 id="Оценка-асимптотики-алгоритмов"><a class="header" href="#Оценка-асимптотики-алгоритмов">Оценка асимптотики алгоритмов</a></h1>
 <p><a href="https://vk.com/doc191450968_561608466?hash=1K1Cd8tP7N8rZcYeFS8pSJjr82ROC22zM2WlzBbBBzz&amp;dl=RolI6VzGuZKU7zeJEYpjawEP7lZ0yWFsnsqwcJOzkIP">ССЫЛКА НА КНИГУ</a> (книга очень интересная и отлично написана, так что при наличии свободного времени рекомендуется прочитать целиком, не пожалеете)</p>
 <blockquote>
 <p>Каждый, кто хочет постигнуть максимально возможных результатов в изучении алгоритмов и их анализе, обязательно должен прочитать книгу Томаса Кормена.
@@ -196,7 +197,7 @@
 <li>Разработка нескольких алгоритмов и их анализ: страницы 71 - 86</li>
 </ul>
 <h1 id="Применение-в-задачах"><a class="header" href="#Применение-в-задачах">Применение в задачах</a></h1>
-<p>Оценка асимптотики алгоритма позволяет прикинуть, сколько секунд решение будет работать на каком-то тесте. Для этого, достаточно посмотреть на то, что внутри <code>O()</code>, подставить туда нужные нам значения (скорее всего самые сложные по времени тесты для нашего алгоритма, это когда нам дают очень много элементов) и разделить на $10^8 $` и получить примерное количество секунд на выполнение.</p>
+<p>Оценка асимптотики алгоритма позволяет прикинуть, сколько секунд решение будет работать на каком-то тесте. Для этого, достаточно посмотреть на то, что внутри <code>O()</code>, подставить туда нужные нам значения (скорее всего самые сложные по времени тесты для нашего алгоритма, это когда нам дают очень много элементов) и разделить на <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">8</span></span></span></span></span></span></span></span></span></span></span>` и получить примерное количество секунд на выполнение.</p>
 <p>Например, решение работает за $O(n^2)$. По условию задачи $n \le 5000$. Получаем $5000^2 / 10^8 = 0.25$, следовательно программа в секунду уложится.</p>
 <p>Это всё относительно, так как :</p>
 <ol>

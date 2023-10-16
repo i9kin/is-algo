@@ -180,12 +180,13 @@
                     <main>
                         <!-- Page table of contents -->
                         <div class="sidetoc"><nav class="pagetoc"></nav></div>
-                        <h1 id="Сортировка-вставкой"><a class="header" href="#Сортировка-вставкой">Сортировка вставкой</a></h1>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<h1 id="Сортировка-вставкой"><a class="header" href="#Сортировка-вставкой">Сортировка вставкой</a></h1>
 <div class="table-wrapper"><table><thead><tr><th>характеристики</th><th>значения</th></tr></thead><tbody>
-<tr><td>сложность в лучшем</td><td>$O(n)$ <sup class="footnote-reference"><a href="#best">1</a></sup></td></tr>
-<tr><td>сложность в среднем</td><td>$O(n^2)$</td></tr>
-<tr><td>сложность в худшем</td><td>$O(n^2)$</td></tr>
-<tr><td>дополнительная память</td><td>$O(1)$</td></tr>
+<tr><td>сложность в лучшем</td><td><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span> <sup class="footnote-reference"><a href="#best">1</a></sup></td></tr>
+<tr><td>сложность в среднем</td><td><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></td></tr>
+<tr><td>сложность в худшем</td><td><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></td></tr>
+<tr><td>дополнительная память</td><td><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></td></tr>
 <tr><td>стабильная ли?</td><td>✅</td></tr>
 </tbody></table>
 </div>
@@ -204,7 +205,7 @@
 <li>Эффективен для маленьких массивов.</li>
 </ol>
 <h2 id="Недостатки-алгоритма"><a class="header" href="#Недостатки-алгоритма">Недостатки алгоритма</a></h2>
-<p>Сложность в среднем и худшем случаях — $O(n^2)$</p>
+<p>Сложность в среднем и худшем случаях — <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></p>
 <h2 id="Реализация-алгоритма"><a class="header" href="#Реализация-алгоритма">Реализация алгоритма</a></h2>
 <pre><code class="language-cpp">void insertionSort(int* a, int size) {
   for (int i = 1; i &lt; size; i++) {
