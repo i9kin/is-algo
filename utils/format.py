@@ -26,7 +26,13 @@ def modify_code(text: str) -> str:
 
 
 def modify_dash(text: str) -> str:
-    return text.replace("—", "&mdash;")
+    return (
+        text.replace("—", "&mdash;")
+        .replace(r"\\(", "$")
+        .replace(r"\\)", "$")
+        .replace(r"\\[", "$$")
+        .replace(r"\\]", "$$")
+    )
 
 
 def modify_asymptotic(text: str) -> str:

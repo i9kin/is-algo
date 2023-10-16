@@ -7,7 +7,6 @@ title = "is-algo"
 
 
 [output.html]
-mathjax-support = true
 git-repository-url = "https://github.com/9kin/is-algo"
 edit-url-template = "https://github.com/9kin/is-algo/edit/master/{path}"
 additional-css = ["theme/style.css"]
@@ -22,3 +21,9 @@ command = "mdbook-tera --json ./src/context.json"
 command = "mdbook-last-changed"
 renderer = ["html"]
 
+[preprocessor.katex]
+block-delimiter = { left = "$$", right = "$$" }
+inline-delimiter = { left = "$", right = "$" }
+after = ["links"]
+no-css = false
+include-src = false
