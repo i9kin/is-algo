@@ -41,7 +41,6 @@
 - [Связанные списки](./data-structures/linked_lists.md)
 	- [Стек](./data-structures/my_Stack.md)
 	- [Очередь](./data-structures/queue_done.md)
--  [Двоичная Куча](./data-structures/heapify.md)
 - [Двоичный поиск](./algorithms/binary-search/README.md)
 	- [Целочисленный двоичный поиск](./algorithms/binary-search/main.md)
 	- [Вещественный поиск](./algorithms/binary-search/real.md)
