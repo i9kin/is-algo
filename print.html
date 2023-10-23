@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="ru" class="light" dir="">
+<html lang="ru" class="light sidebar-hidden" dir="">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
@@ -33,7 +33,7 @@
         <link rel="stylesheet" href="theme/style.css">
 
     </head>
-    <body class="sidebar-visible no-js">
+    <body class="no-js">
     <div id="body-container">
         <!-- Provide site root to javascript -->
         <script>
@@ -84,8 +84,8 @@
                 sidebar = 'hidden';
             }
             sidebar_toggle.checked = sidebar === 'visible';
-            body.classList.remove('sidebar-visible');
-            body.classList.add("sidebar-" + sidebar);
+            // body.classList.remove('sidebar-visible');
+            // body.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
@@ -180,7 +180,7 @@
                         <div class="sidetoc"><nav class="pagetoc"></nav></div>
                         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
 <h1 id="Главная-страница"><a class="header" href="#Главная-страница">Главная страница</a></h1>
-<p><a href="https://t.me/+uunjZQSTJ0hhNjFi">Ссылка на тг канал</a> Нас 160! Зайдите в чат канала.</p>
+<p><a href="https://t.me/isalgo239">Ссылка на тг канал</a> Нас 180! Зайдите в чат канала.</p>
 <p>Я — <a href="https://t.me/i9kin">tg@i9kin</a> по поводу замечаний и предложений.
 С фидбэком и предложениями также пишите <a href="https://t.me/chainbrain">tg@chainbrain</a>, <a href="https://t.me/Kiksnol">tg@kiksnol</a>, <a href="https://t.me/shvedova_ali">tg@shvedova_ali</a>.</p>
 <blockquote>
@@ -189,7 +189,7 @@
 <h1 id="Философия-проекта"><a class="header" href="#Философия-проекта">Философия проекта</a></h1>
 <p>Сайт не просто учебник по алгоритмам, упор идёт на применения алгоритмов в задачах. Я лично не знаю сайтов, которые полностью реализовали такую идею.</p>
 <blockquote>
-<p>Сайт ориентируется, на программу курса по алгоритмам на направление 09.03.02 в ИТМО, но часть тем и задач, будет рассказана поверх этого курса. Я планирую в будущем создать домен или страницу с навигацией по темам только курса.</p>
+<p>Сайт изначально будет ориентироваться (для помощи студентам), на программу курса &quot;алгоритмы и структуры данных&quot; направление 09.03.02 в ИТМО, но часть тем и задач, будет рассказана поверх этого курса. Я планирую в будущем создать домен или страницу с навигацией по темам только курса.</p>
 </blockquote>
 <p>Вам может показаться, что количество задач на сайте катастрофически мала, но со временем мы сделаем наоборот очень много задач. Так-же планируется сделать задачи в контестах, все из них будут доступны для решения, а часть из них будет иметь полный полигон пакет для скачивания.</p>
 <p>Просто писать про массивы не особо входило в мои цели. Да и настройка сервера для сборки, написание утилит для форматирования, тестирования формата статей — очень затратная по времени вещь.</p>
@@ -338,25 +338,30 @@
 <li>Проект находится, на <a href="https://github.com/9kin/is-algo/tree/master/">гитхабе</a>, пул-реквесты приветствуются.</li>
 </ul>
 <h1 id="Как-работать-с-репозиторием"><a class="header" href="#Как-работать-с-репозиторием">Как работать с репозиторием</a></h1>
+<p>Так как сайт очень новый, не факт, что правила ниже верны :</p>
 <ol>
 <li>Клонируйте репозиторий</li>
 <li>Установите <code>Rust</code>, запустите скрипт <code>install.sh</code> в папке <code>utils</code> для скачивания зависимостей, в том числе и рабочих.</li>
 <li>Запустите <code>mdbook serve</code> и сайт соберётся. </li>
-<li>Сделайте изменения</li>
-<li>Запуште изменения в свой репозиторий.</li>
+<li>Сделайте изменения.</li>
+<li><code>python3 utils/simple-pre-commit.py</code> (объединение линтера файлов и удаление временных условий задач)</li>
 <li>Создайте <a href="https://github.com/9kin/is-algo">PR</a>.</li>
 <li>Наша команда скорее всего примет ваши изменения.</li>
 </ol>
-<p>Рекомендуется перед созданием PR пройтись спеллчекером <a href="https://github.com/hcodes/yaspeller"><code>yaspeller</code></a>. Для <code>yaspeller</code>-а у нашего проекта есть конфиг. Установка — <code>npm install yaspeller -g</code>.</p>
-<p>Запуск из корня проекта :</p>
+<p>Полезные скрипты (запуск из корня проекта):</p>
 <ul>
-<li><code>yaspeller --config utils/.yaspeller.json .</code>.</li>
+<li><code>python3 utils/task-manager.py</code> — создаёт <code>.md</code> файлы задач из папок.</li>
 <li><code>python3 utils/format.py</code> — реформат кода</li>
+<li><code>yaspeller --config utils/.yaspeller.json .</code> — спеллчекер.</li>
 </ul>
+<blockquote>
+<p>Самое важное!!! <code>python3 utils/simple-pre-commit.py</code> запустит и линтер <code>.md</code> файлов, линтер питон скриптов, и <code>task-manager.py d</code> для удаления ненужный <em>временных файлов</em>.</p>
+</blockquote>
+<p>Рекомендуется перед созданием PR пройтись спеллчекером <a href="https://github.com/hcodes/yaspeller"><code>yaspeller</code></a>. Для <code>yaspeller</code>-а у нашего проекта есть конфиг. Установка — <code>npm install yaspeller -g</code>.</p>
 <h1 id="Стиль-написания"><a class="header" href="#Стиль-написания">Стиль написания</a></h1>
 <p>Правила пока не особо соблюдаются.</p>
 <p>Пишем всё культурно. </p>
-<p>Для заголовков используем решёточки. Для тем создаём папки. Файлы именуем по правилу: </p>
+<p>Для заголовков используем символ решётки. Для тем создаём папки. Файлы именуем по правилу: </p>
 <ol>
 <li>README.md первый файл темы</li>
 <li>Всё остальное</li>
@@ -365,12 +370,13 @@
 <p>Для функций в тексте и для всего подобного используем текст между апострофами.</p>
 <p>Задаём все вопросы главным в проекте — мне (@i9kin), Диме (@insp3ctah), Коле (@Kiksnol), Алине (@shvedova_ali).</p>
 <h1 id="Благодарность"><a class="header" href="#Благодарность">Благодарность</a></h1>
-<p>Спасибо всем кто вносил вклад в <a href="https://github.com/9kin/is-algo/graphs/contributors">репозиторий проекта</a></p>
-<p>Особенно :</p>
+<p>Спасибо всем кто вносил вклад в <a href="https://github.com/9kin/is-algo/graphs/contributors">репозиторий проекта</a>.</p>
+<p>Особенно (люди перечисленны в случайном порядке):</p>
 <ol>
 <li>Мне (Ване) (@i9kin)</li>
 <li>Диме (@insp3ctah)</li>
 <li>Коле (@Kiksnol)</li>
+<li>Андрей (@AndrewKraevskii)</li>
 <li>Алине (@shvedova_ali)</li>
 </ol>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
@@ -1483,24 +1489,24 @@ proof https://www.cs.cornell.edu/courses/cs482/2007su/exchange.pdf (step3)
 <li>Разработка нескольких алгоритмов и их анализ: страницы 71 - 86</li>
 </ul>
 <h1 id="Применение-в-задачах"><a class="header" href="#Применение-в-задачах">Применение в задачах</a></h1>
-<p>Оценка асимптотики алгоритма позволяет прикинуть, сколько секунд решение будет работать на каком-то тесте. Для этого, достаточно посмотреть на то, что внутри <code>O()</code>, подставить туда нужные нам значения (скорее всего самые сложные по времени тесты для нашего алгоритма, это когда нам дают очень много элементов) и разделить на <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">8</span></span></span></span></span></span></span></span></span></span></span>` и получить примерное количество секунд на выполнение.</p>
-<p>Например, решение работает за $O(n^2)$. По условию задачи $n \le 5000$. Получаем $5000^2 / 10^8 = 0.25$, следовательно программа в секунду уложится.</p>
+<p>Оценка асимптотики алгоритма позволяет прикинуть, сколько секунд решение будет работать на каком-то тесте. Для этого, достаточно посмотреть на то, что внутри <code>O()</code>, подставить туда нужные нам значения (скорее всего самые сложные по времени тесты для нашего алгоритма, это когда нам дают очень много элементов) и разделить на <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">8</span></span></span></span></span></span></span></span></span></span></span> и получить примерное количество секунд на выполнение.</p>
+<p>Например, решение работает за <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>. По условию задачи <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719em;vertical-align:-0.136em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">5000</span></span></span></span>. Получаем <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord">500</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mord">/1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">8</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.25</span></span></span></span>, следовательно программа в секунду уложится.</p>
 <p>Это всё относительно, так как :</p>
 <ol>
 <li>Вы можете не верно оценивать саму асимптотику</li>
 <li>Написать код, который не совсем правильно реализует алгоритм. </li>
-<li>Разные операции процессор может делать с разной эффективностью. Например, операция <code>%</code> взятие по модулю работает не так быстро, как обычное деление. Так, как $x = y % z$ для процессора эквивалентно $x = x - y \cdot (x/y)$, а это уже три операции. Так-же компилятор может оптимизировать ваш код (и не только улучишь его асимптотику, но и ухудшить).</li>
+<li>Разные операции процессор может делать с разной эффективностью. Например, операция <code>%</code> взятие по модулю работает не так быстро, как обычное деление. Так, как <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span></span></span> для процессора эквивалентно <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6389em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mord">/</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mclose">)</span></span></span></span>, а это уже три операции. Так-же компилятор может оптимизировать ваш код (и не только улучишь его асимптотику, но и ухудшить).</li>
 </ol>
 <p>Таблица для обычных ограничений :</p>
 <div class="table-wrapper"><table><thead><tr><th>асимптотика</th><th>максимальное n для 1-ой секунды</th></tr></thead><tbody>
-<tr><td>$O(n)$</td><td>$10^8$</td></tr>
-<tr><td>$O(n \log n)$</td><td>$10^6$</td></tr>
-<tr><td>$O(n^2)$</td><td>5000</td></tr>
-<tr><td>$O(n^3)$</td><td>1000<sup class="footnote-reference"><a href="#1">1</a></sup></td></tr>
+<tr><td><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></td><td><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">8</span></span></span></span></span></span></span></span></span></span></span></td></tr>
+<tr><td><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></td><td><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">6</span></span></span></span></span></span></span></span></span></span></span></td></tr>
+<tr><td><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></td><td>5000</td></tr>
+<tr><td><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></td><td>1000<sup class="footnote-reference"><a href="#1">1</a></sup></td></tr>
 </tbody></table>
 </div>
 <div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
-<p>Для $O(n^3)$ я написал 1000, так как скорее всего алгоритм использует три вложенных цикла, и компилятор <a href="https://ru.algorithmica.org/cs/arithmetic/simd/">векторизовал</a> их.</p>
+<p>Для <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> я написал 1000, так как скорее всего алгоритм использует три вложенных цикла, и компилятор <a href="https://ru.algorithmica.org/cs/arithmetic/simd/">векторизовал</a> их.</p>
 </div>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
 <h1 id="Сортировки"><a class="header" href="#Сортировки">Сортировки</a></h1>

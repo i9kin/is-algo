@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="ru" class="light" dir="">
+<html lang="ru" class="light sidebar-hidden" dir="">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
@@ -32,7 +32,7 @@
         <link rel="stylesheet" href="theme/style.css">
 
     </head>
-    <body class="sidebar-visible no-js">
+    <body class="no-js">
     <div id="body-container">
         <!-- Provide site root to javascript -->
         <script>
@@ -83,8 +83,8 @@
                 sidebar = 'hidden';
             }
             sidebar_toggle.checked = sidebar === 'visible';
-            body.classList.remove('sidebar-visible');
-            body.classList.add("sidebar-" + sidebar);
+            // body.classList.remove('sidebar-visible');
+            // body.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
@@ -190,25 +190,30 @@
 <li>Проект находится, на <a href="https://github.com/9kin/is-algo/tree/master/">гитхабе</a>, пул-реквесты приветствуются.</li>
 </ul>
 <h1 id="Как-работать-с-репозиторием"><a class="header" href="#Как-работать-с-репозиторием">Как работать с репозиторием</a></h1>
+<p>Так как сайт очень новый, не факт, что правила ниже верны :</p>
 <ol>
 <li>Клонируйте репозиторий</li>
 <li>Установите <code>Rust</code>, запустите скрипт <code>install.sh</code> в папке <code>utils</code> для скачивания зависимостей, в том числе и рабочих.</li>
 <li>Запустите <code>mdbook serve</code> и сайт соберётся. </li>
-<li>Сделайте изменения</li>
-<li>Запуште изменения в свой репозиторий.</li>
+<li>Сделайте изменения.</li>
+<li><code>python3 utils/simple-pre-commit.py</code> (объединение линтера файлов и удаление временных условий задач)</li>
 <li>Создайте <a href="https://github.com/9kin/is-algo">PR</a>.</li>
 <li>Наша команда скорее всего примет ваши изменения.</li>
 </ol>
-<p>Рекомендуется перед созданием PR пройтись спеллчекером <a href="https://github.com/hcodes/yaspeller"><code>yaspeller</code></a>. Для <code>yaspeller</code>-а у нашего проекта есть конфиг. Установка — <code>npm install yaspeller -g</code>.</p>
-<p>Запуск из корня проекта :</p>
+<p>Полезные скрипты (запуск из корня проекта):</p>
 <ul>
-<li><code>yaspeller --config utils/.yaspeller.json .</code>.</li>
+<li><code>python3 utils/task-manager.py</code> — создаёт <code>.md</code> файлы задач из папок.</li>
 <li><code>python3 utils/format.py</code> — реформат кода</li>
+<li><code>yaspeller --config utils/.yaspeller.json .</code> — спеллчекер.</li>
 </ul>
+<blockquote>
+<p>Самое важное!!! <code>python3 utils/simple-pre-commit.py</code> запустит и линтер <code>.md</code> файлов, линтер питон скриптов, и <code>task-manager.py d</code> для удаления ненужный <em>временных файлов</em>.</p>
+</blockquote>
+<p>Рекомендуется перед созданием PR пройтись спеллчекером <a href="https://github.com/hcodes/yaspeller"><code>yaspeller</code></a>. Для <code>yaspeller</code>-а у нашего проекта есть конфиг. Установка — <code>npm install yaspeller -g</code>.</p>
 <h1 id="Стиль-написания"><a class="header" href="#Стиль-написания">Стиль написания</a></h1>
 <p>Правила пока не особо соблюдаются.</p>
 <p>Пишем всё культурно. </p>
-<p>Для заголовков используем решёточки. Для тем создаём папки. Файлы именуем по правилу: </p>
+<p>Для заголовков используем символ решётки. Для тем создаём папки. Файлы именуем по правилу: </p>
 <ol>
 <li>README.md первый файл темы</li>
 <li>Всё остальное</li>
@@ -217,12 +222,13 @@
 <p>Для функций в тексте и для всего подобного используем текст между апострофами.</p>
 <p>Задаём все вопросы главным в проекте — мне (@i9kin), Диме (@insp3ctah), Коле (@Kiksnol), Алине (@shvedova_ali).</p>
 <h1 id="Благодарность"><a class="header" href="#Благодарность">Благодарность</a></h1>
-<p>Спасибо всем кто вносил вклад в <a href="https://github.com/9kin/is-algo/graphs/contributors">репозиторий проекта</a></p>
-<p>Особенно :</p>
+<p>Спасибо всем кто вносил вклад в <a href="https://github.com/9kin/is-algo/graphs/contributors">репозиторий проекта</a>.</p>
+<p>Особенно (люди перечисленны в случайном порядке):</p>
 <ol>
 <li>Мне (Ване) (@i9kin)</li>
 <li>Диме (@insp3ctah)</li>
 <li>Коле (@Kiksnol)</li>
+<li>Андрей (@AndrewKraevskii)</li>
 <li>Алине (@shvedova_ali)</li>
 </ol>
 
