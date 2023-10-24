@@ -1,3 +1,2 @@
-fastapi
-GitPython
-uvicorn
+black
+jinja2
