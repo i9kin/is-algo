@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="ru" class="light sidebar-hidden" dir="">
+<html lang="ru" class="light" dir="">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
@@ -73,18 +73,16 @@
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
-            var body = document.querySelector('body');
+            var html = document.querySelector('html');
             var sidebar = null;
-            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
             } else {
                 sidebar = 'hidden';
             }
-            sidebar_toggle.checked = sidebar === 'visible';
-            // body.classList.remove('sidebar-visible');
-            // body.classList.add("sidebar-" + sidebar);
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
@@ -197,10 +195,13 @@
 <li>Запустите скрипт <code>local_installer.sh</code> в папке <code>utils</code> для скачивания зависимостей <code>mdbook</code>'а и для скрипта <code>simple-pre-commit.py</code>, который приведёт код в хорошее состояние.</li>
 <li>Запустите <code>mdbook serve</code> и сайт соберётся. </li>
 <li>Сделайте изменения. </li>
-<li><code>python3 utils/simple-pre-commit.py</code> &amp;mhash; <strong>обязательный</strong> скрипт.</li>
-<li>Создайте <a href="https://github.com/9kin/is-algo">PR</a>.</li>
-<li>Наша команда скорее всего примет ваши изменения.</li>
+<li><code>python3 utils/simple-pre-commit.py</code> — <strong>обязательный</strong> скрипт.</li>
+<li>Создайте <a href="https://github.com/9kin/is-algo">PR</a>.
+7 Наша команда скорее всего примет ваши изменения.</li>
 </ol>
+<blockquote>
+<p>Если у вас произошла ошибка, во время установки <code>python</code> зависимостей, то стоит использовать <a href="https://docs.python.org/3/library/venv.html"><code>venv</code></a> окружение.</p>
+</blockquote>
 <p>Полезные скрипты (запуск из корня проекта):</p>
 <ul>
 <li><code>python3 utils/task-manager.py</code> — создаёт <code>.md</code> файлы задач из папок.</li>
@@ -215,23 +216,23 @@
 <p>Правила пока не особо соблюдаются.</p>
 <p>Пишем всё культурно. </p>
 <p>Для заголовков используем символ решётки. Для тем создаём папки. Файлы именуем по правилу: </p>
-<ol>
+<ul>
 <li>README.md первый файл темы</li>
 <li>Всё остальное</li>
 <li>Скорее всего надо сделать файл с задачами на эту тему. Это скорее страница со ссылками на уже созданные задачи в директории <code>task</code>.</li>
-</ol>
+</ul>
 <p>Для функций в тексте и для всего подобного используем текст между апострофами.</p>
 <p>Задаём все вопросы главным в проекте — мне (@i9kin), Диме (@insp3ctah), Коле (@Kiksnol), Алине (@shvedova_ali).</p>
 <h1 id="Благодарность"><a class="header" href="#Благодарность">Благодарность</a></h1>
 <p>Спасибо всем кто вносил вклад в <a href="https://github.com/9kin/is-algo/graphs/contributors">репозиторий проекта</a>.</p>
 <p>Люди перечисленны в случайном порядке:</p>
-<ol>
+<ul>
 <li>Я (@i9kin)</li>
 <li>Дима (@insp3ctah)</li>
 <li>Коля (@Kiksnol)</li>
 <li>Андрей (@AndrewKraevskii)</li>
-<li>Алина (@shvedova_ali)</li>
-</ol>
+<li>Алина (@shvedova_ali)	</li>
+</ul>
 
                     </main>
 
