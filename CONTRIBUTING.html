@@ -191,12 +191,13 @@
 </ul>
 <h1 id="Как-работать-с-репозиторием"><a class="header" href="#Как-работать-с-репозиторием">Как работать с репозиторием</a></h1>
 <p>Так как сайт очень новый, не факт, что правила ниже верны :</p>
+<p>Все скрипты протестированы только под <code>linux</code>, на другие системы аналогично, возможно будет работать.</p>
 <ol>
-<li>Клонируйте репозиторий</li>
-<li>Установите <code>Rust</code>, запустите скрипт <code>install.sh</code> в папке <code>utils</code> для скачивания зависимостей, в том числе и рабочих.</li>
+<li>Установите <code>Rust</code>.</li>
+<li>Запустите скрипт <code>local_installer.sh</code> в папке <code>utils</code> для скачивания зависимостей <code>mdbook</code>'а и для скрипта <code>simple-pre-commit.py</code>, который приведёт код в хорошее состояние.</li>
 <li>Запустите <code>mdbook serve</code> и сайт соберётся. </li>
-<li>Сделайте изменения.</li>
-<li><code>python3 utils/simple-pre-commit.py</code> (объединение линтера файлов и удаление временных условий задач)</li>
+<li>Сделайте изменения. </li>
+<li><code>python3 utils/simple-pre-commit.py</code> &amp;mhash; <strong>обязательный</strong> скрипт.</li>
 <li>Создайте <a href="https://github.com/9kin/is-algo">PR</a>.</li>
 <li>Наша команда скорее всего примет ваши изменения.</li>
 </ol>
@@ -207,9 +208,9 @@
 <li><code>yaspeller --config utils/.yaspeller.json .</code> — спеллчекер.</li>
 </ul>
 <blockquote>
-<p>Самое важное!!! <code>python3 utils/simple-pre-commit.py</code> запустит и линтер <code>.md</code> файлов, линтер питон скриптов, и <code>task-manager.py d</code> для удаления ненужный <em>временных файлов</em>.</p>
+<p><code>python3 utils/simple-pre-commit.py</code> запустит и линтер <code>.md</code> файлов, линтер питон скриптов, и <code>task-manager.py d</code> для удаления ненужный <em>временных файлов</em>.</p>
 </blockquote>
-<p>Рекомендуется перед созданием PR пройтись спеллчекером <a href="https://github.com/hcodes/yaspeller"><code>yaspeller</code></a>. Для <code>yaspeller</code>-а у нашего проекта есть конфиг. Установка — <code>npm install yaspeller -g</code>.</p>
+<p>Рекомендуется пройтись спеллчекером <a href="https://github.com/hcodes/yaspeller"><code>yaspeller</code></a>. Для <code>yaspeller</code>-а у нашего проекта есть конфиг. </p>
 <h1 id="Стиль-написания"><a class="header" href="#Стиль-написания">Стиль написания</a></h1>
 <p>Правила пока не особо соблюдаются.</p>
 <p>Пишем всё культурно. </p>
@@ -223,13 +224,13 @@
 <p>Задаём все вопросы главным в проекте — мне (@i9kin), Диме (@insp3ctah), Коле (@Kiksnol), Алине (@shvedova_ali).</p>
 <h1 id="Благодарность"><a class="header" href="#Благодарность">Благодарность</a></h1>
 <p>Спасибо всем кто вносил вклад в <a href="https://github.com/9kin/is-algo/graphs/contributors">репозиторий проекта</a>.</p>
-<p>Особенно (люди перечисленны в случайном порядке):</p>
+<p>Люди перечисленны в случайном порядке:</p>
 <ol>
-<li>Мне (Ване) (@i9kin)</li>
-<li>Диме (@insp3ctah)</li>
-<li>Коле (@Kiksnol)</li>
+<li>Я (@i9kin)</li>
+<li>Дима (@insp3ctah)</li>
+<li>Коля (@Kiksnol)</li>
 <li>Андрей (@AndrewKraevskii)</li>
-<li>Алине (@shvedova_ali)</li>
+<li>Алина (@shvedova_ali)</li>
 </ol>
 
                     </main>
