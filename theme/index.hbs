@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="{{ language }}" class="{{ default_theme }} sidebar-hidden" dir="{{ text_direction }}">
+<html lang="{{ language }}" class="{{ default_theme }}" dir="{{ text_direction }}">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
@@ -94,18 +94,16 @@
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
-            var body = document.querySelector('body');
+            var html = document.querySelector('html');
             var sidebar = null;
-            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
             } else {
                 sidebar = 'hidden';
             }
-            sidebar_toggle.checked = sidebar === 'visible';
-            // body.classList.remove('sidebar-visible');
-            // body.classList.add("sidebar-" + sidebar);
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
