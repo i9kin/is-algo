@@ -1,0 +1,3 @@
+[info]
+name = посев травы
+source = sic 2100

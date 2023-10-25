@@ -3,5 +3,5 @@ book
 yaspeller_report.html
 src/quiz
 .idea/
-utils/problemset
+problemset
 env/

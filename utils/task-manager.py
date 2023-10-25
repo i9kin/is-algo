@@ -9,7 +9,7 @@ import configparser
 import re
 
 EDITOR = "subl {{ filename }} "
-TASK_DIR = pathlib.Path("../src/tasks")
+TASK_DIR = pathlib.Path("src") / "tasks"
 UTILS_DIR = pathlib.Path(".")
 
 
