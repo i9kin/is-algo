@@ -9,11 +9,8 @@ title = "is-algo"
 [output.html]
 git-repository-url = "https://github.com/9kin/is-algo"
 edit-url-template = "https://github.com/9kin/is-algo/edit/master/{path}"
-additional-css = ["theme/style.css"]
+additional-css = ["theme/style.css", "./mdbook-admonish.css"]
 additional-js = ["theme/sidebar.js"]
-
-[preprocessor.tera]
-command = "mdbook-tera --json ./src/context.json"
 
 [preprocessor.quiz]
 
@@ -27,3 +24,10 @@ inline-delimiter = { left = "$", right = "$" }
 after = ["links"]
 no-css = false
 include-src = false
+
+[preprocessor.admonish]
+command = "mdbook-admonish"
+assets_version = "3.0.0"
+
+[preprocessor.utils]
+command = "python3 utils/preprocessor.py"
