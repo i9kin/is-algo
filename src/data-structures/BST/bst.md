@@ -28,9 +28,9 @@ TODO
 
 ```cpp
 struct Node {
-    Node *l, *r;
-    int x;
-    Node(int x) : x(x), l(nullptr), r(nullptr) {};
+  Node *l, *r;
+  int x;
+  Node(int x) : x(x), l(nullptr), r(nullptr){};
 };
 ```
 
@@ -40,11 +40,11 @@ struct Node {
 
 ```cpp
 struct Node {
-    int l, r;
-    int x;
-    Node(int x) : x(x), l(-1), r(-1) {};
-    Node() : x(0), l(-1), r(-1) {};
-    // или Node() = default;
+  int l, r;
+  int x;
+  Node(int x) : x(x), l(-1), r(-1){};
+  Node() : x(0), l(-1), r(-1){};
+  // или Node() = default;
 };
 
 Node mem[100000];
@@ -58,7 +58,7 @@ cout << mem[mem[239].l].x;
 ```cpp
 int pos = 0;
 
-int new_Node(const T &x) {
+int new_Node(const T& x) {
   mem[pos] = T(x);
   return pos++;
 }
@@ -72,15 +72,16 @@ int new_Node(const T &x) {
 
 ```cpp
 struct Node {
-    Node *l, *r;
-    int x;
-    Node(int x) : x(x), l(nullptr), r(nullptr) {};
-    Node() = default;
+  Node *l, *r;
+  int x;
+  Node(int x) : x(x), l(nullptr), r(nullptr){};
+  Node() = default;
 };
+
 Node mem[100000];
 int pos = 0;
 
-Node* new_Node(const T &x) {
+Node* new_Node(const T& x) {
   mem[pos] = T(x);
   return &mem[pos++];
 }
@@ -104,16 +105,14 @@ TODO мне чёт в лом, AVL переписывать =)
 Преимущество бинарных деревьев поиска в том, что в них можно легко производить поиск элементов. Если поиск удобный, то и другие операции просты и выражаются через поиск.
 
 ```cpp
-bool find(Node *v, int x) {
-    if (!v)
-        return false;
-    if (v->x == x)
-        return true;
-    if (v->x < x) {
-      return find(v->l, x);
-    } else {
-      return find(v->r, x);
-    }
+bool find(Node* v, int x) {
+  if (!v) return false;
+  if (v->x == x) return true;
+  if (v->x < x) {
+    return find(v->l, x);
+  } else {
+    return find(v->r, x);
+  }
 }
 ```
 
