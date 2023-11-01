@@ -39,7 +39,7 @@ Todo CLI
 
 # Как поднять свой сервер 
 
-Нужен python3.7 или выше, так как python3.6 имеет очень старую реализацию [`asyncio`](https://stackoverflow.com/questions/52796630/python3-6-attributeerror-module-asyncio-has-no-attribute-run).
+Нужен python3.8 или выше, так как python3.6 имеет очень старую реализацию [`asyncio`](https://stackoverflow.com/questions/52796630/python3-6-attributeerror-module-asyncio-has-no-attribute-run).
 
 У меня на сервере `Python 3.7.5` там просто древняя убунту
 
