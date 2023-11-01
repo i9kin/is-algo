@@ -9,7 +9,7 @@
 
 # Как работать с репозиторием 
 
-Лучше скачайте `luatex` &mdash; `sudo apt install texlive-latex-extra`
+Скачайте `luatex` &mdash; `sudo apt install texlive-latex-extra`
 
 Todo CLI
 
@@ -17,7 +17,7 @@ Todo CLI
 
 Все скрипты протестированы только под `linux`, на другие системы аналогично, возможно будет работать. Вообще просто проверьте зависимости и сделайте ручками всё.
 
-1. Установите `Rust` &mdash; `curl https://sh.rustup.rs -sSf | sh`
+1. Установите `Rust` &mdash; `curl https://sh.rustup.rs -sSf | sh`, `export PATH="$HOME/.cargo/bin:$PATH"`.
 2. Запустите скрипт `local_installer.sh` в папке `utils` для скачивания зависимостей `mdbook`'а и для скрипта `simple-pre-commit.py`, который приведёт код в хорошее состояние.
 3. Запустите `mdbook serve` и сайт соберётся. 
 4. Сделайте изменения. 
@@ -39,13 +39,26 @@ Todo CLI
 
 # Как поднять свой сервер 
 
-Нужен python3.8 или выше, так как python3.6 имеет очень старую реализацию [`asyncio`](https://stackoverflow.com/questions/52796630/python3-6-attributeerror-module-asyncio-has-no-attribute-run).
+Используйте максимально новую систему, с `lld` свежей, чтобы у вас бинарники собирались и тп =)
 
-У меня на сервере `Python 3.7.5` там просто древняя убунту
+Используйте `Ubuntu-Ubuntu 22.04.1`
 
 Запустите скрипт `local_installer.sh` в папке `utils`, для скачивания зависимостей сервера.
 
-Поднимите сервер `uvicorn server:app --host 0.0.0.0 --port=8000`
+Установите `uvicorn`.
+
+Создайте файл `secrets.json` вида
+
+```json
+{
+    "USER": "...",
+    "REPO": "....",
+    "GH_PASSWORD": "ghp_...",
+    "CICDHASH": "..." 
+}
+```
+
+Поднимите сервер `python3 -m uvicorn server:app --host 0.0.0.0 --port=8000`
 
 # Стиль написания
 
