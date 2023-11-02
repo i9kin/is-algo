@@ -1,6 +1,22 @@
-from subprocess import Popen, PIPE
+import subprocess
+import sys
 
 
-def shell_command(command: str, input: str = " ") -> str:
-    p = Popen(command.split(), stdout=PIPE, stdin=PIPE, stderr=PIPE)
-    return p.communicate(input=input.encode())[0].decode()
+def debug(s):
+    sys.stderr.write(str(s))
+
+
+def shell_command(command: str, input_string: str = " ") -> str:
+    try:
+        p = subprocess.Popen(
+            command.split(),
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+        )
+    except:
+        raise Exception("Invalid command ", command)
+    std_out, std_err = p.communicate(input_string.encode())
+    if p.returncode != 0:
+        err_msg = "%s. Code: %s" % (std_err.decode().strip(), p.returncode)
+        raise Exception(err_msg)
+    return std_out.decode()

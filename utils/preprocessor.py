@@ -8,10 +8,6 @@ from cache import shell_command
 from pathlib import Path
 
 
-def debug(s):
-    sys.stderr.write(str(s))
-
-
 class StringBuilder:
     def __init__(self):
         self.text = ""
@@ -103,6 +99,7 @@ class TikzModify(ModifyInterface):
         open("tmp.tex", "w").write(tex)
         shell_command("lualatex -synctex=1 -interaction=nonstopmode tmp.tex")
         shell_command("pdf2svg tmp.pdf tmp.svg")
+
         file_name = int(hashlib.sha1(tex.encode("utf-8")).hexdigest(), 16)
         Path("tmp.svg").rename(f"src/{file_name}.svg")
         return f'<img src = "{file_name}.svg"/>'
