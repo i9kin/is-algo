@@ -1,0 +1,376 @@
+<!DOCTYPE HTML>
+<html lang="ru" class="light" dir="">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Двоичное дерево поиска - is-algo</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../../theme/style.css">
+        <link rel="stylesheet" href="../.././mdbook-admonish.css">
+
+    </head>
+    <body class="no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../index.html"><strong aria-hidden="true">1.</strong> Введение</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../how-to-smth/judje.html"><strong aria-hidden="true">1.1.</strong> Тестирующая система</a></li><li class="chapter-item expanded "><a href="../../how-to-smth/how-to-read.html"><strong aria-hidden="true">1.2.</strong> Как читать</a></li><li class="chapter-item expanded "><a href="../../how-to-smth/how-to-solve.html"><strong aria-hidden="true">1.3.</strong> Как придумывать</a></li><li class="chapter-item expanded "><a href="../../how-to-smth/how-to-testing.html"><strong aria-hidden="true">1.4.</strong> Как тестировать</a></li></ol></li><li class="chapter-item expanded "><a href="../../CONTRIBUTING.html"><strong aria-hidden="true">2.</strong> Сделайте вклад</a></li><li class="chapter-item expanded "><a href="../../history/history.html"><strong aria-hidden="true">3.</strong> История разработки проекта</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../history/tasks-management.html"><strong aria-hidden="true">3.1.</strong> Структурирование задач</a></li><li class="chapter-item expanded "><a href="../../history/toc-plugin.html"><strong aria-hidden="true">3.2.</strong> Оглавление страницы</a></li></ol></li><li class="chapter-item expanded "><a href="../../getting-started/getting-started.html"><strong aria-hidden="true">4.</strong> Начало работы</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../getting-started/installation.html"><strong aria-hidden="true">4.1.</strong> Установка</a></li><li class="chapter-item expanded "><a href="../../getting-started/code-editor.html"><strong aria-hidden="true">4.2.</strong> Редактор кода</a></li><li class="chapter-item expanded "><a href="../../getting-started/examples.html"><strong aria-hidden="true">4.3.</strong> Решение задачи</a></li></ol></li><li class="chapter-item expanded "><a href="../../programming/cpp_base.html"><strong aria-hidden="true">5.</strong> Основы языка C++</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../programming/data-types.html"><strong aria-hidden="true">5.1.</strong> Типы данных</a></li><li class="chapter-item expanded "><a href="../../programming/io.html"><strong aria-hidden="true">5.2.</strong> Ввод и вывод</a></li><li class="chapter-item expanded "><a href="../../programming/branching.html"><strong aria-hidden="true">5.3.</strong> Ветвление</a></li><li class="chapter-item expanded "><a href="../../programming/loops.html"><strong aria-hidden="true">5.4.</strong> Циклы</a></li><li class="chapter-item expanded "><a href="../../programming/array_types/array.html"><strong aria-hidden="true">5.5.</strong> Массивы</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../programming/array_types/static-array.html"><strong aria-hidden="true">5.5.1.</strong> Статические массивы</a></li><li class="chapter-item expanded "><a href="../../programming/array_types/dynamic-array.html"><strong aria-hidden="true">5.5.2.</strong> Динамические массивы</a></li><li class="chapter-item expanded "><a href="../../programming/array_types/VLA.html"><strong aria-hidden="true">5.5.3.</strong> VLA</a></li><li class="chapter-item expanded "><a href="../../programming/array_types/vector.html"><strong aria-hidden="true">5.5.4.</strong> std::vector</a></li><li class="chapter-item expanded "><a href="../../programming/array_types/compare-arrays.html"><strong aria-hidden="true">5.5.5.</strong> Что выбрать?</a></li></ol></li><li class="chapter-item expanded "><a href="../../programming/functions.html"><strong aria-hidden="true">5.6.</strong> Функции</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../programming/params-to-func.html"><strong aria-hidden="true">5.6.1.</strong> Передача параметров в функцию</a></li></ol></li><li class="chapter-item expanded "><a href="../../programming/links-and-pointers.html"><strong aria-hidden="true">5.7.</strong> Ссылки и указатели</a></li></ol></li><li class="chapter-item expanded "><a href="../../programming/mem.html"><strong aria-hidden="true">6.</strong> Память</a></li><li class="chapter-item expanded "><a href="../../algorithms/greedy/index.html"><strong aria-hidden="true">7.</strong> Жадные алгоритмы</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../algorithms/greedy/intro.html"><strong aria-hidden="true">7.1.</strong> Введение</a></li></ol></li><li class="chapter-item expanded "><a href="../../algorithms/asymptotics.html"><strong aria-hidden="true">8.</strong> Асимптотика</a></li><li class="chapter-item expanded "><a href="../../algorithms/sorts/sorts.html"><strong aria-hidden="true">9.</strong> Сортировки</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../algorithms/sorts/bubble-sort.html"><strong aria-hidden="true">9.1.</strong> "Пузырьковая" сортировка</a></li><li class="chapter-item expanded "><a href="../../algorithms/sorts/insertion-sort.html"><strong aria-hidden="true">9.2.</strong> Сортировка вставкой</a></li><li class="chapter-item expanded "><a href="../../algorithms/sorts/selection-sort.html"><strong aria-hidden="true">9.3.</strong> "Выборочная" сортировка</a></li><li class="chapter-item expanded "><a href="../../algorithms/sorts/merge-sort.html"><strong aria-hidden="true">9.4.</strong> Сортировка слиянием</a></li><li class="chapter-item expanded "><a href="../../algorithms/sorts/quick-sort.html"><strong aria-hidden="true">9.5.</strong> Быстрая сортировка</a></li><li class="chapter-item expanded "><a href="../../algorithms/sorts/counting-sort.html"><strong aria-hidden="true">9.6.</strong> Сортировка подсчётом</a></li></ol></li><li class="chapter-item expanded "><a href="../../data-structures/linked_lists.html"><strong aria-hidden="true">10.</strong> Связанные списки</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../data-structures/my_Stack.html"><strong aria-hidden="true">10.1.</strong> Стек</a></li><li class="chapter-item expanded "><a href="../../data-structures/queue_done.html"><strong aria-hidden="true">10.2.</strong> Очередь</a></li></ol></li><li class="chapter-item expanded "><a href="../../data-structures/bin_heap.html"><strong aria-hidden="true">11.</strong> Двоичная куча</a></li><li class="chapter-item expanded "><a href="../../algorithms/binary-search/index.html"><strong aria-hidden="true">12.</strong> Двоичный поиск</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../algorithms/binary-search/main.html"><strong aria-hidden="true">12.1.</strong> Целочисленный двоичный поиск</a></li><li class="chapter-item expanded "><a href="../../algorithms/binary-search/real.html"><strong aria-hidden="true">12.2.</strong> Вещественный поиск</a></li><li class="chapter-item expanded "><a href="../../algorithms/binary-search/answer.html"><strong aria-hidden="true">12.3.</strong> Двоичный поиск по ответу</a></li><li class="chapter-item expanded "><a href="../../algorithms/binary-search/minimax.html"><strong aria-hidden="true">12.4.</strong> Минимакс</a></li><li class="chapter-item expanded "><a href="../../algorithms/binary-search/best_practices.html"><strong aria-hidden="true">12.5.</strong> best practices</a></li><li class="chapter-item expanded "><a href="../../algorithms/binary-search/tasks.html"><strong aria-hidden="true">12.6.</strong> Примеры задач</a></li></ol></li><li class="chapter-item expanded "><a href="../../data-structures/BST/bst.html" class="active"><strong aria-hidden="true">13.</strong> Двоичное дерево поиска</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../data-structures/BST/avl.html"><strong aria-hidden="true">13.1.</strong> AVL</a></li><li class="chapter-item expanded "><a href="../../data-structures/BST/treap.html"><strong aria-hidden="true">13.2.</strong> Декартово дерево</a></li></ol></li><li class="chapter-item expanded "><a href="../../tasks/index.html"><strong aria-hidden="true">14.</strong> Решаем задачи</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../tasks/different-odd.html"><strong aria-hidden="true">14.1.</strong> Другая чётность</a></li><li class="chapter-item expanded "><a href="../../tasks/sum-of-factorials.html"><strong aria-hidden="true">14.2.</strong> Сумма факториалов</a></li><li class="chapter-item expanded "><a href="../../tasks/longest-easy.html"><strong aria-hidden="true">14.3.</strong> Наибольший отрезок</a></li><li class="chapter-item expanded "><a href="../../tasks/monitor.html"><strong aria-hidden="true">14.4.</strong> Монитор</a></li><li class="chapter-item expanded "><a href="../../tasks/maximize-median.html"><strong aria-hidden="true">14.5.</strong> Максимальная медиана</a></li><li class="chapter-item expanded "><a href="../../tasks/equal-in-range.html"><strong aria-hidden="true">14.6.</strong> Равный на отрезке</a></li><li class="chapter-item expanded "><a href="../../tasks/grass.html"><strong aria-hidden="true">14.7.</strong> Посев травы</a></li><li class="chapter-item expanded "><a href="../../tasks/string-game.html"><strong aria-hidden="true">14.8.</strong> Игра на строке</a></li><li class="chapter-item expanded "><a href="../../tasks/max-distance.html"><strong aria-hidden="true">14.9.</strong> Максимальное расстояние</a></li><li class="chapter-item expanded "><a href="../../tasks/cnt-segments-segments.html"><strong aria-hidden="true">14.10.</strong> Опасные группы отрезков</a></li></ol></li><li class="chapter-item expanded "><a href="../../tasks/task-about-segments.html"><strong aria-hidden="true">15.</strong> Задачи про отрезки</a></li><li class="chapter-item expanded "><a href="../../stl/stl.html"><strong aria-hidden="true">16.</strong> stl</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">is-algo</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/9kin/is-algo" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/9kin/is-algo/edit/master/src/data-structures/BST/bst.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <!-- Page table of contents -->
+                        <div class="sidetoc"><nav class="pagetoc"></nav></div>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<h1 id="Двоичное-дерево-поиска"><a class="header" href="#Двоичное-дерево-поиска">Двоичное дерево поиска</a></h1>
+<p>Бинарное дерево поиска (англ. binary search tree, <code>BST</code>) — структура данных для работы с упорядоченными множествами.</p>
+<blockquote>
+<p><code>BST</code> — это всего-лишь большой класс структур данных, которые основаны на одной идеи, поддерживать некоторое бинарное дерево. </p>
+</blockquote>
+<p align="center">
+  <img src="./bst.png" />
+</p>
+<p>Название состоит из двух важных частей — <code>бинарное дерево</code> и <code>поиск</code>. Первое указывает на вид структуры данных, а второе на возможность удобного поиска в ней.</p>
+<div id="admonition-Напоминание" class="admonition admonish-success">
+<div class="admonition-title">
+<p>Напоминание</p>
+<p><a class="admonition-anchor-link" href="#admonition-Напоминание"></a></p>
+</div>
+<div>
+<p><a href="https://ru.wikipedia.org/wiki/%D0%94%D0%B5%D1%80%D0%B5%D0%B2%D0%BE_(%D1%82%D0%B5%D0%BE%D1%80%D0%B8%D1%8F_%D0%B3%D1%80%D0%B0%D1%84%D0%BE%D0%B2)">Дерево</a> — это связный ациклический граф. </p>
+<p>Бинарное дерево — дерево в котором, у каждой вершины не более двух детей.</p>
+</div>
+</div>
+<p>Представим, что числа из множества являются вершинами (как на картинке). Деревьев для нашего множества <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">3</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">4</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">6</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">7</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">8</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">10</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">13</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">14</span><span class="mclose">}</span></span></span></span> можно построить много :</p>
+<p>TODO</p>
+<p>Все <code>bst</code> удовлетворяют такому свойству : для каждого узла бинарного дерева с ключом <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span>, все узлы в левом поддереве должны иметь ключи, меньшие <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span>, а в правом поддереве большие <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span>. Из определение следует, что дерево задаёт множество, то есть не хранит одинаковые числа по одному разу.</p>
+<h2 id="Представление-в-памяти"><a class="header" href="#Представление-в-памяти">Представление в памяти</a></h2>
+<ol>
+<li>Чаще всего дерево представляют в памяти как динамически создаваемая структура с явными указателями на своих детей. Вершина при создании не имеет детей, поэтому в конструкторе <code>Node</code> поля <code>l</code> и <code>r</code> мы инициализируем пустыми ссылками.</li>
+</ol>
+<pre><code class="language-cpp">struct Node {
+  Node *l, *r;
+  int x;
+  Node(int x) : x(x), l(nullptr), r(nullptr){};
+};
+</code></pre>
+<ol start="2">
+<li>Все узлы дерева хранятся в массиве. Поля детей имеют тип <code>int</code> и явно указывают позицию в массиве, где хранится в памяти узел ребёнка. Надо дополнительно написать конструктор по умолчанию, чтобы компилятор понял, какими объектами заполнить массив.</li>
+</ol>
+<p>Вам может показаться, что этот способ не удобный, но скоро вы всё поймёте =)</p>
+<pre><code class="language-cpp">struct Node {
+  int l, r;
+  int x;
+  Node(int x) : x(x), l(-1), r(-1){};
+  Node() : x(0), l(-1), r(-1){};
+  // или Node() = default;
+};
+
+Node mem[100000];
+// code
+assert(mem[239].l != -1);
+cout &lt;&lt; mem[mem[239].l].x;
+</code></pre>
+<p>Чтобы создать новый узел, стоит вернуть переменную, которая указывает на только-что созданный элемент. Просто замените <code>new Node(x)</code> на <code>new_Node(x)</code>.</p>
+<pre><code class="language-cpp">int pos = 0;
+
+int new_Node(const T&amp; x) {
+  mem[pos] = T(x);
+  return pos++;
+}
+</code></pre>
+<p>Теперь все проверки вида <code>!= null</code> нужно заменить на <code>!= -1</code>. * Вообще можно хранить <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span> и все проверки писать, как <code>if (v) { ...}</code>.</p>
+<div id="admonition-Способ-1-с-глобальным-массивом" class="admonition admonish-note">
+<div class="admonition-title">
+<p>Способ 1 с глобальным массивом</p>
+<p><a class="admonition-anchor-link" href="#admonition-Способ-1-с-глобальным-массивом"></a></p>
+</div>
+<div>
+<p>Чтобы создать новый узел, стоит вернуть память под <code>pos</code>, и подвинуть <code>pos</code>.</p>
+<pre><code class="language-cpp">struct Node {
+  Node *l, *r;
+  int x;
+  Node(int x) : x(x), l(nullptr), r(nullptr){};
+  Node() = default;
+};
+
+Node mem[100000];
+int pos = 0;
+
+Node* new_Node(const T&amp; x) {
+  mem[pos] = T(x);
+  return &amp;mem[pos++];
+}
+</code></pre>
+</div>
+</div>
+<div id="admonition-Микро-оптимизация" class="admonition admonish-warning">
+<div class="admonition-title">
+<p>Микро оптимизация</p>
+<p><a class="admonition-anchor-link" href="#admonition-Микро-оптимизация"></a></p>
+</div>
+<div>
+<p>Второй способ является более оптимальным. Так как память выделяется сразу большим куском, а не на каждый вызов <code>new</code>. Хотя это выглядит логичной оптимизацией, которая ускорит программу значительно, но это не совсем так. Можно прочитать обсуждения, например <a href="https://www.quora.com/How-much-faster-is-static-memory-allocation-compared-to-dynamic-memory-allocation-in-C">тут</a>.</p>
+<p>Грубо говоря пример 1 с массивом даст прирост производительности по времени в <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">3</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8056em;vertical-align:-0.0556em;"></span><span class="mord">5%</span></span></span></span>. Но тут вступает в дело размер указателей на детей. На самом деле указатель на современных машинах занимает <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">8</span></span></span></span> байт, а <code>int</code> всего <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">4</span></span></span></span>.</p>
+<p>Предлагаю подумать на эту тему =)</p>
+<p>Поэтому рекомендуется использовать второй способ для всех динамически создаваемых структур=)</p>
+<p>TODO мне чёт в лом, AVL переписывать =)</p>
+</div>
+</div>
+<h2 id="Поиск"><a class="header" href="#Поиск">Поиск</a></h2>
+<p>Преимущество бинарных деревьев поиска в том, что в них можно легко производить поиск элементов. Если поиск удобный, то и другие операции просты и выражаются через поиск.</p>
+<pre><code class="language-cpp">bool find(Node* v, int x) {
+  if (!v) return false;
+  if (v-&gt;x == x) return true;
+  if (v-&gt;x &lt; x) {
+    return find(v-&gt;l, x);
+  } else {
+    return find(v-&gt;r, x);
+  }
+}
+</code></pre>
+<h2 id="Удаление"><a class="header" href="#Удаление">Удаление</a></h2>
+<h2 id="Добавление"><a class="header" href="#Добавление">Добавление</a></h2>
+<h2 id="МинимумМаксимум"><a class="header" href="#МинимумМаксимум">Минимум/Максимум</a></h2>
+<h3 id="Поиск-следующего-и-предыдущего-элемента"><a class="header" href="#Поиск-следующего-и-предыдущего-элемента">Поиск следующего и предыдущего элемента</a></h3>
+<h2 id="Обходы"><a class="header" href="#Обходы">Обходы</a></h2>
+<h2 id="Асимптотика"><a class="header" href="#Асимптотика">Асимптотика</a></h2>
+<p>Все операции над деревом такие, как вставка, удаление, поиск элементов — работают в среднем <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span>. В худшем случае за <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></p>
+<div id="admonition-note" class="admonition admonish-note">
+<div class="admonition-title">
+<p>Note</p>
+<p><a class="admonition-anchor-link" href="#admonition-note"></a></p>
+</div>
+<div>
+<p>Предложение : дерево из <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> ключей имеет в среднем <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4831em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">ln</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">n</span></span></span></span>.</p>
+<p>Доказательство : </p>
+<!--
+https://stackoverflow.com/questions/61428477/how-to-prove-average-height-of-binary-search-tree-is-ologn
+https://cs.stackexchange.com/questions/54071/prove-that-the-depth-function-of-a-binary-search-tree-is-o-log-n-on-average
+https://math.stackexchange.com/questions/3224473/how-come-the-time-complexity-of-binary-search-is-log-n
+ -->
+<p>TODO</p>
+</div>
+</div>
+<p>В худшем случае за высоту дерева. Это означает, что дерево без некоторой &quot;ребалансировки&quot; после некоторых вставок или удалений, может иметь высоту <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span>, где <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> количество вершин в дереве.</p>
+<p>Дерево с наибольшей высотой — бамбук.</p>
+<p>TODO бамбук нарисовать, и запросы как оно стоится</p>
+<p>Сохранение сбалансированности дерева поиска и его высоты, ограниченной <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span>, является ключевым условием полезности бинарного дерева поиска. Этого можно достичь с помощью механизмов &quot;самобалансировки&quot; при операциях обновления дерева, призванных поддерживать высоту дерева на уровне <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">n</span></span></span></span>. </p>
+<p>Деревья могут иметь разные механизмы самобалансировки, такие как :</p>
+<ol>
+<li>Сбалансированные по высоте</li>
+<li><a href="https://en.wikipedia.org/wiki/Weight-balanced_tree">Сбалансированные по весу деревья</a> &amp;mdashl; не будем рассматривать в виду того, что на википедии приведён пример, но название структуре данных не дано. Если вы любите <code>Haskell</code> то изучите.</li>
+</ol>
+<p>Существует несколько самобалансирующихся по высоте бинарных деревьев поиска : AVL, декартово, красно чёрное, <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">3</span></span></span></span>, Splay.</p>
+<footer id="last-change">Last change: 2023-11-01, commit: <a href="https://github.com/9kin/is-algo/commit/0c7fd01">0c7fd01</a></footer>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../algorithms/binary-search/tasks.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../../data-structures/BST/avl.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../algorithms/binary-search/tasks.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../../data-structures/BST/avl.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
+
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../../theme/sidebar.js"></script>
+
+
+    </div>
+    </body>
+</html>
