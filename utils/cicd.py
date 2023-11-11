@@ -48,6 +48,9 @@ def build():
     safe_rm(copy_dir)
     shutil.copytree(pathlib.Path(REPO), copy_dir, dirs_exist_ok=True)
     subprocess.Popen(["python3", "utils/task-manager.py"], cwd=copy_dir).wait()
+    subprocess.Popen(
+        ["mdbook-admonish", "install"], cwd=copy_dir
+    ).wait()  # TODO maybe copy dir?
     subprocess.Popen(["mdbook", "build"], cwd=copy_dir).wait()
     rm_tree(copy_dir / ".git")
     git.Repo(REPO).git.checkout("gh-pages")
