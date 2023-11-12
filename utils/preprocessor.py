@@ -4,7 +4,7 @@ import json
 import sys
 import abc
 from collections import defaultdict
-from cache import shell_command, debug
+from cache import shell_command, debug, generate_image
 from pathlib import Path
 import tree_lib
 
@@ -76,35 +76,58 @@ class TikzModify(ModifyInterface):
     def process(self, segment: TextSegment, fileinfo: FileInfo) -> str:
         string = segment.text.strip()
         string = string.split("\n")
-        assert len(string) == 1
-        t = tree_lib.PreOrder(list(map(int, string[0].split(","))))
+        assert len(string) <= 2
+
+        t = tree_lib.PreOrder(list(map(int, string[0].strip().split(" "))))
+
+        # minipage + figure = https://tex.stackexchange.com/questions/329249/caption-a-tikzpicture-on-standalone
+        # scaling = https://tex.stackexchange.com/questions/4338/correctly-scaling-a-tikzpicture
+        # minipage :( TODO normal resizing
+        caption = False
+        if len(string) == 2:
+            caption = True
 
         tex = StringBuilder()
         tex.append(
-            r"""\documentclass[tikz,border=5]{standalone}
+            r"""\documentclass{standalone}
+        \usepackage{tikz}
+        \usepackage{caption}
         \usetikzlibrary{graphs,graphdrawing,arrows.meta}
         \usegdlibrary{trees}
         \begin{document}
+        	"""
+        )
+        if caption:
+            tex.append(
+                r"""
+            \begin{minipage}{5cm}
+            \begin{figure}
+            \centering
+            \resizebox{5cm}{3cm}{"""
+            )
+
+        tex.append(
+            r"""
         	\begin{tikzpicture}
         		\graph [binary tree layout, level distance=5mm]
         		{ """
         )
         tex.append(t)
-        tex.append(
-            r"""};	\end{tikzpicture}
-        \end{document}"""
-        )
-        # https://tex.stackexchange.com/questions/492413/lualatex-rendering-from-input-buffer-instead-of-filename
-        # https://tex.stackexchange.com/questions/51757/how-can-i-use-tikz-to-make-standalone-svg-graphics
-        tex = str(tex)
-        open("tmp.tex", "w").write(tex)
-        shell_command("lualatex -synctex=1 -interaction=nonstopmode tmp.tex")
-        shell_command("pdf2svg tmp.pdf tmp.svg")
-        shell_command("convert -density 300 tmp.svg tmp.png")
-
-        file_name = int(hashlib.sha1(tex.encode("utf-8")).hexdigest(), 16)
-        Path("tmp.png").rename(f"src/{fileinfo.parent()}/{file_name}.png")
-        return f'<img src = "{file_name}.png" class="center"/>'
+        tex.append(r"""};	\end{tikzpicture}""")
+        if caption:
+            tex.append(
+                r"""
+            }
+            \captionsetup{labelformat=empty} \caption{"""
+            )
+            tex.append(string[1])
+            tex.append(
+                r"""}
+            \end{figure}
+            \end{minipage}"""
+            )
+        tex.append(r"""\end{document}""")
+        return generate_image(tex, fileinfo)
 
 
 class TextModify:

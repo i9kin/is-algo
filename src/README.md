@@ -1,11 +1,6 @@
 # Главная страница
 
-```tree 
-8
-8 3; 3 1; 3 6; 6 4; 6 7; 8 10; 10 14; 14 13;
-```
-
-[Ссылка на тг канал](https://t.me/isalgo239) Нас 180! Зайдите в чат канала.
+[Ссылка на тг канал](https://t.me/isalgo239) Нас 200!!! Зайдите в чат канала.
 
 Я &mdash; [tg@i9kin](https://t.me/i9kin) по поводу замечаний и предложений.
 С фидбэком и предложениями также пишите [tg@chainbrain](https://t.me/chainbrain), [tg@kiksnol](https://t.me/Kiksnol), [tg@shvedova_ali](https://t.me/shvedova_ali).
