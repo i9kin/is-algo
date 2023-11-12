@@ -3,7 +3,7 @@ import sys
 
 
 def debug(s):
-    sys.stderr.write(str(s))
+    sys.stderr.write(str(s) + "\n")
 
 
 def shell_command(command: str, input_string: str = " ") -> str:
