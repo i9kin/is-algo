@@ -40,8 +40,8 @@ class EmptySeparator(Separator):
     def __init__(self):
         pass
 
-class FileInfo:
 
+class FileInfo:
     def __init__(self, fname):
         self.fname = fname
 
@@ -57,7 +57,7 @@ class ModifyInterface(abc.ABC):
         self.separator = separator
 
     @abc.abstractmethod
-    def process(self, segment: TextSegment, fileinfo : FileInfo) -> str:
+    def process(self, segment: TextSegment, fileinfo: FileInfo) -> str:
         return segment.text
 
 
@@ -65,7 +65,7 @@ class JinjaModify(ModifyInterface):
     def __init__(self):
         super().__init__(EmptySeparator())
 
-    def process(self, segment: TextSegment, fileinfo : FileInfo) -> str:
+    def process(self, segment: TextSegment, fileinfo: FileInfo) -> str:
         return segment.text
 
 
@@ -73,7 +73,7 @@ class TikzModify(ModifyInterface):
     def __init__(self):
         super().__init__(Separator("```tree", "```"))
 
-    def process(self, segment: TextSegment, fileinfo : FileInfo) -> str:
+    def process(self, segment: TextSegment, fileinfo: FileInfo) -> str:
         string = segment.text.strip()
         string = string.split("\n")
         assert len(string) == 1
@@ -100,16 +100,18 @@ class TikzModify(ModifyInterface):
         open("tmp.tex", "w").write(tex)
         shell_command("lualatex -synctex=1 -interaction=nonstopmode tmp.tex")
         shell_command("pdf2svg tmp.pdf tmp.svg")
+        shell_command("convert -density 300 tmp.svg tmp.png")
+
         file_name = int(hashlib.sha1(tex.encode("utf-8")).hexdigest(), 16)
-        Path("tmp.svg").rename(f"src/{fileinfo.parent()}/{file_name}.svg")
-        return f'<img src = "{file_name}.svg"/>'
+        Path("tmp.png").rename(f"src/{fileinfo.parent()}/{file_name}.png")
+        return f'<img src = "{file_name}.png" class="center"/>'
 
 
 class TextModify:
     def __init__(self, list: list[ModifyInterface]):
         self.list = list
 
-    def process(self, text, fileinfo : FileInfo) -> str:
+    def process(self, text, fileinfo: FileInfo) -> str:
         for modify in self.list:
             string = StringBuilder()
             text_iter = TextIter(text, modify.separator)
@@ -170,7 +172,9 @@ class Book:
 
     def chapter(self, chapter):
         chapter = chapter["Chapter"]
-        chapter["content"] = self.text_modify.process(chapter["content"], FileInfo(chapter["path"]))
+        chapter["content"] = self.text_modify.process(
+            chapter["content"], FileInfo(chapter["path"])
+        )
         if "sub_items" in chapter:
             for k in chapter["sub_items"]:
                 self.chapter(k)
