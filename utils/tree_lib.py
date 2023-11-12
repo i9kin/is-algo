@@ -106,9 +106,8 @@ if __name__ == "__main__":
         text = ",".join(f"[{','.join(map(str, a))}]" for a in m[k])
         # print(f'<div id="item-{i}">```tree\n{k}\n{text}\n```</div>')
 
-
-    a = [1, 2, 4, 5, 11, 12]
-    for i in range(len(a)):
-        k = list(m.keys())[i - 1]
+    keys = list(m.keys())
+    for i, pos in enumerate([1, 2, 4, 5, 10, 14]):
+        k = keys[pos - 1]
         text = ",".join(f"[{','.join(map(str, a))}]" for a in m[k])
         print(f'<div id="item32-{i}">```tree\n{k}\n{text}\n```</div>')

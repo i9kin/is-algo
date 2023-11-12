@@ -338,28 +338,28 @@ Node* build(int l, int r) {
 <div class="center">
 <div class="angry-grid">
 <div id="item32-0">```tree
-8 5 3 1 
-[3,2,1,0]
-```</div>
-<div id="item32-1">```tree
-1 3 5 8 
+0 1 2 3 
 [0,1,2,3]
 ```</div>
-<div id="item32-2">```tree
-1 3 8 5 
+<div id="item32-1">```tree
+0 1 3 2 
 [0,1,3,2]
 ```</div>
-<div id="item32-3">```tree
-1 5 3 8 
-[0,2,1,3],[0,2,3,1]
-```</div>
-<div id="item32-4">```tree
-1 8 3 5 
+<div id="item32-2">```tree
+0 3 1 2 
 [0,3,1,2]
 ```</div>
-<div id="item32-5">```tree
-1 8 5 3 
+<div id="item32-3">```tree
+0 3 2 1 
 [0,3,2,1]
+```</div>
+<div id="item32-4">```tree
+3 0 1 2 
+[3,0,1,2]
+```</div>
+<div id="item32-5">```tree
+3 2 1 0 
+[3,2,1,0]
 ```</div>
 </div>
 </div>
