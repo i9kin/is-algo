@@ -34,8 +34,10 @@ def generate_image(tex, fileinfo):
 
     shell_command("lualatex -synctex=1 -interaction=nonstopmode tmp.tex", tex)
     shell_command("pdf2svg tmp.pdf tmp.svg", tex)
-    shell_command("convert -density 300 tmp.svg tmp.png", tex)
-
     file_name = int(hashlib.sha1(tex.encode("utf-8")).hexdigest(), 16)
-    Path("tmp.png").rename(f"src/{fileinfo.parent()}/{file_name}.png")
-    return f'<img src = "{file_name}.png" class="center"/>'
+    prefix = "svg"
+    if prefix == "png":
+        shell_command("convert -density 300 tmp.svg tmp.png", tex)
+    Path(f"tmp.{prefix}").rename(f"src/{fileinfo.parent()}/{file_name}.{prefix}")
+    debug(file_name)
+    return f'<img src = "{file_name}.{prefix}" class="center"/>'
