@@ -1,12 +1,10 @@
 # https://rust-lang.github.io/mdBook/for_developers/preprocessors.html
-import hashlib
 import json
 import sys
 import abc
-from collections import defaultdict
-from cache import shell_command, debug, generate_image
 from pathlib import Path
 import tree_lib
+from models import CacheImages
 
 
 class StringBuilder:
@@ -127,7 +125,8 @@ class TikzModify(ModifyInterface):
             \end{minipage}"""
             )
         tex.append(r"""\end{document}""")
-        return generate_image(tex, fileinfo)
+        f = CacheImages().get_svg(str(tex))
+        return f.set_dir(fileinfo.parent())
 
 
 class TextModify:
