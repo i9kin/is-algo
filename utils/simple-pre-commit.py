@@ -1,9 +1,10 @@
-import subprocess
+import utils
 from pathlib import Path
+import os
 
-base_dir = Path(".")
+base_dir = Path(os.path.dirname(__file__)).parent
 assert (base_dir / "book.toml").exists()
-subprocess.Popen("python3 -m black .".split()).wait()
-subprocess.Popen("python3 utils/task-manager.py d".split()).wait()
-subprocess.Popen("python3 utils/format.py".split()).wait()
-# subprocess.Popen("yaspeller --config utils/.yaspeller.json .".split()).wait()
+utils.shell_command("python3 -m black .")
+utils.shell_command("python3 utils/task-manager.py d")
+utils.shell_command("python3 utils/format.py")
+# utils.shell_command("yaspeller --config utils/.yaspeller.json .")

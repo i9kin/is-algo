@@ -6,12 +6,14 @@ def debug(s):
     sys.stderr.write(str(s) + "\n")
 
 
-def shell_command(command: str, input_string: str = " ") -> str:
+def shell_command(command: str, input_string: str = " ", cwd=".") -> str:
     try:
         p = subprocess.Popen(
             command.split(),
+            stdin=subprocess.PIPE,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
+            cwd=cwd,
         )
     except:
         raise Exception("Invalid command ", command)

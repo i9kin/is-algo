@@ -3,10 +3,11 @@ import json
 import sys
 import pathlib
 from jinja2 import Template
-from os import system
+import utils
 import os
 import configparser
 import re
+from requests import get
 
 EDITOR = "subl {{ filename }} "
 TASK_DIR = pathlib.Path("src") / "tasks"
@@ -14,7 +15,7 @@ UTILS_DIR = pathlib.Path(".")
 
 
 def execute(**args):
-    system(Template(args["command"]).render(args))
+    utils.shell_command(Template(args["command"]).render(args))
 
 
 def text_or_none(path: pathlib.Path):
@@ -83,7 +84,11 @@ def get_text(data):
 {% endif %}
 
 ## Решение
-{{data['tutorial'] }}"""
+
+~~~admonish collapsible=true title="Решение"
+{{data['tutorial'] }}
+~~~
+"""
     href = data["cfg"]["info"]["source"]
     if "source_alpha" in data["cfg"]["info"]:
         alpha = data["cfg"]["info"]["source_alpha"]
@@ -100,7 +105,10 @@ def build(dir, cnt_examples=100):
 
 
 def delete(dir):
-    os.remove(TASK_DIR / (dir.name + ".md"))
+    try:
+        os.remove(TASK_DIR / (dir.name + ".md"))
+    except:
+        pass
 
 
 def get_rating(task: pathlib.Path):
@@ -128,7 +136,6 @@ def get_tasks_sorted():
 
 def download_problemset():
     url = "https://codeforces.com/api/problemset.problems"
-    from requests import get
 
     data = {}
     for problem in get(url).json()["result"]["problems"]:

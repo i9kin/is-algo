@@ -117,3 +117,4 @@ class CacheImages:
 if __name__ == "__main__":
     cache.drop_tables([FileModel])
     cache.create_tables([FileModel])
+    print(cache.table_exists(FileModel))

@@ -1,4 +1,4 @@
-from subprocess import Popen, PIPE, STDOUT
+import utils
 from pathlib import Path
 import re
 
@@ -6,8 +6,7 @@ formatter = "clang-format --style=file:utils/.clang-format"
 
 
 def format_code(code: str) -> str:
-    p = Popen(formatter.split(), stdout=PIPE, stdin=PIPE, stderr=PIPE)
-    return p.communicate(input=code.encode())[0].decode()
+    return utils.shell_command(formatter, code)
 
 
 def modify_code(text: str) -> str:

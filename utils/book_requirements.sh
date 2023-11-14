@@ -6,3 +6,4 @@ sudo apt install texlive-latex-extra texlive-luatex
 sudo apt install pdf2svg
 luaotfload-tool -v -vvv -u
 sudo apt install imagemagick
+python3 utils/models.py
