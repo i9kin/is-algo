@@ -186,6 +186,12 @@
 <h2 id="Условие"><a class="header" href="#Условие">Условие</a></h2>
 <p>Вам дан массив длины до <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">6</span></span></span></span></span></span></span></span></span></span></span> из элементов из диапазона <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">−</span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">9</span></span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">9</span></span></span></span></span></span></span></span><span class="mclose">]</span></span></span></span> . Найдите максимального длину отрезка массива все элементы которого не меньше <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span>.</p>
 <h2 id="Решение"><a class="header" href="#Решение">Решение</a></h2>
+<details id="admonition-Решение" class="admonition admonish-note">
+<summary class="admonition-title">
+<p>Решение</p>
+<p><a class="admonition-anchor-link" href="#admonition-Решение"></a></p>
+</summary>
+<div>
 <h3 id="Решение-в-лоб"><a class="header" href="#Решение-в-лоб">Решение в лоб</a></h3>
 <p>Можно написать два цикла для перебора границы отрезка, а затем проверить третьим циклом все элементы в отрезке, но это будет <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>.</p>
 <pre><code class="language-cpp">int ans = 0;
@@ -255,6 +261,8 @@ for (int l = 0; l &lt; n; l++) {
 cout &lt;&lt; ans;
 </code></pre>
 <p>Асимптотика решения <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span>.</p>
+</div>
+</details>
 <footer id="last-change">Last change: 2023-10-13, commit: <a href="https://github.com/9kin/is-algo/commit/d9af9f8">d9af9f8</a></footer>
                     </main>
 

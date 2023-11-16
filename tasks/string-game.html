@@ -186,9 +186,17 @@
 <h2 id="Условие"><a class="header" href="#Условие">Условие</a></h2>
 <p>Даны две строки <code>t</code> (длины <code>n</code>) и <code>p</code>. А также перестановка <code>a</code> длины <code>n</code> индексов по которой будут удалять символы строки <code>t</code>. Сначала удалят <code>t[a[0]]</code>, затем <code>t[a[1]]</code> и тд. Надо найти максимальное число удалений (которые описаны выше), после которых из <code>t</code> можно получить <code>p</code> удалением (уже произвольным способом) некоторых символов из <code>t</code>.</p>
 <h2 id="Решение"><a class="header" href="#Решение">Решение</a></h2>
+<details id="admonition-Решение" class="admonition admonish-note">
+<summary class="admonition-title">
+<p>Решение</p>
+<p><a class="admonition-anchor-link" href="#admonition-Решение"></a></p>
+</summary>
+<div>
 <p>Сделаем бинпоиск по ответу. Для фиксированного числа удалений, получим строку <code>t</code>. Далее проверим двумя указателями что из текущей строки можно получить <code>p</code>. </p>
 <p>Асимптотика <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span>.</p>
 <!-- AC like https://codeforces.com/contest/779/submission/56385229 -->
+</div>
+</details>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">

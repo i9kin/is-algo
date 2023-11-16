@@ -191,6 +191,12 @@
 </tbody></table>
 </div>
 <h2 id="Решение"><a class="header" href="#Решение">Решение</a></h2>
+<details id="admonition-Решение" class="admonition admonish-note">
+<summary class="admonition-title">
+<p>Решение</p>
+<p><a class="admonition-anchor-link" href="#admonition-Решение"></a></p>
+</summary>
+<div>
 <p>Пусть все запросы были с одинаковым <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span>. Тогда в массиве все элементы не равные <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span> нас не интересует. </p>
 <p>Рассмотрим массив из индексов на которых числа равны <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span>. Тогда запрос можно трансформировать в новый &quot;есть ли в этом массиве числа в диапазоне <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mclose">]</span></span></span></span>&quot;. Это можно сделать одним бинпоиском. Найдём первое число, которое не меньше <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span></span></span></span> и проверим, что оно не больше <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span></span></span></span>.</p>
 <p>Такой массив для каждого числа можно построить используя словарь, но на самом деле можно воспользоваться бинпоиском. Сделаем массив уникальных чисел <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">b</span></span></span></span>(сортировка + удаление повторяющихся). Сделаем вектор векторов, где <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span>-ый вектор хранит все индексы равные <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">b</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span></span></span></span>.</p>
@@ -233,7 +239,8 @@
   }
 }
 </code></pre>
-
+</div>
+</details>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
