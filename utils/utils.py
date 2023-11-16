@@ -21,4 +21,8 @@ def shell_command(command: str, input_string: str = " ", cwd=".") -> str:
     if p.returncode != 0:
         err_msg = "%s. Code: %s" % (std_err.decode().strip(), p.returncode)
         raise Exception(err_msg)
+
+    std_err = std_err.decode()
+    if len(std_err) > 0:
+        debug("[stderr shell command]" + std_err)
     return std_out.decode()

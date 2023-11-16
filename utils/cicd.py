@@ -49,7 +49,8 @@ def build():
     safe_rm(copy_dir)
     shutil.copytree(pathlib.Path(REPO), copy_dir, dirs_exist_ok=True)
     utils.shell_command("python3 utils/task-manager.py", cwd=copy_dir)
-    utils.shell_command("mdbook-admonish install", cwd=copy_dir)  # TODO maybe copy dir?
+    utils.shell_command("python3 utils/models.py", cwd=copy_dir)  # TODO caching db
+    utils.shell_command("mdbook-admonish install", cwd=copy_dir)  # TODO maybe copy admonish files
     utils.shell_command("mdbook build", cwd=copy_dir)
     rm_tree(copy_dir / ".git")
     git.Repo(REPO).git.checkout("gh-pages")
