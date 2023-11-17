@@ -182,7 +182,158 @@
                         <div class="sidetoc"><nav class="pagetoc"></nav></div>
                         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
 <h1 id="avl"><a class="header" href="#avl">AVL</a></h1>
-<footer id="last-change">Last change: 2023-10-31, commit: <a href="https://github.com/9kin/is-algo/commit/3a522e4">3a522e4</a></footer>
+<p>Теорию прочитайте :</p>
+<ul>
+<li><a href="https://habr.com/ru/articles/150732/">тут</a></li>
+<li><a href="https://neerc.ifmo.ru/wiki/index.php?title=%D0%90%D0%92%D0%9B-%D0%B4%D0%B5%D1%80%D0%B5%D0%B2%D0%BE">тут</a></li>
+</ul>
+<p>Отличие от кода предыдущего для бинарного дерева поиска :</p>
+<ol>
+<li>есть поле <code>height</code> в <code>node</code></li>
+<li>функции для вычисления баланса, и обновления его</li>
+<li><code>rightRotation</code> и <code>leftRotation</code> — повороты</li>
+<li><code>balance(v)</code> — функция, которая думает какие повороты делать, для поддерева <code>v</code></li>
+<li>вызов функции <code>balance(v)</code> для всех функций, которые изменяют дерево, а именно <code>insert</code>, <code>remove</code></li>
+</ol>
+<details id="admonition-код" class="admonition admonish-note">
+<summary class="admonition-title">
+<p>код</p>
+<p><a class="admonition-anchor-link" href="#admonition-код"></a></p>
+</summary>
+<div>
+<pre><code class="language-cpp">template &lt;typename T&gt;
+struct node {
+ public:
+  T key{};
+  short int height = 0;
+  node* left = nullptr;
+  node* right = nullptr;
+
+  node(T k) {
+    height = 1;
+    key = k;
+    left = nullptr;
+    right = nullptr;
+  }
+};
+
+template &lt;typename T, bool (*eq_comparator)(const T&amp;, const T&amp;),
+          bool (*less_comparator)(const T&amp;, const T&amp;)&gt;
+struct Tree {
+  using node_t = node&lt;T&gt;;
+  node_t* root;
+
+  Tree() { root = nullptr; }
+
+  void recursive_free(node_t* v) {
+    if (!v) return;
+    recursive_free(v-&gt;left);
+    recursive_free(v-&gt;right);
+    delete v;
+  }
+
+  ~Tree() { recursive_free(root); }
+
+  short int height(node_t* p) { return p ? p-&gt;height : 0; }
+
+  short int balance_(node_t* p) { return height(p-&gt;right) - height(p-&gt;left); }
+
+  void upd(node_t* p) {
+    p-&gt;height = max(height(p-&gt;left), height(p-&gt;right)) + 1;
+  }
+
+  node_t* get_min(node_t* v) {
+    if (v != nullptr &amp;&amp; v-&gt;left != nullptr) {
+      return get_min(v-&gt;left);
+    }
+    return v;
+  }
+
+  node_t* rightRotation(node_t* head) {
+    node_t* newhead = head-&gt;left;
+    head-&gt;left = newhead-&gt;right;
+    newhead-&gt;right = head;
+    upd(head), upd(newhead);
+    return newhead;
+  }
+
+  node_t* leftRotation(node_t* head) {
+    node_t* newhead = head-&gt;right;
+    head-&gt;right = newhead-&gt;left;
+    newhead-&gt;left = head;
+    upd(head), upd(newhead);
+    return newhead;
+  }
+
+  node_t* balance(node_t* p) {
+    if (!p) return p;
+    upd(p);
+    if (balance_(p) == 2) {
+      if (balance_(p-&gt;right) &lt; 0) p-&gt;right = rightRotation(p-&gt;right);
+      return leftRotation(p);
+    }
+    if (balance_(p) == -2) {
+      if (balance_(p-&gt;left) &gt; 0) p-&gt;left = leftRotation(p-&gt;left);
+      return rightRotation(p);
+    }
+    return p;
+  }
+
+  node_t* insert(node_t* v, const T&amp; x) {
+    if (v == nullptr) {
+      return new node_t(x);
+    } else if (less_comparator(x, v-&gt;key)) {
+      v-&gt;left = insert(v-&gt;left, x);
+    } else if (less_comparator(v-&gt;key, x)) {
+      v-&gt;right = insert(v-&gt;right, x);
+    } else {
+      v-&gt;key = x;
+    }
+    return balance(v);
+  }
+
+  node_t* remove(node_t* v, const T&amp; k) {
+    if (!v) return v;
+    if (less_comparator(k, v-&gt;key)) {
+      v-&gt;left = remove(v-&gt;left, k);
+    } else if (less_comparator(v-&gt;key, k)) {
+      v-&gt;right = remove(v-&gt;right, k);
+    } else if (v-&gt;left &amp;&amp; v-&gt;right) {
+      v-&gt;key = get_min(v-&gt;right)-&gt;key;
+      v-&gt;right = remove(v-&gt;right, v-&gt;key);
+    } else {
+      if (v-&gt;left) {
+        v = v-&gt;left;
+      } else if (v-&gt;right) {
+        v = v-&gt;right;
+      } else {
+        v = nullptr;
+      }
+    }
+    return balance(v);
+  }
+
+  node_t* search(node_t* v, const T&amp; k) const {
+    if (!v || eq_comparator(v-&gt;key, k)) {
+      return v;
+    }
+    if (k &lt; v-&gt;key) {
+      return search(v-&gt;left, k);
+    } else {
+      return search(v-&gt;right, k);
+    }
+  }
+
+  void insert(const T&amp; x) { root = insert(root, x); }
+
+  void erase(const T&amp; x) { root = remove(root, x); }
+
+  bool contains(const T&amp; x) const { return search(root, x) != nullptr; }
+};
+</code></pre>
+</div>
+</details>
+<footer id="last-change">Last change: 2023-11-17, commit: <a href="https://github.com/9kin/is-algo/commit/640bbb7">640bbb7</a></footer>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">

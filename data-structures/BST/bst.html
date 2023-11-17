@@ -438,7 +438,194 @@ Node* new_Node(const T&amp; x) {
 </div>
 </div>
 </details>
-<footer id="last-change">Last change: 2023-11-14, commit: <a href="https://github.com/9kin/is-algo/commit/4b68356">4b68356</a></footer>
+<h1 id="Код"><a class="header" href="#Код">Код</a></h1>
+<p>Не пугайтесь, я написал код используя шаблоны, чтобы потом легко использовать структуру. Для спуска по дереву, мы всегда проверяем ключи используя операторы <code>&lt;</code>,<code>=</code>, <code>&gt;</code>, так как <code>&gt;</code> реализуется через <code>&lt;</code> изменив порядок аргументов. Поэтому я ещё передал две функции (<code>equal</code> и <code>less</code>) в шаблон структуры.</p>
+<blockquote>
+<p><code>recursive_free</code> сделан для очистки всех <code>node</code>, которых мы создаём через <code>new</code>. Хотя надо делать <code>free</code>, но поверьте надо делать <code>delete</code>, как минимум все мои анализаторы падают при <code>free</code>. <code>valgrind --leak-check=full ./a.out</code> выдаёт <code>==11816== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0) </code> Это не особо нужно вам, просто очистит память, может быть полезно при <code>ML</code>.</p>
+</blockquote>
+<details id="admonition-код" class="admonition admonish-note">
+<summary class="admonition-title">
+<p>код</p>
+<p><a class="admonition-anchor-link" href="#admonition-код"></a></p>
+</summary>
+<div>
+<pre><code class="language-cpp">template &lt;typename T, bool (*eq_comparator)(const T&amp;, const T&amp;),
+          bool (*less_comparator)(const T&amp;, const T&amp;)&gt;
+struct Tree {
+  using node_t = node&lt;T&gt;;
+  node_t* root;
+
+  Tree() { root = nullptr; }
+
+  void recursive_free(node_t* v) {
+    if (!v) return;
+    recursive_free(v-&gt;left);
+    recursive_free(v-&gt;right);
+    delete v;
+  }
+
+  ~Tree() { recursive_free(root); }
+
+  node_t* get_min(node_t* v) {
+    if (v != nullptr &amp;&amp; v-&gt;left != nullptr) {
+      return get_min(v-&gt;left);
+    }
+    return v;
+  }
+
+  node_t* rightRotation(node_t* head) {
+    node_t* newhead = head-&gt;left;
+    head-&gt;left = newhead-&gt;right;
+    newhead-&gt;right = head;
+    upd(head), upd(newhead);
+    return newhead;
+  }
+
+  node_t* leftRotation(node_t* head) {
+    node_t* newhead = head-&gt;right;
+    head-&gt;right = newhead-&gt;left;
+    newhead-&gt;left = head;
+    upd(head), upd(newhead);
+    return newhead;
+  }
+
+  node_t* insert(node_t* v, const T&amp; x) {
+    if (v == nullptr) {
+      return new node_t(x);
+    } else if (less_comparator(x, v-&gt;key)) {
+      v-&gt;left = insert(v-&gt;left, x);
+    } else if (less_comparator(v-&gt;key, x)) {
+      v-&gt;right = insert(v-&gt;right, x);
+    } else {
+      v-&gt;key = x;
+    }
+    return v;
+  }
+
+  node_t* remove(node_t* v, const T&amp; k) {
+    if (!v) return v;
+    if (less_comparator(k, v-&gt;key)) {
+      v-&gt;left = remove(v-&gt;left, k);
+    } else if (less_comparator(v-&gt;key, k)) {
+      v-&gt;right = remove(v-&gt;right, k);
+    } else if (v-&gt;left &amp;&amp; v-&gt;right) {
+      v-&gt;key = get_min(v-&gt;right)-&gt;key;
+      v-&gt;right = remove(v-&gt;right, v-&gt;key);
+    } else {
+      if (v-&gt;left) {
+        v = v-&gt;left;
+      } else if (v-&gt;right) {
+        v = v-&gt;right;
+      } else {
+        v = nullptr;
+      }
+    }
+    return v;
+  }
+
+  node_t* search(node_t* v, const T&amp; k) const {
+    if (!v || eq_comparator(v-&gt;key, k)) {
+      return v;
+    }
+    if (k &lt; v-&gt;key) {
+      return search(v-&gt;left, k);
+    } else {
+      return search(v-&gt;right, k);
+    }
+  }
+
+  void insert(const T&amp; x) { root = insert(root, x); }
+
+  void erase(const T&amp; x) { root = remove(root, x); }
+
+  bool contains(const T&amp; x) const { return search(root, x) != nullptr; }
+};
+
+</code></pre>
+<p>Использование </p>
+<pre><code class="language-cpp">template &lt;typename T&gt;
+inline bool _equal(const T&amp; a, const T&amp; b) {
+  return a == b;
+}
+
+template &lt;typename T&gt;
+inline bool _less(const T&amp; a, const T&amp; b) {
+  return a &lt; b;
+}
+
+int main() {
+  Tree&lt;int, _equal&lt;int&gt;, _less&lt;int&gt;&gt; t;
+  t.insert(7);
+  t.insert(4);
+  assert(t.contains(7));
+  return 0;
+}
+</code></pre>
+</div>
+</details>
+<h1 id="Словарь"><a class="header" href="#Словарь">Словарь</a></h1>
+<p>Словарь (dict) — полезная структура данных, <strong>отсортированный</strong> набор ключ-значение. В отличие от массивов, которые индексируются диапазоном чисел, словари индексируются ключами. Во многих языках, такая структура данных уже существует в стандартной библиотеки.
+Не стоит путать с <a href="https://docs.python.org/3/tutorial/datastructures.html#dictionaries">Dictionaries</a> в  <code>python3</code> или с <a href="https://en.cppreference.com/w/cpp/container/unordered_map"><code>std::unordered_map</code></a> в <code>c++</code>, так как всё это хэшмаппа (хэштаблица) (<strong>неупорядоченный</strong> набор ключ-значений). Хэшмаппа использует другую идею — хэш-функцию.</p>
+<p>В  <code>c++</code> стандартный словарь — <a href="https://en.cppreference.com/w/cpp/container/map"><code>std::map</code></a>.</p>
+<blockquote>
+<p>Keys are sorted by using the comparison function Compare. Search, removal, and insertion operations have logarithmic complexity. Maps are usually implemented as Red–black trees. (<a href="https://en.cppreference.com/w/cpp/container/map">std::map</a>)</p>
+</blockquote>
+<blockquote>
+<p>Ключи уникальные — действительно похоже на множество =)</p>
+</blockquote>
+<p>Основные операции словаря :</p>
+<p>Поиск :</p>
+<ol>
+<li><code>iterator find(Key k)</code> — возвращает итератор на элемент, который ищет элемент с ключом равным <code>k</code>. (<code>.end()</code> если не находит) </li>
+<li><code>iterator lower_bound/upper_bound(Key k)</code>  — аналогично <code>find</code>-у и обычному <code>lower_bound</code>-у.</li>
+</ol>
+<p>Модификация :</p>
+<ol>
+<li><code>iterator insert(value_type v)</code> — вставляет элемент. Элемент — пара из ключа и значения.</li>
+<li><code>iterator erase(value_type v)</code> — аналогично удаляет.</li>
+</ol>
+<p>Итератор, который возвращается, по сути не особо нужен.</p>
+<p>Оператор <code>[]</code></p>
+<ol>
+<li><code>value_type&amp; operator[] (const key_type&amp; k)</code> — возвращат</li>
+</ol>
+<h1 id="Реализация-словаря"><a class="header" href="#Реализация-словаря">Реализация словаря</a></h1>
+<p>Немного подумав, можно построить двоичное дерево поиска, где <code>Node</code>, хранит и ключ и значение.</p>
+<p>Для всех функций поиска и взятия элемента (<code>[]</code>), нужно спускаться в дереве по ключам, а значение мы храним как доп поле в <code>Node</code>-е. Я построю дерево на элементах пар ключ-значение, и напишу своё сравнение, лишь по ключу.</p>
+<p>Итераторы оставлю на подумать. Для неё надо написать свою обёртку над итераторами, и функцию для поиска следующего ключа в дереве (собственно я не написал это в статье про дерево, так как это не очень сложно). + особо и не надо</p>
+<pre><code class="language-cpp">template &lt;typename K, typename V&gt;
+struct Map {
+  using T = std::pair&lt;K, V&gt;;
+
+  inline static bool equal(const T&amp; a, const T&amp; b) {
+    return a.first == b.first;
+  }  // сравниваем только ключи
+
+  inline static bool less(const T&amp; a, const T&amp; b) { return a.first &lt; b.first; }
+
+  Tree&lt;T, equal, less&gt; mem;
+
+  V&amp; operator[](const K&amp; key) {
+    auto ptr = mem.search(mem.root, {key, {}});
+    if (ptr == nullptr) {
+      mem.insert({key, {}});
+      ptr = mem.search(mem.root, {key, {}});
+    }
+    return ptr-&gt;key.second;
+  }
+
+  V operator[](const K&amp; key) const {
+    return mem.search(mem.root, {key, {}})-&gt;key.second;
+  }
+
+  bool contains(const K&amp; key) const { return mem.contains({key, {}}); }
+};
+</code></pre>
+<p>~ Два раза определён <code>[]</code>, так как существует различные применения, когда вы пишите <code>cout &lt;&lt; m[&quot;mykey&quot;]</code> и когда вы пишите <code>m[&quot;mykey&quot;] = 123</code>. Для первого надо написать <code>V operator[](const K &amp;key)</code>, для второго <code>V operator[](const K &amp;key)</code> соответственно. Это <code>c++</code> =) </p>
+<p>В <code>V&amp; operator[](const K &amp;key)</code>, есть проверка, когда ключа нет, для этого надо вставить <code>Node</code>-у в дерево, и сделать поиск по новой, в таком случае у нас будет валидный указатель.</p>
+<h1 id="Применение"><a class="header" href="#Применение">Применение</a></h1>
+<p>В реальной жизни пишут самобалансирующиеся деревья. В <code>stl</code> есть уже существующее дерево — <code>std::set</code>.</p>
+<footer id="last-change">Last change: 2023-11-17, commit: <a href="https://github.com/9kin/is-algo/commit/640bbb7">640bbb7</a></footer>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
