@@ -366,3 +366,205 @@ Node* build(int l, int r) {
 </div>
 </div>
 ~~~
+
+# Код
+
+Не пугайтесь, я написал код используя шаблоны, чтобы потом легко использовать структуру. Для спуска по дереву, мы всегда проверяем ключи используя операторы `<`,`=`, `>`, так как `>` реализуется через `<` изменив порядок аргументов. Поэтому я ещё передал две функции (`equal` и `less`) в шаблон структуры.
+
+> `recursive_free` сделан для очистки всех `node`, которых мы создаём через `new`. Хотя надо делать `free`, но поверьте надо делать `delete`, как минимум все мои анализаторы падают при `free`. `valgrind --leak-check=full ./a.out` выдаёт `==11816== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+` Это не особо нужно вам, просто очистит память, может быть полезно при `ML`.
+
+~~~admonish collapsible=true title="код"
+```cpp
+template <typename T, bool (*eq_comparator)(const T&, const T&),
+          bool (*less_comparator)(const T&, const T&)>
+struct Tree {
+  using node_t = node<T>;
+  node_t* root;
+
+  Tree() { root = nullptr; }
+
+  void recursive_free(node_t* v) {
+    if (!v) return;
+    recursive_free(v->left);
+    recursive_free(v->right);
+    delete v;
+  }
+
+  ~Tree() { recursive_free(root); }
+
+  node_t* get_min(node_t* v) {
+    if (v != nullptr && v->left != nullptr) {
+      return get_min(v->left);
+    }
+    return v;
+  }
+
+  node_t* rightRotation(node_t* head) {
+    node_t* newhead = head->left;
+    head->left = newhead->right;
+    newhead->right = head;
+    upd(head), upd(newhead);
+    return newhead;
+  }
+
+  node_t* leftRotation(node_t* head) {
+    node_t* newhead = head->right;
+    head->right = newhead->left;
+    newhead->left = head;
+    upd(head), upd(newhead);
+    return newhead;
+  }
+
+  node_t* insert(node_t* v, const T& x) {
+    if (v == nullptr) {
+      return new node_t(x);
+    } else if (less_comparator(x, v->key)) {
+      v->left = insert(v->left, x);
+    } else if (less_comparator(v->key, x)) {
+      v->right = insert(v->right, x);
+    } else {
+      v->key = x;
+    }
+    return v;
+  }
+
+  node_t* remove(node_t* v, const T& k) {
+    if (!v) return v;
+    if (less_comparator(k, v->key)) {
+      v->left = remove(v->left, k);
+    } else if (less_comparator(v->key, k)) {
+      v->right = remove(v->right, k);
+    } else if (v->left && v->right) {
+      v->key = get_min(v->right)->key;
+      v->right = remove(v->right, v->key);
+    } else {
+      if (v->left) {
+        v = v->left;
+      } else if (v->right) {
+        v = v->right;
+      } else {
+        v = nullptr;
+      }
+    }
+    return v;
+  }
+
+  node_t* search(node_t* v, const T& k) const {
+    if (!v || eq_comparator(v->key, k)) {
+      return v;
+    }
+    if (k < v->key) {
+      return search(v->left, k);
+    } else {
+      return search(v->right, k);
+    }
+  }
+
+  void insert(const T& x) { root = insert(root, x); }
+
+  void erase(const T& x) { root = remove(root, x); }
+
+  bool contains(const T& x) const { return search(root, x) != nullptr; }
+};
+
+```
+
+Использование 
+
+```cpp
+template <typename T>
+inline bool _equal(const T& a, const T& b) {
+  return a == b;
+}
+
+template <typename T>
+inline bool _less(const T& a, const T& b) {
+  return a < b;
+}
+
+int main() {
+  Tree<int, _equal<int>, _less<int>> t;
+  t.insert(7);
+  t.insert(4);
+  assert(t.contains(7));
+  return 0;
+}
+```
+~~~
+
+
+# Словарь
+
+Словарь (dict) &mdash; полезная структура данных, **отсортированный** набор ключ-значение. В отличие от массивов, которые индексируются диапазоном чисел, словари индексируются ключами. Во многих языках, такая структура данных уже существует в стандартной библиотеки.
+Не стоит путать с [Dictionaries](https://docs.python.org/3/tutorial/datastructures.html#dictionaries) в  `python3` или с [`std::unordered_map`](https://en.cppreference.com/w/cpp/container/unordered_map) в `c++`, так как всё это хэшмаппа (хэштаблица) (**неупорядоченный** набор ключ-значений). Хэшмаппа использует другую идею &mdash; хэш-функцию.
+
+В  `c++` стандартный словарь &mdash; [`std::map`](https://en.cppreference.com/w/cpp/container/map).
+
+> Keys are sorted by using the comparison function Compare. Search, removal, and insertion operations have logarithmic complexity. Maps are usually implemented as Red–black trees. ([std::map](https://en.cppreference.com/w/cpp/container/map))
+
+> Ключи уникальные &mdash; действительно похоже на множество =)
+
+Основные операции словаря :
+
+Поиск :
+
+1. `iterator find(Key k)` &mdash; возвращает итератор на элемент, который ищет элемент с ключом равным `k`. (`.end()` если не находит) 
+2. `iterator lower_bound/upper_bound(Key k)`  &mdash; аналогично `find`-у и обычному `lower_bound`-у.
+
+Модификация :
+
+1. `iterator insert(value_type v)` &mdash; вставляет элемент. Элемент &mdash; пара из ключа и значения.
+2. `iterator erase(value_type v)` &mdash; аналогично удаляет.
+
+Итератор, который возвращается, по сути не особо нужен.
+
+Оператор `[]`
+
+1. `value_type& operator[] (const key_type& k)` &mdash; возвращат
+
+# Реализация словаря
+
+Немного подумав, можно построить двоичное дерево поиска, где `Node`, хранит и ключ и значение.
+
+Для всех функций поиска и взятия элемента (`[]`), нужно спускаться в дереве по ключам, а значение мы храним как доп поле в `Node`-е. Я построю дерево на элементах пар ключ-значение, и напишу своё сравнение, лишь по ключу.
+
+Итераторы оставлю на подумать. Для неё надо написать свою обёртку над итераторами, и функцию для поиска следующего ключа в дереве (собственно я не написал это в статье про дерево, так как это не очень сложно). + особо и не надо
+
+```cpp
+template <typename K, typename V>
+struct Map {
+  using T = std::pair<K, V>;
+
+  inline static bool equal(const T& a, const T& b) {
+    return a.first == b.first;
+  }  // сравниваем только ключи
+
+  inline static bool less(const T& a, const T& b) { return a.first < b.first; }
+
+  Tree<T, equal, less> mem;
+
+  V& operator[](const K& key) {
+    auto ptr = mem.search(mem.root, {key, {}});
+    if (ptr == nullptr) {
+      mem.insert({key, {}});
+      ptr = mem.search(mem.root, {key, {}});
+    }
+    return ptr->key.second;
+  }
+
+  V operator[](const K& key) const {
+    return mem.search(mem.root, {key, {}})->key.second;
+  }
+
+  bool contains(const K& key) const { return mem.contains({key, {}}); }
+};
+```
+
+~ Два раза определён `[]`, так как существует различные применения, когда вы пишите `cout << m["mykey"]` и когда вы пишите `m["mykey"] = 123`. Для первого надо написать `V operator[](const K &key)`, для второго `V operator[](const K &key)` соответственно. Это `c++` =) 
+
+В `V& operator[](const K &key)`, есть проверка, когда ключа нет, для этого надо вставить `Node`-у в дерево, и сделать поиск по новой, в таком случае у нас будет валидный указатель.
+
+# Применение 
+
+В реальной жизни пишут самобалансирующиеся деревья. В `stl` есть уже существующее дерево &mdash; `std::set`.
