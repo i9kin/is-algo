@@ -2925,10 +2925,7 @@ Node* new_Node(const T&amp; x) {
 </div>
 <div>
 <p>Реализация вторым способом или первым с массивом является оптимальной. Так как память выделяется сразу большим куском, а не при каждом вызов <code>new</code>. Хотя это выглядит логичной оптимизацией, которая ускорит программу значительно, но это не совсем так. Можно прочитать обсуждения <a href="https://www.quora.com/How-much-faster-is-static-memory-allocation-compared-to-dynamic-memory-allocation-in-C">тут</a>.</p>
-<p>Грубо говоря пример 1 с массивом даст прирост производительности по времени в <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">3</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8056em;vertical-align:-0.0556em;"></span><span class="mord">5%</span></span></span></span>. Но тут вступает в дело размер указателей на детей. На самом деле указатель на современных машинах занимает <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">8</span></span></span></span> байт, а <code>int</code> всего <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">4</span></span></span></span>.</p>
-<p>Предлагаю подумать над этой темой =)</p>
-<p>Поэтому рекомендуется использовать второй способ для всех динамически создаваемых структур=)</p>
-<p>TODO мне чёт в лом, AVL переписывать =)</p>
+<p>Грубо говоря пример 1 с массивом даст прирост производительности по времени в <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">3</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8056em;vertical-align:-0.0556em;"></span><span class="mord">5%</span></span></span></span>. Но тут вступает в дело размер указателей на детей. На самом деле указатель на современных машинах занимает <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">8</span></span></span></span> байт, а <code>int</code> всего <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">4</span></span></span></span>. На самом можно <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">32</span></span></span></span> битный компилятором.</p>
 </div>
 </div>
 <h2 id="Реализация-функций"><a class="header" href="#Реализация-функций">Реализация функций</a></h2>
@@ -3226,8 +3223,10 @@ int main() {
 <p>Итератор, который возвращается, по сути не особо нужен.</p>
 <p>Оператор <code>[]</code></p>
 <ol>
-<li><code>value_type&amp; operator[] (const key_type&amp; k)</code> — возвращат</li>
+<li><code>value_type&amp; operator[] (const key_type&amp; k)</code> — возвращает значение по ключу, которое <strong>можно</strong> изменить.</li>
+<li><code>value_type operator[] (const key_type&amp; k)</code> — возвращает значение по ключу, которое <strong>нельзя</strong> изменить.</li>
 </ol>
+<p>~ Два раза определён <code>[]</code>, так как существует различные применения, когда вы пишите <code>cout &lt;&lt; m[&quot;mykey&quot;]</code> и когда вы пишите <code>m[&quot;mykey&quot;] = 123</code>. Для первого надо написать <code>V operator[](const K &amp;key)</code>, для второго <code>V operator[](const K &amp;key)</code> соответственно. Это <code>c++</code> =) </p>
 <h1 id="Реализация-словаря"><a class="header" href="#Реализация-словаря">Реализация словаря</a></h1>
 <p>Немного подумав, можно построить двоичное дерево поиска, где <code>Node</code>, хранит и ключ и значение.</p>
 <p>Для всех функций поиска и взятия элемента (<code>[]</code>), нужно спускаться в дереве по ключам, а значение мы храним как доп поле в <code>Node</code>-е. Я построю дерево на элементах пар ключ-значение, и напишу своё сравнение, лишь по ключу.</p>
@@ -3260,11 +3259,10 @@ struct Map {
   bool contains(const K&amp; key) const { return mem.contains({key, {}}); }
 };
 </code></pre>
-<p>~ Два раза определён <code>[]</code>, так как существует различные применения, когда вы пишите <code>cout &lt;&lt; m[&quot;mykey&quot;]</code> и когда вы пишите <code>m[&quot;mykey&quot;] = 123</code>. Для первого надо написать <code>V operator[](const K &amp;key)</code>, для второго <code>V operator[](const K &amp;key)</code> соответственно. Это <code>c++</code> =) </p>
 <p>В <code>V&amp; operator[](const K &amp;key)</code>, есть проверка, когда ключа нет, для этого надо вставить <code>Node</code>-у в дерево, и сделать поиск по новой, в таком случае у нас будет валидный указатель.</p>
 <h1 id="Применение"><a class="header" href="#Применение">Применение</a></h1>
 <p>В реальной жизни пишут самобалансирующиеся деревья. В <code>stl</code> есть уже существующее дерево — <code>std::set</code>.</p>
-<footer id="last-change">Last change: 2023-11-17, commit: <a href="https://github.com/9kin/is-algo/commit/640bbb7">640bbb7</a></footer><div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<footer id="last-change">Last change: 2023-11-17, commit: <a href="https://github.com/9kin/is-algo/commit/5cfad65">5cfad65</a></footer><div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
 <h1 id="avl"><a class="header" href="#avl">AVL</a></h1>
 <p>Теорию прочитайте :</p>
 <ul>
