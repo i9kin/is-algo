@@ -3074,7 +3074,8 @@ node* new_node(const T&amp; x) {
 </div>
 </details>
 <h1 id="Код"><a class="header" href="#Код">Код</a></h1>
-<p>Не пугайтесь, я написал код используя шаблоны, чтобы потом легко использовать структуру. Для спуска по дереву, мы всегда проверяем ключи используя операторы <code>&lt;</code>,<code>=</code>, <code>&gt;</code>, так как <code>&gt;</code> реализуется через <code>&lt;</code> изменив порядок аргументов. Поэтому я ещё передал две функции (<code>equal</code> и <code>less</code>) в шаблон структуры.</p>
+<p>Не пугайтесь, я написал код используя шаблоны, чтобы потом легко использовать структуру. Для спуска по дереву, мы всегда проверяем ключи используя операторы <code>&lt;</code>,<code>=</code>, <code>&gt;</code>.</p>
+<p><code>&gt;</code> можно выразить через <code>&lt;</code> изменив порядок аргументов. Поэтому я ещё передал два указателя функции (<code>equal</code> и <code>less</code>) в шаблон структуры.</p>
 <blockquote>
 <p><code>recursive_free</code> сделан для очистки всех <code>node</code>, которых мы создаём через <code>new</code>. Хотя надо делать <code>free</code>, но поверьте надо делать <code>delete</code>, как минимум все мои анализаторы падают при <code>free</code>. <code>valgrind --leak-check=full ./a.out</code> выдаёт <code>==11816== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0) </code> Это не особо нужно вам, просто очистит память, может быть полезно при <code>ML</code>.</p>
 </blockquote>
@@ -3088,7 +3089,6 @@ node* new_node(const T&amp; x) {
 struct node {
  public:
   T key{};
-  short int height = 0;
   node* left = nullptr;
   node* right = nullptr;
 
@@ -3260,7 +3260,7 @@ struct Map {
 <p>В <code>V&amp; operator[](const K &amp;key)</code>, есть проверка, когда ключа нет, для этого надо вставить <code>node</code>-у в дерево, и сделать поиск по новой, в таком случае у нас будет валидный указатель.</p>
 <h1 id="Применение"><a class="header" href="#Применение">Применение</a></h1>
 <p>В реальной жизни пишут самобалансирующиеся деревья. В <code>stl</code> есть уже существующее дерево — <code>std::set</code>.</p>
-<footer id="last-change">Last change: 2023-11-19, commit: <a href="https://github.com/9kin/is-algo/commit/04c0729">04c0729</a></footer><div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<footer id="last-change">Last change: 2023-11-19, commit: <a href="https://github.com/9kin/is-algo/commit/7e6f0d5">7e6f0d5</a></footer><div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
 <h1 id="avl"><a class="header" href="#avl">AVL</a></h1>
 <p>Теорию прочитайте :</p>
 <ul>
