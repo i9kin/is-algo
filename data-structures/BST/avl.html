@@ -187,13 +187,13 @@
 <li><a href="https://habr.com/ru/articles/150732/">тут</a></li>
 <li><a href="https://neerc.ifmo.ru/wiki/index.php?title=%D0%90%D0%92%D0%9B-%D0%B4%D0%B5%D1%80%D0%B5%D0%B2%D0%BE">тут</a></li>
 </ul>
-<p>Отличие от кода предыдущего для бинарного дерева поиска :</p>
+<p>Отличие кода AVL от бинарного дерева поиска заключается лишь в <strong>добавление</strong> нового функционала поверх существующего кода :</p>
 <ol>
-<li>есть поле <code>height</code> в <code>node</code></li>
-<li>функции для вычисления баланса, и обновления его</li>
-<li><code>rightRotation</code> и <code>leftRotation</code> — повороты</li>
-<li><code>balance(v)</code> — функция, которая думает какие повороты делать, для поддерева <code>v</code></li>
-<li>вызов функции <code>balance(v)</code> для всех функций, которые изменяют дерево, а именно <code>insert</code>, <code>remove</code></li>
+<li>Добавить поле <code>height</code> в <code>node</code>.</li>
+<li>Добавить функции для вычисления баланса, и обновления его.</li>
+<li>Добавить <code>rightRotation(v)</code> и <code>leftRotation(v)</code> — функции поворотов.</li>
+<li>Добавить <code>balance(v)</code> — функция, которая вызывает, если инадо, нужный поворот.</li>
+<li>Вызвать функцию <code>return balance(v)</code> вместо <code>return v;</code> для всех функций, которые изменяют дерево, а именно <code>insert</code>, <code>remove</code>.</li>
 </ol>
 <details id="admonition-код" class="admonition admonish-note">
 <summary class="admonition-title">
@@ -333,7 +333,7 @@ struct Tree {
 </code></pre>
 </div>
 </details>
-<footer id="last-change">Last change: 2023-11-17, commit: <a href="https://github.com/9kin/is-algo/commit/640bbb7">640bbb7</a></footer>
+<footer id="last-change">Last change: 2023-11-19, commit: <a href="https://github.com/9kin/is-algo/commit/04c0729">04c0729</a></footer>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">

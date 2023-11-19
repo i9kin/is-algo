@@ -221,35 +221,34 @@
 <h2 id="Представление-в-памяти"><a class="header" href="#Представление-в-памяти">Представление в памяти</a></h2>
 <p>Существует два способа :</p>
 <ol>
-<li>Чаще всего дерево представляют в памяти как динамически создаваемая структура с явными указателями на своих детей. Вершина при создании не имеет детей, поэтому в конструкторе <code>Node</code> поля <code>l</code> и <code>r</code> мы инициализируем пустыми ссылками.</li>
+<li>Чаще всего дерево представляют в памяти как динамически создаваемая структура с явными указателями на своих детей. Вершина при создании не имеет детей, поэтому в конструкторе <code>node</code> поля <code>l</code> и <code>r</code> мы инициализируем пустыми ссылками.</li>
 </ol>
-<pre><code class="language-cpp">struct Node {
-  Node *l, *r;
+<pre><code class="language-cpp">struct node {
+  node *l, *r;
   int x;
-  Node(int x) : x(x), l(nullptr), r(nullptr){};
+  node(int x) : x(x), l(nullptr), r(nullptr){};
 };
 </code></pre>
 <ol start="2">
 <li>Все узлы дерева хранятся в массиве. Поля детей имеют тип <code>int</code> и явно указывают позицию в массиве, где хранится узел ребёнка. Стоит дополнительно написать конструктор по умолчанию, чтобы компилятор понял, какими объектами заполнить массив.</li>
 </ol>
 <p>Может показаться, что этот способ не удобный, но скоро вы всё поймёте =)</p>
-<pre><code class="language-cpp">struct Node {
-  int l, r;
-  int x;
-  Node(int x) : x(x), l(-1), r(-1){};
-  Node() : x(0), l(-1), r(-1){};
-  // или Node() = default;
+<pre><code class="language-cpp">struct node {
+  int l, r, x;
+  node(int x) : x(x), l(-1), r(-1){};
+  node() : x(0), l(-1), r(-1){};
+  // или node() = default;
 };
 
-Node mem[100000];
+node mem[100000];
 // code
 assert(mem[239].l != -1);
 cout &lt;&lt; mem[mem[239].l].x;
 </code></pre>
-<p>Чтобы создать новый узел, стоит вернуть переменную, которая указывает на только-что созданный элемент. Просто замените <code>new Node(x)</code> на <code>new_Node(x)</code>.</p>
+<p>Чтобы создать новый узел, стоит вернуть переменную, которая указывает на только-что созданный элемент. Просто замените <code>new node(x)</code> на <code>new_node(x)</code>.</p>
 <pre><code class="language-cpp">int pos = 0;
 
-int new_Node(const T&amp; x) {
+int new_node(const T&amp; x) {
   mem[pos] = T(x);
   return pos++;
 }
@@ -262,17 +261,17 @@ int new_Node(const T&amp; x) {
 </div>
 <div>
 <p>Чтобы создать новый узел, стоит вернуть память под <code>pos</code>, и подвинуть <code>pos</code>.</p>
-<pre><code class="language-cpp">struct Node {
-  Node *l, *r;
+<pre><code class="language-cpp">struct node {
+  node *l, *r;
   int x;
-  Node(int x) : x(x), l(nullptr), r(nullptr){};
-  Node() = default;
+  node(int x) : x(x), l(nullptr), r(nullptr){};
+  node() = default;
 };
 
-Node mem[100000];
+node mem[100000];
 int pos = 0;
 
-Node* new_Node(const T&amp; x) {
+node* new_node(const T&amp; x) {
   mem[pos] = T(x);
   return &amp;mem[pos++];
 }
@@ -301,15 +300,15 @@ Node* new_Node(const T&amp; x) {
 <li><code>find(x)</code> — найти вершину в дереве к ключом <code>x</code>.</li>
 <li><code>find_min/find_max()</code> — найти вершину с минимальным/максимальным ключом.</li>
 </ol>
-<p>Все функции ниже легко реализовать используя рекурсивный алгоритм. Реализуем рекурсивную функцию спуска по дереву, которая возвращает <code>Node*</code>.</p>
-<p>Для функций, которые <strong>не</strong> изменяют дерево, будем возвращать <code>Node</code>-у нужную нам.</p>
-<p>Для функций, которые изменяют дерево, будем возвращать <code>Node</code>-у текущего поддерева в валидном состояние (все элементы в этом поддереве находятся в корректном состояние и элемент, который надо было вставить, уже вставлен или удалён, если надо было удалить). Значит при запуске таких функций надо писать <code>root = insert/delete(root, ...)</code>. </p>
+<p>Все функции ниже легко реализовать используя рекурсивный алгоритм. Реализуем рекурсивную функцию спуска по дереву, которая возвращает <code>node*</code>.</p>
+<p>Для функций, которые <strong>не</strong> изменяют дерево, будем возвращать <code>node</code>-у нужную нам.</p>
+<p>Для функций, которые изменяют дерево, будем возвращать <code>node</code>-у текущего поддерева в валидном состояние (все элементы в этом поддереве находятся в корректном состояние и элемент, который надо было вставить, уже вставлен или удалён, если надо было удалить). Значит при запуске таких функций надо писать <code>root = insert/delete(root, ...)</code>. </p>
 <p><code>v</code> — текущая вершина, корень текущего поддерева.</p>
 <h2 id="Поиск"><a class="header" href="#Поиск">Поиск</a></h2>
 <p>Преимущество бинарных деревьев поиска в том, что в них можно легко производить поиск элементов. Если поиск удобный, то и другие операции просты и выражаются через поиск или имеют похожую логику.</p>
 <p>Рекурсивная функция, которая спускается по дереву в нужную сторону, используя свойство бинарного дерева. </p>
 <p>Если текущая вершина пустая (<code>v == nullptr</code>) (значит мы спустились в неё по пустому указателю), то мы ничего не нашли. В таком случае логичнее вернуть <code>nullptr</code>. Если ключ текущей вершины совпадает с ключом поиска (или любое другое условие, по которому можно искать в нашем дереве) то вернём текущую вершину. Иначе, нам стоит перейти в ребёнка, ключ которого меньше ключа поиска.</p>
-<pre><code class="language-cpp">Node* find(Node* v, int x) {
+<pre><code class="language-cpp">node* find(node* v, int x) {
   if (v == nullptr) return nullptr;
   if (v-&gt;x == x) return v;
   if (v-&gt;x &lt; x) {
@@ -321,7 +320,7 @@ Node* new_Node(const T&amp; x) {
 </code></pre>
 <h2 id="МинимумМаксимум"><a class="header" href="#МинимумМаксимум">Минимум/Максимум</a></h2>
 <p>Из-за структуры BST, минимум находится в самом левом элементе дерева. Максимум — в самом правом.</p>
-<pre><code class="language-cpp">Node* get_min(Node* v) {
+<pre><code class="language-cpp">node* get_min(node* v) {
   if (v != nullptr &amp;&amp; v-&gt;l != nullptr) {
     return get_min(v-&gt;l);
   }
@@ -332,9 +331,9 @@ Node* new_Node(const T&amp; x) {
 <p>Операция вставки работает аналогично поиску элемента. Тут мы подвешиваем вершину за лист, а не вставляем внутрь. Мы спускаемся по дереву, чтобы найти пустое место для вершины и вставить в это место. </p>
 <p>Если текущая вершина пустая (<code>v == nullptr</code>), то сюда и надо вставить. Для этого вернём корректное состояния поддерева, а именно один новый элемент. </p>
 <p>При спуске в детей стоит сохранить состояние дерева, поэтому пишем <code>v-&gt;l = insert(v-&gt;l, x)</code> или <code>v-&gt;r = insert(v-&gt;r, x)</code>. Если мы находимся в вершине, ключ которой равен <code>x</code>, то вставлять ничего не надо, значит вернём текущую вершину.</p>
-<pre><code class="language-cpp">Node* insert(Node* v, T x) {
+<pre><code class="language-cpp">node* insert(node* v, T x) {
   if (v == nullptr) {
-    return new Node(x);
+    return new node(x);
   } else if (x &lt; v-&gt;x) {
     v-&gt;l = insert(v-&gt;l, x);
   } else if (x &gt; v-&gt;x) {
@@ -350,7 +349,7 @@ Node* new_Node(const T&amp; x) {
 <p>В случае, если есть только левый ребёнок, то для удаления текущей вершины, надо левого ребёнка сделать корнем текущего поддерева. В случае, если есть только правый ребёнок — аналогично.</p>
 <p>В случае, если у вершины есть оба ребёнка, существует способ, который можно выразить через самого себя, то есть <strong>рекурсивно</strong>. Этот способ заключается в замене текущей вершины, на минимальную, из правого поддерева и <strong>рекурсивное</strong> удаление из правого поддерева, элемента, который теперь встречается два раза, а именно нового значения в корне.</p>
 <p>Аналогично можно взять максимум из левого поддерева и удалить из левого поддерева.</p>
-<pre><code class="language-cpp">Node* remove(Node* v, T k) {
+<pre><code class="language-cpp">node* remove(node* v, T k) {
   if (!v) return v;
   if (k &lt; v-&gt;x) {
     v-&gt;l = remove(v-&gt;l, k);
@@ -381,12 +380,12 @@ Node* new_Node(const T&amp; x) {
 <p>По такому обходу однозначно можно восстановить дерево. В принципе я его написал, что красиво выводить картинки.</p>
 <p>Существует очень простое решение. Пусть дан обход <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">a</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">…</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">]</span></span></span></span>. Очевидно, что <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> является корнем дерева, так как мы его вывели ранее, чем все остальные вершины. Все элементы меньшие <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> будут в левом поддереве, а все остальные в правом. Причём обход имеет вид <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7335em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">…</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7335em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7335em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">…</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">]</span></span></span></span>. Значит можно найти первый элемент, больший <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> и рекурсивно решить для двух частей, которые разделяются этим элементом.</p>
 <p>Для нахождения следующего большего числа, можно воспользоваться обычным алгоритмом со стеком.</p>
-<pre><code class="language-cpp">Node* build(int l, int r) {
+<pre><code class="language-cpp">node* build(int l, int r) {
   if (l &gt; r) {
     return nullptr;
   }
   int p = nxt[l];
-  Node* res = new Node(a[l]);
+  node* res = new node(a[l]);
   res-&gt;l = build(l + 1, p - 1);
   res-&gt;r = build(p, r);
   return res;
@@ -446,7 +445,22 @@ Node* new_Node(const T&amp; x) {
 <p><a class="admonition-anchor-link" href="#admonition-код"></a></p>
 </summary>
 <div>
-<pre><code class="language-cpp">template &lt;typename T, bool (*eq_comparator)(const T&amp;, const T&amp;),
+<pre><code class="language-cpp">template &lt;typename T&gt;
+struct node {
+ public:
+  T key{};
+  short int height = 0;
+  node* left = nullptr;
+  node* right = nullptr;
+
+  node(T k) {
+    key = k;
+    left = nullptr;
+    right = nullptr;
+  }
+};
+
+template &lt;typename T, bool (*eq_comparator)(const T&amp;, const T&amp;),
           bool (*less_comparator)(const T&amp;, const T&amp;)&gt;
 struct Tree {
   using node_t = node&lt;T&gt;;
@@ -468,22 +482,6 @@ struct Tree {
       return get_min(v-&gt;left);
     }
     return v;
-  }
-
-  node_t* rightRotation(node_t* head) {
-    node_t* newhead = head-&gt;left;
-    head-&gt;left = newhead-&gt;right;
-    newhead-&gt;right = head;
-    upd(head), upd(newhead);
-    return newhead;
-  }
-
-  node_t* leftRotation(node_t* head) {
-    node_t* newhead = head-&gt;right;
-    head-&gt;right = newhead-&gt;left;
-    newhead-&gt;left = head;
-    upd(head), upd(newhead);
-    return newhead;
   }
 
   node_t* insert(node_t* v, const T&amp; x) {
@@ -589,8 +587,8 @@ int main() {
 </ol>
 <p>~ Два раза определён <code>[]</code>, так как существует различные применения, когда вы пишите <code>cout &lt;&lt; m[&quot;mykey&quot;]</code> и когда вы пишите <code>m[&quot;mykey&quot;] = 123</code>. Для первого надо написать <code>V operator[](const K &amp;key)</code>, для второго <code>V operator[](const K &amp;key)</code> соответственно. Это <code>c++</code> =) </p>
 <h1 id="Реализация-словаря"><a class="header" href="#Реализация-словаря">Реализация словаря</a></h1>
-<p>Немного подумав, можно построить двоичное дерево поиска, где <code>Node</code>, хранит и ключ и значение.</p>
-<p>Для всех функций поиска и взятия элемента (<code>[]</code>), нужно спускаться в дереве по ключам, а значение мы храним как доп поле в <code>Node</code>-е. Я построю дерево на элементах пар ключ-значение, и напишу своё сравнение, лишь по ключу.</p>
+<p>Немного подумав, можно построить двоичное дерево поиска, где <code>node</code>, хранит и ключ и значение.</p>
+<p>Для всех функций поиска и взятия элемента (<code>[]</code>), нужно спускаться в дереве по ключам, а значение мы храним как доп поле в <code>node</code>-е. Я построю дерево на элементах пар ключ-значение, и напишу своё сравнение, лишь по ключу.</p>
 <p>Итераторы оставлю на подумать. Для неё надо написать свою обёртку над итераторами, и функцию для поиска следующего ключа в дереве (собственно я не написал это в статье про дерево, так как это не очень сложно). + особо и не надо</p>
 <pre><code class="language-cpp">template &lt;typename K, typename V&gt;
 struct Map {
@@ -620,10 +618,10 @@ struct Map {
   bool contains(const K&amp; key) const { return mem.contains({key, {}}); }
 };
 </code></pre>
-<p>В <code>V&amp; operator[](const K &amp;key)</code>, есть проверка, когда ключа нет, для этого надо вставить <code>Node</code>-у в дерево, и сделать поиск по новой, в таком случае у нас будет валидный указатель.</p>
+<p>В <code>V&amp; operator[](const K &amp;key)</code>, есть проверка, когда ключа нет, для этого надо вставить <code>node</code>-у в дерево, и сделать поиск по новой, в таком случае у нас будет валидный указатель.</p>
 <h1 id="Применение"><a class="header" href="#Применение">Применение</a></h1>
 <p>В реальной жизни пишут самобалансирующиеся деревья. В <code>stl</code> есть уже существующее дерево — <code>std::set</code>.</p>
-<footer id="last-change">Last change: 2023-11-17, commit: <a href="https://github.com/9kin/is-algo/commit/5cfad65">5cfad65</a></footer>
+<footer id="last-change">Last change: 2023-11-19, commit: <a href="https://github.com/9kin/is-algo/commit/04c0729">04c0729</a></footer>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
