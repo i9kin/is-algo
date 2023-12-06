@@ -1,0 +1,4 @@
+[info]
+name = общие подпоследовательности
+source = https://atcoder.jp/contests/abc130/tasks/abc130_e
+rating = 1500

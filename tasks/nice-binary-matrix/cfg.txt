@@ -1,0 +1,5 @@
+[info]
+name = хорошая бинарная матрица
+source = https://codeforces.com/contest/1391/problem/D?locale=ru
+auto_rating = 2000
+

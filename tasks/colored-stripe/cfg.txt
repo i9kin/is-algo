@@ -1,0 +1,5 @@
+[info]
+name = Цветная полоска
+source = https://codeforces.com/contest/219/problem/C
+auto_rating = 1600
+

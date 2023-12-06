@@ -1,0 +1,4 @@
+[info]
+name = Между двумя массивами
+source = https://atcoder.jp/contests/abc222/tasks/abc222_d
+rating = 1400

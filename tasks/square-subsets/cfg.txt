@@ -1,0 +1,4 @@
+[info]
+name = квадратные подмножества
+source = https://codeforces.com/contest/895/problem/C
+auto_rating = 2000

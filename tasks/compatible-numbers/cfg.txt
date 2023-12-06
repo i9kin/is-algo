@@ -1,0 +1,4 @@
+[info]
+name = совместимые числа
+source = https://codeforces.com/contest/165/problem/E
+auto_rating = 2200

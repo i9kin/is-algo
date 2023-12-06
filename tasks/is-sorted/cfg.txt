@@ -1,0 +1,5 @@
+[info]
+name = отсортирована?
+source = https://codeforces.com/contest/777/problem/C
+auto_rating = 1600
+

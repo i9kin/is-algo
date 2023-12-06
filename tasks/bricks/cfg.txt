@@ -1,0 +1,5 @@
+[info]
+name = Цветные кирпичики
+source = https://codeforces.com/contest/1081/problem/C
+auto_rating = 1500
+

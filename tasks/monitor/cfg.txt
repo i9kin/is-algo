@@ -1,3 +1,5 @@
 [info]
 name = монитор
 source = https://codeforces.com/contest/16/problem/C
+auto_rating = 1800
+

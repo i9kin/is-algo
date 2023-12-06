@@ -1,0 +1,5 @@
+[info]
+name =  Сумма равна Xor
+source = https://atcoder.jp/contests/abc129/tasks/abc129_e
+rating = 2100
+todo

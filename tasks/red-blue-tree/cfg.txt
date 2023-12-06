@@ -1,0 +1,4 @@
+[info]
+name = Красное и синее дерево
+source = https://atcoder.jp/contests/abc222/tasks/abc222_e
+rating = 1800

@@ -1,3 +1,4 @@
 [info]
 name = посев травы
 source = sic 2100
+rating = 1400
