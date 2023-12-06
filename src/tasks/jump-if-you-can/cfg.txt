@@ -1,0 +1,5 @@
+[info]
+name = допрыгни, если сможешь!
+source = https://algocode.ru/files/course_roi2021/contest-24963-ru_1.pdf#page=2
+rating = 1700
+todo
