@@ -1,0 +1,4 @@
+[info]
+name = переупорядочивание
+source = https://atcoder.jp/contests/abc234/tasks/abc234_f
+rating = 1600
