@@ -1,5 +1,6 @@
 # FAQ 
 
+- [Динамическое программирование](./dp/README.MD)
 - [Введение](README.md)
 	- [Тестирующая система](./how-to-smth/judje.md)
 	- [Как читать](./how-to-smth/how-to-read.md)
@@ -56,6 +57,7 @@
 	- [Другая чётность](./tasks/different-odd.md)
 	- [Сумма факториалов](./tasks/sum-of-factorials.md)
 	- [Наибольший отрезок](./tasks/longest-easy.md)
+
 	- [Монитор](./tasks/monitor.md)
 	- [Максимальная медиана](./tasks/maximize-median.md)
 	- [Равный на отрезке](./tasks/equal-in-range.md)
@@ -63,5 +65,16 @@
 	- [Игра на строке](./tasks/string-game.md)
 	- [Максимальное расстояние](./tasks/max-distance.md)	
 	- [Опасные группы отрезков](./tasks/cnt-segments-segments.md)
+
+	- [Между Двумя Массивами](./tasks/between-two-arrays.md)
+	- [Общие Подпоследовательности](./tasks/common-subsequence.md)
+	- [Цветные Кирпичики](./tasks/bricks.md)
+	- [Переупорядочивание](./tasks/reordering.md)
+	- [Отсортирована?](./tasks/is-sorted.md)
+	- [Цветная Полоска](./tasks/colored-stripe.md)
+	- [Красное И Синее Дерево](./tasks/red-blue-tree.md)
+	- [Хорошая Бинарная Матрица](./tasks/nice-binary-matrix.md)
+	- [Квадратные Подмножества](./tasks/square-subsets.md)
+	- [Совместимые Числа](./tasks/compatible-numbers.md)
 - [Задачи про отрезки](./tasks/task-about-segments.md)
 - [stl](./stl/stl.md)
