@@ -12,6 +12,7 @@ from requests import get
 EDITOR = "subl {{ filename }} "
 TASK_DIR = pathlib.Path("src") / "tasks"
 UTILS_DIR = pathlib.Path(".")
+BOOK_DIR = pathlib.Path("src")
 
 
 def execute(**args):
@@ -46,7 +47,7 @@ def get_examples(task: pathlib.Path):
     return res
 
 
-def read_task(task: pathlib.Path, cnt_examples=0, tutorial=False):
+def read_task(task: pathlib.Path, cnt_examples=100, tutorial=False):
     res = {
         "statement": text_or_none(task / "statement.md"),
         "examples": [],
@@ -117,7 +118,7 @@ def get_rating(task: pathlib.Path):
         return int(cfg["rating"])
     if "auto_rating" in cfg:
         return int(cfg["auto_rating"])
-    return 1
+    return None
 
 
 def get_tasks():
@@ -128,7 +129,7 @@ def get_tasks():
     return tasks
 
 
-def get_tasks_sorted():
+def get_sorted_tasks():
     tasks = get_tasks()
     tasks.sort(key=lambda x: get_rating(x))
     return tasks
@@ -136,31 +137,37 @@ def get_tasks_sorted():
 
 def download_problemset():
     url = "https://codeforces.com/api/problemset.problems"
-
     data = {}
     for problem in get(url).json()["result"]["problems"]:
         data[str(problem["contestId"]) + "/" + problem["index"]] = problem
     (UTILS_DIR / "problemset").write_text(json.dumps(data))
 
 
+def codeforces_rating(task: pathlib.Path, data):
+    cfg = get_cfg(task)
+    source = cfg["info"]["source"]
+    if source.strip("https://").startswith("codeforces"):
+        if "problemset/problem/" in source:
+            print(task, "[problemset]")
+            exit(-1)
+    m = re.search("/contest/(.+?)/problem/(.+?)", source)
+    if m:
+        number = int(m.group(1))
+        alpha = m.group(2)
+        return data[str(number) + "/" + alpha]["rating"]
+    return None
+
+
 def auto_rating():
     data = json.loads((UTILS_DIR / "problemset").read_text())
     for task in get_tasks():
         cfg = get_cfg(task)
-        source = cfg["info"]["source"]
-        if source.strip("https://").startswith("codeforces"):
-            if "problemset/problem/" in source:
-                print(task, "[problemset]")
-                continue
-            m = re.search("/contest/(.+?)/problem/(.+?)", source)
-            if m:
-                number = int(m.group(1))
-                alpha = m.group(2)
-                cfg["info"]["auto_rating"] = str(
-                    data[str(number) + "/" + alpha]["rating"]
-                )
-                with open(task / "cfg.txt", "w") as f:
-                    cfg.write(f)
+        raring = codeforces_rating(task, data)
+        if raring is not None:
+            cfg["info"]["auto_rating"] = str(raring)
+            print(task, raring)
+            with open(task / "cfg.txt", "w") as f:
+                cfg.write(f)
 
 
 def create_new_task_(dir_name, task_name, source, cnt_examples):
@@ -192,10 +199,48 @@ def create_new_task():
     create_new_task_(dir_name, task_name, source, cnt_examples)
 
 
+def task_info():
+    err = False
+    for task in get_tasks():
+        if get_rating(task) is None:
+            err = True
+            print(
+                task,
+                "does not have a rating, run auto-rating (r) or add a rating in config",
+            )
+    if err:
+        exit(-1)
+    print("rating of all tasks correct")
+
+
+def tasks_summary():
+    book_summary = (BOOK_DIR / "SUMMARY.md").read_text().split("\n")
+    start = book_summary.index("- [Решаем задачи](./tasks/README.MD)") + 1
+    end = start
+    while end < len(book_summary) and book_summary[end].startswith("\t"):
+        end += 1
+    book_summary = book_summary[start:end]
+    tasks_summary = set()
+    for line in book_summary:
+        m = re.search("\(.+\)", line)
+        assert m
+        tasks_summary.add(m.group(0)[len("./tasks/") + 1 : -4])
+    for task in get_sorted_tasks():
+        data = get_cfg(task)["info"]
+        if "todo" in data:
+            print("[todo]", task)
+    for task in get_sorted_tasks():
+        data = get_cfg(task)["info"]
+        if "todo" in data:
+            continue
+        if task.name not in tasks_summary:
+            print(f"- [{data['name'].title()}](./{pathlib.Path(*task.parts[1:])}.md)")
+
+
 if __name__ == "__main__":
     argv = sys.argv[1:]
     if len(argv) == 0:
-        download_problemset()
+        # download_problemset()
         tasks = get_tasks()
         for task in tasks:
             build(task)
@@ -205,3 +250,12 @@ if __name__ == "__main__":
             delete(task)
     elif argv[0] == "c":
         create_new_task()
+    elif argv[0] == "i":
+        task_info()
+    elif argv[0] == "r":
+        auto_rating()
+    elif argv[0] == "s":
+        tasks_summary()
+    else:
+        print("invalid option")
+        exit(-1)
