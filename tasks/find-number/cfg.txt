@@ -1,0 +1,5 @@
+[info]
+name = найди число
+source = https://codeforces.com/contest/1070/problem/A
+rating = 1900
+auto_rating = 2200

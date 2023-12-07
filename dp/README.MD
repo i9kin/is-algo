@@ -74,9 +74,12 @@ std::vector<int> f(MAX_N, -1);
 
 int fib(int n)
 {
-  if (f[n] != -1) {
-    return f[n];
-  }
+  if (f[n] != -1) { // +
+    return f[n]; // +
+  } // +
+
+  if (n <= 1)
+    return n;
   return  fib(n - 1) + fib(n - 2);
 }
 ```
@@ -116,6 +119,8 @@ inline int mult(const int &a, const int &b) { // a * b
 Пример, (на самом деле таких задач много, мне просто лень) : 
 
 [Цветная полоска](../tasks/colored-stripe.md)
+
+[Найди Число](../tasks/find-number.md)
 
 # Виды динимики
 
