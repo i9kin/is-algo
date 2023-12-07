@@ -69,6 +69,7 @@
 	- [Между Двумя Массивами](./tasks/between-two-arrays.md)
 	- [Общие Подпоследовательности](./tasks/common-subsequence.md)
 	- [Цветные Кирпичики](./tasks/bricks.md)
+	- [Найди Число](./tasks/find-number.md)
 	- [Переупорядочивание](./tasks/reordering.md)
 	- [Отсортирована?](./tasks/is-sorted.md)
 	- [Цветная Полоска](./tasks/colored-stripe.md)
