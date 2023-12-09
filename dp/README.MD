@@ -80,7 +80,7 @@ int fib(int n)
 
   if (n <= 1)
     return n;
-  return  fib(n - 1) + fib(n - 2);
+  return f[n] = fib(n - 1) + fib(n - 2); // добавили кэширование значения
 }
 ```
 
@@ -149,7 +149,7 @@ inline int mult(const int &a, const int &b) { // a * b
 2. [Ленивая динамика](https://ru.algorithmica.org/cs/general-dynamic/memoization/)
 3. [Динамика по цифрам](https://wiki.algocode.ru/index.php?title=%D0%94%D0%B8%D0%BD%D0%B0%D0%BC%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%BE%D0%B5_%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5_%D0%BF%D0%BE_%D1%86%D0%B8%D1%84%D1%80%D0%B0%D0%BC)
 4. (en) [Введение в ДП](https://usaco.guide/gold/intro-dp?lang=cpp)
-5. (en) [Всё о рюкзаке, и задачи похожие](https://usaco.guide/gold/knapsack?lang=cpp)
+5. (en) Аналогично [Всё о рюкзаке, и задачи похожие](https://usaco.guide/gold/knapsack?lang=cpp)
 6. (en) Аналогично [Пути на сетке](https://usaco.guide/gold/paths-grids?lang=cpp)
 7. (en) Аналогично [НВП](https://usaco.guide/gold/lis?lang=cpp)
 8. (en) Аналогично [Подмаски](https://usaco.guide/gold/dp-bitmasks?lang=cpp)
@@ -162,7 +162,7 @@ inline int mult(const int &a, const int &b) { // a * b
 
 Задачи :
 
-1. [просто посмотрите самые простые задачи на динамику на кф'е](https://codeforces.com/problemset?order=BY_SOLVED_DESC&tags=dp) (там разбор есть) я не знаю как сказать, но там как раз половина задач самых простых не динамика, или это немного сложнее чем решение другое
+1. [просто посмотрите самые простые задачи на динамику на кф'е](https://codeforces.com/problemset?order=BY_SOLVED_DESC&tags=dp) (там разбор есть) я не знаю как сказать, но там как раз половина задач самых простых не динамика, или это немного сложнее чем другие решения
 2. [специальный контект на динамику (есть самые базовые)](https://atcoder.jp/contests/dp/tasks) (есть сотни разборов)
 3. [секция Dynamic Programming 20+задач (есть самые базовые)](https://cses.fi/problemset/list/)
 4. [какие-то задачи](https://codeforces.com/blog/entry/67679)
